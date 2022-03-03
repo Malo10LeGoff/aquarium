@@ -1,4 +1,4 @@
-#include "Bestiole.h"
+#include "Creature.h"
 
 #include "Milieu.h"
 
@@ -6,14 +6,14 @@
 #include <cmath>
 
 
-const double      Bestiole::AFF_SIZE = 8.;
-const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
+const double      Creature::AFF_SIZE = 8.;
+const double      Creature::MAX_VITESSE = 10.;
+const double      Creature::LIMITE_VUE = 30.;
 
-int               Bestiole::next = 0;
+int               Creature::next = 0;
 
 
-Bestiole::Bestiole( void )
+Creature::Creature( void )
 {
 
    identite = ++next;
@@ -33,7 +33,7 @@ Bestiole::Bestiole( void )
 }
 
 
-Bestiole::Bestiole( const Bestiole & b )
+Creature::Creature( const Creature & b )
 {
 
    identite = ++next;
@@ -51,7 +51,7 @@ Bestiole::Bestiole( const Bestiole & b )
 }
 
 
-Bestiole::~Bestiole( void )
+Creature::~Creature( void )
 {
 
    delete[] couleur;
@@ -61,7 +61,7 @@ Bestiole::~Bestiole( void )
 }
 
 
-void Bestiole::initCoords( int xLim, int yLim )
+void Creature::initCoords( int xLim, int yLim )
 {
 
    x = rand() % xLim;
@@ -70,7 +70,7 @@ void Bestiole::initCoords( int xLim, int yLim )
 }
 
 
-void Bestiole::bouge( int xLim, int yLim )
+void Creature::bouge( int xLim, int yLim )
 {
 
    double         nx, ny;
@@ -106,7 +106,7 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
+void Creature::action( Milieu & monMilieu )
 {
 
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
@@ -114,7 +114,7 @@ void Bestiole::action( Milieu & monMilieu )
 }
 
 
-void Bestiole::draw( UImg & support )
+void Creature::draw( UImg & support )
 {
 
    double         xt = x + cos( orientation )*AFF_SIZE/2.1;
@@ -127,7 +127,7 @@ void Bestiole::draw( UImg & support )
 }
 
 
-bool operator==( const Bestiole & b1, const Bestiole & b2 )
+bool operator==( const Creature & b1, const Creature & b2 )
 {
 
    return ( b1.identite == b2.identite );
@@ -135,7 +135,7 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 
-bool Bestiole::jeTeVois( const Bestiole & b ) const
+bool Creature::jeTeVois( const Creature & b ) const
 {
 
    double         dist;

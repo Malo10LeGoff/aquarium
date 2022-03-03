@@ -1,5 +1,5 @@
-#ifndef _BESTIOLES_H_
-#define _BESTIOLES_H_
+#ifndef _CREATURES_H_
+#define _CREATURES_H_
 
 
 #include "UImg.h"
@@ -12,7 +12,7 @@ using namespace std;
 class Milieu;
 
 
-class Bestiole
+class Creature
 {
 
 private :
@@ -35,18 +35,18 @@ private :
    void bouge( int xLim, int yLim );
 
 public :                                           // Forme canonique :
-   Bestiole( void );                               // Constructeur par defaut
-   Bestiole( const Bestiole & b );                 // Constructeur de copies
-   ~Bestiole( void );                              // Destructeur
+   Creature( void );                               // Constructeur par defaut
+   Creature( const Creature & b );                 // Constructeur de copies
+   ~Creature( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
 
-   bool jeTeVois( const Bestiole & b ) const;
+   bool jeTeVois( const Creature & b ) const;
 
    void initCoords( int xLim, int yLim );
 
-   friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+   friend bool operator==( const Creature & b1, const Creature & b2 );
 
 };
 
