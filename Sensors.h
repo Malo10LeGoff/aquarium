@@ -3,7 +3,7 @@
 
 class InterfaceSensors {
 public:
-    virtual std::tuple<float,float,float> detectionZone() =0 const;
+    virtual std::tuple<float,float,float> detectionZone() const =0;
     virtual float detectionCoef() const;
 };
 
@@ -15,13 +15,14 @@ private:
     float detectionCoef_;
     float detectionRadius_;
     float detectionAngle_;
-}
+};
+
 class Ears:public InterfaceSensor {
 public: 
     virtual std::tuple<float,float,float> detectionZone() const override;
 
 private:
     float detectionCoef_;
-}
+};
 
 #endif
