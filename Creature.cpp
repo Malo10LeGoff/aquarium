@@ -1,4 +1,4 @@
-#include "Bestiole.h"
+#include "Creature.h"
 
 #include "Milieu.h"
 
@@ -9,9 +9,13 @@ const double Bestiole::AFF_SIZE = 8.;
 const double Bestiole::MAX_VITESSE = 10.;
 const double Bestiole::LIMITE_VUE = 30.;
 
-int Bestiole::next = 0;
+const double Creature::AFF_SIZE = 8.;
+const double Creature::MAX_VITESSE = 10.;
+const double Creature::LIMITE_VUE = 30.;
 
-Bestiole::Bestiole(void)
+int Creature::next = 0;
+
+Creature::Creature(void)
 {
 
    identite = ++next;
@@ -29,7 +33,7 @@ Bestiole::Bestiole(void)
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
 }
 
-Bestiole::Bestiole(const Bestiole &b)
+Creature::Creature(const Creature &b)
 {
 
    identite = ++next;
@@ -45,7 +49,7 @@ Bestiole::Bestiole(const Bestiole &b)
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
 
-Bestiole::~Bestiole(void)
+Creature::~Creature(void)
 {
 
    delete[] couleur;
@@ -53,14 +57,14 @@ Bestiole::~Bestiole(void)
    cout << "dest Bestiole" << endl;
 }
 
-void Bestiole::initCoords(int xLim, int yLim)
+void Creature::initCoords(int xLim, int yLim)
 {
 
    x = rand() % xLim;
    y = rand() % yLim;
 }
 
-void Bestiole::bouge(int xLim, int yLim)
+void Creature::bouge(int xLim, int yLim)
 {
 
    double nx, ny;
@@ -99,13 +103,13 @@ void Bestiole::bouge(int xLim, int yLim)
    }
 }
 
-void Bestiole::action(Milieu &monMilieu)
+void Creature::action(Milieu &monMilieu)
 {
 
    bouge(monMilieu.getWidth(), monMilieu.getHeight());
 }
 
-void Bestiole::draw(UImg &support)
+void Creature::draw(UImg &support)
 {
 
    double xt = x + cos(orientation) * AFF_SIZE / 2.1;
@@ -115,13 +119,13 @@ void Bestiole::draw(UImg &support)
    support.draw_circle(xt, yt, AFF_SIZE / 2., couleur);
 }
 
-bool operator==(const Bestiole &b1, const Bestiole &b2)
+bool operator==(const Creature &b1, const Creature &b2)
 {
 
    return (b1.identite == b2.identite);
 }
 
-bool Bestiole::jeTeVois(const Bestiole &b) const
+bool Creature::jeTeVois(const Creature &b) const
 {
    double dist;
    dist = std::sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
