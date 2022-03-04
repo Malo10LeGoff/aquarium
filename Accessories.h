@@ -5,6 +5,7 @@
 #include <vector>
 #include "UImg.h"
 
+
 class InterfaceAccessory {
 public: 
     virtual float speedCoef() const {
@@ -21,6 +22,7 @@ public:
 
 class Accessories: public InterfaceAccessory {
 public:
+    Accessories();
     float speedCoef() const override;
     float camoCoef() const override;
     float deathCoef() const override;
@@ -32,6 +34,7 @@ private:
 
 class Shell:public InterfaceAccessory {
 public:
+    Shell(float speedReductionCoef, float deathCoef);
     float speedCoef() const override;
     float deathCoef() const override;
 private:
@@ -41,6 +44,7 @@ private:
 
 class Camo:public InterfaceAccessory {
 public:
+    Camo(int camoCoef);
     float camoCoef() const override;
 private:
     float camoCoef_;
@@ -49,6 +53,7 @@ private:
 
 class Fins:public InterfaceAccessory {
 public:
+    Fins(int speedCoef);
     float speedCoef() const override;
 private:
     float speedCoef_;
