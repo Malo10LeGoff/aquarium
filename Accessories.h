@@ -21,46 +21,36 @@ public:
 
 class Accessories: public InterfaceAccessory {
 public:
-    InterfaceAccessory first() const;
-    InterfaceAccessory last() const;
-    int getSize() const;
+    float speedCoef() const override;
+    float camoCoef() const override;
+    float deathCoef() const override;
 
     
 private:
-    InterfaceAccessory* first_;
-    InterfaceAccessory* last_;
+    std::list<InterfaceAccessory&> accessories_;
 };
 
 class Shell:public InterfaceAccessory {
 public:
-    virtual float speedCoef() const override;
-    virtual float deathCoef() const override;
-    InterfaceAccessory* next() const;
-    bool hasNext() const;
+    float speedCoef() const override;
+    float deathCoef() const override;
 private:
-    InterfaceAccessory* next_;
     float speedReductionCoef_;
     float deathCoef_;
 };
 
 class Camo:public InterfaceAccessory {
 public:
-    virtual float camoCoef() const override;
-    InterfaceAccessory* next() const;
-    bool hasNext() const;
+    float camoCoef() const override;
 private:
-    InterfaceAccessory* next_;
     float camoCoef_;
 
 };
 
 class Fins:public InterfaceAccessory {
 public:
-    virtual float speedCoef() const override;
-    InterfaceAccessory* next() const;
-    bool hasNext() const;
+    float speedCoef() const override;
 private:
-    InterfaceAccessory* next_;
     float speedCoef_;
 };
 
