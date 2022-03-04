@@ -2,6 +2,9 @@
 
 #ifndef _BEHAVIOUR_H_
 #define _BEHAVIOUR_H_
+#include <tuple>
+#include <list>
+
 class Creature; //forward declaration
 
 class InterfaceBehaviour {
