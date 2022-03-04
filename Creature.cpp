@@ -145,3 +145,7 @@ bool Creature::jeTeVois( const Creature & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+tuple<float,float> Creature::coordinates() const {
+    return tuple<float,float>(this->x, this->y);
+}

@@ -41,7 +41,7 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-
+   tuple<float,float> coordinates() const;
    bool jeTeVois( const Creature & b ) const;
 
    void initCoords( int xLim, int yLim );
