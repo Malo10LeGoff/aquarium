@@ -1,0 +1,4 @@
+.Makefile.swp
+*.o
+!spec/*.o
+main
