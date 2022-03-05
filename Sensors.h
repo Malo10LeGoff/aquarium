@@ -1,28 +1,39 @@
 #ifndef _SENSORS_H_
 #define _SENSORS_H_
 
+#include <iostream>
+#include <vector>
+#include <list>
+
 class InterfaceSensors {
 public:
-    virtual std::list<std::tuple<float,float>> detectionZone() const =0;
-    virtual std::list<float> detectionCoef() const =0;
+    virtual bool detect(int x_a,int y_a,int x_b,int y_b,double orientation) const {return 0;};
 };
 
-class Eyes:public InterfaceSensor {
+class Sensors: public InterfaceSensors {
 public:
-    std::list<std::tuple<float,float>> detectionZone() const override;
+    Sensors();
+    bool detect(int x_a,int y_a,int x_b,int y_b,double orientation)  const;
+    std::list<InterfaceSensors *> sensors_;
+};
 
+class Eyes:public InterfaceSensors {
+public:
+    Eyes(float detectionCoef,float detectionRadius,float detectionAngle);
+    bool detect(int x_a,int y_a,int x_b,int y_b, double orientation) const;
 private:
     float detectionCoef_;
     float detectionRadius_;
     float detectionAngle_;
 };
 
-class Ears:public InterfaceSensor {
+class Ears:public InterfaceSensors {
 public:
-    std::list<std::tuple<float,float>> detectionZone() const override;
-
+    Ears(float detectionCoef,float detectionRadius);
+    bool detect(int x_a,int y_a,int x_b,int y_b,double orientation) const;
 private:
     float detectionCoef_;
+    float detectionRadius_;
 };
 
 #endif

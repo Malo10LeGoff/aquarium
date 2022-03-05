@@ -3,7 +3,27 @@
 
 Accessories::Accessories() 
 {
-    std::list<InterfaceAccessory *> accessories_;
+    //add Shell
+    if (rand()%2==1){
+      float speedRed = -static_cast<float>(rand()) / RAND_MAX * 3;
+      float deathCo = static_cast<float>(rand()) / RAND_MAX * 3;
+      Shell *ptr_s = new Shell(speedRed,deathCo);
+      accessories_.push_back(ptr_s); // accessories à passer private
+    }
+   //add Fins
+    if (rand()%2 ==1){
+      float speedBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Fins *ptr_f = new Fins(speedBoost);
+      accessories_.push_back(ptr_f);
+    }
+
+   //add Camo
+    if (rand()%2==1){
+      float camoBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Camo *ptr_c = new Camo(camoBoost);
+      accessories_.push_back(ptr_c);
+   }
+    
 };
 
 

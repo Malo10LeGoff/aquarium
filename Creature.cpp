@@ -23,31 +23,10 @@ Creature::Creature(void)
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
 
+   accessories = Accessories();
+   sensors = Sensors();
 
-   //add Shell
-   if (rand()%2==1){
-      float speedRed = -static_cast<float>(rand()) / RAND_MAX * 3;
-      float deathCo = static_cast<float>(rand()) / RAND_MAX * 3;
-      Shell *ptr_s = new Shell(speedRed,deathCo);
-      accessories.accessories_.push_back(ptr_s); // accessories à passer private
-      cout<<"+Shell" << Shell(1.0,1.0).speedCoef() << endl;
-   }
-   //add Fins
-   if (rand()%2 ==1){
-      float speedBoost = static_cast<float>(rand()) / RAND_MAX * 3;
-      Fins *ptr_f = new Fins(speedBoost);
-      accessories.accessories_.push_back(ptr_f);
-      cout<<"+Fins"<< Fins(30.0).speedCoef() <<endl;
-   }
-
-   //add Camo
-   if (rand()%2==1){
-      float camoBoost = static_cast<float>(rand()) / RAND_MAX * 3;
-      Camo *ptr_c = new Camo(camoBoost);
-      accessories.accessories_.push_back(ptr_c);
-      cout<<"+Camo"<< Camo(1.0).speedCoef() <<endl;
-   }
-   cout <<accessories.speedCoef() <<endl;
+   cout <<"Speed Coef " << accessories.speedCoef() <<endl;
    vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
    cout << vitesse <<endl;
    couleur = new T[3];

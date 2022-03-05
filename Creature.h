@@ -4,6 +4,7 @@
 
 #include "UImg.h"
 #include "Accessories.h"
+#include "Sensors.h"
 #include <list>
 
 #include <iostream>
@@ -31,6 +32,7 @@ private :
    double            orientation;
    double            vitesse;
    Accessories       accessories;
+   Sensors           sensors;
    T                 * couleur;
 
 private :

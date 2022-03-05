@@ -1,6 +1,7 @@
 #include "Aquarium.h"
 #include "Milieu.h"
 #include "Creature.h"
+#include "Sensors.h"
 #include "Accessories.h"
 #include <iostream>
 
@@ -9,11 +10,6 @@ using namespace std;
 
 int main()
 {
-
-   Shell a = Shell(1.0,1.0);
-   cout << "Le boefsse" << a.speedCoef() <<endl;
-
-
    
    Aquarium       ecosysteme( 640, 480, 30 );
 
@@ -24,5 +20,6 @@ int main()
    
 
    return 0;
+   
 
 }
