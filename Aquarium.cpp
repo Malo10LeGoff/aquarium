@@ -33,12 +33,11 @@ Aquarium::~Aquarium( void )
 void Aquarium::run( void )
 {
 
-   cout << "running Aquarium" << endl;
+   //cout << "running Aquarium" << endl;
 
    while ( ! is_closed() )
    {
 
-      // cout << "iteration de la simulation" << endl;
 
       if ( is_key() ) {
          cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
@@ -47,8 +46,8 @@ void Aquarium::run( void )
       }
 
       flotte->step();
-      display( *flotte );
 
+      display( *flotte );
       wait( delay );
 
    } // while

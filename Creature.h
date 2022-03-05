@@ -3,6 +3,8 @@
 
 
 #include "UImg.h"
+#include "Accessories.h"
+#include <list>
 
 #include <iostream>
 
@@ -28,11 +30,14 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   int               food;
+
 
    T               * couleur;
 
 private :
    void bouge( int xLim, int yLim );
+  
 
 public :                                           // Forme canonique :
    Creature( void );                               // Constructeur par defaut

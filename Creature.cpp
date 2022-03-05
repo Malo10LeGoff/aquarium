@@ -1,13 +1,10 @@
 #include "Creature.h"
 
 #include "Milieu.h"
+#include "Accessories.h"
 
 #include <cstdlib>
 #include <cmath>
-
-const double Bestiole::AFF_SIZE = 8.;
-const double Bestiole::MAX_VITESSE = 10.;
-const double Bestiole::LIMITE_VUE = 30.;
 
 const double Creature::AFF_SIZE = 8.;
 const double Creature::MAX_VITESSE = 10.;
@@ -20,17 +17,35 @@ Creature::Creature(void)
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   cout << "const Creature (" << identite << ") par defaut" << endl;
 
    x = y = 0;
+   //food=0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
-   vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
+/*
+   //add Shell
+   if (rand()%2 ==1){
+      accessories.push_back(Shell(1.0,1.0));
+   }
+   //add Fins
+   if (rand()%2 ==1){
+      accessories.push_back(Fins(1.0));
+   }
+
+   //add Camo
+   if (rand()%2 ==1){
+      accessories.push_back(Camo(1.0));
+   }
+*/
+   vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
+   
+
 }
 
 Creature::Creature(const Creature &b)
@@ -38,13 +53,14 @@ Creature::Creature(const Creature &b)
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   cout << "const Creature (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
+   //accessories = b.accessories;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
@@ -54,7 +70,7 @@ Creature::~Creature(void)
 
    delete[] couleur;
 
-   cout << "dest Bestiole" << endl;
+   cout << "dest Creature" << endl;
 }
 
 void Creature::initCoords(int xLim, int yLim)
