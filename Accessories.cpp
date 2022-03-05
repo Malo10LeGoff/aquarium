@@ -3,36 +3,36 @@
 
 Accessories::Accessories() 
 {
-    std::list<InterfaceAccessory> accessories_;
+    std::list<InterfaceAccessory *> accessories_;
 };
 
 
 float Accessories::speedCoef() const
 {
-    float coef(1.0);
-    std::list<InterfaceAccessory>::const_iterator it;
+    float coef(0);
+    std::list<InterfaceAccessory *>::const_iterator it;
     for (it=accessories_.begin();it!= accessories_.end();it++) {
-        coef = (it)->speedCoef();
+        coef += (*it)->speedCoef();
     }
     return coef;
 };
 
 float Accessories::camoCoef() const
 {
-    float coef = 1;
-    std::list<InterfaceAccessory>::const_iterator it;
+    float coef = 0;
+    std::list<InterfaceAccessory *>::const_iterator it;
     for (it=accessories_.begin();it!= accessories_.end();it++) {
-        coef = (it)->camoCoef();
+        coef += (*it)->camoCoef();
     }
     return coef;
 };
 
 float Accessories::deathCoef() const
 {
-    float coef = 1;
-    std::list<InterfaceAccessory>::const_iterator it;
+    float coef = 0;
+    std::list<InterfaceAccessory *>::const_iterator it;
     for (it=accessories_.begin();it!= accessories_.end();it++) {
-        coef = (it)->deathCoef();
+        coef += (*it)->deathCoef();
     }
     return coef;
 };

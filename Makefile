@@ -12,6 +12,8 @@ Milieu.o : Milieu.h Milieu.cpp
 
 Accessories.o : Accessories.h Accessories.cpp
 	g++ -Wall -std=c++11 -c Accessories.cpp -I .
+clean:
+	rm *.o
 
 
 

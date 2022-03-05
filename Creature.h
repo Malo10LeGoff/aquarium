@@ -30,10 +30,8 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
-   int               food;
-
-
-   T               * couleur;
+   Accessories       accessories;
+   T                 * couleur;
 
 private :
    void bouge( int xLim, int yLim );

@@ -20,26 +20,36 @@ Creature::Creature(void)
    cout << "const Creature (" << identite << ") par defaut" << endl;
 
    x = y = 0;
-   //food=0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
 
-/*
+
    //add Shell
-   if (rand()%2 ==1){
-      accessories.push_back(Shell(1.0,1.0));
+   if (rand()%2==1){
+      float speedRed = -static_cast<float>(rand()) / RAND_MAX * 3;
+      float deathCo = static_cast<float>(rand()) / RAND_MAX * 3;
+      Shell *ptr_s = new Shell(speedRed,deathCo);
+      accessories.accessories_.push_back(ptr_s); // accessories à passer private
+      cout<<"+Shell" << Shell(1.0,1.0).speedCoef() << endl;
    }
    //add Fins
    if (rand()%2 ==1){
-      accessories.push_back(Fins(1.0));
+      float speedBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Fins *ptr_f = new Fins(speedBoost);
+      accessories.accessories_.push_back(ptr_f);
+      cout<<"+Fins"<< Fins(30.0).speedCoef() <<endl;
    }
 
    //add Camo
-   if (rand()%2 ==1){
-      accessories.push_back(Camo(1.0));
+   if (rand()%2==1){
+      float camoBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Camo *ptr_c = new Camo(camoBoost);
+      accessories.accessories_.push_back(ptr_c);
+      cout<<"+Camo"<< Camo(1.0).speedCoef() <<endl;
    }
-*/
-   vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
+   cout <<accessories.speedCoef() <<endl;
+   vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
+   cout << vitesse <<endl;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
@@ -60,7 +70,7 @@ Creature::Creature(const Creature &b)
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
-   //accessories = b.accessories;
+   accessories = b.accessories;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }

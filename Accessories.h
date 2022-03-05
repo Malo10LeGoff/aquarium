@@ -10,13 +10,13 @@
 class InterfaceAccessory {
 public: 
     virtual float speedCoef() const {
-        return 1;
+        return 0;
     }
     virtual float camoCoef() const {
-        return 1;
+        return 0;
     }
     virtual float deathCoef() const {
-        return 1;
+        return 0;
     }
 };
 
@@ -27,10 +27,7 @@ public:
     float speedCoef() const;
     float camoCoef() const;
     float deathCoef() const ;
-
-    
-private:
-    std::list<InterfaceAccessory> accessories_;
+    std::list<InterfaceAccessory *> accessories_;
 };
 
 class Shell:public InterfaceAccessory {
