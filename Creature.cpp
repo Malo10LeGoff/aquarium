@@ -50,6 +50,7 @@ Creature::Creature(const Creature &b)
    orientation = b.orientation;
    vitesse = b.vitesse;
    accessories = b.accessories;
+   sensors = b.sensors;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
@@ -130,9 +131,16 @@ bool operator==(const Creature &b1, const Creature &b2)
    return (b1.identite == b2.identite);
 }
 
-bool Creature::jeTeVois(const Creature &b) const
+
+int * Creature::getPos() const
 {
-   double dist;
-   dist = std::sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
-   return (dist <= LIMITE_VUE);
-}
+   static int  pos[2];
+   pos[0] = x;
+   pos[1] = y;
+   return pos;
+};
+
+double Creature::getOrient() const
+{
+   return orientation;
+};

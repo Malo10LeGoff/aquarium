@@ -31,9 +31,11 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   T                 * couleur;
+
+public:
    Accessories       accessories;
    Sensors           sensors;
-   T                 * couleur;
 
 private :
    void bouge( int xLim, int yLim );
@@ -47,10 +49,11 @@ public :                                           // Forme canonique :
    void action( Milieu & monMilieu );
    void draw( UImg & support );
 
-   bool jeTeVois( const Creature & b ) const;
-
    void initCoords( int xLim, int yLim );
 
+   int * getPos() const;
+   double getOrient() const;
+   double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
 
 };

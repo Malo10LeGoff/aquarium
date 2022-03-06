@@ -2,6 +2,7 @@
 #include "Creature.h"
 #include <math.h> 
 #include <list>
+#include <string>
 
 
 Sensors::Sensors() 
@@ -28,54 +29,68 @@ Sensors::Sensors()
    }
 };
 
-bool Sensors::detect(int x_a,int y_a,int x_b,int y_b,double orientation)  const
+float Sensors::getDetectionRadius() const
 {
-    bool coef(0);
-    std::list<InterfaceSensors *>::const_iterator it;
-    for (it=sensors_.begin();it!= sensors_.end();it++) {
-        if ((*it)->detect(x_a,y_a,x_b,y_b,orientation)==1) {
-            coef = 1;
-        };
-    }
-    return coef;
+    return 0;
 };
 
+float Sensors::getDetectionAngle() const
+{
+    return 0;
+};
+
+float Sensors::getDetectionCoef() const
+{
+    return 0;
+};
 
 Eyes::Eyes(float detectionCoef,float detectionRadius,float detectionAngle) 
 {
+    type = "Eyes";
     detectionCoef_ = detectionCoef;
     detectionRadius_ = detectionRadius;
     detectionAngle_= detectionAngle;
 };
 
-bool Eyes::detect(int x_a,int y_a,int x_b,int y_b,double orientation) const
+std::string Eyes::getType() const
 {
-    //les produits scalaires sont surement une meilleure solution
-    double dist;
-    dist = std::sqrt((x_a - x_b) * (x_a - x_b) + (y_a - y_b) * (y_a - y_b));
-    if (dist <= detectionRadius_) {
-        int new_x_b = static_cast<int>(x_b*cos(orientation) + y_b*sin(orientation) - x_a);
-        int new_y_b = static_cast<int>(-x_b*sin(orientation) + y_b*cos(orientation)- y_a);
+    return type;
+};
 
-        double alpha = atan (new_y_b/new_x_b);
+float Eyes::getDetectionRadius() const
+{
+    return detectionRadius_;
+};
 
-        if (abs(alpha)<detectionAngle_) {
-            return 1;
-        }
-    }
-    return 0;
+float Eyes::getDetectionAngle() const
+{
+    return detectionAngle_;
+};
+
+float Eyes::getDetectionCoef() const
+{
+    return detectionCoef_;
 };
 
 
 Ears::Ears(float detectionCoef,float detectionRadius) 
 {
+    type = "Ears";
     detectionCoef_ = detectionCoef;
     detectionRadius_ = detectionRadius;
 };
 
-bool Ears::detect(int x_a,int y_a,int x_b,int y_b,double orientation) const
+string Ears::getType() const
 {
-    double dist;
-    dist = std::sqrt((x_a - x_b) * (x_a - x_b) + (y_a - y_b) * (y_a - y_b));
-    return (dist <= detectionRadius_);
+    return type;
+};
+
+float Ears::getDetectionRadius() const
+{
+    return detectionRadius_;
+};
+
+float Ears::getDetectionCoef() const
+{
+    return detectionCoef_;
 };
