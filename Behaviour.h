@@ -2,15 +2,20 @@
 
 #ifndef _BEHAVIOUR_H_
 #define _BEHAVIOUR_H_
-#include <tuple>
-#include <list>
-
-class Creature; //forward declaration
+#include <array>
+#include <vector>
 
 class InterfaceBehaviour {
 public:
-    virtual std::tuple<float,float> moveDirection(const std::list<Creature&> visibleCreatures) const = 0;
-    virtual float moveSpeedMultiplier(const std::list<Creature&> visibleCreatures) const {
+    /**
+     *
+     * @param visibleCreatures
+     *          vector of [array<float,2> moveDirection, array<float,2> coordinates]
+     * @return moveDirection
+     *          std::array<float,2> The direction the creature wants to move.
+     */
+    virtual std::array<float,2> moveDirection(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const = 0;
+    virtual float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
         return 1;
     };
 
@@ -18,12 +23,12 @@ public:
 
 class GregariousBehaviour: public InterfaceBehaviour {
 public:
-    std::tuple<float,float> moveDirection(const std::list<Creature&> visibleCreatures) override;
+    std::array<float,2> moveDirection(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
 };
 
 class FearfulBehaviour: public InterfaceBehaviour {
 public:
-    std::tuple<float,float> moveDirection(const std::list<Creature&> visibleCreatures) override;
+    std::array<float,2> moveDirection(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     float moveSpeedMultiplier();
 private:
     float moveSpeedMultiplier_;
@@ -31,11 +36,11 @@ private:
 
 class KamikazeBehaviour: public InterfaceBehaviour {
 public:
-    std::tuple<float,float> moveDirection(const std::list<Creature&> visibleCreatures) override;
+    std::array<float,2> moveDirection(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
 };
 
 class PlanningBehaviour:public InterfaceBehaviour {
 public:
-    std::tuple<float,float> moveDirection(const std::list<Creature&> visibleCreatures) override;
+    std::array<float,2> moveDirection(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
 };
 #endif //_BEHAVIOUR_H_
