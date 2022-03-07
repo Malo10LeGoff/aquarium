@@ -53,10 +53,14 @@ std::vector<std::array<int,2>> Milieu::Surrounding(const Creature &a)
    std::vector<std::array<int,2>> res;
 
    for (std::vector<Creature>::iterator it = listeCreatures.begin(); it != listeCreatures.end(); ++it)
-      if (!(a == *it) && detect(a,*it))
+      if (!(a == *it) && detect(a,*it)) 
+      {
          int * pos_tmp = (it)->getPos(); 
-         int pos[2];
+         std::array<int,2> pos;
+         pos[0] = pos_tmp[0];
+         pos[1] = pos_tmp[1];
          res.push_back(pos);
+      }
    return res;
 };
 
