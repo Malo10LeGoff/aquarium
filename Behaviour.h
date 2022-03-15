@@ -18,8 +18,6 @@ public:
     virtual float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
         return 1;
     };
-    virtual std::array<float,3> policy(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const =0;
-
 };
 
 class GregariousBehaviour: public InterfaceBehaviour {
@@ -33,7 +31,7 @@ public:
     FearfulBehaviour();
     FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier);
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
-    float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures);
+    float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
 private:
     float moveSpeedMultiplier_;
     int maxNeighbours_;
@@ -54,7 +52,6 @@ class MultipleBehaviours: public InterfaceBehaviour {
 public:
     MultipleBehaviours();
     std::array<float, 2> moveDirection(const std::array<float, 2> creatureCoordinates, const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const override;
-    float moveSpeedMultiplier(const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const override;
     void add(std::unique_ptr<InterfaceBehaviour>& behaviour);
     void remove(std::unique_ptr<InterfaceBehaviour>& behaviour);
 private:
