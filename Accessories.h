@@ -4,34 +4,35 @@
 #include <iostream>
 #include <vector>
 #include "UImg.h"
+#include <list>
+
 
 class InterfaceAccessory {
 public: 
     virtual float speedCoef() const {
-        return 1;
+        return 0;
     }
     virtual float camoCoef() const {
-        return 1;
+        return 0;
     }
     virtual float deathCoef() const {
-        return 1;
+        return 0;
     }
 };
 
 
 class Accessories: public InterfaceAccessory {
 public:
-    float speedCoef() const override;
-    float camoCoef() const override;
-    float deathCoef() const override;
-
-    
-private:
-    std::list<InterfaceAccessory&> accessories_;
+    Accessories();
+    float speedCoef() const;
+    float camoCoef() const;
+    float deathCoef() const ;
+    std::list<InterfaceAccessory *> accessories_;
 };
 
 class Shell:public InterfaceAccessory {
 public:
+    Shell(float speedReductionCoef, float deathCoef);
     float speedCoef() const override;
     float deathCoef() const override;
 private:
@@ -41,6 +42,7 @@ private:
 
 class Camo:public InterfaceAccessory {
 public:
+    Camo(float camoCoef);
     float camoCoef() const override;
 private:
     float camoCoef_;
@@ -49,6 +51,7 @@ private:
 
 class Fins:public InterfaceAccessory {
 public:
+    Fins(float speedCoef);
     float speedCoef() const override;
 private:
     float speedCoef_;
