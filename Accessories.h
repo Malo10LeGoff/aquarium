@@ -29,7 +29,7 @@ public:
 
     
 private:
-    std::list<InterfaceAccessory&> accessories_;
+    std::list<InterfaceAccessory> accessories_;
 };
 
 class Shell:public InterfaceAccessory {
