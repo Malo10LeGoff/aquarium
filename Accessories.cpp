@@ -3,36 +3,56 @@
 
 Accessories::Accessories() 
 {
-    accessories_ = std::list<InterfaceAccessory>
+    //add Shell
+    if (rand()%2==1){
+      float speedRed = -static_cast<float>(rand()) / RAND_MAX * 3;
+      float deathCo = static_cast<float>(rand()) / RAND_MAX * 3;
+      Shell *ptr_s = new Shell(speedRed,deathCo);
+      accessories_.push_back(ptr_s); // accessories à passer private
+    }
+   //add Fins
+    if (rand()%2 ==1){
+      float speedBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Fins *ptr_f = new Fins(speedBoost);
+      accessories_.push_back(ptr_f);
+    }
+
+   //add Camo
+    if (rand()%2==1){
+      float camoBoost = static_cast<float>(rand()) / RAND_MAX * 3;
+      Camo *ptr_c = new Camo(camoBoost);
+      accessories_.push_back(ptr_c);
+   }
+    
 };
 
 
 float Accessories::speedCoef() const
 {
-    float coef = 1;
-    std::list<InterfaceAccessory>::iterator a;
-    for (a=accessories_.begin();a!= accessories_.end();a++) {
-        coef *= a.speedCoef();
+    float coef(0);
+    std::list<InterfaceAccessory *>::const_iterator it;
+    for (it=accessories_.begin();it!= accessories_.end();it++) {
+        coef += (*it)->speedCoef();
     }
     return coef;
 };
 
 float Accessories::camoCoef() const
 {
-    float coef = 1;
-    std::list<InterfaceAccessory>::iterator a;
-    for (a=accessories_.begin();a!= accessories_.end();a++) {
-        coef *= a.camoCoef();
+    float coef = 0;
+    std::list<InterfaceAccessory *>::const_iterator it;
+    for (it=accessories_.begin();it!= accessories_.end();it++) {
+        coef += (*it)->camoCoef();
     }
     return coef;
 };
 
 float Accessories::deathCoef() const
 {
-    float coef = 1;
-    std::list<InterfaceAccessory>::iterator a;
-    for (a=accessories_.begin();a!= accessories_.end();a++) {
-        coef *= a.deathCoef();
+    float coef = 0;
+    std::list<InterfaceAccessory *>::const_iterator it;
+    for (it=accessories_.begin();it!= accessories_.end();it++) {
+        coef += (*it)->deathCoef();
     }
     return coef;
 };
@@ -57,7 +77,7 @@ float Shell::deathCoef() const
 
 Camo::Camo(float camoCoef) 
 {
-    camoCoef_ = camoCoef
+    camoCoef_ = camoCoef;
 };
 
 
@@ -68,7 +88,7 @@ float Camo::camoCoef() const
 
 Fins::Fins(float speedCoef) 
 {
-    speedCoef_ = speedCoef
+    speedCoef_ = speedCoef;
 };
 
 

@@ -1,13 +1,10 @@
 #include "Creature.h"
 
 #include "Milieu.h"
+#include "Accessories.h"
 
 #include <cstdlib>
 #include <cmath>
-
-const double Bestiole::AFF_SIZE = 8.;
-const double Bestiole::MAX_VITESSE = 10.;
-const double Bestiole::LIMITE_VUE = 30.;
 
 const double Creature::AFF_SIZE = 8.;
 const double Creature::MAX_VITESSE = 10.;
@@ -20,17 +17,24 @@ Creature::Creature(void)
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   cout << "const Creature (" << identite << ") par defaut" << endl;
 
    x = y = 0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
-   vitesse = static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE;
 
+   accessories = Accessories();
+   sensors = Sensors();
+
+   cout <<"Speed Coef " << accessories.speedCoef() <<endl;
+   vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
+   cout << vitesse <<endl;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
+   
+
 }
 
 Creature::Creature(const Creature &b)
@@ -38,13 +42,15 @@ Creature::Creature(const Creature &b)
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   cout << "const Creature (" << identite << ") par copie" << endl;
 
    x = b.x;
    y = b.y;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
+   accessories = b.accessories;
+   sensors = b.sensors;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
@@ -54,7 +60,7 @@ Creature::~Creature(void)
 
    delete[] couleur;
 
-   cout << "dest Bestiole" << endl;
+   cout << "dest Creature" << endl;
 }
 
 void Creature::initCoords(int xLim, int yLim)
@@ -125,9 +131,16 @@ bool operator==(const Creature &b1, const Creature &b2)
    return (b1.identite == b2.identite);
 }
 
-bool Creature::jeTeVois(const Creature &b) const
+
+int * Creature::getPos() const
 {
-   double dist;
-   dist = std::sqrt((x - b.x) * (x - b.x) + (y - b.y) * (y - b.y));
-   return (dist <= LIMITE_VUE);
-}
+   static int  pos[2];
+   pos[0] = x;
+   pos[1] = y;
+   return pos;
+};
+
+double Creature::getOrient() const
+{
+   return orientation;
+};

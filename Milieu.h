@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ private :
    static const T          white[];
 
    int                     width, height;
-   std::vector<Creature>   listeBestioles;
+   std::vector<Creature>   listeCreatures;
 
 public :
    Milieu( int _width, int _height );
@@ -29,9 +30,11 @@ public :
 
    void step( void );
 
-   void addMember( const Creature & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
+   void addMember( const Creature & b ) { listeCreatures.push_back(b); listeCreatures.back().initCoords(width, height); }
    int nbVoisins( const Creature & b );
-
+   bool detect(const Creature &a, const Creature &b);
+   std::vector<std::array<int,2>> Surrounding(const Creature &a);
+   
 };
 
 
