@@ -11,9 +11,11 @@ using namespace std;
 int main()
 {
 
-   
-   /*
-   Aquarium       ecosysteme( 640, 480, 30 );
+  
+   Shell a = Shell(1,1);
+   cout << a.speedCoef() <<endl;
+
+   Aquarium  ecosysteme( 640, 480, 30 );
 
    for ( int i = 1; i <= 20; ++i )
       ecosysteme.getMilieu().addMember( Creature() );
@@ -23,7 +25,6 @@ int main()
 
    
    return 0;
-   */
    
 
 }
