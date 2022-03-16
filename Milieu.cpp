@@ -103,15 +103,16 @@ void Milieu::collision(void)
    for (std::vector<Creature>::iterator it_i = listeCreatures.begin(); it_i != listeCreatures.end(); ++it_i) {
       for (std::vector<Creature>::iterator it_j = listeCreatures.begin(); it_j != listeCreatures.end(); ++it_j) {
       if (it_j!=it_i) {
-         int * pos_i = (it_i)->getPos(); 
-         int * pos_j = (it_j)->getPos();
-         if ((pos_i[0] == pos_j[0]) && (pos_i[1]==pos_j[1])) 
-         {
+         double x_i = (it_i)->getXt();
+         double y_i = (it_i)->getYt();
+         double x_j = (it_j)->getXt();
+         double y_j = (it_j)->getYt();
+         double dist = std::sqrt((x_i - x_j)*(x_i - x_j) + (y_i - y_j)*(y_i - y_j));
+         if (dist<8.){
+            cout << "Collision" << endl;
             (it_j)->collision();
-            cout <<"id I : "<< (it_i)->getId() << " idJ: " <<(it_j)->getId() <<"\n";
-            //(it_i)->collision();
+            (it_i)->collision();
          }
-         
       }
    }}
 }

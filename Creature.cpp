@@ -155,3 +155,14 @@ void Creature::collision(void)
 {
    orientation = orientation+M_PI;
 };
+
+double Creature::getXt(void){
+   double xt = x + cos(orientation) * AFF_SIZE / 2.1;
+   return xt;
+};
+
+double Creature::getYt(void){
+   double yt = y - sin(orientation) * AFF_SIZE / 2.1;
+   return yt;
+}
+

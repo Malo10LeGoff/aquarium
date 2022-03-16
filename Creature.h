@@ -54,6 +54,8 @@ public :                                           // Forme canonique :
 
    int * getPos() const;
    int getId() const;
+   double getXt() ;
+   double getYt() ;
    double getOrient() const;
    double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
