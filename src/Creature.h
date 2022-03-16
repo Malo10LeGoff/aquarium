@@ -2,7 +2,7 @@
 #define _CREATURES_H_
 
 
-#include "UImg.h"
+#include "../lib/UImg.h"
 #include "Accessories.h"
 #include "Sensors.h"
 #include <list>

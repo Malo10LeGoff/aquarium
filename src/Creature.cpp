@@ -143,4 +143,12 @@ int * Creature::getPos() const
 double Creature::getOrient() const
 {
    return orientation;
+}
+
+double Creature::parseEnvironement(std::list <Creature> clist) {
+    return 0;
+}
+
+bool Creature::jeTeVois(const Creature &b) const {
+    return false;
 };
