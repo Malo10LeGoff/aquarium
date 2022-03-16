@@ -32,6 +32,7 @@ void Milieu::step(void)
       it->draw(*this);
 
    } // for
+   collision();
 }
 
 int Milieu::nbVoisins(const Creature &b)
@@ -94,4 +95,23 @@ bool Milieu::detect(const Creature &a, const Creature &b)
          }
       }
    return 0;
+}
+
+
+void Milieu::collision(void)
+{
+   for (std::vector<Creature>::iterator it_i = listeCreatures.begin(); it_i != listeCreatures.end(); ++it_i) {
+      for (std::vector<Creature>::iterator it_j = listeCreatures.begin(); it_j != listeCreatures.end(); ++it_j) {
+      if (it_j!=it_i) {
+         int * pos_i = (it_i)->getPos(); 
+         int * pos_j = (it_j)->getPos();
+         if ((pos_i[0] == pos_j[0]) && (pos_i[1]==pos_j[1])) 
+         {
+            (it_j)->collision();
+            cout <<"id I : "<< (it_i)->getId() << " idJ: " <<(it_j)->getId() <<"\n";
+            //(it_i)->collision();
+         }
+         
+      }
+   }}
 }

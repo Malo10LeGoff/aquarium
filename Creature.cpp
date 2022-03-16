@@ -134,7 +134,7 @@ bool operator==(const Creature &b1, const Creature &b2)
 
 int * Creature::getPos() const
 {
-   static int  pos[2];
+   int  pos[2];
    pos[0] = x;
    pos[1] = y;
    return pos;
@@ -143,4 +143,15 @@ int * Creature::getPos() const
 double Creature::getOrient() const
 {
    return orientation;
+};
+
+int Creature::getId() const
+{
+   return identite;
+};
+
+
+void Creature::collision(void) 
+{
+   orientation = orientation+M_PI;
 };

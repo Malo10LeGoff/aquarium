@@ -36,7 +36,7 @@ private :
 public:
    Accessories       accessories;
    Sensors           sensors;
-
+   
 private :
    void bouge( int xLim, int yLim );
   
@@ -48,10 +48,12 @@ public :                                           // Forme canonique :
                                                    // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
+   void collision(void);
 
    void initCoords( int xLim, int yLim );
 
    int * getPos() const;
+   int getId() const;
    double getOrient() const;
    double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
