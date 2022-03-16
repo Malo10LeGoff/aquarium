@@ -2,7 +2,7 @@
 #define _AQUARIUM_H_
 
 #include <iostream>
-#include <CImg.h>
+#include <../lib/CImg.h>
 
 using namespace std;
 using namespace cimg_library;
