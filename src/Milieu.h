@@ -2,7 +2,7 @@
 #define _MILIEU_H_
 
 
-#include "UImg.h"
+#include "../lib/UImg.h"
 #include "Creature.h"
 
 #include <iostream>

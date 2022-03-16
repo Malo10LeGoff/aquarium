@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "UImg.h"
+#include "../lib/UImg.h"
 #include <list>
 
 
