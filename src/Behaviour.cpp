@@ -36,14 +36,17 @@ FearfulBehaviour::FearfulBehaviour() {
     maxNeighbours_ = 10;
 }
 
+int FearfulBehaviour::maxNeighbours() const {
+    return maxNeighbours_;
+}
+
 FearfulBehaviour::FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier) {
     moveSpeedMultiplier_ = moveSpeedMultiplier;
     maxNeighbours_ = maxNeighbours;
 }
 float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
 if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
-return this->moveSpeedMultiplier_;
-}
+    return this->moveSpeedMultiplier_;}
 else {
 return 1;
 }

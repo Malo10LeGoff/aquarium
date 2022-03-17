@@ -32,6 +32,7 @@ public:
     FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier);
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
+    int maxNeighbours() const;
 private:
     float moveSpeedMultiplier_;
     int maxNeighbours_;
