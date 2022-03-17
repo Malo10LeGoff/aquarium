@@ -40,10 +40,6 @@ int FearfulBehaviour::maxNeighbours() const {
     return maxNeighbours_;
 }
 
-FearfulBehaviour::FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier) {
-    moveSpeedMultiplier_ = moveSpeedMultiplier;
-    maxNeighbours_ = maxNeighbours;
-}
 float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
 if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
     return this->moveSpeedMultiplier_;}
@@ -112,17 +108,20 @@ std::array<float, 2> KamikazeBehaviour::moveDirection(const std::array<float, 2>
         float d = std::pow((*it)[1][0] - creatureCoordinates[0], 2) + std::pow((*it)[1][1] - creatureCoordinates[1], 2);
         neighbourDistances.push_back(d);
     };
+    // Select the closest neighbour
     int closest_neighbour_idx = min_element(neighbourDistances);
     // Calculate the direction
     float x = visibleCreatures[closest_neighbour_idx][1][0] - creatureCoordinates[0];
     float y = visibleCreatures[closest_neighbour_idx][1][1] - creatureCoordinates[1];
     // Normalize the vector
     float d = sqrt(std::pow(x,2) + pow(y , 2));
-    x /= d;
-    y /= d;
+    if (d!=0) {
+        x /= d;
+        y /= d;
+    }
     // scale by the speed
-    x *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
-    y *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+    x *= m_moveSpeedMultiplier;
+    y *= m_moveSpeedMultiplier;
     return std::array<float,2> { x, y};
 
 }
@@ -142,6 +141,10 @@ std::array<float, 2> MultipleBehaviours::moveDirection(const std::array<float, 2
     // Sample a behaviour in the list
     random_selector<> selector{};
     return selector(this->behaviours_)->moveDirection(creatureCoordinates, visibleCreatures);
+}
+
+void MultipleBehaviours::remove(int index) {
+    behaviours_.erase(behaviours_.begin() + index);
 }
 
 
