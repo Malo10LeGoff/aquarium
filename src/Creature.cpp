@@ -2,7 +2,11 @@
 
 #include "Milieu.h"
 #include "Accessories.h"
+<<<<<<< HEAD
 #include "Behaviour.h"
+=======
+#include <array>
+>>>>>>> 0afcae7 (Update_Hitbox)
 #include <cstdlib>
 #include <cmath>
 #include <memory>
@@ -35,7 +39,11 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
-   
+
+   //hitbox-taille
+
+   taille_a = 3;
+   taille_b = 3;
 
 }
 
@@ -154,10 +162,19 @@ int Creature::getId() const
    return identite;
 };
 
+std::array<std::array<int,2>,8> Creature::getHitbox(void) 
+{
+   return hitbox;
+};
 
 void Creature::collision(void) 
 {
    orientation = orientation+M_PI;
+};
+
+void Creature::setOrient(double ori) 
+{
+   orientation = ori;
 };
 
 double Creature::getXt(void){
@@ -170,3 +187,20 @@ double Creature::getYt(void){
    return yt;
 }
 
+void Creature::update_hitbox(void)
+{
+   double angles[8];
+   for (int i = 0; i < 8; i++) {
+      angles[i] = i*2*M_PI/8;
+   }
+
+   double e = sqrt((pow(taille_a,2)-pow(taille_b,2))/taille_a);
+   for (int i = 0; i < 8; i++) {
+      double a = angles[i];
+      double r_0 = sqrt(taille_b/(1 - e*pow(cos(a),2)));
+
+      hitbox[i][0] = x + int(r_0*cos(orientation + a));
+      hitbox[i][1] = y + int(r_0*sin(orientation + a));
+   }
+
+}
