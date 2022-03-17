@@ -134,7 +134,7 @@ bool operator==(const Creature &b1, const Creature &b2)
 
 int * Creature::getPos() const
 {
-   static int  pos[2];
+   int  pos[2];
    pos[0] = x;
    pos[1] = y;
    return pos;
@@ -143,12 +143,26 @@ int * Creature::getPos() const
 double Creature::getOrient() const
 {
    return orientation;
-}
-
-double Creature::parseEnvironement(std::list <Creature> clist) {
-    return 0;
-}
-
-bool Creature::jeTeVois(const Creature &b) const {
-    return false;
 };
+
+int Creature::getId() const
+{
+   return identite;
+};
+
+
+void Creature::collision(void) 
+{
+   orientation = orientation+M_PI;
+};
+
+double Creature::getXt(void){
+   double xt = x + cos(orientation) * AFF_SIZE / 2.1;
+   return xt;
+};
+
+double Creature::getYt(void){
+   double yt = y - sin(orientation) * AFF_SIZE / 2.1;
+   return yt;
+}
+
