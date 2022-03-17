@@ -1,7 +1,7 @@
 #include "Behaviour.h"
 #include <cmath>
 #include <algorithm>
-#include "random_selection.cpp"
+#include "../lib/random_selection.cpp"
 // GregariousBehaviour
 
 GregariousBehaviour::GregariousBehaviour() {
