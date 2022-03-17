@@ -6,7 +6,7 @@
 #include "Accessories.h"
 #include "Sensors.h"
 #include <list>
-
+#include <array>
 #include <iostream>
 
 using namespace std;
@@ -32,6 +32,9 @@ private :
    double            orientation;
    double            vitesse;
    T                 * couleur;
+   std::array<std::array<int,2>,8> hitbox;
+   int               taille_a;
+   int               taille_b;
 
 public:
    Accessories       accessories;
@@ -49,7 +52,7 @@ public :                                           // Forme canonique :
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void collision(void);
-
+   void update_hitbox(void);
    void initCoords( int xLim, int yLim );
 
    int * getPos() const;
@@ -57,6 +60,8 @@ public :                                           // Forme canonique :
    double getXt() ;
    double getYt() ;
    double getOrient() const;
+   void setOrient(double ori);
+   std::array<std::array<int,2>,8> getHitbox(void);
    double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
 
