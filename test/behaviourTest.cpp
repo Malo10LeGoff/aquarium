@@ -85,8 +85,8 @@ TEST_F(TestFearfulBehaviour, TestCustomInit) {
 
 TEST_F(TestFearfulBehaviour, TestFleeingDirection) {
     // Fill the visible creature vector with all of the same value(the first one)
-    while (visiblesCreatures.size() >= (unsigned)b_custom.maxNeighbours()) {
-        visibleCreatures.push_back(std::array<float,2>(visibleCreatures[0]));
+    while (visibleCreatures.size() >= (unsigned)b_custom.maxNeighbours()) {
+        visibleCreatures.push_back(std::array<std::array<float,2>,2> { visibleCreatures[0] });
     }
     std::array<float,2> expectedDirection {0,0};
     for (auto it = std::begin(visibleCreatures); it!= std::end(visibleCreatures); ++it) {
