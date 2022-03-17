@@ -2,16 +2,22 @@
 #include "../src/Behaviour.h"
 #include <iostream>
 
+float scalar_product(std::array<float,2> a, std::array<float,2> b) {
+    return a[0] * b[0] + a[1] * b[1];
+}
+float det(std::array<float,2> a, std::array<float,2> b) {
+    return a[0] * b[1] - a[1] * b[0];
+}
+
 // Gregarious Behaviour
 class TestGregariousBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
-
-
+        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
     }
     std::array<float,2> creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {{{1 , 1}, {1,1} }};
+    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
     GregariousBehaviour b = GregariousBehaviour();
     std::array<float,2> coordinates {0,0};
 };
@@ -19,7 +25,7 @@ protected:
 TEST_F(TestGregariousBehaviour, TestInit) {
     auto ret = b.moveDirection(creatureCoordinates , visibleCreatures);
     // check for colinearity
-    EXPECT_EQ(0, visibleCreatures[0][0][0] * ret[1] - visibleCreatures[0][0][1] * ret[0]);
+    EXPECT_EQ(0, det(visibleCreatures[0][0], ret));
     std::cout << "direction followed\n" << "x:" << ret[0] <<"\ny:" <<  ret[1] << "\n";
 
 }
@@ -35,7 +41,7 @@ std::array<float,2> expectedDirection {0,0};
     }
     auto ret = b.moveDirection(std::array<float,2>{0,0} , visibleCreatures);
     // check for colinearity
-    EXPECT_EQ(0, expectedDirection[0] * ret[1] - expectedDirection[1] *ret[0] );
+    EXPECT_EQ(0, det(expectedDirection, ret));
     std::cout << "direction followed :\n" << "x:" << ret[0] <<"\ny:" <<  ret[1] << "\n";
 }
 
@@ -47,10 +53,11 @@ TEST_F(TestGregariousBehaviour, TestSpeedCoef) {
 class TestFearfulBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
+        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
     }
     std::array<float,2> creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {{{1 , 1}, {1,1} }};
+    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
     FearfulBehaviour b_default = FearfulBehaviour();
     int maxNeighbours = 30;
     float moveSpeedMultiplier = 1.3;
@@ -94,5 +101,39 @@ TEST_F(TestFearfulBehaviour, TestFleeingDirection) {
         expectedDirection[1] += (*it)[0][1];
     }
     auto ret = b_custom.moveDirection(creatureCoordinates, visibleCreatures);
-    EXPECT_LE(expectedDirection[0] * ret[0] + expectedDirection[1] * ret[1],0);
+    EXPECT_LE(scalar_product(expectedDirection, ret ),0);
+}
+
+// FearfulBehaviour
+class TestKamikazeBehaviour : public ::testing::Test {
+protected:
+    void SetUp() override {
+        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+    }
+    std::array<float,2> creatureCoordinates {0,0};
+    // visibleCreatures is [ [movedirection, coordinates ], ... ]
+    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    KamikazeBehaviour b_default = KamikazeBehaviour();
+    float moveSpeedMultiplier = 1.3;
+    KamikazeBehaviour b_custom = KamikazeBehaviour(moveSpeedMultiplier);
+    std::array<float,2> coordinates {0,0};
+};
+
+TEST_F(TestKamikazeBehaviour, TestDirection) {
+    auto ret = b_default.moveDirection(coordinates, visibleCreatures);
+    std::array<float,2> expectedDirection {0,0};
+    // here the list of creatures should be one so we know where the creature is goingto go
+    std::cout << "returned direction is : " << "\nx: " << ret[0] << " \ny : " << ret[1] << "\n";
+    expectedDirection[0] = visibleCreatures[0][1][0] - coordinates[0];
+    expectedDirection[1] = visibleCreatures[0][1][1] - coordinates[1];
+    EXPECT_EQ(0, det(ret, expectedDirection));
+
+    // Now add one thats closer
+    std::array<std::array<float,2>,2> newCreature { {{1,1} , {-0.5,-0.5}} };
+    visibleCreatures.push_back(newCreature);
+    ret = b_default.moveDirection(coordinates, visibleCreatures);
+    expectedDirection[0] = visibleCreatures[1][1][0] - coordinates[0];
+    expectedDirection[1] = visibleCreatures[1][1][1] - coordinates[1];
+
+    EXPECT_EQ(0, det(ret, expectedDirection));
 }
