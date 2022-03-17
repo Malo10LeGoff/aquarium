@@ -24,7 +24,7 @@ Accessories::Accessories()
       accessories_.push_back(ptr_c);
    }
     
-};
+}
 
 
 float Accessories::speedCoef() const
@@ -35,7 +35,7 @@ float Accessories::speedCoef() const
         coef += (*it)->speedCoef();
     }
     return coef;
-};
+}
 
 float Accessories::camoCoef() const
 {
@@ -45,7 +45,7 @@ float Accessories::camoCoef() const
         coef += (*it)->camoCoef();
     }
     return coef;
-};
+}
 
 float Accessories::deathCoef() const
 {
@@ -55,44 +55,44 @@ float Accessories::deathCoef() const
         coef += (*it)->deathCoef();
     }
     return coef;
-};
+}
 
 
 Shell::Shell(float speedReductionCoef, float deathCoef) 
 {
     speedReductionCoef_ = speedReductionCoef;
     deathCoef_ = deathCoef;
-};
+}
 
 
 float Shell::speedCoef() const
 {
     return speedReductionCoef_;
-};
+}
 
 float Shell::deathCoef() const
 {
     return deathCoef_;
-};
+}
 
 Camo::Camo(float camoCoef) 
 {
     camoCoef_ = camoCoef;
-};
+}
 
 
 float Camo::camoCoef() const
 {
     return camoCoef_;
-};
+}
 
 Fins::Fins(float speedCoef) 
 {
     speedCoef_ = speedCoef;
-};
+}
 
 
 float Fins::speedCoef() const
 {
     return speedCoef_;
-};
+}

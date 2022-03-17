@@ -6,7 +6,7 @@
 
 GregariousBehaviour::GregariousBehaviour() {
 
-};
+}
 std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2> creatureCoordinates,
                                                        const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
     float cumX = 0;
@@ -27,19 +27,19 @@ std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2>
     cumX *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
     cumY *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
     return std::array<float,2>{cumX, cumY};
-};
+}
 
 
 // FearfulBehaviour
 FearfulBehaviour::FearfulBehaviour() {
     moveSpeedMultiplier_ = 1.1;
     maxNeighbours_ = 10;
-};
+}
 
 FearfulBehaviour::FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier) {
     moveSpeedMultiplier_ = moveSpeedMultiplier;
     maxNeighbours_ = maxNeighbours;
-};
+}
 float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
 if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
 return this->moveSpeedMultiplier_;
@@ -76,14 +76,14 @@ std::array<float, 2> FearfulBehaviour::moveDirection(const std::array<float,2> c
         y *= this->moveSpeedMultiplier(visibleCreatures);
     }
     return std::array<float,2>{x, y};
-};
+}
 
 
 
 // KamikazeBehaviour
 KamikazeBehaviour::KamikazeBehaviour(){
 
-};
+}
 
 int min_element(const std::vector<float> arr) {
     int index =0;
@@ -122,7 +122,7 @@ std::array<float, 2> KamikazeBehaviour::moveDirection(const std::array<float, 2>
     y *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
     return std::array<float,2> { x, y};
 
-};
+}
 
 
 // MultipleBehaviours
