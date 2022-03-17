@@ -14,6 +14,5 @@ target_link_libraries(behaviourTest gtest_main)
 target_link_libraries(behaviourTest behaviour)
 
 
-
 include(GoogleTest)
 gtest_discover_tests(behaviourTest)
