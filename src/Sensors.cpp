@@ -1,8 +1,5 @@
 #include "Sensors.h"
-#include "Creature.h"
-#include <math.h> 
-#include <list>
-#include <string>
+#include <math.h>
 
 
 Sensors::Sensors() 
@@ -80,7 +77,7 @@ Ears::Ears(float detectionCoef,float detectionRadius)
     detectionRadius_ = detectionRadius;
 };
 
-string Ears::getType() const
+std::string Ears::getType() const
 {
     return type;
 };

@@ -5,6 +5,7 @@
 #include "../lib/UImg.h"
 #include "Accessories.h"
 #include "Sensors.h"
+#include "Behaviour.h"
 #include <list>
 
 #include <iostream>

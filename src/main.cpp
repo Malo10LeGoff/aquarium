@@ -10,7 +10,6 @@ using namespace std;
 
 int main()
 {
-
   
    Shell a = Shell(1,1);
    cout << a.speedCoef() <<endl;
@@ -21,10 +20,7 @@ int main()
       ecosysteme.getMilieu().addMember( Creature() );
 
    ecosysteme.run();
-   
 
-   
    return 0;
-   
 
 }

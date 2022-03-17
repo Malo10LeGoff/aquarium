@@ -22,7 +22,7 @@ Accessories.o : Accessories.h Accessories.cpp
 Sensors.o : Sensors.h Sensors.cpp
 	g++ -Wall -std=c++11 -c Sensors.cpp -I .
 
-random_selection.o : random_selection.cpp
+random_selection.o : ../lib/random_selection.cpp
 	g++ -Wall -std=c++11 -c random_selection.cpp -I .
 
 
