@@ -4,9 +4,7 @@
 #include "../lib/random_selection.cpp"
 // GregariousBehaviour
 
-GregariousBehaviour::GregariousBehaviour() {
 
-}
 std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2> creatureCoordinates,
                                                        const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
     float cumX = 0;
@@ -28,6 +26,11 @@ std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2>
     cumY *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
     return std::array<float,2>{cumX, cumY};
 }
+
+std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
+    return std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour(*this));
+}
+
 
 
 // FearfulBehaviour
@@ -77,6 +80,19 @@ std::array<float, 2> FearfulBehaviour::moveDirection(const std::array<float,2> c
     return std::array<float,2>{x, y};
 }
 
+std::unique_ptr<InterfaceBehaviour> FearfulBehaviour::clone() const {
+    return std::unique_ptr<FearfulBehaviour>(new FearfulBehaviour(*this));
+}
+
+FearfulBehaviour::FearfulBehaviour(const FearfulBehaviour &f): moveSpeedMultiplier_(f.moveSpeedMultiplier_), maxNeighbours_(f.maxNeighbours_) {
+
+}
+
+FearfulBehaviour &FearfulBehaviour::operator=(const FearfulBehaviour &f) {
+    moveSpeedMultiplier_ = f.moveSpeedMultiplier_;
+    maxNeighbours_ = f.maxNeighbours_;
+    return *this;
+}
 
 
 // KamikazeBehaviour
@@ -126,14 +142,34 @@ std::array<float, 2> KamikazeBehaviour::moveDirection(const std::array<float, 2>
 
 }
 
+std::unique_ptr<InterfaceBehaviour> KamikazeBehaviour::clone() const {
+    return std::unique_ptr<KamikazeBehaviour> (new KamikazeBehaviour(*this));
+}
+
+KamikazeBehaviour::KamikazeBehaviour(const KamikazeBehaviour &k): m_moveSpeedMultiplier(k.m_moveSpeedMultiplier) {
+
+}
+
+KamikazeBehaviour &KamikazeBehaviour::operator=(const KamikazeBehaviour &k) {
+    m_moveSpeedMultiplier = k.m_moveSpeedMultiplier;
+    return *this;
+}
+
 
 // MultipleBehaviours
 MultipleBehaviours::MultipleBehaviours() {
     behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>>{};
 }
 
-void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour>& behaviour) {
-    this->behaviours_.push_back(std::move(behaviour));
+MultipleBehaviours::MultipleBehaviours(const MultipleBehaviours &m) {
+    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>> { };
+    for (auto const& e: m.behaviours_) {
+        behaviours_.push_back(e->clone());
+    }
+}
+
+void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour> & behaviour) {
+    behaviours_.push_back(std::move(behaviour));
 }
 
 std::array<float, 2> MultipleBehaviours::moveDirection(const std::array<float, 2> creatureCoordinates,
@@ -147,4 +183,38 @@ void MultipleBehaviours::remove(int index) {
     behaviours_.erase(behaviours_.begin() + index);
 }
 
+std::unique_ptr<InterfaceBehaviour> MultipleBehaviours::clone() const {
+    return std::unique_ptr<MultipleBehaviours>(new MultipleBehaviours(*this));
+}
 
+MultipleBehaviours &MultipleBehaviours::operator=(const MultipleBehaviours &m) {
+    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>> { };
+    for (auto const& behaviour : m.behaviours_) {
+        behaviours_.push_back(behaviour->clone());
+    }
+    return *this;
+}
+
+int MultipleBehaviours::size() const {
+    return static_cast<int>(behaviours_.size());
+}
+
+
+std::unique_ptr<InterfaceBehaviour> PlanningBehaviour::clone() const {
+    return std::unique_ptr<PlanningBehaviour>(new PlanningBehaviour(*this));
+}
+
+PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p): m_moveSpeedMultiplier(p.m_moveSpeedMultiplier) {
+
+}
+
+std::array<float, 2> PlanningBehaviour::moveDirection(const std::array<float, 2> creatureCoordinates,
+                                                      const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const {
+    // TODO :
+    return std::array<float, 2>{0,0};
+}
+
+PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {
+    m_moveSpeedMultiplier = p.m_moveSpeedMultiplier;
+    return *this;
+}

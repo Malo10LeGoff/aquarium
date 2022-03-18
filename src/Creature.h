@@ -7,6 +7,7 @@
 #include "Sensors.h"
 #include "Behaviour.h"
 #include <list>
+#include <memory>
 #include <array>
 #include <iostream>
 
@@ -34,20 +35,28 @@ private :
    double            vitesse;
    double            creature_size;
    T                 * couleur;
+<<<<<<< HEAD
+   Milieu & m_milieu;
+   std::array<std::array<int,2>,8> hitbox;
+   int               taille_a;
+   int               taille_b;
+=======
    std::array<std::array<int,2>,8> hitbox;
    int               taille_a;
    int               taille_b;
 
+>>>>>>> master
 public:
-   Accessories       accessories;
-   Sensors           sensors;
+   std::unique_ptr<Accessories>       accessories;
+   std::unique_ptr<Sensors>           sensors;
+   std::unique_ptr<InterfaceBehaviour> behaviour;
    
 private :
    void bouge( int xLim, int yLim );
   
 
 public :                                           // Forme canonique :
-   Creature( void );                               // Constructeur par defaut
+   explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
@@ -65,7 +74,6 @@ public :                                           // Forme canonique :
    double getOrient() const;
    void setOrient(double ori);
    std::array<std::array<int,2>,8> getHitbox(void);
-   double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
 
 };

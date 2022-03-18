@@ -2,9 +2,11 @@
 
 #include "Milieu.h"
 #include "Accessories.h"
+#include "Behaviour.h"
 #include <array>
 #include <cstdlib>
 #include <cmath>
+#include <memory>
 
 const double Creature::AFF_SIZE = 8.;
 const double Creature::MAX_VITESSE = 10.;
@@ -12,7 +14,7 @@ const double Creature::LIMITE_VUE = 30.;
 
 int Creature::next = 0;
 
-Creature::Creature(void)
+Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
 
    identite = ++next;
@@ -21,12 +23,12 @@ Creature::Creature(void)
    x = y = 0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
+   accessories = std::unique_ptr<Accessories>(new Accessories());
+   sensors = std::unique_ptr<Sensors>(new Sensors());
+   behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
 
-   accessories = Accessories();
-   sensors = Sensors();
-
-   cout <<"Speed Coef " << accessories.speedCoef() <<endl;
-   vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
+   cout <<"Speed Coef " << accessories->speedCoef() <<endl;
+   vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories->speedCoef(), MAX_VITESSE);
    cout << vitesse <<endl;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
@@ -40,7 +42,7 @@ Creature::Creature(void)
 
 }
 
-Creature::Creature(const Creature &b)
+Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
 
    identite = ++next;
@@ -49,12 +51,14 @@ Creature::Creature(const Creature &b)
 
    x = b.x;
    y = b.y;
+   m_milieu  = b.m_milieu;
    creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
-   accessories = b.accessories;
-   sensors = b.sensors;
+   accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
+   sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
+   behaviour = (*b.behaviour).clone();
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
