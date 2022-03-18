@@ -71,7 +71,7 @@ std::vector<std::array<int,2>> Milieu::Surrounding(const Creature &a)
 bool Milieu::detect(const Creature &a, const Creature &b)
 {
    std::list<InterfaceSensors *>::const_iterator it;
-   for (it=a.sensors.sensors_.begin();it!= a.sensors.sensors_.end();it++) {
+   for (it=a.sensors->sensors_.begin();it!= a.sensors->sensors_.end();it++) {
          double dist;
          int * pos_a = a.getPos();
          int * pos_b = b.getPos();

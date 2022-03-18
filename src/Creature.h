@@ -24,7 +24,6 @@ private :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
-
    static int              next;
 
 private :
@@ -33,19 +32,12 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   std::vector<std::array<double,2>> hitbox {{ {0,0} }};
    double            creature_size;
    T                 * couleur;
-<<<<<<< HEAD
    Milieu & m_milieu;
-   std::array<std::array<int,2>,8> hitbox;
    int               taille_a;
    int               taille_b;
-=======
-   std::array<std::array<int,2>,8> hitbox;
-   int               taille_a;
-   int               taille_b;
-
->>>>>>> master
 public:
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
@@ -59,11 +51,10 @@ public :                                           // Forme canonique :
    explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
+   Creature& operator=(const Creature& c);                                                // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void collision(void);
-   void update_hitbox(void);
    void initCoords( int xLim, int yLim );
 
    int * getPos() const;
@@ -73,7 +64,7 @@ public :                                           // Forme canonique :
    double getSize();
    double getOrient() const;
    void setOrient(double ori);
-   std::array<std::array<int,2>,8> getHitbox(void);
+   std::vector<std::array<double,2>> getHitbox(void);
    friend bool operator==( const Creature & b1, const Creature & b2 );
 
 };

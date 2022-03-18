@@ -1,5 +1,6 @@
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../lib)
+
 #Accessories
 add_library(accessories Accessories.h Accessories.cpp)
 target_compile_options(accessories PUBLIC  -Wall -Wextra -Wpedantic )

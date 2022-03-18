@@ -41,6 +41,27 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
    taille_b = 3;
 
 }
+Creature &Creature::operator=(const Creature &c) {
+    identite = c.identite;
+    x = c.x;
+    y = c.y;
+    cumulX = c.cumulX;
+    cumulY = c.cumulY;
+    orientation = c.orientation;
+    vitesse = c.vitesse;
+    hitbox = std::vector<std::array<double,2>> (c.hitbox);
+    creature_size = c.creature_size;
+    taille_a = c.taille_a;
+    taille_b = c.taille_b;
+
+
+    couleur = new T[3];
+    memcpy(couleur, c.couleur, 3 * sizeof(T));
+    accessories = std::unique_ptr<Accessories>(new Accessories(*c.accessories));
+    sensors = std::unique_ptr<Sensors>(new Sensors(*c.sensors));
+    behaviour = (*c.behaviour).clone();
+    return *this;
+}
 
 Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
@@ -161,7 +182,7 @@ int Creature::getId() const
    return identite;
 };
 
-std::array<std::array<int,2>,8> Creature::getHitbox(void) 
+std::vector<std::array<double,2>> Creature::getHitbox(void)
 {
    return hitbox;
 };
@@ -185,6 +206,8 @@ double Creature::getYt(void){
    double yt = y - sin(orientation) * creature_size / 2.1;
    return yt;
 }
+
+
 
 
 
