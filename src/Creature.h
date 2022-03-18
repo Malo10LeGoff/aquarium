@@ -49,7 +49,7 @@ private :
   
 
 public :                                           // Forme canonique :
-   Creature( Milieu* t_milieu );                               // Constructeur par defaut
+   explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
@@ -67,7 +67,6 @@ public :                                           // Forme canonique :
    double getOrient() const;
    void setOrient(double ori);
    std::array<std::array<int,2>,8> getHitbox(void);
-   double parseEnvironement(std::list<Creature> clist);
    friend bool operator==( const Creature & b1, const Creature & b2 );
 
 };

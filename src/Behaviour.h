@@ -24,7 +24,10 @@ public:
 
 class GregariousBehaviour: public InterfaceBehaviour {
 public:
-    GregariousBehaviour();
+    GregariousBehaviour() = default; // default cosntructor
+    GregariousBehaviour(const GregariousBehaviour & g) = default; // copy constructor
+    GregariousBehaviour& operator=(const GregariousBehaviour& g) = default; // assign copy
+    ~GregariousBehaviour()=default; // Destructor
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 };
@@ -33,19 +36,25 @@ class FearfulBehaviour: public InterfaceBehaviour {
 public:
     FearfulBehaviour();
     FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier): moveSpeedMultiplier_(moveSpeedMultiplier), maxNeighbours_(maxNeighbours) { };
+    FearfulBehaviour(const FearfulBehaviour & f); // copy constructor
+    ~FearfulBehaviour()= default ; // destructor
+    FearfulBehaviour& operator=(const FearfulBehaviour& f); // copy assign
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     int maxNeighbours() const;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
-    float moveSpeedMultiplier_;
-    int maxNeighbours_;
+    float moveSpeedMultiplier_ =1;
+    int maxNeighbours_ = 10;
 };
 
 class KamikazeBehaviour: public InterfaceBehaviour {
 public:
     KamikazeBehaviour();
     explicit KamikazeBehaviour(float t_moveSpeedMultiplier) : m_moveSpeedMultiplier(t_moveSpeedMultiplier) {};
+    KamikazeBehaviour(const KamikazeBehaviour & k); // copy constructor
+    KamikazeBehaviour& operator= (const KamikazeBehaviour& k );
+    ~KamikazeBehaviour() = default;
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
@@ -54,17 +63,28 @@ private:
 
 class PlanningBehaviour:public InterfaceBehaviour {
 public:
+    PlanningBehaviour()=default;
+    PlanningBehaviour(const PlanningBehaviour& p);
+    ~PlanningBehaviour() = default;
+    PlanningBehaviour& operator=(const PlanningBehaviour& p);
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates ,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+private:
+    float m_moveSpeedMultiplier = 1;
 };
 
 class MultipleBehaviours: public InterfaceBehaviour {
 public:
     MultipleBehaviours();
+    MultipleBehaviours(const MultipleBehaviours& m); // copy constructor
+    MultipleBehaviours& operator=(const MultipleBehaviours& m); // copy assign constructor
+    ~MultipleBehaviours()=default; // destructor
+
     std::array<float, 2> moveDirection(const std::array<float, 2> creatureCoordinates, const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const override;
     void add(std::unique_ptr<InterfaceBehaviour>& behaviour);
     void remove(int index);
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+    int size() const ;
 private:
     std::vector<std::unique_ptr<InterfaceBehaviour>> behaviours_;
 };

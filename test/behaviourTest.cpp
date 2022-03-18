@@ -137,3 +137,37 @@ TEST_F(TestKamikazeBehaviour, TestDirection) {
 
     EXPECT_EQ(0, det(ret, expectedDirection));
 }
+class TestMultipleBehaviour : public ::testing::Test {
+protected:
+    void SetUp() override {
+        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+    }
+    std::array<float,2> creatureCoordinates {0,0};
+    // visibleCreatures is [ [movedirection, coordinates ], ... ]
+    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    KamikazeBehaviour kamikaze_default = KamikazeBehaviour();
+    float moveSpeedMultiplier = 1.3;
+    KamikazeBehaviour kamikaze_fast = KamikazeBehaviour(moveSpeedMultiplier);
+    std::array<float,2> coordinates {0,0};
+
+    MultipleBehaviours multipleBehaviours = MultipleBehaviours(); // empty one
+};
+
+TEST_F(TestMultipleBehaviour, TestBehaviourContainers) {
+    EXPECT_EQ(multipleBehaviours.size(), 0); // check for emptiness
+
+
+    // Add one element in
+    std::unique_ptr<InterfaceBehaviour> kamikaze = kamikaze_default.clone();
+    multipleBehaviours.add(kamikaze);
+    EXPECT_EQ(multipleBehaviours.size(), 1); // one element
+
+    // Add another
+    std::unique_ptr<InterfaceBehaviour> kamikaze2 = kamikaze_fast.clone();
+    multipleBehaviours.add(kamikaze2);
+    EXPECT_EQ(multipleBehaviours.size(), 2); // two elements
+
+    // remove the first one
+    multipleBehaviours.remove(0);
+    EXPECT_EQ(multipleBehaviours.size(), 1); // one element
+}
