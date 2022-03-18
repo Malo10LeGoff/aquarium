@@ -5,6 +5,7 @@
 #include "Behaviour.h"
 #include <cstdlib>
 #include <cmath>
+#include <memory>
 
 const double Creature::AFF_SIZE = 8.;
 const double Creature::MAX_VITESSE = 10.;
@@ -12,7 +13,7 @@ const double Creature::LIMITE_VUE = 30.;
 
 int Creature::next = 0;
 
-Creature::Creature(void)
+Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
 
    identite = ++next;
@@ -23,11 +24,11 @@ Creature::Creature(void)
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
 
-   accessories = Accessories();
-   sensors = Sensors();
-   behaviour = GregariousBehaviour();
+   accessories = std::unique_ptr<Accessories>(new Accessories());
+   sensors = std::unique_ptr<Sensors>(new Sensors());
+   behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
 
-   cout <<"Speed Coef " << accessories.speedCoef() <<endl;
+   cout <<"Speed Coef " << accessories->speedCoef() <<endl;
    vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
    cout << vitesse <<endl;
    couleur = new T[3];
@@ -38,7 +39,7 @@ Creature::Creature(void)
 
 }
 
-Creature::Creature(const Creature &b)
+Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
 
    identite = ++next;
@@ -47,12 +48,13 @@ Creature::Creature(const Creature &b)
 
    x = b.x;
    y = b.y;
+   m_milieu  = b.m_milieu;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
-   accessories = b.accessories;
-   sensors = b.sensors;
-   behaviour = b.behaviour;
+   accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
+   sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
+   behaviour = (*b.behaviour).clone();
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }

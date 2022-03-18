@@ -8,6 +8,7 @@
 #include "Behaviour.h"
 #include <list>
 
+#include <memory>
 #include <iostream>
 
 using namespace std;
@@ -33,18 +34,19 @@ private :
    double            orientation;
    double            vitesse;
    T                 * couleur;
+   Milieu & m_milieu;
 
 public:
-   Accessories&       accessories;
-   Sensors&           sensors;
-   InterfaceBehaviour& behaviour;
+   std::unique_ptr<Accessories>       accessories;
+   std::unique_ptr<Sensors>           sensors;
+   std::unique_ptr<InterfaceBehaviour> behaviour;
    
 private :
    void bouge( int xLim, int yLim );
   
 
 public :                                           // Forme canonique :
-   Creature( void );                               // Constructeur par defaut
+   Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut

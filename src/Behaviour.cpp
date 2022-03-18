@@ -29,6 +29,10 @@ std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2>
     return std::array<float,2>{cumX, cumY};
 }
 
+std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
+    return std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour(*this));
+}
+
 
 // FearfulBehaviour
 FearfulBehaviour::FearfulBehaviour() {
@@ -77,6 +81,9 @@ std::array<float, 2> FearfulBehaviour::moveDirection(const std::array<float,2> c
     return std::array<float,2>{x, y};
 }
 
+std::unique_ptr<InterfaceBehaviour> FearfulBehaviour::clone() const {
+    return std::unique_ptr<FearfulBehaviour>(new FearfulBehaviour(*this));
+}
 
 
 // KamikazeBehaviour
@@ -126,6 +133,10 @@ std::array<float, 2> KamikazeBehaviour::moveDirection(const std::array<float, 2>
 
 }
 
+std::unique_ptr<InterfaceBehaviour> KamikazeBehaviour::clone() const {
+    return std::unique_ptr<KamikazeBehaviour> (new KamikazeBehaviour(*this));
+}
+
 
 // MultipleBehaviours
 MultipleBehaviours::MultipleBehaviours() {
@@ -147,4 +158,11 @@ void MultipleBehaviours::remove(int index) {
     behaviours_.erase(behaviours_.begin() + index);
 }
 
+std::unique_ptr<InterfaceBehaviour> MultipleBehaviours::clone() const {
+    return std::unique_ptr<MultipleBehaviours>(new MultipleBehaviours(*this));
+}
 
+
+std::unique_ptr<InterfaceBehaviour> PlanningBehaviour::clone() const {
+    return std::unique_ptr<PlanningBehaviour>(new PlanningBehaviour(*this));
+}
