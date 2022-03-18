@@ -39,7 +39,6 @@ private :
    std::array<std::array<int,2>,8> hitbox;
    int               taille_a;
    int               taille_b;
-
 public:
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;

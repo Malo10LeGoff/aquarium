@@ -7,6 +7,7 @@
 GregariousBehaviour::GregariousBehaviour() {
 
 }
+
 std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2> creatureCoordinates,
                                                        const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
     float cumX = 0;
