@@ -127,9 +127,10 @@ void Creature::draw(UImg &support)
 {
    double xt = x + cos(orientation) * creature_size / 2.1;
    double yt = y - sin(orientation) * creature_size / 2.1;
-
+   unsigned char white[] = {255,255,255};
    support.draw_ellipse(x, y, creature_size, creature_size / 5., -orientation / M_PI * 180., couleur);
    support.draw_circle(xt, yt, creature_size / 2., couleur);
+   support.draw_circle(xt, yt, creature_size / 6., white);
 }
 
 bool operator==(const Creature &b1, const Creature &b2)
