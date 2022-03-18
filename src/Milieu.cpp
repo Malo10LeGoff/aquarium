@@ -107,8 +107,10 @@ void Milieu::collision(void)
          double y_i = (it_i)->getYt();
          double x_j = (it_j)->getXt();
          double y_j = (it_j)->getYt();
+         double size_i = (it_i)->getSize();
+         double size_j = (it_j)->getSize();
          double dist = std::sqrt((x_i - x_j)*(x_i - x_j) + (y_i - y_j)*(y_i - y_j));
-         if (dist<8.){
+         if (dist<(size_i+size_j)){
             cout << "Collision" << endl;
             (it_j)->collision();
             (it_i)->collision();
