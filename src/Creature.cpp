@@ -53,7 +53,7 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
    x = b.x;
    y = b.y;
    m_milieu  = b.m_milieu;
-   creature_size = AFF_SIZE * (1.0+(rand()/RAND_MAX));
+   creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;
@@ -125,7 +125,7 @@ void Creature::action(Milieu &monMilieu)
 }
 double Creature::getSize() 
 {
-   return creature_size*(0.5+static_cast<double>(rand())/RAND_MAX);
+   return creature_size;
 };
 
 void Creature::draw(UImg &support)
