@@ -2,7 +2,7 @@
 
 #include "Milieu.h"
 #include "Accessories.h"
-
+#include "Behaviour.h"
 #include <cstdlib>
 #include <cmath>
 
@@ -25,6 +25,7 @@ Creature::Creature(void)
 
    accessories = Accessories();
    sensors = Sensors();
+   behaviour = GregariousBehaviour();
 
    cout <<"Speed Coef " << accessories.speedCoef() <<endl;
    vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories.speedCoef(), MAX_VITESSE);
@@ -51,6 +52,7 @@ Creature::Creature(const Creature &b)
    vitesse = b.vitesse;
    accessories = b.accessories;
    sensors = b.sensors;
+   behaviour = b.behaviour;
    couleur = new T[3];
    memcpy(couleur, b.couleur, 3 * sizeof(T));
 }
