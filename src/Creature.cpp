@@ -4,7 +4,6 @@
 #include "Accessories.h"
 #include "Behaviour.h"
 #include <array>
-#include "Behaviour.h"
 #include <cstdlib>
 #include <cmath>
 #include <memory>
@@ -54,7 +53,6 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
    y = b.y;
    m_milieu  = b.m_milieu;
    creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
-   m_milieu  = b.m_milieu;
    cumulX = cumulY = 0.;
    orientation = b.orientation;
    vitesse = b.vitesse;

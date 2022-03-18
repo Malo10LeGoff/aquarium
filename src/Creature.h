@@ -35,10 +35,17 @@ private :
    double            vitesse;
    double            creature_size;
    T                 * couleur;
+<<<<<<< HEAD
    Milieu & m_milieu;
    std::array<std::array<int,2>,8> hitbox;
    int               taille_a;
    int               taille_b;
+=======
+   std::array<std::array<int,2>,8> hitbox;
+   int               taille_a;
+   int               taille_b;
+
+>>>>>>> master
 public:
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
