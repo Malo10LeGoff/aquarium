@@ -31,6 +31,7 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   double            creature_size;
    T                 * couleur;
    std::array<std::array<int,2>,8> hitbox;
    int               taille_a;
@@ -59,6 +60,7 @@ public :                                           // Forme canonique :
    int getId() const;
    double getXt() ;
    double getYt() ;
+   double getSize();
    double getOrient() const;
    void setOrient(double ori);
    std::array<std::array<int,2>,8> getHitbox(void);
