@@ -4,6 +4,7 @@
 #include "Accessories.h"
 #include "Behaviour.h"
 #include <array>
+#include "Behaviour.h"
 #include <cstdlib>
 #include <cmath>
 #include <memory>
@@ -23,7 +24,6 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
    x = y = 0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
-
    accessories = std::unique_ptr<Accessories>(new Accessories());
    sensors = std::unique_ptr<Sensors>(new Sensors());
    behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
