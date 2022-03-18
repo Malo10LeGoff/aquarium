@@ -45,7 +45,7 @@ private:
 class KamikazeBehaviour: public InterfaceBehaviour {
 public:
     KamikazeBehaviour();
-    KamikazeBehaviour(float t_moveSpeedMultiplier) : m_moveSpeedMultiplier(t_moveSpeedMultiplier) {};
+    explicit KamikazeBehaviour(float t_moveSpeedMultiplier) : m_moveSpeedMultiplier(t_moveSpeedMultiplier) {};
     std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
