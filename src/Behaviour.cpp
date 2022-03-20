@@ -84,9 +84,6 @@ FearfulBehaviour &FearfulBehaviour::operator=(const FearfulBehaviour &f) {
 
 
 // KamikazeBehaviour
-KamikazeBehaviour::KamikazeBehaviour(){
-
-}
 
 int min_element(const std::vector<float> arr) {
     int index =0;
@@ -103,30 +100,22 @@ int min_element(const std::vector<float> arr) {
  * @param creatureCoordinates
  * @return [x,y] representing the direction to move in
  */
-std::array<float, 2> KamikazeBehaviour::moveDirection(const std::array<float, 2> creatureCoordinates,
-                                                      const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
+Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
+                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // calculate the neighbours' (squared) distances
     std::vector<float> neighbourDistances;
-    for (auto it= std::begin(visibleCreatures); it != std::end(visibleCreatures); ++it) {
+    for (auto const creature : visibleCreatures) {
         // *it is [moveDirection , coordinates]
-        float d = std::pow((*it)[1][0] - creatureCoordinates[0], 2) + std::pow((*it)[1][1] - creatureCoordinates[1], 2);
-        neighbourDistances.push_back(d);
+        neighbourDistances.push_back(distance(creature[1], creatureCoordinates));
     };
     // Select the closest neighbour
     int closest_neighbour_idx = min_element(neighbourDistances);
     // Calculate the direction
-    float x = visibleCreatures[closest_neighbour_idx][1][0] - creatureCoordinates[0];
-    float y = visibleCreatures[closest_neighbour_idx][1][1] - creatureCoordinates[1];
-    // Normalize the vector
-    float d = sqrt(std::pow(x,2) + pow(y , 2));
-    if (d!=0) {
-        x /= d;
-        y /= d;
-    }
+    Vector moveDirection  = (visibleCreatures[closest_neighbour_idx][1] - creatureCoordinates).normalize();
     // scale by the speed
-    x *= m_moveSpeedMultiplier;
-    y *= m_moveSpeedMultiplier;
-    return std::array<float,2> { x, y};
+    moveDirection.x *= m_moveSpeedMultiplier;
+    moveDirection.y *= m_moveSpeedMultiplier;
+    return moveDirection;
 
 }
 
@@ -160,8 +149,8 @@ void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour> & behaviour) {
     behaviours_.push_back(std::move(behaviour));
 }
 
-std::array<float, 2> MultipleBehaviours::moveDirection(const std::array<float, 2> creatureCoordinates,
-                                                       const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
+Vector MultipleBehaviours::moveDirection(const Vector creatureCoordinates,
+                                                       const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // Sample a behaviour in the list
     random_selector<> selector{};
     return selector(this->behaviours_)->moveDirection(creatureCoordinates, visibleCreatures);
@@ -196,10 +185,10 @@ PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p): m_moveSpeedMul
 
 }
 
-std::array<float, 2> PlanningBehaviour::moveDirection(const std::array<float, 2> creatureCoordinates,
-                                                      const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const {
+Vector PlanningBehaviour::moveDirection(const Vector creatureCoordinates,
+                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // TODO :
-    return std::array<float, 2>{0,0};
+    return {0,0};
 }
 
 PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {

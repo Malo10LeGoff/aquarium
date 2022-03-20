@@ -52,7 +52,7 @@ private:
 
 class KamikazeBehaviour: public InterfaceBehaviour {
 public:
-    KamikazeBehaviour();
+    KamikazeBehaviour() = default ;
     explicit KamikazeBehaviour(float t_moveSpeedMultiplier) : m_moveSpeedMultiplier(t_moveSpeedMultiplier) {};
     KamikazeBehaviour(const KamikazeBehaviour & k); // copy constructor
     KamikazeBehaviour& operator= (const KamikazeBehaviour& k );
