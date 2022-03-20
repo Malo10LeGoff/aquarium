@@ -140,9 +140,9 @@ void Creature::bouge(int xLim, int yLim)
 
 void Creature::action(Milieu &monMilieu)
 {
-
    bouge(monMilieu.getWidth(), monMilieu.getHeight());
-}
+};
+
 double Creature::getSize() 
 {
    return creature_size;
