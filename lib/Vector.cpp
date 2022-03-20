@@ -61,3 +61,36 @@ Vector Vector::rotate(double radian) {
 std::array<double, 2> Vector::asArray() const {
     return std::array<double, 2>{x,y};
 }
+
+Vector Vector::reflectX() const {
+    return Vector{x, -y};
+}
+
+Vector Vector::reflectY() const {
+    return Vector{- x, y};
+}
+
+Vector &Vector::operator+=(const Vector &b) {
+    x += b.x;
+    y += b.y;
+    return *this;
+}
+
+Vector &Vector::operator*=(double k) {
+    x *= k;
+    y *= k;
+}
+
+Vector operator*(const Vector v, double k) {
+    return {v.x * k, v.y * k};
+}
+
+Vector operator*(double k, const Vector v) {
+    return v * k;
+}
+
+Vector operator/(const Vector v, double k) {
+    return {v.x /k, v.y / k };
+}
+
+

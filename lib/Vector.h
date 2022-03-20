@@ -16,11 +16,20 @@ struct Vector {
     // Unary operators
     Vector normalize() const;
     double orientation() const; //radian
+    Vector reflectX() const;
+    Vector reflectY() const;
 
     // In place unary operators
     Vector rotate(double radian);
+    Vector& operator+=(const Vector& b);
+    Vector& operator*=(double k);
 
     std::array<double, 2 > asArray() const;
+
+    // external operators overloads
+    friend Vector operator*(const Vector v, double k);
+    friend Vector operator*(double k, const Vector v);
+    friend Vector operator/(const Vector v,double k);
 };
 // Binary operators
 double det(const Vector &a, const Vector &b);
