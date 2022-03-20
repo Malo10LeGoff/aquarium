@@ -5,26 +5,21 @@
 // GregariousBehaviour
 
 
-std::array<float,2> GregariousBehaviour::moveDirection(const std::array<float,2> creatureCoordinates,
-                                                       const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
-    float cumX = 0;
-    float cumY = 0;
-    for (auto it = std::begin(visibleCreatures); it != std::end(visibleCreatures); ++it){
-        // *it is [moveDirection , coordinates]
-        cumX += (*it)[0][0];
-        cumY += (*it)[0][1];
-
+Vector GregariousBehaviour::moveDirection(const Vector creatureCoordinates,
+                                                       const std::vector<std::array<Vector,2>> visibleCreatures) const {
+    Vector moveD {0, 0};
+    for (auto const e: visibleCreatures){
+        // e is [moveD , coordinates]
+        moveD = moveD + e[0];
     }
-    cumX /= visibleCreatures.size();
-    cumY /= visibleCreatures.size();
+    moveD.x /= visibleCreatures.size();
+    moveD.y /= visibleCreatures.size();
     // Normalize the vector
-    float d = sqrt(std::pow(cumX,2) + pow(cumY , 2));
-    cumX /= d;
-    cumY /= d;
+    moveD = moveD.normalize();
     // scale by the speed
-    cumX *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
-    cumY *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
-    return std::array<float,2>{cumX, cumY};
+    moveD.x *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+    moveD.y *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+    return moveD;
 }
 
 std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
@@ -43,7 +38,7 @@ int FearfulBehaviour::maxNeighbours() const {
     return maxNeighbours_;
 }
 
-float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
+float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<Vector, 2>> visibleCreatures) const {
 if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
     return this->moveSpeedMultiplier_;}
 else {
@@ -56,28 +51,21 @@ return 1;
  * the other creatures are in.
  * Will return [0,0] if there's no change of direction planned
  */
-std::array<float, 2> FearfulBehaviour::moveDirection(const std::array<float,2> creatureCoordinates,
-                                                     const std::vector<std::array<std::array < float, 2>, 2>> visibleCreatures) const {
-    float x = 0;
-    float y = 0;
+Vector FearfulBehaviour::moveDirection(const Vector creatureCoordinates,
+                                                     const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+    Vector moveD {0,0};
     if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
         // Calculate the running direction
-        for (auto it= std::begin(visibleCreatures); it != std::end(visibleCreatures); ++it) {
+        for (auto const neighbour : visibleCreatures ){
             // *it is [moveDirection , coordinates]
-            x+= (*it)[1][0] - creatureCoordinates[0];
-            y+= (*it)[1][1] - creatureCoordinates[1];
+            moveD = moveD + neighbour[1] - creatureCoordinates;
         };
-        x /= visibleCreatures.size();
-        y /= visibleCreatures.size();
-        // Normalize the direction
-        float d = sqrt(std::pow(x,2) + pow(y , 2));
-        x /= d;
-        y /= d;
+        moveD = moveD.normalize();
         // scale by the speed
-        x *= this->moveSpeedMultiplier(visibleCreatures);
-        y *= this->moveSpeedMultiplier(visibleCreatures);
+        moveD.x *= this->moveSpeedMultiplier(visibleCreatures);
+        moveD.y *= this->moveSpeedMultiplier(visibleCreatures);
     }
-    return std::array<float,2>{x, y};
+    return moveD;
 }
 
 std::unique_ptr<InterfaceBehaviour> FearfulBehaviour::clone() const {

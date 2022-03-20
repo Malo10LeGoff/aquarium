@@ -18,19 +18,19 @@ class Sensors: public InterfaceSensors {
 public:
     Sensors();
     std::list<InterfaceSensors *> sensors_;
-    float getDetectionRadius() const;
-    float getDetectionCoef() const;
-    float getDetectionAngle() const;
+    float getDetectionRadius() const override;
+    float getDetectionCoef() const override;
+    float getDetectionAngle() const override;
 };
 
 class Eyes:public InterfaceSensors {
 public:
 
     Eyes(float detectionCoef,float detectionRadius,float detectionAngle);
-    std::string getType() const;
-    float getDetectionRadius() const;
-    float getDetectionCoef() const;
-    float getDetectionAngle() const;
+    std::string getType() const override;
+    float getDetectionRadius() const override;
+    float getDetectionCoef() const override;
+    float getDetectionAngle() const override;
 
 private:
     std::string type;
@@ -42,9 +42,9 @@ private:
 class Ears:public InterfaceSensors {
 public:
     Ears(float detectionCoef,float detectionRadius);
-    std::string getType() const;
-    float getDetectionRadius() const;
-    float getDetectionCoef() const;
+    std::string getType() const override;
+    float getDetectionRadius() const override;
+    float getDetectionCoef() const override;
 
 private:
     std::string type;
