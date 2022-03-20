@@ -8,6 +8,7 @@ target_compile_options(accessories PUBLIC  -Wall -Wextra -Wpedantic )
 # Behaviour
 add_library(behaviour Behaviour.h Behaviour.cpp)
 target_link_libraries(behaviour PRIVATE random_selection)
+target_link_libraries(behaviour PRIVATE vector)
 target_compile_options(behaviour PUBLIC  -Wall -Wextra -Wpedantic )
 
 #Sensors

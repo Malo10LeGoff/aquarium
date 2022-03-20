@@ -5,6 +5,8 @@
 #include <array>
 #include <vector>
 #include <memory>
+#include "../lib/Vector.h"
+
 class InterfaceBehaviour {
 public:
     /**
@@ -14,8 +16,8 @@ public:
      * @return moveDirection
      *          std::array<float,2> The direction the creature wants to move.
      */
-    virtual std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const = 0;
-    virtual float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const {
+    virtual Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const = 0;
+    virtual float moveSpeedMultiplier(const std::vector<std::array<Vector,2>> visibleCreatures) const {
         return 1;
     };
 
@@ -28,7 +30,7 @@ public:
     GregariousBehaviour(const GregariousBehaviour & g) = default; // copy constructor
     GregariousBehaviour& operator=(const GregariousBehaviour& g) = default; // assign copy
     ~GregariousBehaviour()=default; // Destructor
-    std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
+    Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 };
 
@@ -39,8 +41,8 @@ public:
     FearfulBehaviour(const FearfulBehaviour & f); // copy constructor
     ~FearfulBehaviour()= default ; // destructor
     FearfulBehaviour& operator=(const FearfulBehaviour& f); // copy assign
-    std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
-    float moveSpeedMultiplier(const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
+    Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
+    float moveSpeedMultiplier(const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     int maxNeighbours() const;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
@@ -55,7 +57,7 @@ public:
     KamikazeBehaviour(const KamikazeBehaviour & k); // copy constructor
     KamikazeBehaviour& operator= (const KamikazeBehaviour& k );
     ~KamikazeBehaviour() = default;
-    std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates, const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
+    Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
     float m_moveSpeedMultiplier = 1;
@@ -67,7 +69,7 @@ public:
     PlanningBehaviour(const PlanningBehaviour& p);
     ~PlanningBehaviour() = default;
     PlanningBehaviour& operator=(const PlanningBehaviour& p);
-    std::array<float,2> moveDirection(const std::array<float,2> creatureCoordinates ,const std::vector<std::array<std::array<float,2>,2>> visibleCreatures) const override;
+    Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 private:
     float m_moveSpeedMultiplier = 1;
@@ -80,7 +82,7 @@ public:
     MultipleBehaviours& operator=(const MultipleBehaviours& m); // copy assign constructor
     ~MultipleBehaviours()=default; // destructor
 
-    std::array<float, 2> moveDirection(const std::array<float, 2> creatureCoordinates, const std::vector<std::array<std::array<float, 2>, 2>> visibleCreatures) const override;
+    Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     void add(std::unique_ptr<InterfaceBehaviour>& behaviour);
     void remove(int index);
     std::unique_ptr<InterfaceBehaviour> clone() const override;
