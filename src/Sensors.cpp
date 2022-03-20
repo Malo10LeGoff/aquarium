@@ -1,5 +1,6 @@
+#define _USE_MATH_DEFINES
 #include "Sensors.h"
-#include <math.h>
+#include <cmath>
 
 
 Sensors::Sensors() 
@@ -41,6 +42,14 @@ float Sensors::getDetectionCoef() const
     return 0;
 }
 
+std::vector<detection_caract> Sensors::getDetectionZone() {
+    std::vector<detection_caract> ret {} ;
+    for (auto const sensor: sensors_) {
+        ret.push_back(sensor->getDetectionZone()[0]);
+    }
+    return ret;
+}
+
 Eyes::Eyes(float detectionCoef,float detectionRadius,float detectionAngle) 
 {
     type = "Eyes";
@@ -69,6 +78,10 @@ float Eyes::getDetectionCoef() const
     return detectionCoef_;
 }
 
+std::vector<detection_caract> Eyes::getDetectionZone() {
+    return std::vector<detection_caract> { {detectionCoef_, detectionRadius_, detectionAngle_} };
+}
+
 
 Ears::Ears(float detectionCoef,float detectionRadius) 
 {
@@ -91,3 +104,9 @@ float Ears::getDetectionCoef() const
 {
     return detectionCoef_;
 }
+
+std::vector<detection_caract> Ears::getDetectionZone() {
+    return std::vector<detection_caract> { {detectionCoef_, detectionRadius_ , 2 * M_PI }};
+}
+
+
