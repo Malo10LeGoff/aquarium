@@ -1,48 +1,42 @@
 #include "gtest/gtest.h"
 #include "../src/Behaviour.h"
 #include <iostream>
+#include "../lib/Vector.h"
 
-float scalar_product(std::array<float,2> a, std::array<float,2> b) {
-    return a[0] * b[0] + a[1] * b[1];
-}
-float det(std::array<float,2> a, std::array<float,2> b) {
-    return a[0] * b[1] - a[1] * b[0];
-}
 
 // Gregarious Behaviour
 class TestGregariousBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
-        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+        visibleCreatures.push_back(std::array<Vector,2>{ {{ 1,1 } , {1,1 }} });
     }
-    std::array<float,2> creatureCoordinates {0,0};
+    Vector creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    std::vector<std::array<Vector,2>> visibleCreatures {};
     GregariousBehaviour b = GregariousBehaviour();
-    std::array<float,2> coordinates {0,0};
+    Vector coordinates {0,0};
 };
 
 TEST_F(TestGregariousBehaviour, TestInit) {
     auto ret = b.moveDirection(creatureCoordinates , visibleCreatures);
     // check for colinearity
     EXPECT_EQ(0, det(visibleCreatures[0][0], ret));
-    std::cout << "direction followed\n" << "x:" << ret[0] <<"\ny:" <<  ret[1] << "\n";
+    std::cout << "direction followed\n" << "x:" << ret.x <<"\ny:" <<  ret.y << "\n";
 
 }
 
 TEST_F(TestGregariousBehaviour, TestFollowsAverage) {
-    visibleCreatures.push_back(std::array<std::array<float,2>,2>{{{2 , -1}, {0,0} }});
-std::array<float,2> expectedDirection {0,0};
+    visibleCreatures.push_back(std::array<Vector,2>{{{2 , -1}, {0,0} }});
+    Vector expectedDirection {0,0};
     //std::cout << "visibleCreatures size " << visibleCreatures.size() << "\n";
-    for (auto it = std::begin(visibleCreatures); it != std::end(visibleCreatures); ++it) {
+    for (auto const creature : visibleCreatures) {
         //std::cout << " x_move " << (*it)[0][0] << " y_move " << (*it)[0][1] << "\n";
-        expectedDirection[0] += (*it)[0][0];
-        expectedDirection[1] += (*it)[0][1];
+        expectedDirection = expectedDirection + creature[0] ;
     }
-    auto ret = b.moveDirection(std::array<float,2>{0,0} , visibleCreatures);
+    auto ret = b.moveDirection(coordinates, visibleCreatures);
     // check for colinearity
     EXPECT_EQ(0, det(expectedDirection, ret));
-    std::cout << "direction followed :\n" << "x:" << ret[0] <<"\ny:" <<  ret[1] << "\n";
+    std::cout << "direction followed :\n" << "x:" << ret.x <<"\ny:" <<  ret.x << "\n";
 }
 
 TEST_F(TestGregariousBehaviour, TestSpeedCoef) {
@@ -53,16 +47,16 @@ TEST_F(TestGregariousBehaviour, TestSpeedCoef) {
 class TestFearfulBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
-        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+        visibleCreatures.push_back(std::array<Vector,2>{ {{ 1,1 } , {1,1 }} });
     }
-    std::array<float,2> creatureCoordinates {0,0};
+    Vector creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    std::vector<std::array<Vector,2>> visibleCreatures {};
     FearfulBehaviour b_default = FearfulBehaviour();
     int maxNeighbours = 30;
     float moveSpeedMultiplier = 1.3;
     FearfulBehaviour b_custom = FearfulBehaviour(maxNeighbours, moveSpeedMultiplier);
-    std::array<float,2> coordinates {0,0};
+    Vector coordinates {0,0};
 };
 TEST_F(TestFearfulBehaviour, TestDefaultInit) {
     // Speed coef should be 1 if there are not too many creatures around
@@ -92,63 +86,61 @@ TEST_F(TestFearfulBehaviour, TestCustomInit) {
 
 TEST_F(TestFearfulBehaviour, TestFleeingDirection) {
     // Fill the visible creature vector with all of the same value(the first one)
-    while (visibleCreatures.size() >= (unsigned)b_custom.maxNeighbours()) {
-        visibleCreatures.push_back(std::array<std::array<float,2>,2> { visibleCreatures[0] });
+    while (visibleCreatures.size() <= (unsigned)b_custom.maxNeighbours()) {
+        visibleCreatures.push_back(std::array<Vector,2> { visibleCreatures[1] });
     }
-    std::array<float,2> expectedDirection {0,0};
-    for (auto it = std::begin(visibleCreatures); it!= std::end(visibleCreatures); ++it) {
-        expectedDirection[0] += (*it)[0][0];
-        expectedDirection[1] += (*it)[0][1];
+    Vector expectedDirection {0,0};
+    for (auto const creature : visibleCreatures) {
+        expectedDirection = expectedDirection + creature[1] - coordinates;
     }
     auto ret = b_custom.moveDirection(creatureCoordinates, visibleCreatures);
-    EXPECT_LE(scalar_product(expectedDirection, ret ),0);
+    std::cout << "expected Direction : \nx: " << expectedDirection.x << "\ny: " << expectedDirection.y << "\n";
+    std::cout << "ret : \nx: " << ret.x << "\ny: " << ret.y << "\n";
+    EXPECT_LE(scalar(expectedDirection, ret ),0);
 }
 
 // FearfulBehaviour
 class TestKamikazeBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
-        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+        visibleCreatures.push_back(std::array<Vector,2>{ {{ 1,1 } , {1,1 }} });
     }
-    std::array<float,2> creatureCoordinates {0,0};
+    Vector creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    std::vector<std::array<Vector,2>> visibleCreatures {};
     KamikazeBehaviour b_default = KamikazeBehaviour();
     float moveSpeedMultiplier = 1.3;
     KamikazeBehaviour b_custom = KamikazeBehaviour(moveSpeedMultiplier);
-    std::array<float,2> coordinates {0,0};
+    Vector coordinates {0,0};
 };
 
 TEST_F(TestKamikazeBehaviour, TestDirection) {
     auto ret = b_default.moveDirection(coordinates, visibleCreatures);
-    std::array<float,2> expectedDirection {0,0};
-    // here the list of creatures should be one so we know where the creature is goingto go
-    std::cout << "returned direction is : " << "\nx: " << ret[0] << " \ny : " << ret[1] << "\n";
-    expectedDirection[0] = visibleCreatures[0][1][0] - coordinates[0];
-    expectedDirection[1] = visibleCreatures[0][1][1] - coordinates[1];
+    Vector expectedDirection {0,0};
+    // here the list of creatures should be one so we know where the creature is going to go
+    std::cout << "returned direction is : " << "\nx: " << ret.x << " \ny : " << ret.y << "\n";
+    expectedDirection = visibleCreatures[0][1] - coordinates;
     EXPECT_EQ(0, det(ret, expectedDirection));
 
     // Now add one thats closer
-    std::array<std::array<float,2>,2> newCreature { {{1,1} , {-0.5,-0.5}} };
+    std::array<Vector,2> newCreature { {{1,1} , {-0.5,-0.5}} };
     visibleCreatures.push_back(newCreature);
     ret = b_default.moveDirection(coordinates, visibleCreatures);
-    expectedDirection[0] = visibleCreatures[1][1][0] - coordinates[0];
-    expectedDirection[1] = visibleCreatures[1][1][1] - coordinates[1];
-
+    expectedDirection = visibleCreatures[1][1] - coordinates;
     EXPECT_EQ(0, det(ret, expectedDirection));
 }
 class TestMultipleBehaviour : public ::testing::Test {
 protected:
     void SetUp() override {
-        visibleCreatures.push_back(std::array<std::array<float,2>,2>{ {{ 1,1 } , {1,1 }} });
+        visibleCreatures.push_back(std::array<Vector,2>{ {{ 1,1 } , {1,1 }} });
     }
-    std::array<float,2> creatureCoordinates {0,0};
+    Vector creatureCoordinates {0,0};
     // visibleCreatures is [ [movedirection, coordinates ], ... ]
-    std::vector<std::array<std::array<float,2>,2>> visibleCreatures {};
+    std::vector<std::array<Vector,2>> visibleCreatures {};
     KamikazeBehaviour kamikaze_default = KamikazeBehaviour();
     float moveSpeedMultiplier = 1.3;
     KamikazeBehaviour kamikaze_fast = KamikazeBehaviour(moveSpeedMultiplier);
-    std::array<float,2> coordinates {0,0};
+    Vector coordinates {0,0};
 
     MultipleBehaviours multipleBehaviours = MultipleBehaviours(); // empty one
 };

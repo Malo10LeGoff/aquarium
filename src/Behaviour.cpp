@@ -62,8 +62,8 @@ Vector FearfulBehaviour::moveDirection(const Vector creatureCoordinates,
         };
         moveD = moveD.normalize();
         // scale by the speed
-        moveD.x *= this->moveSpeedMultiplier(visibleCreatures);
-        moveD.y *= this->moveSpeedMultiplier(visibleCreatures);
+        moveD.x *= - this->moveSpeedMultiplier(visibleCreatures);
+        moveD.y *= - this->moveSpeedMultiplier(visibleCreatures);
     }
     return moveD;
 }
