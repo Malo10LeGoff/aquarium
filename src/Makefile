@@ -1,6 +1,6 @@
 
 main : main.cpp Aquarium.o Creature.o Milieu.o Behaviour.o Accessories.o Sensors.o random_selection.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Creature.o Milieu.o random_selection.o Accessories.o Sensors.o Vectors.o Hitbox.o -I . -lX11 -lpthread
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Creature.o Milieu.o random_selection.o Accessories.o Sensors.o Vector.o Hitbox.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
