@@ -1,4 +1,6 @@
 add_library(random_selection STATIC random_selection.cpp Hitbox.h)
+target_link_libraries(random_selection PRIVATE vector)
+target_include_directories(random_selection PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 
 # Vectors
 add_library(vector Vector.h Vector.cpp)

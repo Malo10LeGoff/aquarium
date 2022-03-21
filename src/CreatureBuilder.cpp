@@ -76,11 +76,11 @@ void RandomBuilder::initBehaviour() {
 }
 
 void RandomBuilder::initPosition() {
-
+    m_creature.setPos(randomPosition());
 }
 
 void RandomBuilder::initVitesse() {
-
+    m_creature.setSpeed(randomSpeed());
 }
 
 std::array<double,4> RandomBuilder::getCumDistrib() {
@@ -98,13 +98,13 @@ void RandomBuilder::normalizeDistrib() {
     for (auto nb: m_behaviourDistrib) {
         s+= nb;
     }
-    for (unsigned int i = 0; i< m_behaviourDistrib.size(); ++i) {
-        m_behaviourDistrib[i] /= s;
+    for (double & i : m_behaviourDistrib) {
+        i /= s;
     }
 }
 
 std::unique_ptr<Creature> RandomBuilder::getResult() {
-    return std::unique_ptr<Creature>();
+    return std::unique_ptr<Creature>(m_creature);
 }
 
 void RandomBuilder::reset() {

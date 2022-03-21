@@ -29,7 +29,7 @@ private :
 
 private :
    Vector position {0,0};
-   Vector            vitesse;
+   Vector            speed;
    CircleHitbox hitbox {position, 1};
    double            creature_size;
    T                 * couleur;
@@ -57,12 +57,14 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    Vector getPos() const;
+   void setPos(Vector v);
    int getId() const;
    double getOrient() const;
    void setOrient(double ori);
    CircleHitbox getHitbox() const ;
    friend bool operator==( const Creature & b1, const Creature & b2 );
     double getSize() const ;
+    void setSpeed(Vector vector);
 };
 
 

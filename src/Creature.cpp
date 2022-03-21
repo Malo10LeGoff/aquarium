@@ -36,7 +36,7 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 }
 Creature &Creature::operator=(const Creature &c) {
     id = c.id;
-    vitesse = Vector(c.vitesse);
+    speed = Vector(c.speed);
     hitbox = CircleHitbox(c.hitbox);
     creature_size = c.creature_size;
     taille_a = c.taille_a;
@@ -59,7 +59,7 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
    position = Vector(b.position);
    m_milieu  = b.m_milieu;
    creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
-   vitesse = b.vitesse;
+    speed = b.speed;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
    sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
    behaviour = (*b.behaviour).clone();
@@ -84,16 +84,16 @@ void Creature::move(int xLim, int yLim)
 {
 
    // calculate new position
-   Vector dV = vitesse * dt ;
+   Vector dV = speed * dt ;
    Vector new_position = position + dV;
    // handle box collisions
    if ((new_position.x < 0) || (new_position.x > xLim - 1))
    {
-      vitesse.reflectY();
+      speed.reflectY();
    }
    if ((new_position.y < 0) || (new_position.y > yLim - 1))
    {
-      vitesse.reflectX();
+      speed.reflectX();
    }
     // align to grid
    new_position.x = static_cast<int>(new_position.x);
@@ -114,10 +114,10 @@ double Creature::getSize() const
 
 void Creature::draw(UImg &support)
 {
-   double xt = position.x + cos(vitesse.orientation()) * creature_size / 2.1;
-   double yt = position.y - sin(vitesse.orientation()) * creature_size / 2.1;
+   double xt = position.x + cos(speed.orientation()) * creature_size / 2.1;
+   double yt = position.y - sin(speed.orientation()) * creature_size / 2.1;
    unsigned char white[] = {255,255,255};
-   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -vitesse.orientation() / M_PI * 180., couleur);
+   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -speed.orientation() / M_PI * 180., couleur);
    support.draw_circle(xt, yt, creature_size / 2., couleur);
    support.draw_circle(xt, yt, creature_size / 6., white);
 }
@@ -135,7 +135,7 @@ Vector Creature::getPos() const
 
 double Creature::getOrient() const
 {
-   return vitesse.orientation();
+   return speed.orientation();
 };
 
 int Creature::getId() const
@@ -150,12 +150,20 @@ CircleHitbox Creature::getHitbox(void) const
 
 void Creature::collision(void) 
 {
-   vitesse.rotate(M_PI);
+   speed.rotate(M_PI);
 };
 
 void Creature::setOrient(double ori) 
 {
-   vitesse.rotate(ori - vitesse.orientation());
+   speed.rotate(ori - speed.orientation());
+}
+
+void Creature::setPos(Vector v) {
+    position = v;
+}
+
+void Creature::setSpeed(Vector v) {
+    speed = v;
 };
 
 
