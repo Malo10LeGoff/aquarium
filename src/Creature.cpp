@@ -4,11 +4,11 @@
 #include <cstdlib>
 #include <cmath>
 #include <memory>
+#include "constants.h"
 
-
-const double Creature::AFF_SIZE = 8.;
-const double Creature::MAX_VITESSE = 10.;
-const double Creature::dt = 1;
+const double Creature::AFF_SIZE = baseSize;
+const double Creature::MAX_VITESSE = baseSpeed;
+const double Creature::dt = time_delta;
 
 int Creature::next = 0;
 
@@ -52,7 +52,7 @@ Creature &Creature::operator=(const Creature &c) {
 
 Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
-
+    // TODO : rewrite to not handle id and no random copying attributes.
     id = ++next;
 
    cout << "const Creature (" << id << ") par copie" << endl;

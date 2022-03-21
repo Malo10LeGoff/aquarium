@@ -86,9 +86,9 @@ void RandomBuilder::initVitesse() {
 std::array<double,4> RandomBuilder::getCumDistrib() {
     std::array<double, 4> cumDistrib {0,0,0,0};
     double cumSum = 0;
-    for (unsigned int i =0; i < m_behaviourDistrib.size(); ++i){
-        cumSum+= m_behaviourDistrib[i];
-        m_behaviourDistrib[i] = cumSum;
+    for (double & i : m_behaviourDistrib){
+        cumSum+= i;
+        i = cumSum;
     }
     return cumDistrib;
 }
@@ -104,10 +104,10 @@ void RandomBuilder::normalizeDistrib() {
 }
 
 std::unique_ptr<Creature> RandomBuilder::getResult() {
-    return std::unique_ptr<Creature>(m_creature);
+    return std::unique_ptr<Creature>(new Creature(m_creature));
 }
 
 void RandomBuilder::reset() {
-
+    m_creature = Creature(&director.milieu);
 }
 
