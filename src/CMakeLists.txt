@@ -20,6 +20,13 @@ add_library(creature Creature.h Creature.cpp)
 target_link_libraries(creature PRIVATE accessories)
 target_link_libraries(creature PRIVATE sensors)
 target_link_libraries(creature PRIVATE behaviour)
+target_link_libraries(creature PRIVATE hitbox)
+target_link_libraries(creature PRIVATE milieu)
+target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
+
+# Creature Builder
+add_library(creature_builder CreatureBuilder.h CreatureBuilder.cpp)
+target_link_libraries(creature)
 target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
 
 #Milieu
