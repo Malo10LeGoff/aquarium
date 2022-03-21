@@ -18,6 +18,9 @@ public:
     virtual float deathCoef() const {
         return 0;
     }
+    virtual int AccessoryType() const {
+        return 0;
+    }
 };
 
 
@@ -35,6 +38,7 @@ public:
     Shell(float speedReductionCoef, float deathCoef);
     float speedCoef() const override;
     float deathCoef() const override;
+    int AccessoryType() const;
 private:
     float speedReductionCoef_;
     float deathCoef_;
@@ -44,6 +48,7 @@ class Camo:public InterfaceAccessory {
 public:
     Camo(float camoCoef);
     float camoCoef() const override;
+    int AccessoryType() const;
 private:
     float camoCoef_;
 
@@ -53,6 +58,7 @@ class Fins:public InterfaceAccessory {
 public:
     Fins(float speedCoef);
     float speedCoef() const override;
+    int AccessoryType() const;
 private:
     float speedCoef_;
 };

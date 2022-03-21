@@ -153,9 +153,31 @@ void Creature::draw(UImg &support)
    double xt = x + cos(orientation) * creature_size / 2.1;
    double yt = y - sin(orientation) * creature_size / 2.1;
    unsigned char white[] = {255,255,255};
-   support.draw_ellipse(x, y, creature_size, creature_size / 5., -orientation / M_PI * 180., couleur);
-   support.draw_circle(xt, yt, creature_size / 2., couleur);
-   support.draw_circle(xt, yt, creature_size / 6., white);
+   unsigned char black[] = {0,0,0};
+   unsigned char red[] = {255,0,0};
+   unsigned char green[] = {0,255,0};
+   int opacity = 1;
+
+
+   std::list<InterfaceAccessory *> access = accessories->accessories_;
+   std::list<InterfaceAccessory *>::const_iterator it;
+   for (it=access.begin();it!= access.end();it++) {
+      if ((*it)->AccessoryType()==1)
+      {
+         support.draw_circle(xt, yt, creature_size*1.3, red);
+      }
+      if ((*it)->AccessoryType()==2)
+      {
+         support.draw_ellipse(x, y, creature_size*1.3, creature_size / 3.5, -orientation / M_PI * 180., green);
+      }
+      if ((*it)->AccessoryType()==3)
+      {
+         support.draw_ellipse(x, y, creature_size, creature_size / 5., (-orientation+M_PI/2) / M_PI * 180., behaviour->getColor());
+      }
+   }
+
+   support.draw_ellipse(x, y, creature_size, creature_size / 5., -orientation / M_PI * 180., behaviour->getColor(),opacity);
+   support.draw_circle(xt, yt, creature_size / 2., behaviour->getColor(),opacity);
 }
 
 bool operator==(const Creature &b1, const Creature &b2)

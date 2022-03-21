@@ -64,6 +64,10 @@ Shell::Shell(float speedReductionCoef, float deathCoef)
     deathCoef_ = deathCoef;
 }
 
+int Shell::AccessoryType() const
+{
+    return 1;
+}
 
 float Shell::speedCoef() const
 {
@@ -78,6 +82,11 @@ float Shell::deathCoef() const
 Camo::Camo(float camoCoef) 
 {
     camoCoef_ = camoCoef;
+}
+
+int Camo::AccessoryType() const
+{
+    return 2;
 }
 
 
@@ -95,4 +104,9 @@ Fins::Fins(float speedCoef)
 float Fins::speedCoef() const
 {
     return speedCoef_;
+}
+
+int Fins::AccessoryType() const
+{
+    return 3;
 }

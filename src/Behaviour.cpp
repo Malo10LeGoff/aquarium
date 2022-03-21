@@ -4,6 +4,11 @@
 #include "../lib/random_selection.cpp"
 // GregariousBehaviour
 
+unsigned char GregariousBehaviour::couleur[] = {200,200,200};
+unsigned char FearfulBehaviour::couleur[] = {10,200,100};
+unsigned char KamikazeBehaviour::couleur[] = {0,0,200};
+unsigned char PlanningBehaviour::couleur[] = {0,200,0};
+unsigned char MultipleBehaviours::couleur[] = {100,200,0};
 
 Vector GregariousBehaviour::moveDirection(const Vector creatureCoordinates,
                                                        const std::vector<std::array<Vector,2>> visibleCreatures) const {
@@ -26,7 +31,11 @@ std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
     return std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour(*this));
 }
 
-
+unsigned char * GregariousBehaviour::getColor()
+{
+    
+    return GregariousBehaviour::couleur;
+}
 
 // FearfulBehaviour
 FearfulBehaviour::FearfulBehaviour() {
@@ -44,6 +53,12 @@ if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
 else {
 return 1;
 }
+}
+
+unsigned char * FearfulBehaviour::getColor()
+{
+    
+    return FearfulBehaviour::couleur;
 }
 
 /**
@@ -119,6 +134,13 @@ Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
 
 }
 
+unsigned char * KamikazeBehaviour::getColor()
+{
+    
+    return KamikazeBehaviour::couleur;
+}
+
+
 std::unique_ptr<InterfaceBehaviour> KamikazeBehaviour::clone() const {
     return std::unique_ptr<KamikazeBehaviour> (new KamikazeBehaviour(*this));
 }
@@ -160,6 +182,13 @@ void MultipleBehaviours::remove(int index) {
     behaviours_.erase(behaviours_.begin() + index);
 }
 
+unsigned char * MultipleBehaviours::getColor()
+{
+    
+    return MultipleBehaviours::couleur;
+}
+
+
 std::unique_ptr<InterfaceBehaviour> MultipleBehaviours::clone() const {
     return std::unique_ptr<MultipleBehaviours>(new MultipleBehaviours(*this));
 }
@@ -194,4 +223,10 @@ Vector PlanningBehaviour::moveDirection(const Vector creatureCoordinates,
 PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {
     m_moveSpeedMultiplier = p.m_moveSpeedMultiplier;
     return *this;
+}
+
+unsigned char * PlanningBehaviour::getColor()
+{
+    
+    return PlanningBehaviour::couleur;
 }
