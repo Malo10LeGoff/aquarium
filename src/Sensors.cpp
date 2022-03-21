@@ -50,6 +50,14 @@ std::vector<detection_caract> Sensors::getDetectionZone() {
     return ret;
 }
 
+void Sensors::add(std::unique_ptr<InterfaceSensors>& sensor) {
+    // TODO : implemet this
+}
+
+void Sensors::remove(int idx) {
+    // TODO
+}
+
 Eyes::Eyes(float detectionCoef,float detectionRadius,float detectionAngle) 
 {
     type = "Eyes";

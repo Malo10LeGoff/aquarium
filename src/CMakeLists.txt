@@ -26,7 +26,8 @@ target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
 
 # Creature Builder
 add_library(creature_builder CreatureBuilder.h CreatureBuilder.cpp)
-target_link_libraries(creature)
+target_link_libraries(creature_builder PRIVATE creature)
+target_link_libraries(creature_builder PRIVATE random_selection)
 target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
 
 #Milieu

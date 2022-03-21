@@ -6,6 +6,7 @@
 #include <array>
 #include <list>
 #include <string>
+#include <memory>
 // detection caract = [ detectionCoef, detectionRadius, detectionAngle ]
 typedef std::array<float,3> detection_caract;
 
@@ -22,11 +23,13 @@ public:
 class Sensors: public InterfaceSensors {
 public:
     Sensors();
-    std::list<InterfaceSensors *> sensors_;
+    std::list<std::unique_ptr<InterfaceSensors> > sensors_;
     float getDetectionRadius() const override;
     float getDetectionCoef() const override;
     float getDetectionAngle() const override;
     std::vector<detection_caract> getDetectionZone() override;
+    void add(std::unique_ptr<InterfaceSensors> &sensor);
+    void remove(int idx);
 };
 
 class Eyes:public InterfaceSensors {

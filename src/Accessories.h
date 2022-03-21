@@ -5,7 +5,7 @@
 #include <vector>
 #include "../lib/UImg.h"
 #include <list>
-
+#include <memory>
 
 class InterfaceAccessory {
 public: 
@@ -27,7 +27,9 @@ public:
     float speedCoef() const;
     float camoCoef() const;
     float deathCoef() const ;
-    std::list<InterfaceAccessory *> accessories_;
+    std::list<std::unique_ptr<InterfaceAccessory>> accessories_;
+    void add(std::unique_ptr<InterfaceAccessory>& accessory);
+    void remove(int idx);
 };
 
 class Shell:public InterfaceAccessory {

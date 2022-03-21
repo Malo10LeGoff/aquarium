@@ -1,5 +1,7 @@
 #include <random>
 #include <iterator>
+#include "../src/constants.h"
+
 
 template <typename RandomGenerator = std::default_random_engine>
 struct random_selector
@@ -30,3 +32,50 @@ struct random_selector
 private:
     RandomGenerator gen;
 };
+
+// Parameter sampling functions
+double clip(double value, double lower, double higher) {
+    return std::max(lower, std::min(higher, value));
+}
+double randomShellSpeedCoef() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double mean = (minSpeedShell - maxSpeedShell) / 2;
+    // std so that 95% are between min and max
+    double std = (maxSpeedShell - mean) / 2;
+    std::normal_distribution<double> shellSpeed (mean, std);
+
+    return clip(shellSpeed(mt), 0 , 1);
+}
+
+double randomShellDeathCoef() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double mean = (minDeathCoefShell - maxDeathCoefShell) / 2;
+    // std so that 95% are between min and max
+    double std = (maxDeathCoefShell - mean) / 2;
+    std::normal_distribution<double> shellDeath (mean, std);
+
+    return clip(shellDeath(mt), 0, 1);
+}
+
+double randomCamoCoef() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double mean = (minCamoCoefCamo - maxCamoCoefCamo) / 2;
+    // std so that 95% are between min and max
+    double std = (maxCamoCoefCamo - mean) / 2;
+    std::normal_distribution<double> camoCoef (mean, std);
+
+    return clip(camoCoef(mt), minCamoCoefCamo, maxCamoCoefCamo);
+}
+double randomSpeedCoefFins() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double mean = (minSpeedFins - maxSpeedFins) / 2;
+    // std so that 95% are between min and max
+    double std = (maxSpeedFins - mean) / 2;
+    std::normal_distribution<double> finSpeed (mean, std);
+
+    return finSpeed(mt);
+}

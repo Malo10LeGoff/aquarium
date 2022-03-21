@@ -57,6 +57,14 @@ float Accessories::deathCoef() const
     return coef;
 }
 
+void Accessories::add(std::unique_ptr<InterfaceAccessory> &accessory) {
+    // TODO
+}
+
+void Accessories::remove(int idx) {
+    // TODO
+}
+
 
 Shell::Shell(float speedReductionCoef, float deathCoef) 
 {

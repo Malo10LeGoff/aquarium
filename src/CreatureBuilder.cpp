@@ -3,7 +3,8 @@
 //
 
 #include "CreatureBuilder.h"
-#include <random>
+#include "../lib/random_selection.cpp"
+
 
 std::unique_ptr<Creature> CreatureBuilder::make(int creatureID) {
     builder.reset();
@@ -47,7 +48,21 @@ void RandomBuilder::initAccessories() {
     // Shell
     std::bernoulli_distribution hasShell (m_shellProb);
     if (hasShell(mt)){
-        std::unique_ptr<InterfaceAccessory>(new Shell)
+        std::unique_ptr<InterfaceAccessory> shell = std::unique_ptr<InterfaceAccessory>(new Shell(randomShellSpeedCoef(),
+                                                                                                  randomShellDeathCoef()));
+        m_creature.accessories->add(shell);
+    }
+    // Camo
+    std::bernoulli_distribution hasCamo (m_camoProb);
+    if (hasCamo(mt)) {
+        std::unique_ptr<InterfaceAccessory> camo = std::unique_ptr<InterfaceAccessory>(new Camo(randomCamoCoef()));
+        m_creature.accessories->add(camo);
+    }
+    // Fins
+    std::bernoulli_distribution hasFins (m_finProb);
+    if (hasFins(mt)) {
+        std::unique_ptr<InterfaceAccessory> fins = std::unique_ptr<InterfaceAccessory>(new Fins(randomSpeedCoefFins()));
+        m_creature.accessories->add(fins);
     }
 
 }
