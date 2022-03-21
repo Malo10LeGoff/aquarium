@@ -22,6 +22,8 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
    cout << "const Creature (" << identite << ") par defaut" << endl;
    x = y = 0;
    cumulX = cumulY = 0.;
+   age = 1;
+   lifetime_duration = rand() % 300 + 500;
    orientation = static_cast<double>(rand()) / RAND_MAX * 2. * M_PI;
    accessories = std::unique_ptr<Accessories>(new Accessories());
    sensors = std::unique_ptr<Sensors>(new Sensors());
@@ -29,6 +31,7 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 
    cout <<"Speed Coef " << accessories->speedCoef() <<endl;
    vitesse = std::min(static_cast<double>(rand()) / RAND_MAX * MAX_VITESSE + accessories->speedCoef(), MAX_VITESSE);
+   collision_resistance = std::min(static_cast<double>(rand()/RAND_MAX + accessories->deathCoef()),1.0);
    cout << vitesse <<endl;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
@@ -39,15 +42,17 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 
    taille_a = 3;
    taille_b = 3;
-
 }
 Creature &Creature::operator=(const Creature &c) {
     identite = c.identite;
     x = c.x;
     y = c.y;
+    age = c.age;
+    lifetime_duration = c.lifetime_duration;
     cumulX = c.cumulX;
     cumulY = c.cumulY;
     orientation = c.orientation;
+    collision_resistance = c.collision_resistance;
     vitesse = c.vitesse;
     hitbox = std::vector<std::array<double,2>> (c.hitbox);
     creature_size = c.creature_size;
@@ -75,6 +80,9 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
    m_milieu  = b.m_milieu;
    creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
    cumulX = cumulY = 0.;
+   age = 1;
+   collision_resistance = b.collision_resistance;
+   lifetime_duration = b.lifetime_duration;
    orientation = b.orientation;
    vitesse = b.vitesse;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
@@ -99,9 +107,16 @@ void Creature::initCoords(int xLim, int yLim)
    y = rand() % yLim;
 }
 
+
+double Creature::getResistanceCollision() const
+{
+   return collision_resistance;
+}
+
+
 void Creature::bouge(int xLim, int yLim)
 {
-
+   age +=1;
    double nx, ny;
    double dx = cos(orientation) * vitesse;
    double dy = -sin(orientation) * vitesse;
@@ -141,6 +156,11 @@ void Creature::bouge(int xLim, int yLim)
 void Creature::action(Milieu &monMilieu)
 {
    bouge(monMilieu.getWidth(), monMilieu.getHeight());
+};
+
+bool Creature::DieFromeAging()
+{
+   return age >= lifetime_duration;
 };
 
 double Creature::getSize() 
@@ -197,6 +217,16 @@ int * Creature::getPos() const
 double Creature::getOrient() const
 {
    return orientation;
+};
+
+int Creature::getAge() const
+{
+   return age;
+};
+
+int Creature::getLifetime() const
+{
+   return lifetime_duration;
 };
 
 int Creature::getId() const

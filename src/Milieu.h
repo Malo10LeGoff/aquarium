@@ -30,7 +30,7 @@ public :
 
    void step( void );
    void collision(void);
-
+   int getNbCreatures(void);
    void addMember( const Creature & b ) { listeCreatures.push_back(b); listeCreatures.back().initCoords(width, height); }
    int nbVoisins( const Creature & b );
    bool detect(const Creature &a, const Creature &b);

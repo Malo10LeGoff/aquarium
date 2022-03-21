@@ -36,8 +36,11 @@ private :
    double            creature_size;
    T                 * couleur;
    Milieu & m_milieu;
+   double            collision_resistance;
    int               taille_a;
    int               taille_b;
+   int               lifetime_duration;
+   int               age;
 public:
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
@@ -55,9 +58,13 @@ public :                                           // Forme canonique :
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void collision(void);
+   bool DieFromeAging(void);
    void initCoords( int xLim, int yLim );
    int * getPos() const;
    int getId() const;
+   double getResistanceCollision() const;
+   int getLifetime() const;
+   int getAge() const;
    double getXt() ;
    double getYt() ;
    double getSize();

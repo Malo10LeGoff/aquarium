@@ -26,12 +26,25 @@ void Milieu::step(void)
 {
    cimg_forXY(*this, x, y) fillC(x, y, 0, white[0], white[1], white[2]);
 
-   for (std::vector<Creature>::iterator it = listeCreatures.begin(); it != listeCreatures.end(); ++it)
+   auto it = listeCreatures.begin();
+   while (it != listeCreatures.end())
    {
-
-      it->action(*this);
-      it->draw(*this);
-
+      cout << it->getAge() << " " <<it->getLifetime() << endl;
+      cout << it->DieFromeAging() << endl;
+      if (it->DieFromeAging()==true) 
+      {
+         cout <<"Creature "<<it->getId() << " died from aging"<<endl;
+         listeCreatures.erase(it);
+      }
+      else 
+      {
+       
+         cout<<"moving"<<endl;
+         it->action(*this);
+         it->draw(*this);
+         it++; 
+                           
+      }
    } // for
    collision();
 }
@@ -47,6 +60,10 @@ int Milieu::nbVoisins(const Creature &b)
    return nb;
 };
 
+int Milieu::getNbCreatures()
+{
+   return listeCreatures.size();
+}
 
 //marche pas
 std::vector<std::array<int,2>> Milieu::Surrounding(const Creature &a)
@@ -116,6 +133,8 @@ bool Milieu::detect(const Creature &a, const Creature &b)
 
 void Milieu::collision(void)
 {
+
+   std::vector<int> tmp_vector;
    for (std::vector<Creature>::iterator it_i = listeCreatures.begin(); it_i != listeCreatures.end(); ++it_i) {
       for (std::vector<Creature>::iterator it_j = listeCreatures.begin(); it_j != listeCreatures.end(); ++it_j) {
       if (it_j!=it_i) {
@@ -130,7 +149,30 @@ void Milieu::collision(void)
             cout << "Collision" << endl;
             (it_j)->collision();
             (it_i)->collision();
+
+            //does creatures survive collision 
+            cout << (double) std::rand()/RAND_MAX << endl;
+            if ( (double) std::rand()/RAND_MAX > (it_i)->getResistanceCollision())
+            {
+               tmp_vector.push_back((it_i->getId()));
+            }
          }
       }
-   }}
+   }
+   }
+   auto it = listeCreatures.begin();
+   while (it != listeCreatures.end())
+   {
+      if (std::find(tmp_vector.begin(), tmp_vector.end(), it->getId()) != tmp_vector.end()) 
+      {
+         cout << "Creature " << (it)->getId() << " died from collision" << endl;
+         listeCreatures.erase(it);
+      }
+      else 
+      {
+         it++;
+      }
+   } // for
+
 }
+

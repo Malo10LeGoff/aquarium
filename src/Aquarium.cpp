@@ -40,13 +40,19 @@ void Aquarium::run( void )
 
 
       if ( is_key() ) {
-         cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
+         cout << "You pressed key " << static_cast<unsigned char>( key() );
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) close();
       }
 
 
       flotte->step();
+      if (flotte->getNbCreatures()==0) 
+      {
+         cout<<"Every creatures died, simulation is over"<<endl;
+         close();
+      }
+
 
       display( *flotte );
       wait( delay );

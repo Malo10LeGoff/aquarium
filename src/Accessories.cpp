@@ -6,7 +6,7 @@ Accessories::Accessories()
     //add Shell
     if (rand()%2==1){
       float speedRed = -static_cast<float>(rand()) / RAND_MAX * 3;
-      float deathCo = static_cast<float>(rand()) / RAND_MAX * 3;
+      float deathCo = static_cast<float>(rand()) / (3*RAND_MAX);
       Shell *ptr_s = new Shell(speedRed,deathCo);
       accessories_.push_back(ptr_s); // accessories à passer private
     }
