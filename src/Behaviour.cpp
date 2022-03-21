@@ -186,7 +186,7 @@ PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p): m_moveSpeedMul
 }
 
 Vector PlanningBehaviour::moveDirection(const Vector creatureCoordinates,
-                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+                                        const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // TODO :
     return {0,0};
 }
