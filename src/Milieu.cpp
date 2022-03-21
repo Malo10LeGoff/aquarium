@@ -1,5 +1,6 @@
 #include "Milieu.h"
-
+#include "Sensors.h"
+#include "../lib/Vector.h"
 #include <cstdlib>
 #include <ctime>
 #include <math.h> 
@@ -65,7 +66,21 @@ std::vector<std::array<int,2>> Milieu::Surrounding(const Creature &a)
    return res;
 };
 
-
+bool Milieu::detection(const Creature&a, const Creature &b) {
+   std::list<InterfaceSensors *>::const_iterator it;
+   for (it=a.sensors->sensors_.begin();it!= a.sensors->sensors_.end();it++) {
+      Vector detection_zone_a = (*it)->getDetectionZone();
+      double dist;
+      int * pos_a = a.getPos();
+      int * pos_b = b.getPos();
+      double orientation_b = b.getOrient();
+      dist = std::sqrt((pos_a[0] - pos_b[0]) * (pos_a[0] - pos_b[0]) + (pos_a[1] - pos_b[1]) * (pos_b[1] - pos_b[1]));
+      if (dist <= detection_zone_a[0] && std::abs(detection_zone_a[2]-orientation_b)<=(detection_zone_a[1]/2)){
+         return 1;
+      };
+   };
+   return 0;
+};
 
 
 bool Milieu::detect(const Creature &a, const Creature &b)
@@ -96,6 +111,7 @@ bool Milieu::detect(const Creature &a, const Creature &b)
       }
    return 0;
 }
+
 
 
 void Milieu::collision(void)

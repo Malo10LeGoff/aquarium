@@ -30,9 +30,11 @@ public :
 
    void step( void );
    void collision(void);
+
    void addMember( const Creature & b ) { listeCreatures.push_back(b); listeCreatures.back().initCoords(width, height); }
    int nbVoisins( const Creature & b );
    bool detect(const Creature &a, const Creature &b);
+   bool detection(const Creature &a, const Creature &b);
    std::vector<std::array<int,2>> Surrounding(const Creature &a);
    
 };

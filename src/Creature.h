@@ -56,7 +56,6 @@ public :                                           // Forme canonique :
    void draw( UImg & support );
    void collision(void);
    void initCoords( int xLim, int yLim );
-
    int * getPos() const;
    int getId() const;
    double getXt() ;
