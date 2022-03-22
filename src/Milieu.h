@@ -33,6 +33,7 @@ public :
    void creatureDetectSurroundings();
    void moveCreatures();
    void draw();
+   void killCreatures();
 
    void handleCreatureCollision(void);
    void addMember( std::unique_ptr<Creature>& b ) ;

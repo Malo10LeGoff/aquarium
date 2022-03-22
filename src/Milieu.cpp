@@ -27,8 +27,12 @@ void Milieu::step(void)
     creatureDetectSurroundings();
     // move creatures
     moveCreatures();
+    // Calculate creature that have colided
+    // TODO : calculate creatures that have collided
     // handle creature collisions
     handleCreatureCollision();
+    // Kill creatures that need to die
+    killCreatures();
     //draw
     draw();
 }
@@ -132,6 +136,21 @@ void Milieu::draw() {
     for (auto& creature: listeCreatures) {
         creature->draw(*this);
     }
+}
+
+void Milieu::killCreatures() {
+    std::cout << "Number of creatures to kill : " << creaturesToKill.size() << "\n";
+    std::cout << "Creatures in the aquarium : " << getNbCreatures() << "\n";
+    for (auto id : creaturesToKill) {
+        listeCreatures.erase(std::remove_if(
+                listeCreatures.begin(), listeCreatures.end(),
+                [id](decltype(listeCreatures)::value_type const& c) {
+                    std::cout << "Killing Creature with id " << id << "\n";
+                    return c->getId() == id;
+                }), listeCreatures.end());
+    }
+    creaturesToKill = std::vector<int> {};
+
 }
 
 
