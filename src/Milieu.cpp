@@ -65,7 +65,7 @@ int Milieu::getNbCreatures()
    return listeCreatures.size();
 }
 
-std::vector<array<Vector,2>> Milieu::Surrounding(const Creature &a)
+std::vector<array<Vector,2>> Milieu::surrounding(const Creature &a)
 {
 
    std::vector<array<Vector,2>> res;
