@@ -184,11 +184,11 @@ void Creature::draw(UImg &support)
    for (it=access.begin();it!= access.end();it++) {
       if ((*it)->AccessoryType()==1)
       {
-         support.draw_circle(xt, yt, creature_size*1.3, red);
+         support.draw_ellipse(x, y, creature_size*2, creature_size, (-orientation) / M_PI * 180., red, 0.6);
       }
       if ((*it)->AccessoryType()==2)
       {
-         support.draw_ellipse(x, y, creature_size*1.3, creature_size / 3.5, -orientation / M_PI * 180., green);
+         support.draw_ellipse(x, y, creature_size*1.4, creature_size / 3, -orientation / M_PI * 180., green);
       }
       if ((*it)->AccessoryType()==3)
       {

@@ -24,13 +24,11 @@ Milieu::~Milieu(void)
 
 void Milieu::step(void)
 {
-   cimg_forXY(*this, x, y) fillC(x, y, 0, white[0], white[1], white[2]);
+   cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
 
    auto it = listeCreatures.begin();
    while (it != listeCreatures.end())
    {
-      cout << it->getAge() << " " <<it->getLifetime() << endl;
-      cout << it->DieFromeAging() << endl;
       if (it->DieFromeAging()==true) 
       {
          cout <<"Creature "<<it->getId() << " died from aging"<<endl;
@@ -38,8 +36,6 @@ void Milieu::step(void)
       }
       else 
       {
-       
-         cout<<"moving"<<endl;
          it->action(*this);
          it->draw(*this);
          it++; 
@@ -146,12 +142,10 @@ void Milieu::collision(void)
          double size_j = (it_j)->getSize();
          double dist = std::sqrt((x_i - x_j)*(x_i - x_j) + (y_i - y_j)*(y_i - y_j));
          if (dist<(size_i+size_j)){
-            cout << "Collision" << endl;
             (it_j)->collision();
             (it_i)->collision();
 
             //does creatures survive collision 
-            cout << (double) std::rand()/RAND_MAX << endl;
             if ( (double) std::rand()/RAND_MAX > (it_i)->getResistanceCollision())
             {
                tmp_vector.push_back((it_i->getId()));
