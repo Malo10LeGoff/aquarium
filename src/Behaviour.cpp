@@ -17,13 +17,16 @@ Vector GregariousBehaviour::moveDirection(const Vector creatureCoordinates,
         // e is [moveD , coordinates]
         moveD = moveD + e[0];
     }
-    moveD.x /= visibleCreatures.size();
-    moveD.y /= visibleCreatures.size();
-    // Normalize the vector
-    moveD = moveD.normalize();
-    // scale by the speed
-    moveD.x *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
-    moveD.y *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+    if (visibleCreatures.size() != 0) {
+        moveD.x /= visibleCreatures.size();
+        moveD.y /= visibleCreatures.size();
+        // Normalize the vector
+        moveD = moveD.normalize();
+        // scale by the speed
+        moveD.x *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+        moveD.y *= InterfaceBehaviour::moveSpeedMultiplier(visibleCreatures);
+    }
+
     return moveD;
 }
 
@@ -69,7 +72,7 @@ unsigned char * FearfulBehaviour::getColor()
 Vector FearfulBehaviour::moveDirection(const Vector creatureCoordinates,
                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     Vector moveD {0,0};
-    if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
+    if ((visibleCreatures.size() > (unsigned)this->maxNeighbours_) && (visibleCreatures.size() != 0)) {
         // Calculate the running direction
         for (auto const neighbour : visibleCreatures ){
             // *it is [moveDirection , coordinates]

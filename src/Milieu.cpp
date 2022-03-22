@@ -23,30 +23,16 @@ Milieu::~Milieu(void)
 
 void Milieu::step(void)
 {
-    //move creatures
-    // // calculate creature collisions
-   cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
-   auto it = listeCreatures.begin();
-   while (it != listeCreatures.end())
-   {
-      cout << (*it)->getAge() << " " <<(*it)->getLifetime() << endl;
-      cout << (*it)->dieFromeAging() << endl;
-      if ((*it)->dieFromeAging())
-      {
-         cout <<"Creature "<<(*it)->getId() << " died from aging"<<endl;
-         listeCreatures.erase(it);
-      }
-      else 
-      {
-       
-         cout<<"moving"<<endl;
-          (*it)->onMove(*this);
-         (*it)->draw(*this);
-         it++; 
-                           
-      }
-   } // for
-   collision();
+    // Detect surroundings
+    creatureDetectSurroundings();
+    // move creatures
+    moveCreatures();
+    // handle creature collisions
+    handleCreatureCollision();
+
+    //draw
+    draw();
+    std::cout << "CurrentNb Creatures : " << listeCreatures.size() << "\n";
 }
 
 
@@ -58,15 +44,15 @@ int Milieu::getNbCreatures()
 std::vector<array<Vector,2>> Milieu::surrounding(const Creature &a)
 {
 
-   std::vector<array<Vector,2>> res;
+   std::vector<array<Vector,2>> res {};
 
    for (auto const& creature: listeCreatures)
-      if (!(a == *creature) && detect(a,*creature))
+      if ((a != *creature) && detect(a,*creature))
       {
          
          Vector pos_tmp = creature->getPos();
          Vector speed  = creature->getSpeed();
-         array<Vector,2> tmp_ar = {speed,pos_tmp};
+         array<Vector,2> tmp_ar  {speed,pos_tmp};
          res.push_back(tmp_ar);
       }
    return res;
@@ -85,11 +71,10 @@ bool Milieu::detect(const Creature &a, const Creature &b)
             alpha_2 = std::abs(alpha_2 - 2*M_PI);
          }
       double alpha_1 = a.getSpeed().orientation();
-
       double dist_a_b = distanceVectors(pos_a,pos_b);
-
-      for (auto const &it :a.sensors->sensors_) {
-         if ((it->getDetectionRadius()>dist_a_b) && (it->getDetectionAngle()/2 > std::abs(alpha_2 - alpha_1)) && (it->getDetectionCoef()>b.accessories->camoCoef()))
+      std::vector<detection_caract> detectionZones = a.sensors->getDetectionZone(); // [ [detectionCoef, detectionRadius, DetectionAngle], ...]
+      for (auto const & detectionZone :detectionZones) {
+         if ((detectionZone[1]>dist_a_b) && (detectionZone[3]/2 > std::abs(alpha_2 - alpha_1)) && (detectionZone[0]>b.getCamoCoef()))
             {
                return true;
             }
@@ -101,7 +86,7 @@ bool Milieu::detect(const Creature &a, const Creature &b)
 
 
 
-void Milieu::collision(void) {
+void Milieu::handleCreatureCollision(void) {
     std::vector<int> tmp_vector{};
     for (auto &creature_i: listeCreatures) {
         for (auto &creature_j: listeCreatures) {
@@ -110,26 +95,8 @@ void Milieu::collision(void) {
                     cout << "Collision" << endl;
                     creature_i->onCreatureCollision();
                     creature_j->onCreatureCollision();
-                    //does creatures survive onCollision
-                    cout << (double) std::rand() / RAND_MAX << endl;
-                    if ((double) std::rand() / RAND_MAX > creature_i->getCollisionDeathProb()) {
-                        tmp_vector.push_back((creature_i->getId()));
-                    }
                 }
             }
-        }
-    }
-    auto it = listeCreatures.begin();
-    while (it != listeCreatures.end())
-    {
-        if (std::find(tmp_vector.begin(), tmp_vector.end(), (*it)->getId()) != tmp_vector.end())
-        {
-            cout << "Creature " << (*it)->getId() << " died from onCollision" << endl;
-            listeCreatures.erase(it);
-        }
-        else
-        {
-            ++it;
         }
     }
 
@@ -151,7 +118,7 @@ void Milieu::moveCreatures() {
     }
 }
 
-void Milieu::detectSurroundings() {
+void Milieu::creatureDetectSurroundings() {
     for (auto & creature : listeCreatures){
         creature->detectSurroundings();
     }
@@ -160,6 +127,13 @@ void Milieu::detectSurroundings() {
 
 void Milieu::addCreatureToKill(int i) {
     creaturesToKill.push_back(i);
+}
+
+void Milieu::draw() {
+    cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
+    for (auto& creature: listeCreatures) {
+        creature->draw(*this);
+    }
 }
 
 

@@ -12,7 +12,7 @@ The ecosystem is composed of multiple pieces.
 
 ### Creatures
 - [x] Drawable 
-- [ ] Handles collision
+- [ ] Handles handleCreatureCollision
     - [x] Size
     - [ ] Elliptic hitbox
 - [x] Can move : 
@@ -29,7 +29,7 @@ The ecosystem is composed of multiple pieces.
     - [x] Can have none or many
     - [ ] Shell
         - [ ] Drawable
-        - [x] Changes probability of dying in a collision
+        - [x] Changes probability of dying in a handleCreatureCollision
     - [ ] Camo
         - [ ] Drawable
         - [x] Lower chance of being detected

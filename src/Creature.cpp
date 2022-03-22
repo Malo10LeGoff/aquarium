@@ -13,7 +13,7 @@ int Creature::next = 0;
 
 Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
-   creature_size = AFF_SIZE;
+    setSize(AFF_SIZE);
    accessories = std::unique_ptr<Accessories>(new Accessories());
    sensors = std::unique_ptr<Sensors>(new Sensors());
    behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
@@ -30,12 +30,12 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 Creature &Creature::operator=(const Creature &c) {
 
     id = c.id;
-    speed = Vector(c.speed);
+    setSpeed(Vector(c.speed));
     hitbox = CircleHitbox(c.hitbox);
     age = c.age;
     lifetime_duration = c.lifetime_duration;
     baseDeathProbOnCollision = c.baseDeathProbOnCollision;
-    creature_size = c.creature_size;
+    setSize(c.getSize());
     taille_a = c.taille_a;
     taille_b = c.taille_b;
 
@@ -50,10 +50,9 @@ Creature &Creature::operator=(const Creature &c) {
 Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
    id = b.id;
-   position = Vector(b.position);
-   creature_size = b.creature_size;
-   speed = b.speed;
-   creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
+    setPos(Vector(b.position));
+   setSize(b.getSize());
+    setSpeed( b.speed);
    age = 1;
     baseDeathProbOnCollision = b.baseDeathProbOnCollision;
    lifetime_duration = b.lifetime_duration;
@@ -79,7 +78,11 @@ void Creature::onMove(Milieu &monMilieu)
 {
     // Get the speed that the behaviour gives
     previous_speed = speed;
-    speed = behaviour->moveDirection(position, visibleCreatures);
+    Vector moveD = behaviour->moveDirection(position, getVisibleCreatures());
+    setSpeed(moveD);
+    if (moveD == Vector(0,0)) {
+        setSpeed(previous_speed);
+    }
     // Once all that is done actually update the position of the creature
     move();
     handleWallCollision(m_milieu.getWidth(), m_milieu.getHeight());
@@ -92,7 +95,7 @@ void Creature::move() {
     // align to grid
     new_position.alignToGrid();
 
-    position = new_position;
+    setPos(new_position);
 }
 
 void Creature::handleWallCollision(int xLim, int yLim){
@@ -114,17 +117,17 @@ bool Creature::dieFromeAging() const
 
 double Creature::getSize() const
 {
-   return creature_size;
+   return hitbox.radius;
 };
 
 void Creature::draw(UImg &support)
 {
-   double xt = position.x + cos(speed.orientation()) * creature_size / 2.1;
-   double yt = position.y - sin(speed.orientation()) * creature_size / 2.1;
+   double xt = position.x + cos(speed.orientation()) * getSize() / 2.1;
+   double yt = position.y - sin(speed.orientation()) * getSize() / 2.1;
    unsigned char white[] = {255,255,255};
-   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -speed.orientation() / M_PI * 180., couleur);
-   support.draw_circle(xt, yt, creature_size / 2., couleur);
-   support.draw_circle(xt, yt, creature_size / 6., white);
+   support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -speed.orientation() / M_PI * 180., couleur);
+   support.draw_circle(xt, yt, getSize() / 2., couleur);
+   support.draw_circle(xt, yt, getSize() / 6., white);
    unsigned char black[] = {0,0,0};
    unsigned char red[] = {255,0,0};
    unsigned char green[] = {0,255,0};
@@ -132,20 +135,20 @@ void Creature::draw(UImg &support)
    for (auto const &it :accessories->accessories_) {
       if (it->AccessoryType()==1)
       {
-         support.draw_ellipse(position.x, position.y, creature_size*2, creature_size, (-getOrient()) / M_PI * 180., red, 0.6);
+         support.draw_ellipse(position.x, position.y, getSize()*2, creature_size, (-getOrient()) / M_PI * 180., red, 0.6);
       }
       if (it->AccessoryType()==2)
       {
-         support.draw_ellipse(position.x, position.y, creature_size*1.4, creature_size / 3, -getOrient() / M_PI * 180., green);
+         support.draw_ellipse(position.x, position.y, getSize()*1.4, creature_size / 3, -getOrient() / M_PI * 180., green);
       }
       if (it->AccessoryType()==3)
       {
-         support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., (-getOrient()+M_PI/2) / M_PI * 180., behaviour->getColor());
+         support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., (-getOrient()+M_PI/2) / M_PI * 180., behaviour->getColor());
       }
    }
 
-   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -getOrient() / M_PI * 180., behaviour->getColor(),opacity);
-   support.draw_circle(position.x, position.y, creature_size / 2., behaviour->getColor(),opacity);
+   support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -getOrient() / M_PI * 180., behaviour->getColor(),opacity);
+   support.draw_circle(position.x, position.y, getSize() / 2., behaviour->getColor(),opacity);
 }
 
 
@@ -196,6 +199,7 @@ void Creature::setOrient(double ori)
 
 void Creature::setPos(Vector v) {
     position = v;
+    updateHitboxPosition();
 }
 
 void Creature::setSpeed(Vector v) {
@@ -203,7 +207,7 @@ void Creature::setSpeed(Vector v) {
 }
 
 void Creature::detectSurroundings() {
-    visibleCreatures = m_milieu.surrounding(*this);
+    setVisibleCreatures(m_milieu.surrounding(*this));
 }
 
 bool operator!=(const Creature &b1, const Creature &b2) {
@@ -225,7 +229,32 @@ void Creature::onCreatureCollision() {
     if (shouldDie(mt)) {
         m_milieu.addCreatureToKill(id);
     }
-};
+}
+
+void Creature::setVisibleCreatures(std::vector<std::array<Vector, 2>> t_visibleCreatures) {
+    visibleCreatures = t_visibleCreatures;
+}
+
+std::vector<std::array<Vector, 2>> Creature::getVisibleCreatures() const {
+    return visibleCreatures;
+}
+
+float Creature::getCamoCoef() const {
+    const double accessoriesCamoCoef = accessories->camoCoef();
+    if (accessoriesCamoCoef !=1) {
+        return accessoriesCamoCoef;
+    } else { // No camo in the accessories
+        return baseCamoCoef;
+    }
+}
+
+void Creature::updateHitboxPosition() {
+    hitbox.center = position;
+}
+
+void Creature::setSize(double s) {
+    hitbox.radius = s;
+}
 
 
 

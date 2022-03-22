@@ -30,10 +30,11 @@ public :
    int getHeight( void ) const { return height; };
 
    void step( void );
-   void detectSurroundings();
+   void creatureDetectSurroundings();
    void moveCreatures();
+   void draw();
 
-   void collision(void);
+   void handleCreatureCollision(void);
    void addMember( std::unique_ptr<Creature>& b ) ;
    void addRandomMember();
    int getNbCreatures(void);

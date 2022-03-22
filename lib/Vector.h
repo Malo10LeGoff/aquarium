@@ -32,6 +32,8 @@ struct Vector {
     friend Vector operator*(const Vector v, double k);
     friend Vector operator*(double k, const Vector v);
     friend Vector operator/(const Vector v,double k);
+    friend bool operator==( const Vector & a, const Vector & b );
+
 };
 // Binary operators
 double det(const Vector &a, const Vector &b);

@@ -11,6 +11,7 @@
 #include <memory>
 #include <array>
 #include <iostream>
+#include "constants.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ private :
    T                 * couleur;
    Milieu & m_milieu;
    double            baseDeathProbOnCollision = 0.05;
+   double baseCamoCoef = baseCreatureCamoCoef;
    std::vector<std::array<Vector,2>> visibleCreatures {};
    int               taille_a = Creature::AFF_SIZE;
    int               taille_b = Creature::AFF_SIZE;
@@ -71,6 +73,8 @@ public :                                           // Forme canonique :
     void setSpeed(Vector vector);
     double getBaseSpeed() const {return baseSpeed;};
     void setBaseSpeed(double t_baseSpeed) {baseSpeed = t_baseSpeed;}
+    void setVisibleCreatures(std::vector<std::array<Vector,2>> t_visibleCreatures);
+    std::vector<std::array<Vector,2>> getVisibleCreatures() const ;
     int getId() const;
     bool dieFromeAging(void) const;
     double getCollisionDeathProb() const;
@@ -79,12 +83,15 @@ public :                                           // Forme canonique :
     double getOrient() const;
     void setOrient(double ori);
     CircleHitbox getHitbox() const ;
+    void updateHitboxPosition();
     double getSize() const ;
+    void setSize(double s);
 
     friend bool operator==( const Creature & b1, const Creature & b2 );
     friend bool operator!=( const Creature & b1, const Creature & b2 );
 
 
+    float getCamoCoef() const;
 };
 
 

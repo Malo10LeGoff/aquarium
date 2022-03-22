@@ -57,6 +57,7 @@ const double minDetectionCoefEars = maxDetectionCoefEyes * 0.0001;
 const double baseSize = 8 ;
 const double baseSpeed = 10;
 const double time_delta = 1;
-const int baseDyingAge = 100;
+const int baseDyingAge = 500;
+const float baseCreatureCamoCoef = 0.05;
 
 #endif //AQUARIUM_CONSTANTS_H
