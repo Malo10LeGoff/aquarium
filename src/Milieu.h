@@ -43,6 +43,8 @@ public :
    std::vector<array<Vector,2>> surrounding(const Creature &a);
 
    void addCreatureToKill(int i);
+
+    void ageCreature();
 };
 
 

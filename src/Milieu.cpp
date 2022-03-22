@@ -31,6 +31,8 @@ void Milieu::step(void)
     // TODO : calculate creatures that have collided
     // handle creature collisions
     handleCreatureCollision();
+    // add 1 to creature ages
+    ageCreature();
     // Kill creatures that need to die
     killCreatures();
     //draw
@@ -151,6 +153,12 @@ void Milieu::killCreatures() {
     }
     creaturesToKill = std::vector<int> {};
 
+}
+
+void Milieu::ageCreature() {
+    for (auto & creature : listeCreatures) {
+        creature->onAge();
+    }
 }
 
 
