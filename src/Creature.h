@@ -38,7 +38,7 @@ private :
    std::vector<std::array<Vector,2>> visibleCreatures {};
    int               taille_a;
    int               taille_b;
-   int               lifetime_duration= 1000;
+   int               lifetime_duration= rand()%300 + 500;
    int               age = 0;
 public:
    int               id;
@@ -65,6 +65,7 @@ public :                                           // Forme canonique :
 
 
    Vector getPos() const;
+   Vector getSpeed() const;
    void setPos(Vector v);
    int getId() const;
    bool dieFromeAging(void) const;
