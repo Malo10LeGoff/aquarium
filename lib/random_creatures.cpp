@@ -11,7 +11,7 @@ double clip(double value, double lower, double higher) {
 double randomShellSpeedCoef() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (minSpeedShell - maxSpeedShell) / 2;
+    double const mean = (maxSpeedShell + minSpeedShell) / 2;
     // std so that 95% are between min and max
     double const stddev = (maxSpeedShell - mean) / 2;
     std::normal_distribution<double> shellSpeed (mean, stddev);
@@ -22,7 +22,7 @@ double randomShellSpeedCoef() {
 double randomShellDeathCoef() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (minDeathCoefShell - maxDeathCoefShell) / 2;
+    double const mean = (maxDeathCoefShell + minDeathCoefShell) / 2;
     // std so that 95% are between min and max
     double const stddev = (maxDeathCoefShell - mean) / 2;
     std::normal_distribution<double> shellDeath (mean, stddev);
@@ -33,7 +33,7 @@ double randomShellDeathCoef() {
 double randomCamoCoef() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (minCamoCoefCamo - maxCamoCoefCamo) / 2;
+    double const mean = (maxCamoCoefCamo + minCamoCoefCamo) / 2;
     // std so that 95% are between min and max
     double const stddev = (maxCamoCoefCamo - mean) / 2;
     std::normal_distribution<double> camoCoef (mean, stddev);
@@ -44,7 +44,7 @@ double randomCamoCoef() {
 double randomSpeedCoefFins() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (minSpeedFins - maxSpeedFins) / 2;
+    double const mean = (maxSpeedFins + minSpeedFins) / 2;
     // std so that 95% are between min and max
     double const stddev = (maxSpeedFins - mean) / 2;
     std::normal_distribution<double> finSpeed (mean, stddev);
@@ -70,10 +70,19 @@ Vector randomSpeed() {
     return speed(mt) * Vector(1,0).rotate(radian(mt));
 }
 
+double randomBaseSpeed() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    const double mean = baseSpeed;
+    const double stddev = (1.3*baseSpeed - baseSpeed) / 2;
+    std::normal_distribution<> randomBaseSpeed (mean, stddev);
+    return randomBaseSpeed(mt);
+}
+
 double randomDetectionAngleEyes() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxDetectionAngleEyes -  minDetectionAngleEyes ) / 2;
+    double const mean = (maxDetectionAngleEyes +  minDetectionAngleEyes ) / 2;
     double const stddev = (maxDetectionAngleEyes -  mean) / 2;
     std::normal_distribution<> eyesDetectionAngle (mean, stddev );
     return clip(eyesDetectionAngle(mt), 0 , 2* M_PI);
@@ -82,7 +91,7 @@ double randomDetectionAngleEyes() {
 double randomRadiusEyes() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxRadiusEyes - minRadiusEyes) /2;
+    double const mean = (maxRadiusEyes + minRadiusEyes) /2;
     double const stddev = (maxRadiusEyes - mean) / 2;
     std::normal_distribution<> eyesRadius (mean, stddev);
     return clip(eyesRadius(mt), 0, 100000000);
@@ -91,7 +100,7 @@ double randomRadiusEyes() {
 double randomDetectionCoefEyes() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxDetectionCoefEyes - minDetectionCoefEyes) /2;
+    double const mean = (maxDetectionCoefEyes + minDetectionCoefEyes) /2;
     double const stddev = (maxDetectionCoefEyes - mean ) /3;
     std::normal_distribution<> eyesDetectionCoef (mean, stddev);
     return clip(eyesDetectionCoef(mt) , minDetectionCoef, maxDetectionCoef);
@@ -100,7 +109,7 @@ double randomDetectionCoefEyes() {
 double randomRadiusEars() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxRadiusEars - minRadiusEars) /2;
+    double const mean = (maxRadiusEars + minRadiusEars) /2;
     double const stddev = (maxRadiusEars - mean ) /2;
     std::normal_distribution<> earsRadius (mean, stddev);
     return clip(earsRadius(mt) , 0, 100000000);
@@ -109,7 +118,7 @@ double randomRadiusEars() {
 double randomDetectionCoefEars() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxDetectionCoefEars - minDetectionCoefEars) /2;
+    double const mean = (maxDetectionCoefEars + minDetectionCoefEars) /2;
     double const stddev = (maxDetectionCoefEars - mean ) /3;
     std::normal_distribution<> earsDetectionCoef (mean, stddev);
     return clip(earsDetectionCoef(mt) , minDetectionCoef, maxDetectionCoef);
@@ -118,7 +127,7 @@ double randomDetectionCoefEars() {
 int randomMaxNeighboursFearful() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = ( maxMaxNeighbours - minMaxNeighbours) / 2.0 ;
+    double const mean = ( maxMaxNeighbours + minMaxNeighbours) / 2.0 ;
     double const stddev = (maxMaxNeighbours - mean) / 2.0;
     std::normal_distribution< > maxNeighbours (mean, stddev);
     return static_cast<int>(clip(round(maxNeighbours(mt)), 0, 100));
@@ -127,7 +136,7 @@ int randomMaxNeighboursFearful() {
 double randomFleeingSpeed() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxFleeingSpeed - minFleeingSpeed) /2.0;
+    double const mean = (maxFleeingSpeed + minFleeingSpeed) /2.0;
     double const stddev = (maxFleeingSpeed -mean) / 2.0;
     std::normal_distribution<> fleeingSpeed (mean, stddev);
     return clip(fleeingSpeed(mt), 0, 10);
@@ -136,7 +145,7 @@ double randomFleeingSpeed() {
 double randomSpeedKamikaze( ) {
     std::random_device rd;
     std::mt19937 mt(rd());
-    double const mean = (maxSpeedKamikaze - minSpeedKamikaze) / 2.0;
+    double const mean = (maxSpeedKamikaze + minSpeedKamikaze) / 2.0;
     double const stddev = (maxSpeedKamikaze - mean ) / 2;
     std::normal_distribution<> speedKamikaze (mean, stddev);
     return clip(speedKamikaze(mt), 0, 10);
