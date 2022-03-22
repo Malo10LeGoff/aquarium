@@ -23,14 +23,15 @@ Milieu::~Milieu(void)
 
 void Milieu::step(void)
 {
+    //move creatures
+    // // calculate creature collisions
    cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
-
    auto it = listeCreatures.begin();
    while (it != listeCreatures.end())
    {
       cout << (*it)->getAge() << " " <<(*it)->getLifetime() << endl;
-      cout << (*it)->DieFromeAging() << endl;
-      if ((*it)->DieFromeAging())
+      cout << (*it)->dieFromeAging() << endl;
+      if ((*it)->dieFromeAging())
       {
          cout <<"Creature "<<(*it)->getId() << " died from aging"<<endl;
          listeCreatures.erase(it);
@@ -39,7 +40,7 @@ void Milieu::step(void)
       {
        
          cout<<"moving"<<endl;
-         (*it)->action(*this);
+          (*it)->onMove(*this);
          (*it)->draw(*this);
          it++; 
                            
@@ -101,9 +102,9 @@ void Milieu::collision(void) {
             if (creature_i->getId() != creature_j->getId()) {
                 if (creature_j->getHitbox().isColliding(creature_i->getHitbox())) {
                     cout << "Collision" << endl;
-                    creature_i->collision();
-                    creature_j->collision();
-                    //does creatures survive collision
+                    creature_i->onCollision();
+                    creature_j->onCollision();
+                    //does creatures survive onCollision
                     cout << (double) std::rand() / RAND_MAX << endl;
                     if ((double) std::rand() / RAND_MAX > creature_i->getResistanceCollision()) {
                         tmp_vector.push_back((creature_i->getId()));
@@ -117,7 +118,7 @@ void Milieu::collision(void) {
     {
         if (std::find(tmp_vector.begin(), tmp_vector.end(), (*it)->getId()) != tmp_vector.end())
         {
-            cout << "Creature " << (*it)->getId() << " died from collision" << endl;
+            cout << "Creature " << (*it)->getId() << " died from onCollision" << endl;
             listeCreatures.erase(it);
         }
         else
@@ -132,10 +133,32 @@ void Milieu::addMember(std::unique_ptr<Creature>& b) {
 }
 
 void Milieu::addRandomMember() {
-    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder> (builder);
+    std::shared_ptr<RandomBuilder> b = std::make_shared<RandomBuilder> (builder);
     builder.setBuilder(b);
     std::unique_ptr<Creature> randomCreature = builder.make();
     addMember(randomCreature);
+}
+
+void Milieu::moveCreatures() {
+    for (auto & creature : listeCreatures) {
+        creature->onMove(*this);
+    }
+}
+
+void Milieu::detectSurroundings() {
+    for (auto & creature : listeCreatures){
+        creature->detectSurroundings();
+    }
+}
+
+std::vector<array<Vector, 2>> Milieu::getSurroundings(Creature& creature) {
+    std::vector<array<Vector,2>> ret {} ;
+    for (auto & creature_i: listeCreatures) {
+        if (creature != *creature_i && detect(creature, *creature_i)) {
+            ret.push_back(std::array<Vector,2>{creature_i->previous_speed, creature_i->getPos()});
+        }
+    }
+    return ret;
 }
 
 

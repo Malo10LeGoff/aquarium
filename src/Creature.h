@@ -35,6 +35,7 @@ private :
    T                 * couleur;
    Milieu & m_milieu;
    double            collision_resistance;
+   std::vector<std::array<Vector,2>> visibleCreatures {};
    int               taille_a;
    int               taille_b;
    int               lifetime_duration= 1000;
@@ -44,34 +45,42 @@ public:
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
    std::unique_ptr<InterfaceBehaviour> behaviour;
+   Vector previous_speed;
    
 private :
-   void move(int xLim, int yLim );
-  
+    void move();
 
 public :                                           // Forme canonique :
    explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
    Creature& operator=(const Creature& c);                              // Operateur d'affectation binaire par defaut
-   void action( Milieu & monMilieu );
+   void detectSurroundings() ;
+   void onMove(Milieu & monMilieu );
+   void onCollide(int xlim, int ylim);
+   void onCreatureCollision(void);
+   void onAge();
    void draw( UImg & support );
-   void collision(void);
+
+
 
    Vector getPos() const;
    void setPos(Vector v);
    int getId() const;
-   bool DieFromeAging(void);
+   bool dieFromeAging(void) const;
    double getResistanceCollision() const;
    int getLifetime() const;
    int getAge() const;
    double getOrient() const;
    void setOrient(double ori);
    CircleHitbox getHitbox() const ;
-   friend bool operator==( const Creature & b1, const Creature & b2 );
     double getSize() const ;
     void setSpeed(Vector vector);
     void clip(int xlim, int ylim) ;
+
+    friend bool operator==( const Creature & b1, const Creature & b2 );
+    friend bool operator!=( const Creature & b1, const Creature & b2 );
+
 };
 
 

@@ -82,35 +82,26 @@ double Creature::getResistanceCollision() const
     return collision_resistance;
 }
 
-void Creature::move(int xLim, int yLim) {
-    age +=1;
+void Creature::move() {
    // calculate new position
    Vector dV = speed * dt ;
    Vector new_position = position + dV;
-   // handle box collisions
-   if ((new_position.x < 0) || (new_position.x > xLim )){
-      speed.reflectY();
-   }
-   if ((new_position.y < 0) || (new_position.y > yLim))
-   {
-      speed.reflectX();
-   }
     // align to grid
    new_position.alignToGrid();
 
-   // Clip to bounds
-   new_position.clip(0, xLim,0,yLim);
 
    position = new_position;
 }
 
-void Creature::action(Milieu &monMilieu)
+void Creature::onMove(Milieu &monMilieu)
 {
-
-    move(monMilieu.getWidth(), monMilieu.getHeight());
+    // Get the speed that the behaviour gives
+    speed = behaviour->moveDirection(position, visibleCreatures);
+    // Once all that is done actually update the position of the creature
+    move( );
 }
 
-bool Creature::DieFromeAging()
+bool Creature::dieFromeAging() const
 {
    return age >= lifetime_duration;
 };
@@ -188,8 +179,16 @@ CircleHitbox Creature::getHitbox(void) const
    return {hitbox};
 };
 
-void Creature::collision(void) 
-{
+void Creature::onCollision(int xLim, int yLim){
+// handle box collisions
+    if ((new_position.x < 0) || (new_position.x > xLim )){
+    speed.reflectY();
+    }
+    if ((new_position.y < 0) || (new_position.y > yLim))
+    {
+    speed.reflectX();
+    }
+    //todo : calculate whether the creature should die
    speed.rotate(M_PI);
 };
 
@@ -208,6 +207,18 @@ void Creature::setSpeed(Vector v) {
 
 void Creature::clip(int xlim, int ylim) {
     position.clip(0, xlim, 0, ylim);
+}
+
+void Creature::detectSurroundings() {
+    visibleCreatures = m_milieu.surroundings(*this);
+}
+
+bool operator!=(const Creature &b1, const Creature &b2) {
+    return !(b1 == b2);
+}
+
+void Creature::onAge() {
+    ++age;
 };
 
 
