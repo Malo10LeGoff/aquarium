@@ -36,7 +36,7 @@ public :
    int nbVoisins( const Creature & b );
    bool detect(const Creature &a, const Creature &b);
    bool detection(const Creature &a, const Creature &b);
-   std::vector<Vector> Surrounding(const Creature &a);
+   std::vector<array<Vector,2>> surrounding(const Creature &a);
 
 };
 

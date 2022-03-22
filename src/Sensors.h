@@ -67,6 +67,7 @@ public:
     std::string getType() const override;
     float getDetectionRadius() const override;
     float getDetectionCoef() const override;
+    float getDetectionAngle() const override;
     std::vector<detection_caract> getDetectionZone() override;
     std::unique_ptr<InterfaceSensors> clone() override;
 
@@ -74,6 +75,7 @@ private:
     std::string type;
     float detectionCoef_;
     float detectionRadius_;
+    float detectionAngle_;
 };
 
 #endif

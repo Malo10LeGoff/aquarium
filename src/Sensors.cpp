@@ -28,7 +28,7 @@ std::vector<detection_caract> Sensors::getDetectionZone() {
 }
 
 void Sensors::add(std::unique_ptr<InterfaceSensors>& sensor) {
-    // TODO : implemet this
+    sensors_.push_back(std::move(sensor));
 }
 
 void Sensors::remove(int idx) {
@@ -111,6 +111,7 @@ Ears::Ears(float detectionCoef,float detectionRadius)
     type = "Ears";
     detectionCoef_ = detectionCoef;
     detectionRadius_ = detectionRadius;
+    detectionAngle_= 2*M_PI;
 }
 
 std::string Ears::getType() const
@@ -126,6 +127,11 @@ float Ears::getDetectionRadius() const
 float Ears::getDetectionCoef() const
 {
     return detectionCoef_;
+}
+
+float Ears::getDetectionAngle() const
+{
+    return detectionAngle_;
 }
 
 std::vector<detection_caract> Ears::getDetectionZone() {

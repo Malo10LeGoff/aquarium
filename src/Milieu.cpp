@@ -65,17 +65,19 @@ int Milieu::getNbCreatures()
    return listeCreatures.size();
 }
 
-//marche pas
-std::vector<Vector> Milieu::Surrounding(const Creature &a)
+std::vector<array<Vector,2>> Milieu::surrounding(const Creature &a)
 {
 
-   std::vector<Vector> res;
+   std::vector<array<Vector,2>> res;
 
    for (auto const& creature: listeCreatures)
       if (!(a == *creature) && detect(a,*creature))
       {
+         
          Vector pos_tmp = creature->getPos();
-         res.push_back(pos_tmp);
+         Vector speed  = creature->getSpeed();
+         array<Vector,2> tmp_ar = {speed,pos_tmp};
+         res.push_back(tmp_ar);
       }
    return res;
 };
@@ -83,13 +85,28 @@ std::vector<Vector> Milieu::Surrounding(const Creature &a)
 
 bool Milieu::detect(const Creature &a, const Creature &b)
 {
-   for (auto const& sensor : a.sensors->sensors_) {
-         double dist;
-         Vector pos_a = a.getPos();
-         Vector pos_b = b.getPos();
 
+      Vector pos_a = a.getPos();
+      Vector pos_b = b.getPos();
+      
+      double alpha_2 = (pos_b-pos_a).orientation();
+      if (alpha_2 > M_PI)
+         {
+            alpha_2 = std::abs(alpha_2 - 2*M_PI);
+         }
+      double alpha_1 = a.getSpeed().orientation();
+
+      double dist_a_b = distanceVectors(pos_a,pos_b);
+
+      for (auto const &it :a.sensors->sensors_) {
+         if ((it->getDetectionRadius()>dist_a_b) && (it->getDetectionAngle()/2 > std::abs(alpha_2 - alpha_1)) && (it->getDetectionCoef()>b.accessories->camoCoef()))
+            {
+               return true;
+            }
       }
-   return true;
+         
+      
+   return false;
 }
 
 

@@ -37,7 +37,7 @@ private :
    double            collision_resistance;
    int               taille_a;
    int               taille_b;
-   int               lifetime_duration= 1000;
+   int               lifetime_duration= rand()%300 + 500;
    int               age = 0;
 public:
    int               id;
@@ -59,6 +59,7 @@ public :                                           // Forme canonique :
    void collision(void);
 
    Vector getPos() const;
+   Vector getSpeed() const;
    void setPos(Vector v);
    int getId() const;
    bool DieFromeAging(void);
