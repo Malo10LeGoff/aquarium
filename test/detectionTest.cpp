@@ -16,9 +16,14 @@ TEST(Testdetection, TestdetectionIsTrue) {
    a.setSpeed(Vector {10,0});
    b.setSpeed(Vector {0,0});
 
+   cout << a.getPos().x <<" "<< a.getPos().y << endl;
+   cout << a.getSpeed().x <<" "<< a.getSpeed().y << endl;
    std::unique_ptr<InterfaceSensors> s = std::unique_ptr<Ears>(new Ears(1,1000));
    a.sensors->add(s);
+
+   cout << a.sensors->sensors_.size() << endl;
    bool test = ecosysteme.getMilieu().detect(a,b);
+
    if (test) {
       cout <<"Creature a detected b" <<endl;
    }
