@@ -32,7 +32,12 @@ public :
    void collision(void);
    void addMember( std::unique_ptr<Creature>& b ) ;
    void addRandomMember();
-   
+   int getNbCreatures(void);
+   int nbVoisins( const Creature & b );
+   bool detect(const Creature &a, const Creature &b);
+   bool detection(const Creature &a, const Creature &b);
+   std::vector<Vector> Surrounding(const Creature &a);
+
 };
 
 

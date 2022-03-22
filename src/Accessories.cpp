@@ -2,7 +2,6 @@
 
 
 
-
 float Accessories::speedCoef() const
 {
     float coef =1 ;
@@ -63,6 +62,10 @@ Shell::Shell(float speedReductionCoef, float deathCoef)
     deathCoef_ = deathCoef;
 }
 
+int Shell::AccessoryType() const
+{
+    return 1;
+}
 
 float Shell::speedCoef() const
 {
@@ -92,6 +95,11 @@ std::unique_ptr<InterfaceAccessory> Shell::clone() {
 Camo::Camo(float camoCoef) 
 {
     camoCoef_ = camoCoef;
+}
+
+int Camo::AccessoryType() const
+{
+    return 2;
 }
 
 
@@ -124,6 +132,7 @@ float Fins::speedCoef() const
     return speedCoef_;
 }
 
+
 Fins::Fins(const Fins &f) {
     speedCoef_ = f.speedCoef_;
 }
@@ -135,4 +144,9 @@ Fins &Fins::operator=(const Fins &f) {
 
 std::unique_ptr<InterfaceAccessory> Fins::clone() {
     return std::unique_ptr<InterfaceAccessory>(new Fins(*this));
+}
+
+int Fins::AccessoryType() const
+{
+    return 3;
 }

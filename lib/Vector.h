@@ -16,8 +16,10 @@ struct Vector {
     // Unary operators
     Vector normalize() const;
     double orientation() const; //radian
-    Vector reflectX() const;
-    Vector reflectY() const;
+    void reflectX();
+    void reflectY();
+    void clip(double xMin, double xMax, double yMin, double yMax);
+    void alignToGrid();
 
     // In place unary operators
     Vector rotate(double radian);
@@ -34,7 +36,7 @@ struct Vector {
 // Binary operators
 double det(const Vector &a, const Vector &b);
 double scalar(const Vector &a, const Vector &b);
-double distance(const Vector &a, const Vector &b);
+double distanceVectors(const Vector &a, const Vector &b);
 // Unary operators
 double norm(const Vector &v);
 

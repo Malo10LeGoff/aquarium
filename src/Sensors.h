@@ -34,7 +34,7 @@ public:
     void add(std::unique_ptr<InterfaceSensors> &sensor);
     void remove(int idx);
     std::unique_ptr<InterfaceSensors> clone() override;
-private:
+
     std::vector<std::unique_ptr<InterfaceSensors> > sensors_;
 };
 

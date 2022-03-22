@@ -18,6 +18,9 @@ public:
         return 0;
     }
     virtual std::unique_ptr<InterfaceAccessory> clone() = 0 ;
+    virtual int AccessoryType() const {
+        return 0;
+    }
 };
 
 
@@ -45,6 +48,7 @@ public:
     float speedCoef() const override;
     float deathCoef() const override;
     std::unique_ptr<InterfaceAccessory> clone() override;
+    int AccessoryType() const;
 private:
     float speedReductionCoef_;
     float deathCoef_;
@@ -58,6 +62,7 @@ public:
     Camo& operator=(const Camo& c);
     float camoCoef() const override;
     std::unique_ptr<InterfaceAccessory> clone() override;
+    int AccessoryType() const;
 private:
     float camoCoef_;
 
@@ -71,6 +76,7 @@ public:
     Fins& operator=(const Fins& f);
     float speedCoef() const override;
     std::unique_ptr<InterfaceAccessory> clone() override;
+    int AccessoryType() const;
 private:
     float speedCoef_;
 };

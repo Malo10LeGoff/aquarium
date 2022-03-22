@@ -34,8 +34,11 @@ private :
    double            creature_size;
    T                 * couleur;
    Milieu & m_milieu;
+   double            collision_resistance;
    int               taille_a;
    int               taille_b;
+   int               lifetime_duration= 1000;
+   int               age = 0;
 public:
    int               id;
    std::unique_ptr<Accessories>       accessories;
@@ -58,12 +61,17 @@ public :                                           // Forme canonique :
    Vector getPos() const;
    void setPos(Vector v);
    int getId() const;
+   bool DieFromeAging(void);
+   double getResistanceCollision() const;
+   int getLifetime() const;
+   int getAge() const;
    double getOrient() const;
    void setOrient(double ori);
    CircleHitbox getHitbox() const ;
    friend bool operator==( const Creature & b1, const Creature & b2 );
     double getSize() const ;
     void setSpeed(Vector vector);
+    void clip(int xlim, int ylim) ;
 };
 
 

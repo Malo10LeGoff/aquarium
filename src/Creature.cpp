@@ -14,8 +14,6 @@ int Creature::next = 0;
 
 Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
-
-    id = ++next;
    creature_size = AFF_SIZE;
    cout << "const Creature (" << id << ") par defaut" << endl;
    accessories = std::unique_ptr<Accessories>(new Accessories());
@@ -32,12 +30,15 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 
    taille_a = 3;
    taille_b = 3;
-
 }
 Creature &Creature::operator=(const Creature &c) {
+
     id = c.id;
     speed = Vector(c.speed);
     hitbox = CircleHitbox(c.hitbox);
+    age = c.age;
+    lifetime_duration = c.lifetime_duration;
+    collision_resistance = c.collision_resistance;
     creature_size = c.creature_size;
     taille_a = c.taille_a;
     taille_b = c.taille_b;
@@ -52,13 +53,15 @@ Creature &Creature::operator=(const Creature &c) {
 
 Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
-    // TODO : rewrite to not handle id and no random copying attributes.
-    id = ++next;
 
    cout << "const Creature (" << id << ") par copie" << endl;
    position = Vector(b.position);
    creature_size = b.creature_size;
    speed = b.speed;
+   creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
+   age = 1;
+   collision_resistance = b.collision_resistance;
+   lifetime_duration = b.lifetime_duration;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
    sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
    behaviour = (*b.behaviour).clone();
@@ -74,25 +77,29 @@ Creature::~Creature(void)
    cout << "dest Creature" << endl;
 }
 
-
-void Creature::move(int xLim, int yLim)
+double Creature::getResistanceCollision() const
 {
+    return collision_resistance;
+}
 
+void Creature::move(int xLim, int yLim) {
+    age +=1;
    // calculate new position
    Vector dV = speed * dt ;
    Vector new_position = position + dV;
    // handle box collisions
-   if ((new_position.x < 0) || (new_position.x > xLim - 1))
-   {
+   if ((new_position.x < 0) || (new_position.x > xLim )){
       speed.reflectY();
    }
-   if ((new_position.y < 0) || (new_position.y > yLim - 1))
+   if ((new_position.y < 0) || (new_position.y > yLim))
    {
       speed.reflectX();
    }
     // align to grid
-   new_position.x = static_cast<int>(new_position.x);
-   new_position.y = static_cast<int>(new_position.y);
+   new_position.alignToGrid();
+
+   // Clip to bounds
+   new_position.clip(0, xLim,0,yLim);
 
    position = new_position;
 }
@@ -102,6 +109,12 @@ void Creature::action(Milieu &monMilieu)
 
     move(monMilieu.getWidth(), monMilieu.getHeight());
 }
+
+bool Creature::DieFromeAging()
+{
+   return age >= lifetime_duration;
+};
+
 double Creature::getSize() const
 {
    return creature_size;
@@ -109,12 +122,34 @@ double Creature::getSize() const
 
 void Creature::draw(UImg &support)
 {
+    // TODO :
    double xt = position.x + cos(speed.orientation()) * creature_size / 2.1;
    double yt = position.y - sin(speed.orientation()) * creature_size / 2.1;
    unsigned char white[] = {255,255,255};
    support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -speed.orientation() / M_PI * 180., couleur);
    support.draw_circle(xt, yt, creature_size / 2., couleur);
    support.draw_circle(xt, yt, creature_size / 6., white);
+   unsigned char black[] = {0,0,0};
+   unsigned char red[] = {255,0,0};
+   unsigned char green[] = {0,255,0};
+   int opacity = 1;
+   for (auto const &it :accessories->accessories_) {
+      if (it->AccessoryType()==1)
+      {
+         support.draw_circle(position.x, position.y, creature_size*1.3, red);
+      }
+      if (it->AccessoryType()==2)
+      {
+         support.draw_ellipse(position.x, position.y, creature_size*1.3, creature_size / 3.5, -speed.orientation() / M_PI * 180., green);
+      }
+      if (it->AccessoryType()==3)
+      {
+         support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., (-speed.orientation()+M_PI/2) / M_PI * 180., behaviour->getColor());
+      }
+   }
+
+   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -speed.orientation() / M_PI * 180., behaviour->getColor(),opacity);
+   support.draw_circle(position.x, position.y, creature_size / 2., behaviour->getColor(),opacity);
 }
 
 bool operator==(const Creature &b1, const Creature &b2)
@@ -131,6 +166,16 @@ Vector Creature::getPos() const
 double Creature::getOrient() const
 {
    return speed.orientation();
+};
+
+int Creature::getAge() const
+{
+   return age;
+};
+
+int Creature::getLifetime() const
+{
+   return lifetime_duration;
 };
 
 int Creature::getId() const
@@ -159,6 +204,10 @@ void Creature::setPos(Vector v) {
 
 void Creature::setSpeed(Vector v) {
     speed = v;
+}
+
+void Creature::clip(int xlim, int ylim) {
+    position.clip(0, xlim, 0, ylim);
 };
 
 

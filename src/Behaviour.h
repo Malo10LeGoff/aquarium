@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 #include "../lib/Vector.h"
+#include "../lib/UImg.h"
 
 class InterfaceBehaviour {
 public:
@@ -21,6 +22,7 @@ public:
         return 1;
     };
 
+    virtual unsigned char * getColor() = 0 ;
     virtual std::unique_ptr<InterfaceBehaviour> clone() const = 0 ;
 };
 
@@ -32,6 +34,8 @@ public:
     ~GregariousBehaviour()=default; // Destructor
     Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+    static unsigned char couleur[];
+    unsigned char * getColor();
 };
 
 class FearfulBehaviour: public InterfaceBehaviour {
@@ -45,6 +49,8 @@ public:
     float moveSpeedMultiplier(const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     int maxNeighbours() const;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+    static unsigned char couleur[];
+    unsigned char * getColor();
 private:
     float moveSpeedMultiplier_ =1;
     int maxNeighbours_ = 10;
@@ -59,6 +65,8 @@ public:
     ~KamikazeBehaviour() = default;
     Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+    static unsigned char couleur[];
+    unsigned char * getColor();
 private:
     float m_moveSpeedMultiplier = 1;
 };
@@ -71,6 +79,8 @@ public:
     PlanningBehaviour& operator=(const PlanningBehaviour& p);
     Vector moveDirection(const Vector creatureCoordinates, const std::vector<std::array<Vector,2>> visibleCreatures) const override;
     std::unique_ptr<InterfaceBehaviour> clone() const override;
+    static unsigned char couleur[];
+    unsigned char * getColor();
 private:
     float m_moveSpeedMultiplier = 1;
 };
@@ -87,6 +97,8 @@ public:
     void remove(int index);
     std::unique_ptr<InterfaceBehaviour> clone() const override;
     int size() const ;
+    static unsigned char couleur[];
+    unsigned char * getColor();
 private:
     std::vector<std::unique_ptr<InterfaceBehaviour>> behaviours_;
 };

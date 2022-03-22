@@ -19,7 +19,7 @@ double norm(const Vector &v){
     return std::sqrt(scalar(v,v));
 };
 
-double distance(const Vector &a, const Vector &b){
+double distanceVectors(const Vector &a, const Vector &b){
     return norm(a - b);
 }
 
@@ -62,12 +62,12 @@ std::array<double, 2> Vector::asArray() const {
     return std::array<double, 2>{x,y};
 }
 
-Vector Vector::reflectX() const {
-    return Vector{x, -y};
+void Vector::reflectX() {
+    y = -y;
 }
 
-Vector Vector::reflectY() const {
-    return Vector{- x, y};
+void Vector::reflectY() {
+    x = -x;
 }
 
 Vector &Vector::operator+=(const Vector &b) {
@@ -91,6 +91,17 @@ Vector operator*(double k, const Vector v) {
 
 Vector operator/(const Vector v, double k) {
     return {v.x /k, v.y / k };
+}
+
+void Vector::clip(double xMin, double xMax, double yMin, double yMax) {
+    const int margin = 5;
+    x = std::min(xMax - margin, std::max(xMin + margin , x));
+    y = std::min(yMax - margin , std::max(yMin + margin , y));
+}
+
+void Vector::alignToGrid() {
+    x = std::round(x);
+    y = std::round(y);
 }
 
 
