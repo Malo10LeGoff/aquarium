@@ -117,20 +117,23 @@ int min_element(const std::vector<float> arr) {
  */
 Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
                                                       const std::vector<std::array<Vector, 2>> visibleCreatures) const {
-    // calculate the neighbours' (squared) distances
-    std::vector<float> neighbourDistances;
-    for (auto const creature : visibleCreatures) {
-        // *it is [moveDirection , coordinates]
-        neighbourDistances.push_back(distanceVectors(creature[1], creatureCoordinates));
-    };
-    // Select the closest neighbour
-    int closest_neighbour_idx = min_element(neighbourDistances);
-    // Calculate the direction
-    Vector moveDirection  = (visibleCreatures[closest_neighbour_idx][1] - creatureCoordinates).normalize();
-    // scale by the speed
-    moveDirection.x *= m_moveSpeedMultiplier;
-    moveDirection.y *= m_moveSpeedMultiplier;
-    return moveDirection;
+    if (visibleCreatures.size() !=0) {
+        // calculate the neighbours' (squared) distances
+        std::vector<float> neighbourDistances;
+        for (auto const creature : visibleCreatures) {
+            // *it is [moveDirection , coordinates]
+            neighbourDistances.push_back(distanceVectors(creature[1], creatureCoordinates));
+        };
+        // Select the closest neighbour
+        int closest_neighbour_idx = min_element(neighbourDistances);
+        // Calculate the direction
+        Vector moveDirection  = (visibleCreatures[closest_neighbour_idx][1] - creatureCoordinates).normalize();
+        // scale by the speed
+        moveDirection.x *= m_moveSpeedMultiplier;
+        moveDirection.y *= m_moveSpeedMultiplier;
+        return moveDirection;
+        }
+    return Vector{ 0,0};
 
 }
 

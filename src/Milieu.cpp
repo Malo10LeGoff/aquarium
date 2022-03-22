@@ -50,17 +50,6 @@ void Milieu::step(void)
 }
 
 
-int Milieu::nbVoisins(const Creature &b)
-{
-   int nb = 0;
-
-   for (auto const & creature : listeCreatures )
-      if (!(b == *creature) && detect(b,*creature))
-         ++nb;
-
-   return nb;
-};
-
 int Milieu::getNbCreatures()
 {
    return listeCreatures.size();
@@ -119,11 +108,11 @@ void Milieu::collision(void) {
             if (creature_i->getId() != creature_j->getId()) {
                 if (creature_j->getHitbox().isColliding(creature_i->getHitbox())) {
                     cout << "Collision" << endl;
-                    creature_i->onCollision();
-                    creature_j->onCollision();
+                    creature_i->onCreatureCollision();
+                    creature_j->onCreatureCollision();
                     //does creatures survive onCollision
                     cout << (double) std::rand() / RAND_MAX << endl;
-                    if ((double) std::rand() / RAND_MAX > creature_i->getResistanceCollision()) {
+                    if ((double) std::rand() / RAND_MAX > creature_i->getCollisionDeathProb()) {
                         tmp_vector.push_back((creature_i->getId()));
                     }
                 }
@@ -150,7 +139,7 @@ void Milieu::addMember(std::unique_ptr<Creature>& b) {
 }
 
 void Milieu::addRandomMember() {
-    std::shared_ptr<RandomBuilder> b = std::make_shared<RandomBuilder> (builder);
+    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder> (builder);
     builder.setBuilder(b);
     std::unique_ptr<Creature> randomCreature = builder.make();
     addMember(randomCreature);
@@ -168,14 +157,9 @@ void Milieu::detectSurroundings() {
     }
 }
 
-std::vector<array<Vector, 2>> Milieu::getSurroundings(Creature& creature) {
-    std::vector<array<Vector,2>> ret {} ;
-    for (auto & creature_i: listeCreatures) {
-        if (creature != *creature_i && detect(creature, *creature_i)) {
-            ret.push_back(std::array<Vector,2>{creature_i->previous_speed, creature_i->getPos()});
-        }
-    }
-    return ret;
+
+void Milieu::addCreatureToKill(int i) {
+    creaturesToKill.push_back(i);
 }
 
 

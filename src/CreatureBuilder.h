@@ -17,6 +17,8 @@ public :
     virtual void initBehaviour() = 0;
     virtual void initPosition() = 0;
     virtual void initVitesse() = 0;
+    // virtual void initCreatureSize() = 0;
+    // virtual void initLifetimeDuration() = 0 ;
     virtual std::unique_ptr<Creature> getResult() = 0;
     virtual void reset() = 0;
 };

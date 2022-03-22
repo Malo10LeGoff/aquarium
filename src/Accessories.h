@@ -9,13 +9,13 @@
 class InterfaceAccessory {
 public: 
     virtual float speedCoef() const {
-        return 0;
+        return 1;
     }
     virtual float camoCoef() const {
-        return 0;
+        return 1;
     }
     virtual float deathCoef() const {
-        return 0;
+        return 1;
     }
     virtual std::unique_ptr<InterfaceAccessory> clone() = 0 ;
     virtual int AccessoryType() const {

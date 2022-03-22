@@ -23,30 +23,30 @@ class Creature
 
 private :
    static const double     AFF_SIZE;
-   static const double     MAX_VITESSE;
    static int              next;
    static const double            dt;
 
 private :
    Vector position {0,0};
    Vector            speed;
+   double   baseSpeed = 10;
    CircleHitbox hitbox {position, 1};
    double            creature_size;
    T                 * couleur;
    Milieu & m_milieu;
-   double            collision_resistance;
+   double            baseDeathProbOnCollision = 0.05;
    std::vector<std::array<Vector,2>> visibleCreatures {};
-   int               taille_a;
-   int               taille_b;
+   int               taille_a = Creature::AFF_SIZE;
+   int               taille_b = Creature::AFF_SIZE;
    int               lifetime_duration= rand()%300 + 500;
    int               age = 0;
 public:
-   int               id;
+   int               id = -1;
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
    std::unique_ptr<InterfaceBehaviour> behaviour;
    Vector previous_speed;
-   
+
 private :
     void move();
 
@@ -57,30 +57,33 @@ public :                                           // Forme canonique :
    Creature& operator=(const Creature& c);                              // Operateur d'affectation binaire par defaut
    void detectSurroundings() ;
    void onMove(Milieu & monMilieu );
+   void handleWallCollision(int xLim, int yLim);
+   void onCreatureCollision();
    void onCollide(int xlim, int ylim);
-   void onCreatureCollision(void);
    void onAge();
    void draw( UImg & support );
 
 
 
    Vector getPos() const;
-   Vector getSpeed() const;
-   void setPos(Vector v);
-   int getId() const;
-   bool dieFromeAging(void) const;
-   double getResistanceCollision() const;
-   int getLifetime() const;
-   int getAge() const;
-   double getOrient() const;
-   void setOrient(double ori);
-   CircleHitbox getHitbox() const ;
-    double getSize() const ;
+    void setPos(Vector v);
+    Vector getSpeed() const;
     void setSpeed(Vector vector);
-    void clip(int xlim, int ylim) ;
+    double getBaseSpeed() const {return baseSpeed;};
+    void setBaseSpeed(double t_baseSpeed) {baseSpeed = t_baseSpeed;}
+    int getId() const;
+    bool dieFromeAging(void) const;
+    double getCollisionDeathProb() const;
+    int getLifetime() const;
+    int getAge() const;
+    double getOrient() const;
+    void setOrient(double ori);
+    CircleHitbox getHitbox() const ;
+    double getSize() const ;
 
     friend bool operator==( const Creature & b1, const Creature & b2 );
     friend bool operator!=( const Creature & b1, const Creature & b2 );
+
 
 };
 

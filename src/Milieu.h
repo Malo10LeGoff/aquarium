@@ -20,6 +20,7 @@ private :
    int                     width, height;
    std::vector<std::unique_ptr<Creature>>   listeCreatures;
    CreatureBuilder builder;
+   std::vector<int> creaturesToKill {}; // vector of ids of the creatures to kill
 
 public :
    Milieu( int _width, int _height );
@@ -36,13 +37,10 @@ public :
    void addMember( std::unique_ptr<Creature>& b ) ;
    void addRandomMember();
    int getNbCreatures(void);
-
-   int nbVoisins( const Creature & b );
    bool detect(const Creature &a, const Creature &b);
-   bool detection(const Creature &a, const Creature &b);
    std::vector<array<Vector,2>> surrounding(const Creature &a);
 
-    std::vector<array<Vector, 2>> getSurroundings(Creature& creature);
+   void addCreatureToKill(int i);
 };
 
 

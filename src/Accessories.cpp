@@ -13,7 +13,7 @@ float Accessories::speedCoef() const
 
 float Accessories::camoCoef() const
 {
-    float coef = 0.9;
+    float coef = 1;
     for (auto it=accessories_.begin();it!= accessories_.end();it++) {
         coef *= (*it)->camoCoef();
     }

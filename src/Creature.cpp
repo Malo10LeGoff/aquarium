@@ -5,9 +5,8 @@
 #include <cmath>
 #include <memory>
 #include "constants.h"
-
+#include <random>
 const double Creature::AFF_SIZE = baseSize;
-const double Creature::MAX_VITESSE = baseSpeed;
 const double Creature::dt = time_delta;
 
 int Creature::next = 0;
@@ -15,12 +14,9 @@ int Creature::next = 0;
 Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
    creature_size = AFF_SIZE;
-   cout << "const Creature (" << id << ") par defaut" << endl;
    accessories = std::unique_ptr<Accessories>(new Accessories());
    sensors = std::unique_ptr<Sensors>(new Sensors());
    behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
-
-   cout <<"Speed Coef " << accessories->speedCoef() <<endl;
    couleur = new T[3];
    couleur[0] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
@@ -38,7 +34,7 @@ Creature &Creature::operator=(const Creature &c) {
     hitbox = CircleHitbox(c.hitbox);
     age = c.age;
     lifetime_duration = c.lifetime_duration;
-    collision_resistance = c.collision_resistance;
+    baseDeathProbOnCollision = c.baseDeathProbOnCollision;
     creature_size = c.creature_size;
     taille_a = c.taille_a;
     taille_b = c.taille_b;
@@ -53,14 +49,13 @@ Creature &Creature::operator=(const Creature &c) {
 
 Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 {
-
-   cout << "const Creature (" << id << ") par copie" << endl;
+   id = b.id;
    position = Vector(b.position);
    creature_size = b.creature_size;
    speed = b.speed;
    creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
    age = 1;
-   collision_resistance = b.collision_resistance;
+    baseDeathProbOnCollision = b.baseDeathProbOnCollision;
    lifetime_duration = b.lifetime_duration;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
    sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
@@ -73,33 +68,44 @@ Creature::~Creature(void)
 {
 
    delete[] couleur;
-
-   cout << "dest Creature" << endl;
 }
 
-double Creature::getResistanceCollision() const
+double Creature::getCollisionDeathProb() const
 {
-    return collision_resistance;
-}
-
-void Creature::move() {
-   // calculate new position
-   Vector dV = speed * dt ;
-   Vector new_position = position + dV;
-    // align to grid
-   new_position.alignToGrid();
-
-
-   position = new_position;
+    return baseDeathProbOnCollision;
 }
 
 void Creature::onMove(Milieu &monMilieu)
 {
     // Get the speed that the behaviour gives
+    previous_speed = speed;
     speed = behaviour->moveDirection(position, visibleCreatures);
     // Once all that is done actually update the position of the creature
-    move( );
+    move();
+    handleWallCollision(m_milieu.getWidth(), m_milieu.getHeight());
 }
+
+void Creature::move() {
+    // calculate new position
+    Vector dV = speed * dt ;
+    Vector new_position = position + dV;
+    // align to grid
+    new_position.alignToGrid();
+
+    position = new_position;
+}
+
+void Creature::handleWallCollision(int xLim, int yLim){
+// handle Wall collisions
+    if ((position.x < 0) || (position.x > xLim )){
+        speed.reflectY();
+    }
+    if ((position.y < 0) || (position.y > yLim))
+    {
+        speed.reflectX();
+    }
+    position.clip(0, xLim, 0, yLim);
+};
 
 bool Creature::dieFromeAging() const
 {
@@ -113,7 +119,6 @@ double Creature::getSize() const
 
 void Creature::draw(UImg &support)
 {
-    // TODO :
    double xt = position.x + cos(speed.orientation()) * creature_size / 2.1;
    double yt = position.y - sin(speed.orientation()) * creature_size / 2.1;
    unsigned char white[] = {255,255,255};
@@ -143,11 +148,11 @@ void Creature::draw(UImg &support)
    support.draw_circle(position.x, position.y, creature_size / 2., behaviour->getColor(),opacity);
 }
 
+
 bool operator==(const Creature &b1, const Creature &b2)
 {
    return (b1.id == b2.id);
 }
-
 
 Vector Creature::getPos() const
 {
@@ -184,19 +189,6 @@ CircleHitbox Creature::getHitbox(void) const
    return {hitbox};
 };
 
-void Creature::onCollision(int xLim, int yLim){
-// handle box collisions
-    if ((new_position.x < 0) || (new_position.x > xLim )){
-    speed.reflectY();
-    }
-    if ((new_position.y < 0) || (new_position.y > yLim))
-    {
-    speed.reflectX();
-    }
-    //todo : calculate whether the creature should die
-   speed.rotate(M_PI);
-};
-
 void Creature::setOrient(double ori) 
 {
    speed.rotate(ori - speed.orientation());
@@ -210,12 +202,8 @@ void Creature::setSpeed(Vector v) {
     speed = v;
 }
 
-void Creature::clip(int xlim, int ylim) {
-    position.clip(0, xlim, 0, ylim);
-}
-
 void Creature::detectSurroundings() {
-    visibleCreatures = m_milieu.surroundings(*this);
+    visibleCreatures = m_milieu.surrounding(*this);
 }
 
 bool operator!=(const Creature &b1, const Creature &b2) {
@@ -224,6 +212,19 @@ bool operator!=(const Creature &b1, const Creature &b2) {
 
 void Creature::onAge() {
     ++age;
+    if (age > lifetime_duration) {
+        m_milieu.addCreatureToKill(id);
+    }
+}
+
+void Creature::onCreatureCollision() {
+    double actualDeathProb = baseDeathProbOnCollision * accessories->deathCoef();
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::bernoulli_distribution shouldDie (actualDeathProb);
+    if (shouldDie(mt)) {
+        m_milieu.addCreatureToKill(id);
+    }
 };
 
 

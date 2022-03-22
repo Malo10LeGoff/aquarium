@@ -131,6 +131,8 @@ void RandomBuilder::initPosition() {
 
 void RandomBuilder::initVitesse() {
     m_creature.setSpeed(randomSpeed());
+    m_creature.previous_speed = m_creature.getSpeed();
+    m_creature.setBaseSpeed(randomBaseSpeed());
 }
 
 std::array<double,4> RandomBuilder::getCumDistrib() {
