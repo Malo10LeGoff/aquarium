@@ -121,7 +121,7 @@ Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
     std::vector<float> neighbourDistances;
     for (auto const creature : visibleCreatures) {
         // *it is [moveDirection , coordinates]
-        neighbourDistances.push_back(distance(creature[1], creatureCoordinates));
+        neighbourDistances.push_back(distanceVectors(creature[1], creatureCoordinates));
     };
     // Select the closest neighbour
     int closest_neighbour_idx = min_element(neighbourDistances);
@@ -215,7 +215,7 @@ PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p): m_moveSpeedMul
 }
 
 Vector PlanningBehaviour::moveDirection(const Vector creatureCoordinates,
-                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+                                        const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // TODO :
     return {0,0};
 }

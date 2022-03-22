@@ -3,13 +3,12 @@
 #include "../lib/Vector.h"
 #include <cstdlib>
 #include <ctime>
-#include <math.h> 
-#include <array>
+#include <memory>
 
 const T Milieu::white[] = {(T)255, (T)255, (T)255};
 
 Milieu::Milieu(int _width, int _height) : UImg(_width, _height, 1, 3),
-                                          width(_width), height(_height)
+                                          width(_width), height(_height), builder(CreatureBuilder(*this))
 {
 
    cout << "const Milieu" << endl;
@@ -29,15 +28,19 @@ void Milieu::step(void)
    auto it = listeCreatures.begin();
    while (it != listeCreatures.end())
    {
-      if (it->DieFromeAging()==true) 
+      cout << (*it)->getAge() << " " <<(*it)->getLifetime() << endl;
+      cout << (*it)->DieFromeAging() << endl;
+      if ((*it)->DieFromeAging())
       {
-         cout <<"Creature "<<it->getId() << " died from aging"<<endl;
+         cout <<"Creature "<<(*it)->getId() << " died from aging"<<endl;
          listeCreatures.erase(it);
       }
       else 
       {
-         it->action(*this);
-         it->draw(*this);
+       
+         cout<<"moving"<<endl;
+         (*it)->action(*this);
+         (*it)->draw(*this);
          it++; 
                            
       }
@@ -45,12 +48,13 @@ void Milieu::step(void)
    collision();
 }
 
+
 int Milieu::nbVoisins(const Creature &b)
 {
    int nb = 0;
 
-   for (std::vector<Creature>::iterator it = listeCreatures.begin(); it != listeCreatures.end(); ++it)
-      if (!(b == *it) && detect(b,*it))
+   for (auto const & creature : listeCreatures )
+      if (!(b == *creature) && detect(b,*creature))
          ++nb;
 
    return nb;
@@ -62,111 +66,76 @@ int Milieu::getNbCreatures()
 }
 
 //marche pas
-std::vector<std::array<int,2>> Milieu::Surrounding(const Creature &a)
+std::vector<Vector> Milieu::Surrounding(const Creature &a)
 {
-   
-   std::vector<std::array<int,2>> res;
 
-   for (std::vector<Creature>::iterator it = listeCreatures.begin(); it != listeCreatures.end(); ++it)
-      if (!(a == *it) && detect(a,*it)) 
+   std::vector<Vector> res;
+
+   for (auto const& creature: listeCreatures)
+      if (!(a == *creature) && detect(a,*creature))
       {
-         int * pos_tmp = (it)->getPos(); 
-         std::array<int,2> pos;
-         pos[0] = pos_tmp[0];
-         pos[1] = pos_tmp[1];
-         res.push_back(pos);
+         Vector pos_tmp = creature->getPos();
+         res.push_back(pos_tmp);
       }
    return res;
 };
 
-// bool Milieu::detection(const Creature&a, const Creature &b) {
-//    std::list<InterfaceSensors *>::const_iterator it;
-//    for (it=a.sensors->sensors_.begin();it!= a.sensors->sensors_.end();it++) {
-//       std::vector<detection_caract> detection_zone_a;
-//       detection_zone_a = (*it)->getDetectionZone();
-//       double dist;
-//       int * pos_a = a.getPos();
-//       int * pos_b = b.getPos();
-//       double orientation_b = b.getOrient();
-//       dist = std::sqrt((pos_a[0] - pos_b[0]) * (pos_a[0] - pos_b[0]) + (pos_a[1] - pos_b[1]) * (pos_b[1] - pos_b[1]));
-//       if (dist <= detection_zone_a[0] && std::abs(detection_zone_a[2] - orientation_b)<=(detection_zone_a[1]/2)){
-//          return 1;
-//       };
-//    };
-//    return 0;
-// };
 
 bool Milieu::detect(const Creature &a, const Creature &b)
 {
-   std::list<InterfaceSensors *>::const_iterator it;
-   for (it=a.sensors->sensors_.begin();it!= a.sensors->sensors_.end();it++) {
+   for (auto const& sensor : a.sensors->sensors_) {
          double dist;
-         int * pos_a = a.getPos();
-         int * pos_b = b.getPos();
-         double orientation = a.getOrient();
+         Vector pos_a = a.getPos();
+         Vector pos_b = b.getPos();
 
-         dist = std::sqrt((pos_a[0] - pos_b[0]) * (pos_a[0] - pos_b[0]) + (pos_a[1] - pos_b[1]) * (pos_b[1] - pos_b[1]));
-        
-         if (dist <= (*it)->getDetectionRadius()) {
-            if ((*it)->getType()=="Ears") {
-               return 1;
-            } else {
-               int new_x_b = static_cast<int>(pos_b[0]*std::cos(orientation) + pos_b[1]*std::sin(orientation) - pos_a[0]);
-               int new_y_b = static_cast<int>(-pos_b[0]*std::sin(orientation) + pos_b[1]*std::cos(orientation)- pos_a[1]);
-
-               double alpha = std::atan (new_y_b/new_x_b);
-
-               if (std::abs(alpha)<(*it)->getDetectionAngle()) {
-                  return 1;
-               };
-            }
-         }
       }
-   return 0;
+   return true;
 }
 
 
 
-void Milieu::collision(void)
-{
-
-   std::vector<int> tmp_vector;
-   for (std::vector<Creature>::iterator it_i = listeCreatures.begin(); it_i != listeCreatures.end(); ++it_i) {
-      for (std::vector<Creature>::iterator it_j = listeCreatures.begin(); it_j != listeCreatures.end(); ++it_j) {
-      if (it_j!=it_i) {
-         double x_i = (it_i)->getXt();
-         double y_i = (it_i)->getYt();
-         double x_j = (it_j)->getXt();
-         double y_j = (it_j)->getYt();
-         double size_i = (it_i)->getSize();
-         double size_j = (it_j)->getSize();
-         double dist = std::sqrt((x_i - x_j)*(x_i - x_j) + (y_i - y_j)*(y_i - y_j));
-         if (dist<(size_i+size_j)){
-            (it_j)->collision();
-            (it_i)->collision();
-
-            //does creatures survive collision 
-            if ( (double) std::rand()/RAND_MAX > (it_i)->getResistanceCollision())
-            {
-               tmp_vector.push_back((it_i->getId()));
+void Milieu::collision(void) {
+    std::vector<int> tmp_vector{};
+    for (auto &creature_i: listeCreatures) {
+        for (auto &creature_j: listeCreatures) {
+            if (creature_i->getId() != creature_j->getId()) {
+                if (creature_j->getHitbox().isColliding(creature_i->getHitbox())) {
+                    cout << "Collision" << endl;
+                    creature_i->collision();
+                    creature_j->collision();
+                    //does creatures survive collision
+                    cout << (double) std::rand() / RAND_MAX << endl;
+                    if ((double) std::rand() / RAND_MAX > creature_i->getResistanceCollision()) {
+                        tmp_vector.push_back((creature_i->getId()));
+                    }
+                }
             }
-         }
-      }
-   }
-   }
-   auto it = listeCreatures.begin();
-   while (it != listeCreatures.end())
-   {
-      if (std::find(tmp_vector.begin(), tmp_vector.end(), it->getId()) != tmp_vector.end()) 
-      {
-         cout << "Creature " << (it)->getId() << " died from collision" << endl;
-         listeCreatures.erase(it);
-      }
-      else 
-      {
-         it++;
-      }
-   } // for
+        }
+    }
+    auto it = listeCreatures.begin();
+    while (it != listeCreatures.end())
+    {
+        if (std::find(tmp_vector.begin(), tmp_vector.end(), (*it)->getId()) != tmp_vector.end())
+        {
+            cout << "Creature " << (*it)->getId() << " died from collision" << endl;
+            listeCreatures.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
 
 }
+void Milieu::addMember(std::unique_ptr<Creature>& b) {
+    listeCreatures.push_back(std::move(b));
+}
+
+void Milieu::addRandomMember() {
+    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder> (builder);
+    builder.setBuilder(b);
+    std::unique_ptr<Creature> randomCreature = builder.make();
+    addMember(randomCreature);
+}
+
 

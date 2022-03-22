@@ -6,6 +6,7 @@
 #include "Accessories.h"
 #include "Sensors.h"
 #include "Behaviour.h"
+#include "../lib/Hitbox.h"
 #include <list>
 #include <memory>
 #include <array>
@@ -23,56 +24,54 @@ class Creature
 private :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
-   static const double     LIMITE_VUE;
    static int              next;
+   static const double            dt;
 
 private :
-   int               identite;
-   int               x, y;
-   double            cumulX, cumulY;
-   double            orientation;
-   double            vitesse;
-   std::vector<std::array<double,2>> hitbox {{ {0,0} }};
+   Vector position {0,0};
+   Vector            speed;
+   CircleHitbox hitbox {position, 1};
    double            creature_size;
    T                 * couleur;
    Milieu & m_milieu;
    double            collision_resistance;
    int               taille_a;
    int               taille_b;
-   int               lifetime_duration;
-   int               age;
+   int               lifetime_duration= 1000;
+   int               age = 0;
 public:
+   int               id;
    std::unique_ptr<Accessories>       accessories;
    std::unique_ptr<Sensors>           sensors;
    std::unique_ptr<InterfaceBehaviour> behaviour;
    
 private :
-   void bouge( int xLim, int yLim );
+   void move(int xLim, int yLim );
   
 
 public :                                           // Forme canonique :
    explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
-   Creature& operator=(const Creature& c);                                                // Operateur d'affectation binaire par defaut
+   Creature& operator=(const Creature& c);                              // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void collision(void);
-   bool DieFromeAging(void);
-   void initCoords( int xLim, int yLim );
-   int * getPos() const;
+
+   Vector getPos() const;
+   void setPos(Vector v);
    int getId() const;
+   bool DieFromeAging(void);
    double getResistanceCollision() const;
    int getLifetime() const;
    int getAge() const;
-   double getXt() ;
-   double getYt() ;
-   double getSize();
    double getOrient() const;
    void setOrient(double ori);
-   std::vector<std::array<double,2>> getHitbox(void);
+   CircleHitbox getHitbox() const ;
    friend bool operator==( const Creature & b1, const Creature & b2 );
-
+    double getSize() const ;
+    void setSpeed(Vector vector);
+    void clip(int xlim, int ylim) ;
 };
 
 

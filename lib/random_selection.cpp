@@ -1,5 +1,9 @@
+#ifndef _RANDOM_SELECTION_
+#define _RANDOM_SELECTION_
+
 #include <random>
 #include <iterator>
+#include "Vector.h"
 
 template <typename RandomGenerator = std::default_random_engine>
 struct random_selector
@@ -30,3 +34,6 @@ struct random_selector
 private:
     RandomGenerator gen;
 };
+
+
+#endif

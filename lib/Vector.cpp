@@ -19,7 +19,7 @@ double norm(const Vector &v){
     return std::sqrt(scalar(v,v));
 };
 
-double distance(const Vector &a, const Vector &b){
+double distanceVectors(const Vector &a, const Vector &b){
     return norm(a - b);
 }
 
@@ -61,3 +61,47 @@ Vector Vector::rotate(double radian) {
 std::array<double, 2> Vector::asArray() const {
     return std::array<double, 2>{x,y};
 }
+
+void Vector::reflectX() {
+    y = -y;
+}
+
+void Vector::reflectY() {
+    x = -x;
+}
+
+Vector &Vector::operator+=(const Vector &b) {
+    x += b.x;
+    y += b.y;
+    return *this;
+}
+
+Vector &Vector::operator*=(double k) {
+    x *= k;
+    y *= k;
+}
+
+Vector operator*(const Vector v, double k) {
+    return {v.x * k, v.y * k};
+}
+
+Vector operator*(double k, const Vector v) {
+    return v * k;
+}
+
+Vector operator/(const Vector v, double k) {
+    return {v.x /k, v.y / k };
+}
+
+void Vector::clip(double xMin, double xMax, double yMin, double yMax) {
+    const int margin = 5;
+    x = std::min(xMax - margin, std::max(xMin + margin , x));
+    y = std::min(yMax - margin , std::max(yMin + margin , y));
+}
+
+void Vector::alignToGrid() {
+    x = std::round(x);
+    y = std::round(y);
+}
+
+

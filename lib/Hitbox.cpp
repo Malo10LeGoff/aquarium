@@ -4,6 +4,6 @@
 
 #include "Hitbox.h"
 
-bool CircleHitbox::isColliding(const CircleHitbox hitbox) {
-    return radius + hitbox.radius <= distance(center, hitbox.center);
+bool CircleHitbox::isColliding(const CircleHitbox hitbox) const {
+    return radius + hitbox.radius <= distanceVectors(center, hitbox.center);
 }
