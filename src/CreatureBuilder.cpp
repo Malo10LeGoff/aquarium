@@ -3,19 +3,19 @@
 //
 
 #include "CreatureBuilder.h"
-#include "../lib/random_selection.cpp"
+#include "../lib/random_creatures.cpp"
+#include  <algorithm>
 
-
-std::unique_ptr<Creature> CreatureBuilder::make(int creatureID) {
-    builder.reset();
-    builder.initID(next_++);
-    builder.initAccessories();
-    builder.initSensors();
-    builder.initBehaviour();
-    builder.initPosition();
-    builder.initPosition();
-    builder.initVitesse();
-    return builder.getResult();
+std::unique_ptr<Creature> CreatureBuilder::make() {
+    builder->reset();
+    builder->initID(next_++);
+    builder->initAccessories();
+    builder->initSensors();
+    builder->initBehaviour();
+    builder->initPosition();
+    builder->initPosition();
+    builder->initVitesse();
+    return builder->getResult();
 }
 
 RandomBuilder::RandomBuilder(CreatureBuilder &t_director, double t_eyeProb, double t_earProb, double t_shellProb, double t_camoProb,
@@ -68,10 +68,60 @@ void RandomBuilder::initAccessories() {
 }
 
 void RandomBuilder::initSensors() {
-
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    // Eyes
+    std::bernoulli_distribution hasEyes (m_eyeProb);
+    if (hasEyes(mt)) {
+        std::unique_ptr<InterfaceSensors> eyes = std::unique_ptr<InterfaceSensors> (new Eyes(randomDetectionCoefEyes(),randomRadiusEyes(),randomDetectionAngleEyes()));
+        m_creature.sensors->add(eyes);
+    }
+    // Ears
+    std::bernoulli_distribution hasEars (m_earProb);
+    if (hasEars(mt)) {
+        std::unique_ptr<InterfaceSensors> ears = std::unique_ptr<InterfaceSensors> ( new Ears(randomDetectionCoefEars(), randomRadiusEars()));
+        m_creature.sensors->add(ears);
+    }
 }
 
 void RandomBuilder::initBehaviour() {
+    std::array<double, 4> cumDistrib = getCumDistrib();
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::uniform_real_distribution<> behaviourType (0, 1);
+    double const behaviour = behaviourType(mt);
+    if (behaviour <= cumDistrib [0]) { // Gregarious
+        m_creature.behaviour = std::unique_ptr<GregariousBehaviour> ( new GregariousBehaviour());
+    } else if ( behaviour <= cumDistrib [1]) { // Fearful
+        m_creature.behaviour = std::unique_ptr<FearfulBehaviour> ( new FearfulBehaviour(randomMaxNeighboursFearful(), randomFleeingSpeed() ));
+    } else if (behaviour <= cumDistrib [ 2 ]){ // Kamikaze
+        m_creature.behaviour = std::unique_ptr<KamikazeBehaviour> ( new KamikazeBehaviour(randomSpeedKamikaze()));
+    } else { // Multiple
+        m_creature.behaviour = std::unique_ptr<MultipleBehaviours> (new MultipleBehaviours());
+        // populate the multiple behaviours
+        std::array<int, 3> behaviours {0 ,1 ,2};
+        int nbSelectedBehaviours = std::uniform_int_distribution<> (2,10)(mt);
+        std::vector<int> selectedBehaviours {};
+        for (int i = 0; i < nbSelectedBehaviours ;++i) {
+            int newBehaviour = getRandomIntDistrib(0,behaviours.size())(mt);
+            if (newBehaviour == 1 ) { // Gregarious
+                std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<GregariousBehaviour> (new GregariousBehaviour());
+                dynamic_cast<MultipleBehaviours*>(m_creature.behaviour.get())
+                ->add(b);
+            } else if (newBehaviour==2) { // Fearful
+                std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<FearfulBehaviour>
+                        ( new FearfulBehaviour(randomMaxNeighboursFearful(),
+                                               randomFleeingSpeed() ));
+                dynamic_cast<MultipleBehaviours*>(m_creature.behaviour.get())
+                        ->add(b);
+            } else if (newBehaviour == 3) {
+                std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<KamikazeBehaviour>
+                        ( new KamikazeBehaviour(randomSpeedKamikaze()));
+                dynamic_cast<MultipleBehaviours*>(m_creature.behaviour.get())
+                        ->add(b);
+            }
+        }
+    }
 
 }
 

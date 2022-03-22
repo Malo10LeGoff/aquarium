@@ -23,8 +23,19 @@ public :
 
 class RandomBuilder : public BuilderInterface {
 public:
-    RandomBuilder(CreatureBuilder &t_director,double t_eyeProb, double t_earProb, double t_shellProb, double t_camoProb, double t_finProb, std::array<double, 4> t_behaviourDistrib);
-    RandomBuilder(CreatureBuilder& t_director);
+    /**
+     * Creates a creature with a given probability distribution
+     * @param t_director director the builder refers to
+     * @param t_eyeProb the probability of having eyes
+     * @param t_earProb the probability of having ears
+     * @param t_shellProb the probability of having a shell
+     * @param t_camoProb the probability of having a camo
+     * @param t_finProb the probability of having a fin
+     * @param t_behaviourDistrib [probGregarious, probFearful, probKamikaze, probMultiple]
+     */
+    RandomBuilder(CreatureBuilder &t_director,double t_eyeProb, double t_earProb, double t_shellProb, double t_camoProb,
+                  double t_finProb, std::array<double, 4> t_behaviourDistrib);
+    explicit RandomBuilder(CreatureBuilder& t_director);
     void initID(int t_id) override;
     void initAccessories() override;
     void initSensors() override;
@@ -52,12 +63,13 @@ private :
 
 class CreatureBuilder {
 public:
-    CreatureBuilder(Milieu& t_milieu, BuilderInterface& t_builder ): milieu(t_milieu), builder(t_builder) {};
-    std::unique_ptr<Creature> make(int creatureID);
-    void setBuilder(BuilderInterface& t_builder) {builder = t_builder;};
+    explicit CreatureBuilder(Milieu& t_milieu) : milieu(t_milieu) {};
+    CreatureBuilder(Milieu& t_milieu, BuilderInterface& t_builder ): milieu(t_milieu){builder = std::shared_ptr<BuilderInterface> (&t_builder);};
+    std::unique_ptr<Creature> make();
+    void setBuilder(std::shared_ptr<BuilderInterface> & t_builder) {builder = t_builder;};
     Milieu& milieu;
 private:
-    BuilderInterface& builder;
+    std::shared_ptr<BuilderInterface> builder;
     int next_ = 0;
 };
 

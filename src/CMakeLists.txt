@@ -27,12 +27,13 @@ target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
 # Creature Builder
 add_library(creature_builder CreatureBuilder.h CreatureBuilder.cpp)
 target_link_libraries(creature_builder PRIVATE creature)
-target_link_libraries(creature_builder PRIVATE random_selection)
+target_link_libraries(creature_builder PRIVATE random_creatures)
+target_include_directories(creature_builder PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
 target_compile_options(creature PUBLIC  -Wall -Wextra -Wpedantic )
 
 #Milieu
 add_library(milieu Milieu.h Milieu.cpp)
-target_link_libraries(milieu PRIVATE creature)
+target_link_libraries(milieu PRIVATE creature_builder)
 target_compile_options(milieu PUBLIC  -Wall -Wextra -Wpedantic )
 
 #Aquarium

@@ -3,29 +3,6 @@
 #include <cmath>
 
 
-Sensors::Sensors() 
-{
-    //add Ears
-    if (rand()%2==1){
-      float detectionCoef = static_cast<float>(rand()) / RAND_MAX;
-      float detectionRadius = static_cast<float>(rand()) / RAND_MAX * 30 + 30;
-      Ears *ptr_ear = new Ears(detectionCoef,detectionRadius);
-      sensors_.push_back(ptr_ear);
-
-   } else {
-       Ears *ptr_ear = new Ears(0.5,30);
-       sensors_.push_back(ptr_ear);
-   }
-
-   //add Eyes
-    if (rand()%2==1){
-      float detectionCoef = static_cast<float>(rand()) / RAND_MAX;
-      float detectionRadius = static_cast<float>(rand()) / RAND_MAX * 30 + 30;
-      float detectionAngle = static_cast<float>(rand()) / RAND_MAX * 2 *M_PI;
-      Eyes *ptr_eye = new Eyes(detectionCoef,detectionRadius,detectionAngle);
-      sensors_.push_back(ptr_eye);
-   }
-}
 
 float Sensors::getDetectionRadius() const
 {
@@ -44,7 +21,7 @@ float Sensors::getDetectionCoef() const
 
 std::vector<detection_caract> Sensors::getDetectionZone() {
     std::vector<detection_caract> ret {} ;
-    for (auto const sensor: sensors_) {
+    for (auto const& sensor: sensors_) {
         ret.push_back(sensor->getDetectionZone()[0]);
     }
     return ret;
@@ -56,6 +33,25 @@ void Sensors::add(std::unique_ptr<InterfaceSensors>& sensor) {
 
 void Sensors::remove(int idx) {
     // TODO
+}
+
+Sensors::Sensors(const Sensors &s) {
+    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>> { };
+    for (auto const& sensor : s.sensors_) {
+        sensors_.push_back(sensor->clone());
+    }
+}
+
+Sensors &Sensors::operator=(const Sensors &s) {
+    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>> {};
+    for (auto const& sensor : s.sensors_) {
+        sensors_.push_back(sensor->clone());
+    }
+    return *this;
+}
+
+std::unique_ptr<InterfaceSensors> Sensors::clone() {
+    return std::unique_ptr<InterfaceSensors>(new Sensors(*this));
 }
 
 Eyes::Eyes(float detectionCoef,float detectionRadius,float detectionAngle) 
@@ -90,6 +86,25 @@ std::vector<detection_caract> Eyes::getDetectionZone() {
     return std::vector<detection_caract> { {detectionCoef_, detectionRadius_, detectionAngle_} };
 }
 
+Eyes::Eyes(const Eyes &e) {
+    type = e.type;
+    detectionRadius_ = e.detectionRadius_;
+    detectionCoef_ = e.detectionCoef_;
+    detectionAngle_ = e.detectionAngle_;
+}
+
+Eyes &Eyes::operator=(const Eyes &eyes) {
+    type = eyes.type;
+    detectionRadius_ = eyes.detectionRadius_;
+    detectionCoef_ = eyes.detectionCoef_;
+    detectionAngle_ = eyes.detectionAngle_;
+    return *this;
+}
+
+std::unique_ptr<InterfaceSensors> Eyes::clone() {
+    return std::unique_ptr<InterfaceSensors>(new Eyes(*this));
+}
+
 
 Ears::Ears(float detectionCoef,float detectionRadius) 
 {
@@ -115,6 +130,23 @@ float Ears::getDetectionCoef() const
 
 std::vector<detection_caract> Ears::getDetectionZone() {
     return std::vector<detection_caract> { {detectionCoef_, detectionRadius_ , 2 * M_PI }};
+}
+
+Ears::Ears(const Ears &e) {
+    detectionCoef_ = e.detectionCoef_;
+    detectionRadius_ = e.detectionRadius_;
+    type = e.type;
+}
+
+Ears &Ears::operator=(const Ears &e) {
+    detectionCoef_ = e.detectionCoef_;
+    detectionRadius_ = e.detectionRadius_;
+    type = e.type;
+    return *this;
+}
+
+std::unique_ptr<InterfaceSensors> Ears::clone() {
+    return std::unique_ptr<InterfaceSensors>(new Ears(*this));
 }
 
 

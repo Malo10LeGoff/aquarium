@@ -57,9 +57,8 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
 
    cout << "const Creature (" << id << ") par copie" << endl;
    position = Vector(b.position);
-   m_milieu  = b.m_milieu;
-   creature_size = AFF_SIZE * (0.5+static_cast<double>(rand())/RAND_MAX);
-    speed = b.speed;
+   creature_size = b.creature_size;
+   speed = b.speed;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
    sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
    behaviour = (*b.behaviour).clone();
@@ -75,10 +74,6 @@ Creature::~Creature(void)
    cout << "dest Creature" << endl;
 }
 
-void Creature::initCoords(int xLim, int yLim)
-{
-    position = Vector(rand() % xLim, rand() % yLim);
-}
 
 void Creature::move(int xLim, int yLim)
 {

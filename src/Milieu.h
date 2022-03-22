@@ -3,12 +3,11 @@
 
 
 #include "../lib/UImg.h"
-#include "Creature.h"
-
 #include <iostream>
 #include <vector>
 #include <array>
 #include <memory>
+#include "CreatureBuilder.h"
 using namespace std;
 
 
@@ -20,6 +19,7 @@ private :
 
    int                     width, height;
    std::vector<std::unique_ptr<Creature>>   listeCreatures;
+   CreatureBuilder builder;
 
 public :
    Milieu( int _width, int _height );
@@ -30,7 +30,8 @@ public :
 
    void step( void );
    void collision(void);
-   void addMember( std::unique_ptr<Creature> b ) ;
+   void addMember( std::unique_ptr<Creature>& b ) ;
+   void addRandomMember();
    
 };
 

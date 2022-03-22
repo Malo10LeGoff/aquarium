@@ -50,11 +50,10 @@ public :                                           // Forme canonique :
    explicit Creature( Milieu* t_milieu );                               // Constructeur par defaut
    Creature( const Creature & b );                 // Constructeur de copies
    ~Creature( void );                              // Destructeur
-   Creature& operator=(const Creature& c);                                                // Operateur d'affectation binaire par defaut
+   Creature& operator=(const Creature& c);                              // Operateur d'affectation binaire par defaut
    void action( Milieu & monMilieu );
    void draw( UImg & support );
    void collision(void);
-   void initCoords( int xLim, int yLim );
 
    Vector getPos() const;
    void setPos(Vector v);

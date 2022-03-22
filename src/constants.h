@@ -6,7 +6,7 @@
 #define AQUARIUM_CONSTANTS_H
 #define _USE_MATH_DEFINES
 #include <cmath>
-// Display
+// Global
 const int screenWidthPX = 1280;
 const int screenHeightPX = 1024;
 const double maxDetectionCoef = 0.95;
@@ -22,7 +22,7 @@ const double maxDeathCoefShell = 1;
 
 //      Camo
 const double minCamoCoefCamo = 0;
-const double maxCamoCoefCamo = 0.99*maxDetectionCoef ;
+const double maxCamoCoefCamo = 0.99 * maxDetectionCoef ;
 
 //      Fins
 const double minSpeedFins = 1;
@@ -30,8 +30,14 @@ const double maxSpeedFins = 2;
 
 // Behaviour
 //      Fearful
-const int maxNeighbours = 10;
-const double fleeingSpeed = 1.3;
+const int maxMaxNeighbours = 15;
+const int minMaxNeighbours = 5;
+const double minFleeingSpeed = 1;
+const double maxFleeingSpeed = 1.5;
+
+// Kamikaze
+const double minSpeedKamikaze = 1;
+const double maxSpeedKamikaze = 1.5;
 
 // Sensors
 //      Eyes
@@ -40,7 +46,7 @@ const double maxDetectionAngleEyes = M_PI;
 const double minRadiusEyes = 20;
 const double maxRadiusEyes = 50;
 const double maxDetectionCoefEyes = maxDetectionCoef;
-const double minDetectionCoefEyes = 0.2;
+const double minDetectionCoefEyes = 0.2 * maxDetectionCoef;
 //       Ears
 const double minRadiusEars = 50;
 const double maxRadiusEars = 100;
