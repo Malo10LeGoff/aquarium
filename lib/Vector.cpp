@@ -7,7 +7,7 @@
 #include <limits>
 // functions
 double scalar(const Vector &a, const Vector &b){
-    return a.x * b.x + a.y + b.y;
+    return a.x * b.x + a.y * b.y;
 }
 double det(const Vector &a, const Vector &b){
     return a.x * b.y - a.y * b.x;

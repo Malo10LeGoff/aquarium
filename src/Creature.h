@@ -30,7 +30,7 @@ private :
 private :
    Vector position {0,0};
    Vector            speed;
-   double   baseSpeed = 10;
+   double   baseSpeed = 1;
    CircleHitbox hitbox {position, 1};
    double            creature_size;
    T                 * couleur;

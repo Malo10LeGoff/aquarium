@@ -7,8 +7,8 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 // Global
-const int screenWidthPX = 1280;
-const int screenHeightPX = 1024;
+const int screenWidthPX = 640;
+const int screenHeightPX = 480;
 const double maxDetectionCoef = 0.95;
 const double minDetectionCoef = 0;
 
@@ -54,8 +54,8 @@ const double maxDetectionCoefEars = maxDetectionCoef*0.3;
 const double minDetectionCoefEars = maxDetectionCoefEyes * 0.0001;
 
 // Creature
-const double baseSize = 8 ;
-const double baseSpeed = 10;
+const double baseSize =  10;
+const double baseSpeed = 5;
 const double time_delta = 1;
 const int baseDyingAge = 500;
 const float baseCreatureCamoCoef = 0.05;

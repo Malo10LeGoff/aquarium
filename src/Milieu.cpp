@@ -29,10 +29,8 @@ void Milieu::step(void)
     moveCreatures();
     // handle creature collisions
     handleCreatureCollision();
-
     //draw
     draw();
-    std::cout << "CurrentNb Creatures : " << listeCreatures.size() << "\n";
 }
 
 
@@ -92,9 +90,9 @@ void Milieu::handleCreatureCollision(void) {
         for (auto &creature_j: listeCreatures) {
             if (creature_i->getId() != creature_j->getId()) {
                 if (creature_j->getHitbox().isColliding(creature_i->getHitbox())) {
-                    cout << "Collision" << endl;
+                    cout << "Coli" << endl;
                     creature_i->onCreatureCollision();
-                    creature_j->onCreatureCollision();
+                    //creature_j->onCreatureCollision();
                 }
             }
         }

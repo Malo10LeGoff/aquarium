@@ -13,7 +13,7 @@ int Creature::next = 0;
 
 Creature::Creature(Milieu* milieu):m_milieu(*milieu)
 {
-    setSize(AFF_SIZE);
+   setSize(AFF_SIZE);
    accessories = std::unique_ptr<Accessories>(new Accessories());
    sensors = std::unique_ptr<Sensors>(new Sensors());
    behaviour = std::unique_ptr<InterfaceBehaviour>(new GregariousBehaviour());
@@ -107,7 +107,7 @@ void Creature::handleWallCollision(int xLim, int yLim){
     {
         speed.reflectX();
     }
-    position.clip(0, xLim, 0, yLim);
+    //position.clip(0, xLim, 0, yLim);
 };
 
 bool Creature::dieFromeAging() const
@@ -135,15 +135,15 @@ void Creature::draw(UImg &support)
    for (auto const &it :accessories->accessories_) {
       if (it->AccessoryType()==1)
       {
-         support.draw_ellipse(position.x, position.y, getSize()*2, creature_size, (-getOrient()) / M_PI * 180., red, 0.6);
+         support.draw_ellipse(position.x, position.y, getSize()*2, creature_size, getOrient() / M_PI * 180., red, 0.6);
       }
       if (it->AccessoryType()==2)
       {
-         support.draw_ellipse(position.x, position.y, getSize()*1.4, creature_size / 3, -getOrient() / M_PI * 180., green);
+         support.draw_ellipse(position.x, position.y, getSize()*1.4, creature_size / 3, getOrient() / M_PI * 180., green);
       }
       if (it->AccessoryType()==3)
       {
-         support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., (-getOrient()+M_PI/2) / M_PI * 180., behaviour->getColor());
+         support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., (getOrient()+M_PI/2) / M_PI * 180., behaviour->getColor());
       }
    }
 
@@ -228,6 +228,10 @@ void Creature::onCreatureCollision() {
     std::bernoulli_distribution shouldDie (actualDeathProb);
     if (shouldDie(mt)) {
         m_milieu.addCreatureToKill(id);
+    }
+    else {
+       cout << position.x << " " << position.y  << endl;
+       speed *= -1;
     }
 }
 
