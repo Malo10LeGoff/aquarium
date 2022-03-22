@@ -23,7 +23,7 @@ Milieu::~Milieu(void)
 
 void Milieu::step(void)
 {
-   cimg_forXY(*this, x, y) fillC(x, y, 0, white[0], white[1], white[2]);
+   cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
 
    auto it = listeCreatures.begin();
    while (it != listeCreatures.end())

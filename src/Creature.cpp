@@ -136,19 +136,19 @@ void Creature::draw(UImg &support)
    for (auto const &it :accessories->accessories_) {
       if (it->AccessoryType()==1)
       {
-         support.draw_circle(position.x, position.y, creature_size*1.3, red);
+         support.draw_ellipse(position.x, position.y, creature_size*2, creature_size, (-getOrient()) / M_PI * 180., red, 0.6);
       }
       if (it->AccessoryType()==2)
       {
-         support.draw_ellipse(position.x, position.y, creature_size*1.3, creature_size / 3.5, -speed.orientation() / M_PI * 180., green);
+         support.draw_ellipse(position.x, position.y, creature_size*1.4, creature_size / 3, -getOrient() / M_PI * 180., green);
       }
       if (it->AccessoryType()==3)
       {
-         support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., (-speed.orientation()+M_PI/2) / M_PI * 180., behaviour->getColor());
+         support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., (-getOrient()+M_PI/2) / M_PI * 180., behaviour->getColor());
       }
    }
 
-   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -speed.orientation() / M_PI * 180., behaviour->getColor(),opacity);
+   support.draw_ellipse(position.x, position.y, creature_size, creature_size / 5., -getOrient() / M_PI * 180., behaviour->getColor(),opacity);
    support.draw_circle(position.x, position.y, creature_size / 2., behaviour->getColor(),opacity);
 }
 
