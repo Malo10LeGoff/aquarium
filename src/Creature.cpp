@@ -163,6 +163,11 @@ Vector Creature::getPos() const
    return {position};
 };
 
+Vector Creature::getSpeed() const
+{
+   return {speed};
+};
+
 double Creature::getOrient() const
 {
    return speed.orientation();

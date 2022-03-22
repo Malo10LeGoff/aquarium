@@ -39,6 +39,7 @@ target_compile_options(milieu PUBLIC  -Wall -Wextra -Wpedantic )
 #Aquarium
 add_library(aquarium Aquarium.h Aquarium.cpp)
 target_link_libraries(aquarium PRIVATE milieu)
+target_include_directories(aquarium PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
 target_compile_options(aquarium PUBLIC  -Wall -Wextra -Wpedantic )
 
 # main
