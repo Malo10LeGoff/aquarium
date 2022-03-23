@@ -61,7 +61,6 @@ public :                                           // Forme canonique :
    void onMove(Milieu & monMilieu );
    void handleWallCollision(int xLim, int yLim);
    void onCreatureCollision();
-   void onCollide(int xlim, int ylim);
    void onAge();
    void draw( UImg & support );
 
@@ -76,7 +75,6 @@ public :                                           // Forme canonique :
     void setVisibleCreatures(std::vector<std::array<Vector,2>> t_visibleCreatures);
     std::vector<std::array<Vector,2>> getVisibleCreatures() const ;
     int getId() const;
-    bool dieFromeAging(void) const;
     double getCollisionDeathProb() const;
     int getLifetime() const;
     int getAge() const;
@@ -89,7 +87,7 @@ public :                                           // Forme canonique :
 
     friend bool operator==( const Creature & b1, const Creature & b2 );
     friend bool operator!=( const Creature & b1, const Creature & b2 );
-
+    friend ostream& operator<<(ostream& os, const Creature& cr);
 
     float getCamoCoef() const;
 };

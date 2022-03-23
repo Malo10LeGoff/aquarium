@@ -79,7 +79,7 @@ void Creature::onMove(Milieu &monMilieu)
     // Get the speed that the behaviour gives
     previous_speed = speed;
     Vector moveD = behaviour->moveDirection(position, getVisibleCreatures());
-    setSpeed(moveD);
+    setSpeed(getBaseSpeed() * moveD);
     if (moveD == Vector(0,0)) {
         setSpeed(previous_speed);
     }
@@ -107,13 +107,10 @@ void Creature::handleWallCollision(int xLim, int yLim){
     {
         speed.reflectX();
     }
-    //position.clip(0, xLim, 0, yLim);
+    position.clip(0, xLim, 0, yLim);
 };
 
-bool Creature::dieFromeAging() const
-{
-   return age >= lifetime_duration;
-};
+
 
 double Creature::getSize() const
 {
@@ -260,7 +257,10 @@ void Creature::setSize(double s) {
     hitbox.radius = s;
 }
 
-
+ostream& operator<<(ostream& os, const Creature& cr){
+    os << "Creature with id <" << cr.getId() << ">\n";
+    return os;
+}
 
 
 

@@ -24,12 +24,12 @@ private :
 
 public :
    Milieu( int _width, int _height );
-   ~Milieu( void );
+   ~Milieu();
 
-   int getWidth( void ) const { return width; };
-   int getHeight( void ) const { return height; };
+   int getWidth() const { return width; };
+   int getHeight() const { return height; };
 
-   void step( void );
+   void step();
    void creatureDetectSurroundings();
    void moveCreatures();
    void draw();

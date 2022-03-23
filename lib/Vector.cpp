@@ -5,6 +5,7 @@
 #include "Vector.h"
 #include <cmath>
 #include <limits>
+#include <iostream>
 // functions
 double scalar(const Vector &a, const Vector &b){
     return a.x * b.x + a.y * b.y;
@@ -17,7 +18,7 @@ double det(const Vector &a, const Vector &b){
 // Unary operators
 double norm(const Vector &v){
     return std::sqrt(scalar(v,v));
-};
+}
 
 double distanceVectors(const Vector &a, const Vector &b){
     return norm(a - b);
@@ -94,7 +95,7 @@ Vector operator/(const Vector v, double k) {
 }
 
 void Vector::clip(double xMin, double xMax, double yMin, double yMax) {
-    const int margin = 5;
+    const int margin =0;
     x = std::min(xMax - margin, std::max(xMin + margin , x));
     y = std::min(yMax - margin , std::max(yMin + margin , y));
 }
@@ -106,6 +107,11 @@ void Vector::alignToGrid() {
 
 bool operator==(const Vector &a, const Vector &b) {
     return (a.x == b.x) && (a.y == b.y);
+}
+
+std::ostream& operator<<(std::ostream& os, const Vector &v) {
+    os << "Vector[ "<<v.x << " , " << v.y <<"]\n";
+    return os;
 }
 
 
