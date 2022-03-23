@@ -1,0 +1,177 @@
+\hypertarget{classMilieu}{}\doxysection{Milieu Class Reference}
+\label{classMilieu}\index{Milieu@{Milieu}}
+
+
+{\ttfamily \#include $<$Milieu.\+h$>$}
+
+
+
+Inheritance diagram for Milieu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classMilieu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Milieu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classMilieu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMilieu_a245aaedf9af63f220e6232f67ae37657}{Milieu}} (int \+\_\+width, int \+\_\+height)
+\item 
+\mbox{\hyperlink{classMilieu_a50e722b52ea5ae200a5e5d872f8e9811}{$\sim$\+Milieu}} ()
+\item 
+int \mbox{\hyperlink{classMilieu_a5d5e69b271d21261c8ed43b7ad8c778f}{get\+Width}} () const
+\item 
+int \mbox{\hyperlink{classMilieu_a6c3b36bd4a47b2073a851a332a46ef21}{get\+Height}} () const
+\item 
+void \mbox{\hyperlink{classMilieu_a8a970b9c4e3bc288c2b3f3e7b2947d07}{step}} ()
+\item 
+void \mbox{\hyperlink{classMilieu_acd8e6c119ed2366bc78e5ec8587cff47}{creature\+Detect\+Surroundings}} ()
+\item 
+void \mbox{\hyperlink{classMilieu_a187057022647759da7ab6a3330e2ac26}{move\+Creatures}} ()
+\item 
+void \mbox{\hyperlink{classMilieu_ac5b18b74b9d9e081c253fdde0d1830b7}{draw}} ()
+\item 
+void \mbox{\hyperlink{classMilieu_af4da8110a89a6c50750c39f8e38cd276}{kill\+Creatures}} ()
+\item 
+void \mbox{\hyperlink{classMilieu_afa5e1d82c83de73480f326edfb6edf74}{handle\+Creature\+Collision}} (void)
+\item 
+void \mbox{\hyperlink{classMilieu_a90847cf239f6ca1b6c57c3e60b4550a2}{add\+Member}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCreature}{Creature}} $>$ \&b)
+\item 
+void \mbox{\hyperlink{classMilieu_abb9ef98d885fa31932292886dee088ef}{add\+Random\+Member}} ()
+\item 
+int \mbox{\hyperlink{classMilieu_ae52be5c413907505d10c21b01f079dda}{get\+Nb\+Creatures}} (void)
+\item 
+bool \mbox{\hyperlink{classMilieu_a2cd6dc1ed1cf3a1a22be207f0701bd71}{detect}} (const \mbox{\hyperlink{classCreature}{Creature}} \&a, const \mbox{\hyperlink{classCreature}{Creature}} \&b)
+\item 
+std\+::vector$<$ array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$ $>$ \mbox{\hyperlink{classMilieu_af456203db9af87dbc4764a100b11dcc3}{surrounding}} (const \mbox{\hyperlink{classCreature}{Creature}} \&a)
+\item 
+void \mbox{\hyperlink{classMilieu_ae868c69966e5e44af7915360fce5a177}{add\+Creature\+To\+Kill}} (int i)
+\item 
+void \mbox{\hyperlink{classMilieu_ab5f0fd5142b510324ea2662b763e1363}{age\+Creature}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMilieu_a245aaedf9af63f220e6232f67ae37657}\label{classMilieu_a245aaedf9af63f220e6232f67ae37657}} 
+\index{Milieu@{Milieu}!Milieu@{Milieu}}
+\index{Milieu@{Milieu}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{Milieu()}{Milieu()}}
+{\footnotesize\ttfamily Milieu\+::\+Milieu (\begin{DoxyParamCaption}\item[{int}]{\+\_\+width,  }\item[{int}]{\+\_\+height }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a50e722b52ea5ae200a5e5d872f8e9811}\label{classMilieu_a50e722b52ea5ae200a5e5d872f8e9811}} 
+\index{Milieu@{Milieu}!````~Milieu@{$\sim$Milieu}}
+\index{````~Milieu@{$\sim$Milieu}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Milieu()}{~Milieu()}}
+{\footnotesize\ttfamily Milieu\+::$\sim$\+Milieu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMilieu_ae868c69966e5e44af7915360fce5a177}\label{classMilieu_ae868c69966e5e44af7915360fce5a177}} 
+\index{Milieu@{Milieu}!addCreatureToKill@{addCreatureToKill}}
+\index{addCreatureToKill@{addCreatureToKill}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{addCreatureToKill()}{addCreatureToKill()}}
+{\footnotesize\ttfamily void Milieu\+::add\+Creature\+To\+Kill (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a90847cf239f6ca1b6c57c3e60b4550a2}\label{classMilieu_a90847cf239f6ca1b6c57c3e60b4550a2}} 
+\index{Milieu@{Milieu}!addMember@{addMember}}
+\index{addMember@{addMember}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{addMember()}{addMember()}}
+{\footnotesize\ttfamily void Milieu\+::add\+Member (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCreature}{Creature}} $>$ \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_abb9ef98d885fa31932292886dee088ef}\label{classMilieu_abb9ef98d885fa31932292886dee088ef}} 
+\index{Milieu@{Milieu}!addRandomMember@{addRandomMember}}
+\index{addRandomMember@{addRandomMember}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{addRandomMember()}{addRandomMember()}}
+{\footnotesize\ttfamily void Milieu\+::add\+Random\+Member (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_ab5f0fd5142b510324ea2662b763e1363}\label{classMilieu_ab5f0fd5142b510324ea2662b763e1363}} 
+\index{Milieu@{Milieu}!ageCreature@{ageCreature}}
+\index{ageCreature@{ageCreature}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{ageCreature()}{ageCreature()}}
+{\footnotesize\ttfamily void Milieu\+::age\+Creature (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_acd8e6c119ed2366bc78e5ec8587cff47}\label{classMilieu_acd8e6c119ed2366bc78e5ec8587cff47}} 
+\index{Milieu@{Milieu}!creatureDetectSurroundings@{creatureDetectSurroundings}}
+\index{creatureDetectSurroundings@{creatureDetectSurroundings}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{creatureDetectSurroundings()}{creatureDetectSurroundings()}}
+{\footnotesize\ttfamily void Milieu\+::creature\+Detect\+Surroundings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a2cd6dc1ed1cf3a1a22be207f0701bd71}\label{classMilieu_a2cd6dc1ed1cf3a1a22be207f0701bd71}} 
+\index{Milieu@{Milieu}!detect@{detect}}
+\index{detect@{detect}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily bool Milieu\+::detect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{a,  }\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_ac5b18b74b9d9e081c253fdde0d1830b7}\label{classMilieu_ac5b18b74b9d9e081c253fdde0d1830b7}} 
+\index{Milieu@{Milieu}!draw@{draw}}
+\index{draw@{draw}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Milieu\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a6c3b36bd4a47b2073a851a332a46ef21}\label{classMilieu_a6c3b36bd4a47b2073a851a332a46ef21}} 
+\index{Milieu@{Milieu}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Milieu\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMilieu_ae52be5c413907505d10c21b01f079dda}\label{classMilieu_ae52be5c413907505d10c21b01f079dda}} 
+\index{Milieu@{Milieu}!getNbCreatures@{getNbCreatures}}
+\index{getNbCreatures@{getNbCreatures}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{getNbCreatures()}{getNbCreatures()}}
+{\footnotesize\ttfamily int Milieu\+::get\+Nb\+Creatures (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a5d5e69b271d21261c8ed43b7ad8c778f}\label{classMilieu_a5d5e69b271d21261c8ed43b7ad8c778f}} 
+\index{Milieu@{Milieu}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Milieu\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classMilieu_afa5e1d82c83de73480f326edfb6edf74}\label{classMilieu_afa5e1d82c83de73480f326edfb6edf74}} 
+\index{Milieu@{Milieu}!handleCreatureCollision@{handleCreatureCollision}}
+\index{handleCreatureCollision@{handleCreatureCollision}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{handleCreatureCollision()}{handleCreatureCollision()}}
+{\footnotesize\ttfamily void Milieu\+::handle\+Creature\+Collision (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_af4da8110a89a6c50750c39f8e38cd276}\label{classMilieu_af4da8110a89a6c50750c39f8e38cd276}} 
+\index{Milieu@{Milieu}!killCreatures@{killCreatures}}
+\index{killCreatures@{killCreatures}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{killCreatures()}{killCreatures()}}
+{\footnotesize\ttfamily void Milieu\+::kill\+Creatures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a187057022647759da7ab6a3330e2ac26}\label{classMilieu_a187057022647759da7ab6a3330e2ac26}} 
+\index{Milieu@{Milieu}!moveCreatures@{moveCreatures}}
+\index{moveCreatures@{moveCreatures}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{moveCreatures()}{moveCreatures()}}
+{\footnotesize\ttfamily void Milieu\+::move\+Creatures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_a8a970b9c4e3bc288c2b3f3e7b2947d07}\label{classMilieu_a8a970b9c4e3bc288c2b3f3e7b2947d07}} 
+\index{Milieu@{Milieu}!step@{step}}
+\index{step@{step}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily void Milieu\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMilieu_af456203db9af87dbc4764a100b11dcc3}\label{classMilieu_af456203db9af87dbc4764a100b11dcc3}} 
+\index{Milieu@{Milieu}!surrounding@{surrounding}}
+\index{surrounding@{surrounding}!Milieu@{Milieu}}
+\doxysubsubsection{\texorpdfstring{surrounding()}{surrounding()}}
+{\footnotesize\ttfamily std\+::vector$<$ array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$ $>$ Milieu\+::surrounding (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Milieu_8h}{Milieu.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Milieu_8cpp}{Milieu.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,131 @@
+\hypertarget{classPlanningBehaviour}{}\doxysection{Planning\+Behaviour Class Reference}
+\label{classPlanningBehaviour}\index{PlanningBehaviour@{PlanningBehaviour}}
+
+
+{\ttfamily \#include $<$Behaviour.\+h$>$}
+
+
+
+Inheritance diagram for Planning\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classPlanningBehaviour__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Planning\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classPlanningBehaviour__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlanningBehaviour_a98c4a808161f8cfda627cfee06e7dd67}{Planning\+Behaviour}} ()=default
+\item 
+\mbox{\hyperlink{classPlanningBehaviour_a810e20046e2d044f2ba6adfac550dddb}{Planning\+Behaviour}} (const \mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \&p)
+\item 
+\mbox{\hyperlink{classPlanningBehaviour_a0f9e00cb4d529079eb52172092e2ea79}{$\sim$\+Planning\+Behaviour}} ()=default
+\item 
+\mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \& \mbox{\hyperlink{classPlanningBehaviour_a33698df4120e04ecf5df12c89d68f754}{operator=}} (const \mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \&p)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classPlanningBehaviour_a3da0b63ef393795d92dc4790a0384edf}{move\+Direction}} (const \mbox{\hyperlink{structVector}{Vector}} creature\+Coordinates, const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classPlanningBehaviour_a34a5d72b20652a404554feb49f0a3168}{clone}} () const override
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{classPlanningBehaviour_a562149a9ce9a3a7ee8ac900e9db2f424}{get\+Color}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned char \mbox{\hyperlink{classPlanningBehaviour_ae97c895da1d3d8a356090fba8756f1af}{couleur}} \mbox{[}$\,$\mbox{]} = \{0, 200, 0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlanningBehaviour_a98c4a808161f8cfda627cfee06e7dd67}\label{classPlanningBehaviour_a98c4a808161f8cfda627cfee06e7dd67}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!PlanningBehaviour@{PlanningBehaviour}}
+\index{PlanningBehaviour@{PlanningBehaviour}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{PlanningBehaviour()}{PlanningBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Planning\+Behaviour\+::\+Planning\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classPlanningBehaviour_a810e20046e2d044f2ba6adfac550dddb}\label{classPlanningBehaviour_a810e20046e2d044f2ba6adfac550dddb}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!PlanningBehaviour@{PlanningBehaviour}}
+\index{PlanningBehaviour@{PlanningBehaviour}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{PlanningBehaviour()}{PlanningBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Planning\+Behaviour\+::\+Planning\+Behaviour (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \&}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPlanningBehaviour_a0f9e00cb4d529079eb52172092e2ea79}\label{classPlanningBehaviour_a0f9e00cb4d529079eb52172092e2ea79}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!````~PlanningBehaviour@{$\sim$PlanningBehaviour}}
+\index{````~PlanningBehaviour@{$\sim$PlanningBehaviour}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{$\sim$PlanningBehaviour()}{~PlanningBehaviour()}}
+{\footnotesize\ttfamily Planning\+Behaviour\+::$\sim$\+Planning\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlanningBehaviour_a34a5d72b20652a404554feb49f0a3168}\label{classPlanningBehaviour_a34a5d72b20652a404554feb49f0a3168}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!clone@{clone}}
+\index{clone@{clone}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ Planning\+Behaviour\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classPlanningBehaviour_a562149a9ce9a3a7ee8ac900e9db2f424}\label{classPlanningBehaviour_a562149a9ce9a3a7ee8ac900e9db2f424}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!getColor@{getColor}}
+\index{getColor@{getColor}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Planning\+Behaviour\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classPlanningBehaviour_a3da0b63ef393795d92dc4790a0384edf}\label{classPlanningBehaviour_a3da0b63ef393795d92dc4790a0384edf}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!moveDirection@{moveDirection}}
+\index{moveDirection@{moveDirection}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveDirection()}{moveDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Planning\+Behaviour\+::move\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{creature\+Coordinates,  }\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em visible\+Creatures} & vector of \mbox{[}array$<$float,2$>$ move\+Direction, array$<$float,2$>$ coordinates\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+move\+Direction std\+::array$<$float,2$>$ The direction the creature wants to move. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classPlanningBehaviour_a33698df4120e04ecf5df12c89d68f754}\label{classPlanningBehaviour_a33698df4120e04ecf5df12c89d68f754}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!operator=@{operator=}}
+\index{operator=@{operator=}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \& Planning\+Behaviour\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classPlanningBehaviour}{Planning\+Behaviour}} \&}]{p }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPlanningBehaviour_ae97c895da1d3d8a356090fba8756f1af}\label{classPlanningBehaviour_ae97c895da1d3d8a356090fba8756f1af}} 
+\index{PlanningBehaviour@{PlanningBehaviour}!couleur@{couleur}}
+\index{couleur@{couleur}!PlanningBehaviour@{PlanningBehaviour}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily unsigned char Planning\+Behaviour\+::couleur = \{0, 200, 0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8h}{Behaviour.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8cpp}{Behaviour.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,194 @@
+\hypertarget{classRandomBuilder}{}\doxysection{Random\+Builder Class Reference}
+\label{classRandomBuilder}\index{RandomBuilder@{RandomBuilder}}
+
+
+{\ttfamily \#include $<$Creature\+Builder.\+h$>$}
+
+
+
+Inheritance diagram for Random\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classRandomBuilder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Random\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classRandomBuilder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRandomBuilder_a17aa4e3fb0a78e4b5a6e8353ae9d4dd2}{Random\+Builder}} (\mbox{\hyperlink{classCreatureBuilder}{Creature\+Builder}} \&t\+\_\+director, double t\+\_\+eye\+Prob, double t\+\_\+ear\+Prob, double t\+\_\+shell\+Prob, double t\+\_\+camo\+Prob, double t\+\_\+fin\+Prob, std\+::array$<$ double, 4 $>$ t\+\_\+behaviour\+Distrib)
+\item 
+\mbox{\hyperlink{classRandomBuilder_a16e9dd168b499c1074325cca8003e6a1}{Random\+Builder}} (\mbox{\hyperlink{classCreatureBuilder}{Creature\+Builder}} \&t\+\_\+director)
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a5e9023b5b6ee7ed5f59c770a432773c1}{init\+ID}} (int t\+\_\+id) override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a318d28256ecd622ad5a46a464c839b08}{init\+Accessories}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a126b13f158af88649356d1c6e4b92d93}{init\+Sensors}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_af768802669fa995b253bcf0d7dff13dc}{init\+Behaviour}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a73e621ee2d48711e91e54d7fd84952a8}{init\+Position}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_ace955f67528a07fbaef11b4b18ca2a33}{init\+Vitesse}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a396eb5700b2cee450510c839d757f163}{init\+Lifetime\+Duration}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a03893e169635904183297d8e3b0c73e1}{init\+Creature\+Size}} () override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCreature}{Creature}} $>$ \mbox{\hyperlink{classRandomBuilder_a25e2c9051ff3a84f8198d4a77ed6ac45}{get\+Result}} () override
+\item 
+void \mbox{\hyperlink{classRandomBuilder_a185352cdc9ac8f8e44ea19fe234f89ee}{reset}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRandomBuilder_a17aa4e3fb0a78e4b5a6e8353ae9d4dd2}\label{classRandomBuilder_a17aa4e3fb0a78e4b5a6e8353ae9d4dd2}} 
+\index{RandomBuilder@{RandomBuilder}!RandomBuilder@{RandomBuilder}}
+\index{RandomBuilder@{RandomBuilder}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{RandomBuilder()}{RandomBuilder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Random\+Builder\+::\+Random\+Builder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCreatureBuilder}{Creature\+Builder}} \&}]{t\+\_\+director,  }\item[{double}]{t\+\_\+eye\+Prob,  }\item[{double}]{t\+\_\+ear\+Prob,  }\item[{double}]{t\+\_\+shell\+Prob,  }\item[{double}]{t\+\_\+camo\+Prob,  }\item[{double}]{t\+\_\+fin\+Prob,  }\item[{std\+::array$<$ double, 4 $>$}]{t\+\_\+behaviour\+Distrib }\end{DoxyParamCaption})}
+
+Creates a creature with a given probability distribution 
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+director} & director the builder refers to \\
+\hline
+{\em t\+\_\+eye\+Prob} & the probability of having eyes \\
+\hline
+{\em t\+\_\+ear\+Prob} & the probability of having ears \\
+\hline
+{\em t\+\_\+shell\+Prob} & the probability of having a shell \\
+\hline
+{\em t\+\_\+camo\+Prob} & the probability of having a camo \\
+\hline
+{\em t\+\_\+fin\+Prob} & the probability of having a fin \\
+\hline
+{\em t\+\_\+behaviour\+Distrib} & \mbox{[}prob\+Gregarious, prob\+Fearful, prob\+Kamikaze, prob\+Multiple\mbox{]} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRandomBuilder_a16e9dd168b499c1074325cca8003e6a1}\label{classRandomBuilder_a16e9dd168b499c1074325cca8003e6a1}} 
+\index{RandomBuilder@{RandomBuilder}!RandomBuilder@{RandomBuilder}}
+\index{RandomBuilder@{RandomBuilder}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{RandomBuilder()}{RandomBuilder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Random\+Builder\+::\+Random\+Builder (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCreatureBuilder}{Creature\+Builder}} \&}]{t\+\_\+director }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRandomBuilder_a25e2c9051ff3a84f8198d4a77ed6ac45}\label{classRandomBuilder_a25e2c9051ff3a84f8198d4a77ed6ac45}} 
+\index{RandomBuilder@{RandomBuilder}!getResult@{getResult}}
+\index{getResult@{getResult}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{getResult()}{getResult()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classCreature}{Creature}} $>$ Random\+Builder\+::get\+Result (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_adf18dc2393226ba79f9ed083b7912270}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a318d28256ecd622ad5a46a464c839b08}\label{classRandomBuilder_a318d28256ecd622ad5a46a464c839b08}} 
+\index{RandomBuilder@{RandomBuilder}!initAccessories@{initAccessories}}
+\index{initAccessories@{initAccessories}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initAccessories()}{initAccessories()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Accessories (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_a37c0a382c7a94cdd75dffa168c3f987f}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_af768802669fa995b253bcf0d7dff13dc}\label{classRandomBuilder_af768802669fa995b253bcf0d7dff13dc}} 
+\index{RandomBuilder@{RandomBuilder}!initBehaviour@{initBehaviour}}
+\index{initBehaviour@{initBehaviour}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initBehaviour()}{initBehaviour()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_a24000a2658c09e4eaa447a99501e1791}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a03893e169635904183297d8e3b0c73e1}\label{classRandomBuilder_a03893e169635904183297d8e3b0c73e1}} 
+\index{RandomBuilder@{RandomBuilder}!initCreatureSize@{initCreatureSize}}
+\index{initCreatureSize@{initCreatureSize}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initCreatureSize()}{initCreatureSize()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Creature\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_ad81cb746b872ae8be2429d6807df655a}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a5e9023b5b6ee7ed5f59c770a432773c1}\label{classRandomBuilder_a5e9023b5b6ee7ed5f59c770a432773c1}} 
+\index{RandomBuilder@{RandomBuilder}!initID@{initID}}
+\index{initID@{initID}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initID()}{initID()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+ID (\begin{DoxyParamCaption}\item[{int}]{t\+\_\+id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_abd8ccf265f4d0d553dd8f0d59e091a09}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a396eb5700b2cee450510c839d757f163}\label{classRandomBuilder_a396eb5700b2cee450510c839d757f163}} 
+\index{RandomBuilder@{RandomBuilder}!initLifetimeDuration@{initLifetimeDuration}}
+\index{initLifetimeDuration@{initLifetimeDuration}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initLifetimeDuration()}{initLifetimeDuration()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Lifetime\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_a4c70c109e552ad4ec6a12a3487c2aa86}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a73e621ee2d48711e91e54d7fd84952a8}\label{classRandomBuilder_a73e621ee2d48711e91e54d7fd84952a8}} 
+\index{RandomBuilder@{RandomBuilder}!initPosition@{initPosition}}
+\index{initPosition@{initPosition}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initPosition()}{initPosition()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_a215e2e38b9d9d88721d1c42b7a7b1c67}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a126b13f158af88649356d1c6e4b92d93}\label{classRandomBuilder_a126b13f158af88649356d1c6e4b92d93}} 
+\index{RandomBuilder@{RandomBuilder}!initSensors@{initSensors}}
+\index{initSensors@{initSensors}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initSensors()}{initSensors()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Sensors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_aa454728163a0927670be11c6b20daa5b}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_ace955f67528a07fbaef11b4b18ca2a33}\label{classRandomBuilder_ace955f67528a07fbaef11b4b18ca2a33}} 
+\index{RandomBuilder@{RandomBuilder}!initVitesse@{initVitesse}}
+\index{initVitesse@{initVitesse}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{initVitesse()}{initVitesse()}}
+{\footnotesize\ttfamily void Random\+Builder\+::init\+Vitesse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_afdd3ecc2ea2f5dc50db23ae87d49212a}{Builder\+Interface}}.
+
+\mbox{\Hypertarget{classRandomBuilder_a185352cdc9ac8f8e44ea19fe234f89ee}\label{classRandomBuilder_a185352cdc9ac8f8e44ea19fe234f89ee}} 
+\index{RandomBuilder@{RandomBuilder}!reset@{reset}}
+\index{reset@{reset}!RandomBuilder@{RandomBuilder}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Random\+Builder\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBuilderInterface_ae8331212463ea887d58edfbcdf6ef27a}{Builder\+Interface}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{CreatureBuilder_8h}{Creature\+Builder.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{CreatureBuilder_8cpp}{Creature\+Builder.\+cpp}}\end{DoxyCompactItemize}

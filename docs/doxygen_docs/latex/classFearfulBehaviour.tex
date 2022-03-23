@@ -1,0 +1,151 @@
+\hypertarget{classFearfulBehaviour}{}\doxysection{Fearful\+Behaviour Class Reference}
+\label{classFearfulBehaviour}\index{FearfulBehaviour@{FearfulBehaviour}}
+
+
+{\ttfamily \#include $<$Behaviour.\+h$>$}
+
+
+
+Inheritance diagram for Fearful\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classFearfulBehaviour__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fearful\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classFearfulBehaviour__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFearfulBehaviour_af220332b8f391464b2915eea3b62cf16}{Fearful\+Behaviour}} ()
+\item 
+\mbox{\hyperlink{classFearfulBehaviour_a38b0d4fd7ab0d32a8b47c407e4279b65}{Fearful\+Behaviour}} (int \mbox{\hyperlink{classFearfulBehaviour_ae1cfdf1e72abe8f011698c87e0d271e2}{max\+Neighbours}}, float \mbox{\hyperlink{classFearfulBehaviour_a7bbbdca1010965e18670ad7640146761}{move\+Speed\+Multiplier}})
+\item 
+\mbox{\hyperlink{classFearfulBehaviour_ae73bc55da9c9abd9fd1e4837fbcb4ddf}{Fearful\+Behaviour}} (const \mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \&f)
+\item 
+\mbox{\hyperlink{classFearfulBehaviour_aaf56589c8d3ce6a30471b509926d3a77}{$\sim$\+Fearful\+Behaviour}} ()=default
+\item 
+\mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \& \mbox{\hyperlink{classFearfulBehaviour_ac07de839a395e6723471047325d56a0c}{operator=}} (const \mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \&f)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classFearfulBehaviour_af680bd3cb93ddd0eedfaa9a4d795787f}{move\+Direction}} (const \mbox{\hyperlink{structVector}{Vector}} creature\+Coordinates, const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const override
+\item 
+float \mbox{\hyperlink{classFearfulBehaviour_a7bbbdca1010965e18670ad7640146761}{move\+Speed\+Multiplier}} (const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const override
+\item 
+int \mbox{\hyperlink{classFearfulBehaviour_ae1cfdf1e72abe8f011698c87e0d271e2}{max\+Neighbours}} () const
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classFearfulBehaviour_aaa183013d062bdef2a5983d6df248193}{clone}} () const override
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{classFearfulBehaviour_a6c3c0b954a4ba9ee2f29c5ae28faf7d3}{get\+Color}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned char \mbox{\hyperlink{classFearfulBehaviour_aab1af5f300f4885993f9fc2b9a605583}{couleur}} \mbox{[}$\,$\mbox{]} = \{10, 200, 100\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFearfulBehaviour_af220332b8f391464b2915eea3b62cf16}\label{classFearfulBehaviour_af220332b8f391464b2915eea3b62cf16}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{FearfulBehaviour()}{FearfulBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Fearful\+Behaviour\+::\+Fearful\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFearfulBehaviour_a38b0d4fd7ab0d32a8b47c407e4279b65}\label{classFearfulBehaviour_a38b0d4fd7ab0d32a8b47c407e4279b65}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{FearfulBehaviour()}{FearfulBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Fearful\+Behaviour\+::\+Fearful\+Behaviour (\begin{DoxyParamCaption}\item[{int}]{max\+Neighbours,  }\item[{float}]{move\+Speed\+Multiplier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classFearfulBehaviour_ae73bc55da9c9abd9fd1e4837fbcb4ddf}\label{classFearfulBehaviour_ae73bc55da9c9abd9fd1e4837fbcb4ddf}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\index{FearfulBehaviour@{FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{FearfulBehaviour()}{FearfulBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Fearful\+Behaviour\+::\+Fearful\+Behaviour (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \&}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFearfulBehaviour_aaf56589c8d3ce6a30471b509926d3a77}\label{classFearfulBehaviour_aaf56589c8d3ce6a30471b509926d3a77}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!````~FearfulBehaviour@{$\sim$FearfulBehaviour}}
+\index{````~FearfulBehaviour@{$\sim$FearfulBehaviour}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{$\sim$FearfulBehaviour()}{~FearfulBehaviour()}}
+{\footnotesize\ttfamily Fearful\+Behaviour\+::$\sim$\+Fearful\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFearfulBehaviour_aaa183013d062bdef2a5983d6df248193}\label{classFearfulBehaviour_aaa183013d062bdef2a5983d6df248193}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!clone@{clone}}
+\index{clone@{clone}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ Fearful\+Behaviour\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classFearfulBehaviour_a6c3c0b954a4ba9ee2f29c5ae28faf7d3}\label{classFearfulBehaviour_a6c3c0b954a4ba9ee2f29c5ae28faf7d3}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!getColor@{getColor}}
+\index{getColor@{getColor}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Fearful\+Behaviour\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classFearfulBehaviour_ae1cfdf1e72abe8f011698c87e0d271e2}\label{classFearfulBehaviour_ae1cfdf1e72abe8f011698c87e0d271e2}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!maxNeighbours@{maxNeighbours}}
+\index{maxNeighbours@{maxNeighbours}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{maxNeighbours()}{maxNeighbours()}}
+{\footnotesize\ttfamily int Fearful\+Behaviour\+::max\+Neighbours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classFearfulBehaviour_af680bd3cb93ddd0eedfaa9a4d795787f}\label{classFearfulBehaviour_af680bd3cb93ddd0eedfaa9a4d795787f}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!moveDirection@{moveDirection}}
+\index{moveDirection@{moveDirection}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveDirection()}{moveDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Fearful\+Behaviour\+::move\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{creature\+Coordinates,  }\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+If there\textquotesingle{}s too many people detected, then run in opposite of the mean directions the other creatures are in. Will return \mbox{[}0,0\mbox{]} if there\textquotesingle{}s no change of direction planned 
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classFearfulBehaviour_a7bbbdca1010965e18670ad7640146761}\label{classFearfulBehaviour_a7bbbdca1010965e18670ad7640146761}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!moveSpeedMultiplier@{moveSpeedMultiplier}}
+\index{moveSpeedMultiplier@{moveSpeedMultiplier}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveSpeedMultiplier()}{moveSpeedMultiplier()}}
+{\footnotesize\ttfamily float Fearful\+Behaviour\+::move\+Speed\+Multiplier (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceBehaviour_a48c14e62f6e4a951a0a7b9d392d0b0d7}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classFearfulBehaviour_ac07de839a395e6723471047325d56a0c}\label{classFearfulBehaviour_ac07de839a395e6723471047325d56a0c}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!operator=@{operator=}}
+\index{operator=@{operator=}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \& Fearful\+Behaviour\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classFearfulBehaviour}{Fearful\+Behaviour}} \&}]{f }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classFearfulBehaviour_aab1af5f300f4885993f9fc2b9a605583}\label{classFearfulBehaviour_aab1af5f300f4885993f9fc2b9a605583}} 
+\index{FearfulBehaviour@{FearfulBehaviour}!couleur@{couleur}}
+\index{couleur@{couleur}!FearfulBehaviour@{FearfulBehaviour}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily unsigned char Fearful\+Behaviour\+::couleur = \{10, 200, 100\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8h}{Behaviour.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8cpp}{Behaviour.\+cpp}}\end{DoxyCompactItemize}

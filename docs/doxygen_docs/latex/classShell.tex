@@ -1,0 +1,121 @@
+\hypertarget{classShell}{}\doxysection{Shell Class Reference}
+\label{classShell}\index{Shell@{Shell}}
+
+
+{\ttfamily \#include $<$Accessories.\+h$>$}
+
+
+
+Inheritance diagram for Shell\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classShell__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Shell\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classShell__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShell_a78f0b5f88f0f05b2f38adaeed68ee64c}{Shell}} (float speed\+Reduction\+Coef, float \mbox{\hyperlink{classShell_a2ab15532b5166a25fe25bf5bad94e522}{death\+Coef}})
+\item 
+\mbox{\hyperlink{classShell_ae2bd6a8123c9bf10ed76e5a66b572860}{Shell}} (const \mbox{\hyperlink{classShell}{Shell}} \&s)
+\item 
+\mbox{\hyperlink{classShell_a9e7a4696fce7a8dbf9a49f2aac38349b}{$\sim$\+Shell}} ()=default
+\item 
+\mbox{\hyperlink{classShell}{Shell}} \& \mbox{\hyperlink{classShell_a5e2a43ab68b3b4380f7f59c304198e62}{operator=}} (const \mbox{\hyperlink{classShell}{Shell}} \&s)
+\item 
+float \mbox{\hyperlink{classShell_a071a90914864634ef97a9bea3421216a}{speed\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classShell_a2ab15532b5166a25fe25bf5bad94e522}{death\+Coef}} () const override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \mbox{\hyperlink{classShell_ae45d2fd08ca6196239dcec6a22307008}{clone}} () override
+\item 
+void \mbox{\hyperlink{classShell_a10e91a98c70c533a5e61267deb843887}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classShell_a78f0b5f88f0f05b2f38adaeed68ee64c}\label{classShell_a78f0b5f88f0f05b2f38adaeed68ee64c}} 
+\index{Shell@{Shell}!Shell@{Shell}}
+\index{Shell@{Shell}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{Shell()}{Shell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Shell\+::\+Shell (\begin{DoxyParamCaption}\item[{float}]{speed\+Reduction\+Coef,  }\item[{float}]{death\+Coef }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classShell_ae2bd6a8123c9bf10ed76e5a66b572860}\label{classShell_ae2bd6a8123c9bf10ed76e5a66b572860}} 
+\index{Shell@{Shell}!Shell@{Shell}}
+\index{Shell@{Shell}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{Shell()}{Shell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Shell\+::\+Shell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classShell}{Shell}} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classShell_a9e7a4696fce7a8dbf9a49f2aac38349b}\label{classShell_a9e7a4696fce7a8dbf9a49f2aac38349b}} 
+\index{Shell@{Shell}!````~Shell@{$\sim$Shell}}
+\index{````~Shell@{$\sim$Shell}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{$\sim$Shell()}{~Shell()}}
+{\footnotesize\ttfamily Shell\+::$\sim$\+Shell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classShell_ae45d2fd08ca6196239dcec6a22307008}\label{classShell_ae45d2fd08ca6196239dcec6a22307008}} 
+\index{Shell@{Shell}!clone@{clone}}
+\index{clone@{clone}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ Shell\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classShell_a2ab15532b5166a25fe25bf5bad94e522}\label{classShell_a2ab15532b5166a25fe25bf5bad94e522}} 
+\index{Shell@{Shell}!deathCoef@{deathCoef}}
+\index{deathCoef@{deathCoef}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{deathCoef()}{deathCoef()}}
+{\footnotesize\ttfamily float Shell\+::death\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a54fa042cb4c26d17c87a2d2ca55bfc9e}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classShell_a10e91a98c70c533a5e61267deb843887}\label{classShell_a10e91a98c70c533a5e61267deb843887}} 
+\index{Shell@{Shell}!draw@{draw}}
+\index{draw@{draw}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Shell\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_adc6e406252185632f50620481bf18352}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classShell_a5e2a43ab68b3b4380f7f59c304198e62}\label{classShell_a5e2a43ab68b3b4380f7f59c304198e62}} 
+\index{Shell@{Shell}!operator=@{operator=}}
+\index{operator=@{operator=}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classShell}{Shell}} \& Shell\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classShell}{Shell}} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classShell_a071a90914864634ef97a9bea3421216a}\label{classShell_a071a90914864634ef97a9bea3421216a}} 
+\index{Shell@{Shell}!speedCoef@{speedCoef}}
+\index{speedCoef@{speedCoef}!Shell@{Shell}}
+\doxysubsubsection{\texorpdfstring{speedCoef()}{speedCoef()}}
+{\footnotesize\ttfamily float Shell\+::speed\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}{Interface\+Accessory}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8h}{Accessories.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8cpp}{Accessories.\+cpp}}\end{DoxyCompactItemize}

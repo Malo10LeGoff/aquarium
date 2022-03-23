@@ -1,0 +1,155 @@
+\hypertarget{classMultipleBehaviours}{}\doxysection{Multiple\+Behaviours Class Reference}
+\label{classMultipleBehaviours}\index{MultipleBehaviours@{MultipleBehaviours}}
+
+
+{\ttfamily \#include $<$Behaviour.\+h$>$}
+
+
+
+Inheritance diagram for Multiple\+Behaviours\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classMultipleBehaviours__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Multiple\+Behaviours\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMultipleBehaviours__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMultipleBehaviours_a0ad565829fdda04ce866db20dd7a551b}{Multiple\+Behaviours}} ()
+\item 
+\mbox{\hyperlink{classMultipleBehaviours_a94e9d7c12843dc8d81d8857c6e0cb77c}{Multiple\+Behaviours}} (const \mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \&m)
+\item 
+\mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \& \mbox{\hyperlink{classMultipleBehaviours_a944135cc34ed1f3638e7a1c0259e7bdd}{operator=}} (const \mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \&m)
+\item 
+\mbox{\hyperlink{classMultipleBehaviours_ac9b4fbb6211527fe45cfe8a7d514088e}{$\sim$\+Multiple\+Behaviours}} ()=default
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classMultipleBehaviours_a94c9c22e9ca5de6f59b798c5c24cc8d1}{move\+Direction}} (const \mbox{\hyperlink{structVector}{Vector}} creature\+Coordinates, const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const override
+\item 
+void \mbox{\hyperlink{classMultipleBehaviours_ac3a589b64888221507ddfb2f1204f0aa}{add}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \&behaviour)
+\item 
+void \mbox{\hyperlink{classMultipleBehaviours_a650e950dfe2f7a35bf311a8f4bf9f374}{remove}} (int index)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classMultipleBehaviours_aaac60dbc46cdc1dff6f293dfa1d794fd}{clone}} () const override
+\item 
+int \mbox{\hyperlink{classMultipleBehaviours_afdf928f36709d685b0aab55216769a42}{size}} () const
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{classMultipleBehaviours_a43c85acbd24ffe522c78cb79d6d7e1f3}{get\+Color}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned char \mbox{\hyperlink{classMultipleBehaviours_a8e13d338b27b9640358be174f5e9a412}{couleur}} \mbox{[}$\,$\mbox{]} = \{100, 200, 0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMultipleBehaviours_a0ad565829fdda04ce866db20dd7a551b}\label{classMultipleBehaviours_a0ad565829fdda04ce866db20dd7a551b}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!MultipleBehaviours@{MultipleBehaviours}}
+\index{MultipleBehaviours@{MultipleBehaviours}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{MultipleBehaviours()}{MultipleBehaviours()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Multiple\+Behaviours\+::\+Multiple\+Behaviours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMultipleBehaviours_a94e9d7c12843dc8d81d8857c6e0cb77c}\label{classMultipleBehaviours_a94e9d7c12843dc8d81d8857c6e0cb77c}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!MultipleBehaviours@{MultipleBehaviours}}
+\index{MultipleBehaviours@{MultipleBehaviours}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{MultipleBehaviours()}{MultipleBehaviours()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Multiple\+Behaviours\+::\+Multiple\+Behaviours (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \&}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMultipleBehaviours_ac9b4fbb6211527fe45cfe8a7d514088e}\label{classMultipleBehaviours_ac9b4fbb6211527fe45cfe8a7d514088e}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!````~MultipleBehaviours@{$\sim$MultipleBehaviours}}
+\index{````~MultipleBehaviours@{$\sim$MultipleBehaviours}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{$\sim$MultipleBehaviours()}{~MultipleBehaviours()}}
+{\footnotesize\ttfamily Multiple\+Behaviours\+::$\sim$\+Multiple\+Behaviours (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMultipleBehaviours_ac3a589b64888221507ddfb2f1204f0aa}\label{classMultipleBehaviours_ac3a589b64888221507ddfb2f1204f0aa}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!add@{add}}
+\index{add@{add}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Multiple\+Behaviours\+::add (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \&}]{behaviour }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMultipleBehaviours_aaac60dbc46cdc1dff6f293dfa1d794fd}\label{classMultipleBehaviours_aaac60dbc46cdc1dff6f293dfa1d794fd}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!clone@{clone}}
+\index{clone@{clone}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ Multiple\+Behaviours\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classMultipleBehaviours_a43c85acbd24ffe522c78cb79d6d7e1f3}\label{classMultipleBehaviours_a43c85acbd24ffe522c78cb79d6d7e1f3}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!getColor@{getColor}}
+\index{getColor@{getColor}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Multiple\+Behaviours\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classMultipleBehaviours_a94c9c22e9ca5de6f59b798c5c24cc8d1}\label{classMultipleBehaviours_a94c9c22e9ca5de6f59b798c5c24cc8d1}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!moveDirection@{moveDirection}}
+\index{moveDirection@{moveDirection}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{moveDirection()}{moveDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Multiple\+Behaviours\+::move\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{creature\+Coordinates,  }\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em visible\+Creatures} & vector of \mbox{[}array$<$float,2$>$ move\+Direction, array$<$float,2$>$ coordinates\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+move\+Direction std\+::array$<$float,2$>$ The direction the creature wants to move. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classMultipleBehaviours_a944135cc34ed1f3638e7a1c0259e7bdd}\label{classMultipleBehaviours_a944135cc34ed1f3638e7a1c0259e7bdd}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!operator=@{operator=}}
+\index{operator=@{operator=}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \& Multiple\+Behaviours\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMultipleBehaviours}{Multiple\+Behaviours}} \&}]{m }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMultipleBehaviours_a650e950dfe2f7a35bf311a8f4bf9f374}\label{classMultipleBehaviours_a650e950dfe2f7a35bf311a8f4bf9f374}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!remove@{remove}}
+\index{remove@{remove}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Multiple\+Behaviours\+::remove (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMultipleBehaviours_afdf928f36709d685b0aab55216769a42}\label{classMultipleBehaviours_afdf928f36709d685b0aab55216769a42}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!size@{size}}
+\index{size@{size}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int Multiple\+Behaviours\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMultipleBehaviours_a8e13d338b27b9640358be174f5e9a412}\label{classMultipleBehaviours_a8e13d338b27b9640358be174f5e9a412}} 
+\index{MultipleBehaviours@{MultipleBehaviours}!couleur@{couleur}}
+\index{couleur@{couleur}!MultipleBehaviours@{MultipleBehaviours}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily unsigned char Multiple\+Behaviours\+::couleur = \{100, 200, 0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8h}{Behaviour.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8cpp}{Behaviour.\+cpp}}\end{DoxyCompactItemize}

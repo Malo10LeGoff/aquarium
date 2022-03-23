@@ -1,0 +1,32 @@
+\hypertarget{src_2CMakeLists_8txt}{}\doxysection{/home/minhtri/\+Documents/aquarium/src/\+C\+Make\+Lists.txt File Reference}
+\label{src_2CMakeLists_8txt}\index{/home/minhtri/Documents/aquarium/src/CMakeLists.txt@{/home/minhtri/Documents/aquarium/src/CMakeLists.txt}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{src_2CMakeLists_8txt_ab03a906cfd35dc6d334fb6d086684fe1}{include\+\_\+directories}} (\$\{C\+M\+A\+K\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+D\+IR\}/../lib) link\+\_\+directories(\$
+\item 
+lib \mbox{\hyperlink{src_2CMakeLists_8txt_a58317d1589a281bc12f5a4b89233b890}{add\+\_\+library}} (accessories Accessories.\+h Accessories.\+cpp) \mbox{\hyperlink{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}{target\+\_\+compile\+\_\+options}}(accessories P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) add\+\_\+library(behaviour Behaviour.\+h Behaviour.\+cpp) target\+\_\+link\+\_\+libraries(behaviour P\+R\+I\+V\+A\+TE random\+\_\+selection) target\+\_\+link\+\_\+libraries(behaviour P\+R\+I\+V\+A\+TE vector) \mbox{\hyperlink{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}{target\+\_\+compile\+\_\+options}}(behaviour P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) add\+\_\+library(sensors Sensors.\+h Sensors.\+cpp) \mbox{\hyperlink{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}{target\+\_\+compile\+\_\+options}}(sensors P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) add\+\_\+library(creature Creature.\+h Creature.\+cpp) target\+\_\+link\+\_\+libraries(creature P\+R\+I\+V\+A\+TE accessories) target\+\_\+link\+\_\+libraries(creature P\+R\+I\+V\+A\+TE sensors) target\+\_\+link\+\_\+libraries(creature P\+R\+I\+V\+A\+TE behaviour) target\+\_\+link\+\_\+libraries(creature P\+R\+I\+V\+A\+TE hitbox) target\+\_\+link\+\_\+libraries(creature P\+R\+I\+V\+A\+TE milieu) \mbox{\hyperlink{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}{target\+\_\+compile\+\_\+options}}(creature P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) add\+\_\+library(creature\+\_\+builder Creature\+Builder.\+h Creature\+Builder.\+cpp) target\+\_\+link\+\_\+libraries(creature\+\_\+builder P\+R\+I\+V\+A\+TE creature) target\+\_\+link\+\_\+libraries(creature\+\_\+builder P\+R\+I\+V\+A\+TE random\+\_\+creatures) target\+\_\+include\+\_\+directories(creature\+\_\+builder P\+R\+I\+V\+A\+TE \$
+\item 
+lib \mbox{\hyperlink{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}{target\+\_\+compile\+\_\+options}} (creature P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) \mbox{\hyperlink{lib_2CMakeLists_8txt_acaa209e553842efb198ec18c2b5959c5}{add\+\_\+library}}(milieu Milieu.\+h Milieu.\+cpp) target\+\_\+link\+\_\+libraries(milieu P\+R\+I\+V\+A\+TE creature\+\_\+builder) target\+\_\+compile\+\_\+options(milieu P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/Wpedantic) \mbox{\hyperlink{lib_2CMakeLists_8txt_acaa209e553842efb198ec18c2b5959c5}{add\+\_\+library}}(aquarium Aquarium.\+h Aquarium.\+cpp) target\+\_\+link\+\_\+libraries(aquarium P\+R\+I\+V\+A\+TE milieu) target\+\_\+include\+\_\+directories(aquarium P\+R\+I\+V\+A\+TE \$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{src_2CMakeLists_8txt_a58317d1589a281bc12f5a4b89233b890}\label{src_2CMakeLists_8txt_a58317d1589a281bc12f5a4b89233b890}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!add\_library@{add\_library}}
+\index{add\_library@{add\_library}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{add\_library()}{add\_library()}}
+{\footnotesize\ttfamily lib add\+\_\+library (\begin{DoxyParamCaption}\item[{accessories Accessories.\+h Accessories.}]{cpp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{src_2CMakeLists_8txt_ab03a906cfd35dc6d334fb6d086684fe1}\label{src_2CMakeLists_8txt_ab03a906cfd35dc6d334fb6d086684fe1}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!include\_directories@{include\_directories}}
+\index{include\_directories@{include\_directories}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{include\_directories()}{include\_directories()}}
+{\footnotesize\ttfamily include\+\_\+directories (\begin{DoxyParamCaption}\item[{}]{\$\{\+C\+M\+A\+K\+E\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+D\+I\+R\}/../ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}\label{src_2CMakeLists_8txt_a3af3a98e062f0cb037fb5f39a9866838}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!target\_compile\_options@{target\_compile\_options}}
+\index{target\_compile\_options@{target\_compile\_options}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{target\_compile\_options()}{target\_compile\_options()}}
+{\footnotesize\ttfamily lib target\+\_\+compile\+\_\+options (\begin{DoxyParamCaption}\item[{creature P\+U\+B\+L\+IC -\/Wall -\/Wextra -\/}]{Wpedantic }\end{DoxyParamCaption})}
+

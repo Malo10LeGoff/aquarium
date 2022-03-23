@@ -1,0 +1,109 @@
+\hypertarget{classFins}{}\doxysection{Fins Class Reference}
+\label{classFins}\index{Fins@{Fins}}
+
+
+{\ttfamily \#include $<$Accessories.\+h$>$}
+
+
+
+Inheritance diagram for Fins\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classFins__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Fins\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classFins__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFins_abf64b22d7aa59006fbdfc5609b2dc7a8}{Fins}} (float \mbox{\hyperlink{classFins_a166ff58ea86784955cf3a95dff44a7e1}{speed\+Coef}})
+\item 
+\mbox{\hyperlink{classFins_ae5d6592957d6887d35efc893a8c5fa81}{Fins}} (const \mbox{\hyperlink{classFins}{Fins}} \&f)
+\item 
+\mbox{\hyperlink{classFins_a80d4919681207981f12835fc7324c5d3}{$\sim$\+Fins}} ()=default
+\item 
+\mbox{\hyperlink{classFins}{Fins}} \& \mbox{\hyperlink{classFins_a951b6abdfca9db203fd614893939c55a}{operator=}} (const \mbox{\hyperlink{classFins}{Fins}} \&f)
+\item 
+float \mbox{\hyperlink{classFins_a166ff58ea86784955cf3a95dff44a7e1}{speed\+Coef}} () const override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \mbox{\hyperlink{classFins_a6f917a2e5786bacf4afdb37000425eff}{clone}} () override
+\item 
+void \mbox{\hyperlink{classFins_a07ebde957becdd9e87c4ae531f6d4fdd}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFins_abf64b22d7aa59006fbdfc5609b2dc7a8}\label{classFins_abf64b22d7aa59006fbdfc5609b2dc7a8}} 
+\index{Fins@{Fins}!Fins@{Fins}}
+\index{Fins@{Fins}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{Fins()}{Fins()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Fins\+::\+Fins (\begin{DoxyParamCaption}\item[{float}]{speed\+Coef }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classFins_ae5d6592957d6887d35efc893a8c5fa81}\label{classFins_ae5d6592957d6887d35efc893a8c5fa81}} 
+\index{Fins@{Fins}!Fins@{Fins}}
+\index{Fins@{Fins}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{Fins()}{Fins()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Fins\+::\+Fins (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classFins}{Fins}} \&}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFins_a80d4919681207981f12835fc7324c5d3}\label{classFins_a80d4919681207981f12835fc7324c5d3}} 
+\index{Fins@{Fins}!````~Fins@{$\sim$Fins}}
+\index{````~Fins@{$\sim$Fins}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{$\sim$Fins()}{~Fins()}}
+{\footnotesize\ttfamily Fins\+::$\sim$\+Fins (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFins_a6f917a2e5786bacf4afdb37000425eff}\label{classFins_a6f917a2e5786bacf4afdb37000425eff}} 
+\index{Fins@{Fins}!clone@{clone}}
+\index{clone@{clone}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ Fins\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classFins_a07ebde957becdd9e87c4ae531f6d4fdd}\label{classFins_a07ebde957becdd9e87c4ae531f6d4fdd}} 
+\index{Fins@{Fins}!draw@{draw}}
+\index{draw@{draw}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Fins\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_adc6e406252185632f50620481bf18352}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classFins_a951b6abdfca9db203fd614893939c55a}\label{classFins_a951b6abdfca9db203fd614893939c55a}} 
+\index{Fins@{Fins}!operator=@{operator=}}
+\index{operator=@{operator=}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFins}{Fins}} \& Fins\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classFins}{Fins}} \&}]{f }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classFins_a166ff58ea86784955cf3a95dff44a7e1}\label{classFins_a166ff58ea86784955cf3a95dff44a7e1}} 
+\index{Fins@{Fins}!speedCoef@{speedCoef}}
+\index{speedCoef@{speedCoef}!Fins@{Fins}}
+\doxysubsubsection{\texorpdfstring{speedCoef()}{speedCoef()}}
+{\footnotesize\ttfamily float Fins\+::speed\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}{Interface\+Accessory}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8h}{Accessories.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8cpp}{Accessories.\+cpp}}\end{DoxyCompactItemize}

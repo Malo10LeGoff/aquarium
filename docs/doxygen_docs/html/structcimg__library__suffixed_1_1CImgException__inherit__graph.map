@@ -1,0 +1,9 @@
+<map id="cimg_library_suffixed::CImgException" name="cimg_library_suffixed::CImgException">
+<area shape="rect" id="node1" title="Instances of CImgException are thrown when errors are encountered in a \CImg function call." alt="" coords="477,131,639,296"/>
+<area shape="rect" id="node3" href="$structcimg__library__suffixed_1_1CImgArgumentException.html" title=" " alt="" coords="5,344,215,436"/>
+<area shape="rect" id="node4" href="$structcimg__library__suffixed_1_1CImgDisplayException.html" title=" " alt="" coords="239,344,434,436"/>
+<area shape="rect" id="node5" href="$structcimg__library__suffixed_1_1CImgInstanceException.html" title=" " alt="" coords="458,344,658,436"/>
+<area shape="rect" id="node6" href="$structcimg__library__suffixed_1_1CImgIOException.html" title=" " alt="" coords="681,344,843,436"/>
+<area shape="rect" id="node7" href="$structcimg__library__suffixed_1_1CImgWarningException.html" title=" " alt="" coords="867,344,1065,436"/>
+<area shape="rect" id="node2" title=" " alt="" coords="515,5,601,83"/>
+</map>

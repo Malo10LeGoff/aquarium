@@ -1,0 +1,8 @@
+<map id="InterfaceBehaviour" name="InterfaceBehaviour">
+<area shape="rect" id="node1" title=" " alt="" coords="436,5,623,127"/>
+<area shape="rect" id="node2" href="$classFearfulBehaviour.html" title=" " alt="" coords="5,175,192,384"/>
+<area shape="rect" id="node3" href="$classGregariousBehaviour.html" title=" " alt="" coords="216,197,411,362"/>
+<area shape="rect" id="node4" href="$classKamikazeBehaviour.html" title=" " alt="" coords="435,189,623,369"/>
+<area shape="rect" id="node5" href="$classMultipleBehaviours.html" title=" " alt="" coords="648,175,832,384"/>
+<area shape="rect" id="node6" href="$classPlanningBehaviour.html" title=" " alt="" coords="857,197,1037,362"/>
+</map>

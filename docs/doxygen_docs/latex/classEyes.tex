@@ -1,0 +1,157 @@
+\hypertarget{classEyes}{}\doxysection{Eyes Class Reference}
+\label{classEyes}\index{Eyes@{Eyes}}
+
+
+{\ttfamily \#include $<$Sensors.\+h$>$}
+
+
+
+Inheritance diagram for Eyes\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classEyes__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Eyes\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classEyes__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEyes_aa9a1f9eef89e2e7b0feed3d119a9b08c}{Eyes}} (float detection\+Coef, float detection\+Radius, float detection\+Angle)
+\item 
+\mbox{\hyperlink{classEyes_a147f08aabb442f3a8822e89554f0db0f}{Eyes}} (const \mbox{\hyperlink{classEyes}{Eyes}} \&e)
+\item 
+\mbox{\hyperlink{classEyes_ab13e08c9fd481b543967101806990aa7}{$\sim$\+Eyes}} ()=default
+\item 
+\mbox{\hyperlink{classEyes}{Eyes}} \& \mbox{\hyperlink{classEyes_af330e3a6e5adf19a930a400492156f28}{operator=}} (const \mbox{\hyperlink{classEyes}{Eyes}} \&eyes)
+\item 
+std\+::string \mbox{\hyperlink{classEyes_a24e34379aaf8ba3b3b160c87757c6804}{get\+Type}} () const override
+\item 
+float \mbox{\hyperlink{classEyes_a49b8aa485272593ab1e6f7da389504f9}{get\+Detection\+Radius}} () const override
+\item 
+float \mbox{\hyperlink{classEyes_a592cfe31362aceebf28a00b7516a82e8}{get\+Detection\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classEyes_a3a863a54b7a2ad16f43dec9a7a00018b}{get\+Detection\+Angle}} () const override
+\item 
+std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ \mbox{\hyperlink{classEyes_ae59be33c87d6869321b56b2e6613cab6}{get\+Detection\+Zone}} () override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ \mbox{\hyperlink{classEyes_a94bd249dad709875a45ba5cec37afbf2}{clone}} () override
+\item 
+void \mbox{\hyperlink{classEyes_a67388c289d653ca1bcc005dcdd1f89b6}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEyes_aa9a1f9eef89e2e7b0feed3d119a9b08c}\label{classEyes_aa9a1f9eef89e2e7b0feed3d119a9b08c}} 
+\index{Eyes@{Eyes}!Eyes@{Eyes}}
+\index{Eyes@{Eyes}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{Eyes()}{Eyes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Eyes\+::\+Eyes (\begin{DoxyParamCaption}\item[{float}]{detection\+Coef,  }\item[{float}]{detection\+Radius,  }\item[{float}]{detection\+Angle }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEyes_a147f08aabb442f3a8822e89554f0db0f}\label{classEyes_a147f08aabb442f3a8822e89554f0db0f}} 
+\index{Eyes@{Eyes}!Eyes@{Eyes}}
+\index{Eyes@{Eyes}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{Eyes()}{Eyes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Eyes\+::\+Eyes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEyes}{Eyes}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEyes_ab13e08c9fd481b543967101806990aa7}\label{classEyes_ab13e08c9fd481b543967101806990aa7}} 
+\index{Eyes@{Eyes}!````~Eyes@{$\sim$Eyes}}
+\index{````~Eyes@{$\sim$Eyes}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{$\sim$Eyes()}{~Eyes()}}
+{\footnotesize\ttfamily Eyes\+::$\sim$\+Eyes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEyes_a94bd249dad709875a45ba5cec37afbf2}\label{classEyes_a94bd249dad709875a45ba5cec37afbf2}} 
+\index{Eyes@{Eyes}!clone@{clone}}
+\index{clone@{clone}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ Eyes\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_a2597cd5a601f0b256c2954da70597b9c}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_a67388c289d653ca1bcc005dcdd1f89b6}\label{classEyes_a67388c289d653ca1bcc005dcdd1f89b6}} 
+\index{Eyes@{Eyes}!draw@{draw}}
+\index{draw@{draw}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Eyes\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_adf638c77615234f9fd91bcc0e3d2f4d3}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_a3a863a54b7a2ad16f43dec9a7a00018b}\label{classEyes_a3a863a54b7a2ad16f43dec9a7a00018b}} 
+\index{Eyes@{Eyes}!getDetectionAngle@{getDetectionAngle}}
+\index{getDetectionAngle@{getDetectionAngle}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{getDetectionAngle()}{getDetectionAngle()}}
+{\footnotesize\ttfamily float Eyes\+::get\+Detection\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a8dd6be7a7d1f682d79c32009482c1545}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_a592cfe31362aceebf28a00b7516a82e8}\label{classEyes_a592cfe31362aceebf28a00b7516a82e8}} 
+\index{Eyes@{Eyes}!getDetectionCoef@{getDetectionCoef}}
+\index{getDetectionCoef@{getDetectionCoef}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{getDetectionCoef()}{getDetectionCoef()}}
+{\footnotesize\ttfamily float Eyes\+::get\+Detection\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a6cd42e5f33d3e8bb8c997cc30760dc37}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_a49b8aa485272593ab1e6f7da389504f9}\label{classEyes_a49b8aa485272593ab1e6f7da389504f9}} 
+\index{Eyes@{Eyes}!getDetectionRadius@{getDetectionRadius}}
+\index{getDetectionRadius@{getDetectionRadius}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{getDetectionRadius()}{getDetectionRadius()}}
+{\footnotesize\ttfamily float Eyes\+::get\+Detection\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a42637ad2d7865504b8e5a1fb2a9e22ec}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_ae59be33c87d6869321b56b2e6613cab6}\label{classEyes_ae59be33c87d6869321b56b2e6613cab6}} 
+\index{Eyes@{Eyes}!getDetectionZone@{getDetectionZone}}
+\index{getDetectionZone@{getDetectionZone}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{getDetectionZone()}{getDetectionZone()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ Eyes\+::get\+Detection\+Zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_ab372ada46bb57cb62414aa9dfea0707a}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_a24e34379aaf8ba3b3b160c87757c6804}\label{classEyes_a24e34379aaf8ba3b3b160c87757c6804}} 
+\index{Eyes@{Eyes}!getType@{getType}}
+\index{getType@{getType}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily std\+::string Eyes\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_adaa3566f46c23f9dd7d8158c40e64c9a}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEyes_af330e3a6e5adf19a930a400492156f28}\label{classEyes_af330e3a6e5adf19a930a400492156f28}} 
+\index{Eyes@{Eyes}!operator=@{operator=}}
+\index{operator=@{operator=}!Eyes@{Eyes}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEyes}{Eyes}} \& Eyes\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEyes}{Eyes}} \&}]{eyes }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8h}{Sensors.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8cpp}{Sensors.\+cpp}}\end{DoxyCompactItemize}

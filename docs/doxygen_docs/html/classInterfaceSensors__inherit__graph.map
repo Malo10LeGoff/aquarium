@@ -1,0 +1,6 @@
+<map id="InterfaceSensors" name="InterfaceSensors">
+<area shape="rect" id="node1" title=" " alt="" coords="204,5,379,171"/>
+<area shape="rect" id="node2" href="$classEars.html" title=" " alt="" coords="5,226,180,450"/>
+<area shape="rect" id="node3" href="$classEyes.html" title=" " alt="" coords="204,226,379,450"/>
+<area shape="rect" id="node4" href="$classSensors.html" title=" " alt="" coords="403,219,577,457"/>
+</map>
