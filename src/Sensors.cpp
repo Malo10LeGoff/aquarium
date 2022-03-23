@@ -39,6 +39,15 @@ Sensors::Sensors(const Sensors &s) {
     }
 }
 
+
+void Sensors::draw(UImg &support, Vector position, Vector speed, double size, T color) {
+
+    for (auto & sensor: sensors_) {
+        sensor->draw(support, position,  speed,  size,color);
+        }
+    };
+
+
 Sensors &Sensors::operator=(const Sensors &s) {
     sensors_ = std::vector<std::unique_ptr<InterfaceSensors>>{};
     for (auto const &sensor: s.sensors_) {
@@ -73,6 +82,12 @@ float Eyes::getDetectionAngle() const {
 float Eyes::getDetectionCoef() const {
     return detectionCoef_;
 }
+
+void Eyes::draw(UImg &support, Vector position, Vector speed, double size , T color) {
+    T c[] = {0,255,0};
+    support.draw_triangle(position.x, position.y, position.x + detectionRadius_*cos(detectionAngle_ + speed.orientation()), position.y + detectionRadius_*sin(detectionAngle_ + speed.orientation()), position.x + detectionRadius_*cos(speed.orientation() - detectionAngle_),position.y+detectionRadius_*sin(speed.orientation() - detectionAngle_),c, 0.3);
+};
+
 
 std::vector<detection_caract> Eyes::getDetectionZone() {
     return std::vector<detection_caract>{{detectionCoef_, detectionRadius_, detectionAngle_}};
@@ -142,4 +157,8 @@ std::unique_ptr<InterfaceSensors> Ears::clone() {
     return std::unique_ptr<InterfaceSensors>(new Ears(*this));
 }
 
+void Ears::draw(UImg &support, Vector position, Vector speed, double size , T color) {
+    T c[] = {0,255,0};
+    support.draw_circle(position.x, position.y, detectionRadius_,c, 0.3);
+};
 

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include "../lib/UImg.h"
+#include "../lib/Vector.h"
 #include <list>
 #include <string>
 #include <memory>
@@ -25,6 +27,8 @@ public:
     virtual float getDetectionAngle() const { return 0; };
 
     virtual std::unique_ptr<InterfaceSensors> clone() = 0;
+
+    virtual void draw(UImg &support, Vector position, Vector speed, double size,T color) = 0;
 };
 
 class Sensors : public InterfaceSensors {
@@ -52,6 +56,8 @@ public:
     std::unique_ptr<InterfaceSensors> clone() override;
 
     std::vector<std::unique_ptr<InterfaceSensors> > sensors_;
+
+    void draw(UImg &support, Vector position, Vector speed, double size, T color) override;
 };
 
 class Eyes : public InterfaceSensors {
@@ -75,6 +81,8 @@ public:
     std::vector<detection_caract> getDetectionZone() override;
 
     std::unique_ptr<InterfaceSensors> clone() override;
+
+    void draw(UImg &support, Vector position, Vector speed, double size, T color) override;
 
 private:
     std::string type;
@@ -104,6 +112,8 @@ public:
     std::vector<detection_caract> getDetectionZone() override;
 
     std::unique_ptr<InterfaceSensors> clone() override;
+
+    void draw(UImg &support, Vector position, Vector speed, double size, T color) override;
 
 private:
     std::string type;

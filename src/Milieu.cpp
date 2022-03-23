@@ -126,7 +126,7 @@ void Milieu::addCreatureToKill(int i) {
 }
 
 void Milieu::draw() {
-    cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
+    cimg_forXY(*this, x, y) fillC(x, y, 0, 255, 255, 255);
     for (auto &creature: listeCreatures) {
         creature->draw(*this);
     }

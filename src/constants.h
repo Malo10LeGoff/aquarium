@@ -33,8 +33,8 @@ const double maxSpeedFins = 2;
 
 // Behaviour
 //      Fearful
-const int maxMaxNeighbours = 15;
-const int minMaxNeighbours = 5;
+const int maxMaxNeighbours = 6;
+const int minMaxNeighbours = 2;
 const double minFleeingSpeed = 1;
 const double maxFleeingSpeed = 1.5;
 
@@ -45,14 +45,14 @@ const double maxSpeedKamikaze = 1.5;
 // Sensors
 //      Eyes
 const double minDetectionAngleEyes = M_PI / 4;
-const double maxDetectionAngleEyes = M_PI;
-const double minRadiusEyes = 20;
-const double maxRadiusEyes = 50;
+const double maxDetectionAngleEyes = M_PI/2;
+const double minRadiusEyes = 30;
+const double maxRadiusEyes = 60;
 const double maxDetectionCoefEyes = maxDetectionCoef;
 const double minDetectionCoefEyes = 0.2 * maxDetectionCoef;
 //       Ears
-const double minRadiusEars = 50;
-const double maxRadiusEars = 100;
+const double minRadiusEars = 10;
+const double maxRadiusEars = 30;
 const double maxDetectionCoefEars = maxDetectionCoef * 0.3;
 const double minDetectionCoefEars = maxDetectionCoefEyes * 0.0001;
 

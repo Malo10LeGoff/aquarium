@@ -51,14 +51,14 @@ std::unique_ptr<InterfaceAccessory> Accessories::clone() {
     return std::unique_ptr<InterfaceAccessory>(new Accessories(*this));
 }
 
-std::function<void(T)> Accessories::draw(UImg &support, Vector position, Vector speed, double size) {
-    return [this, &support, position, speed,size](T color) {
-        for (auto & accessory: accessories_) {
-            accessory->draw(support, position,  speed,  size)(color);
+void Accessories::draw(UImg &support, Vector position, Vector speed, double size, T color) {
+
+    for (auto & accessory: accessories_) {
+        accessory->draw(support, position,  speed,  size,color);
         }
     };
 
-}
+
 
 
 Shell::Shell(float speedReductionCoef, float deathCoef) {
@@ -89,12 +89,11 @@ std::unique_ptr<InterfaceAccessory> Shell::clone() {
     return std::unique_ptr<InterfaceAccessory>(new Shell(*this));
 }
 
-std::function<void(T)> Shell::draw(UImg &support, Vector position, Vector speed, double size) {
-    return [&support, position, speed,size](T color) {
-        support.draw_ellipse(position.x, position.y, size * 2, size, speed.orientation() / M_PI * 180., &color, 0.6);
-    };
+void Shell::draw(UImg &support, Vector position, Vector speed, double size , T color) {
+    support.draw_ellipse(position.x, position.y, size * 2, size, speed.orientation() / M_PI * 180.,&color, 0.6);
+};
 
-}
+
 
 Camo::Camo(float camoCoef) {
     camoCoef_ = camoCoef;
@@ -118,12 +117,10 @@ std::unique_ptr<InterfaceAccessory> Camo::clone() {
     return std::unique_ptr<InterfaceAccessory>(new Camo(*this));
 }
 
-std::function<void(T)> Camo::draw(UImg &support, Vector position, Vector speed, double size) {
-    return [&support, position, speed,size](T color) {
-        support.draw_ellipse(position.x, position.y, size * 1.4, size / 3, speed.orientation() / M_PI * 180.,
-                         &color);
+void Camo::draw(UImg &support, Vector position, Vector speed, double size, T color) {
+    support.draw_ellipse(position.x, position.y, size * 1.4, size / 3, speed.orientation() / M_PI * 180.,&color);
     };
-}
+
 
 Fins::Fins(float speedCoef) {
     speedCoef_ = speedCoef;
@@ -148,10 +145,8 @@ std::unique_ptr<InterfaceAccessory> Fins::clone() {
     return std::unique_ptr<InterfaceAccessory>(new Fins(*this));
 }
 
-std::function<void(T)> Fins::draw(UImg &support, Vector position, Vector speed, double size) {
-    return [&support, position, speed,size](T color) {
-        support.draw_ellipse(position.x, position.y, size, size / 5.,
-                             ( speed.orientation() + M_PI / 2) / M_PI * 180. , &color);
-    };
-}
+void Fins::draw(UImg &support, Vector position, Vector speed, double size,T color) {
+    support.draw_ellipse(position.x, position.y, size, size / 5.,( speed.orientation() + M_PI / 2) / M_PI * 180. , &color);
+};
+
 
