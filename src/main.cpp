@@ -13,7 +13,7 @@ int main() {
 
 
     Aquarium ecosysteme(screenWidthPX, screenHeightPX, 30);
-    for (int i = 1; i <= 20; ++i)
+    for (int i = 1; i <= 40; ++i)
         ecosysteme.getMilieu().addRandomMember();
     ecosysteme.run();
 

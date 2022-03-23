@@ -178,8 +178,12 @@ void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour> &behaviour) {
 Vector MultipleBehaviours::moveDirection(const Vector creatureCoordinates,
                                          const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // Sample a behaviour in the list
-    random_selector<> selector{};
-    return selector(this->behaviours_)->moveDirection(creatureCoordinates, visibleCreatures);
+    if (behaviours_.size() !=0) {
+        random_selector<> selector{};
+        return selector(this->behaviours_)->moveDirection(creatureCoordinates, visibleCreatures);
+    }
+    return Vector(0,0);
+
 }
 
 void MultipleBehaviours::remove(int index) {

@@ -69,8 +69,10 @@ bool Milieu::detect(const Creature &a, const Creature &b) {
     double dist_a_b = distanceVectors(pos_a, pos_b);
     std::vector<detection_caract> detectionZones = a.sensors->getDetectionZone(); // [ [detectionCoef, detectionRadius, DetectionAngle], ...]
     for (auto const &detectionZone: detectionZones) {
-        if ((detectionZone[1] > dist_a_b) && (detectionZone[3] / 2 > std::abs(alpha_2 - alpha_1)) &&
-            (detectionZone[0] > b.getCamoCoef())) {
+        bool isCloseEnough = detectionZone[1] > dist_a_b;
+        bool isInDetectionAngle = (detectionZone[2] / 2.0) > std::abs(alpha_2 - alpha_1);
+        bool isDetectionStrongEnough  = detectionZone[0] > b.getCamoCoef();
+        if (isCloseEnough && isInDetectionAngle && isDetectionStrongEnough ) {
             return true;
         }
     }
@@ -86,7 +88,6 @@ void Milieu::handleCreatureCollision(void) {
         for (auto &creature_j: listeCreatures) {
             if (creature_i->getId() != creature_j->getId()) {
                 if (creature_j->getHitbox().isColliding(creature_i->getHitbox())) {
-                    cout << "Coli" << endl;
                     creature_i->onCreatureCollision();
                     //creature_j->onCreatureCollision();
                 }

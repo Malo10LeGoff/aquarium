@@ -103,17 +103,17 @@ void RandomBuilder::initBehaviour() {
         std::vector<int> selectedBehaviours{};
         for (int i = 0; i < nbSelectedBehaviours; ++i) {
             int newBehaviour = getRandomIntDistrib(0, behaviours.size())(mt);
-            if (newBehaviour == 1) { // Gregarious
+            if (newBehaviour == 0) { // Gregarious
                 std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour());
                 dynamic_cast<MultipleBehaviours *>(m_creature.behaviour.get())
                         ->add(b);
-            } else if (newBehaviour == 2) { // Fearful
+            } else if (newBehaviour == 1) { // Fearful
                 std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<FearfulBehaviour>
                         (new FearfulBehaviour(randomMaxNeighboursFearful(),
                                               randomFleeingSpeed()));
                 dynamic_cast<MultipleBehaviours *>(m_creature.behaviour.get())
                         ->add(b);
-            } else if (newBehaviour == 3) {
+            } else if (newBehaviour == 2) {
                 std::unique_ptr<InterfaceBehaviour> b = std::unique_ptr<KamikazeBehaviour>
                         (new KamikazeBehaviour(randomSpeedKamikaze()));
                 dynamic_cast<MultipleBehaviours *>(m_creature.behaviour.get())

@@ -164,7 +164,7 @@ double randomCreatureSize() {
     std::random_device rd;
     std::mt19937 mt(rd());
     double const mean = (maxSize + minSize) / 2.0;
-    double const stddev = maxSize - mean;
+    double const stddev = (maxSize - mean) /2.0;
     std::normal_distribution<> creatureSize (mean, stddev);
     return clip(creatureSize(mt),1, 100);
 }

@@ -199,10 +199,8 @@ void Creature::onCreatureCollision() {
     std::mt19937 mt(rd());
     std::bernoulli_distribution shouldDie(getCollisionDeathProb());
     if (shouldDie(mt)) {
-        std::cout << *this << "died from collision.\n";
         m_milieu.addCreatureToKill(id);
     } else {
-        std::cout << *this << " collided at coordinates " << position << "\n";
         speed *= -1;
     }
 }
