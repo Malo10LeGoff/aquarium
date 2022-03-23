@@ -1,33 +1,30 @@
 #define _USE_MATH_DEFINES
+
 #include "Sensors.h"
 #include <cmath>
 
 
-
-float Sensors::getDetectionRadius() const
-{
+float Sensors::getDetectionRadius() const {
     return 0;
 }
 
-float Sensors::getDetectionAngle() const
-{
+float Sensors::getDetectionAngle() const {
     return 0;
 }
 
-float Sensors::getDetectionCoef() const
-{
+float Sensors::getDetectionCoef() const {
     return 0;
 }
 
 std::vector<detection_caract> Sensors::getDetectionZone() {
-    std::vector<detection_caract> ret {} ;
-    for (auto const& sensor: sensors_) {
+    std::vector<detection_caract> ret{};
+    for (auto const &sensor: sensors_) {
         ret.push_back(sensor->getDetectionZone()[0]);
     }
     return ret;
 }
 
-void Sensors::add(std::unique_ptr<InterfaceSensors>& sensor) {
+void Sensors::add(std::unique_ptr<InterfaceSensors> &sensor) {
     sensors_.push_back(std::move(sensor));
 }
 
@@ -36,15 +33,15 @@ void Sensors::remove(int idx) {
 }
 
 Sensors::Sensors(const Sensors &s) {
-    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>> { };
-    for (auto const& sensor : s.sensors_) {
+    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>>{};
+    for (auto const &sensor: s.sensors_) {
         sensors_.push_back(sensor->clone());
     }
 }
 
 Sensors &Sensors::operator=(const Sensors &s) {
-    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>> {};
-    for (auto const& sensor : s.sensors_) {
+    sensors_ = std::vector<std::unique_ptr<InterfaceSensors>>{};
+    for (auto const &sensor: s.sensors_) {
         sensors_.push_back(sensor->clone());
     }
     return *this;
@@ -54,36 +51,31 @@ std::unique_ptr<InterfaceSensors> Sensors::clone() {
     return std::unique_ptr<InterfaceSensors>(new Sensors(*this));
 }
 
-Eyes::Eyes(float detectionCoef,float detectionRadius,float detectionAngle) 
-{
+Eyes::Eyes(float detectionCoef, float detectionRadius, float detectionAngle) {
     type = "Eyes";
     detectionCoef_ = detectionCoef;
     detectionRadius_ = detectionRadius;
-    detectionAngle_= detectionAngle;
+    detectionAngle_ = detectionAngle;
 }
 
-std::string Eyes::getType() const
-{
+std::string Eyes::getType() const {
     return type;
 }
 
-float Eyes::getDetectionRadius() const
-{
+float Eyes::getDetectionRadius() const {
     return detectionRadius_;
 }
 
-float Eyes::getDetectionAngle() const
-{
+float Eyes::getDetectionAngle() const {
     return detectionAngle_;
 }
 
-float Eyes::getDetectionCoef() const
-{
+float Eyes::getDetectionCoef() const {
     return detectionCoef_;
 }
 
 std::vector<detection_caract> Eyes::getDetectionZone() {
-    return std::vector<detection_caract> { {detectionCoef_, detectionRadius_, detectionAngle_} };
+    return std::vector<detection_caract>{{detectionCoef_, detectionRadius_, detectionAngle_}};
 }
 
 Eyes::Eyes(const Eyes &e) {
@@ -106,36 +98,31 @@ std::unique_ptr<InterfaceSensors> Eyes::clone() {
 }
 
 
-Ears::Ears(float detectionCoef,float detectionRadius) 
-{
+Ears::Ears(float detectionCoef, float detectionRadius) {
     type = "Ears";
     detectionCoef_ = detectionCoef;
     detectionRadius_ = detectionRadius;
-    detectionAngle_= 2*M_PI;
+    detectionAngle_ = 2 * M_PI;
 }
 
-std::string Ears::getType() const
-{
+std::string Ears::getType() const {
     return type;
 }
 
-float Ears::getDetectionRadius() const
-{
+float Ears::getDetectionRadius() const {
     return detectionRadius_;
 }
 
-float Ears::getDetectionCoef() const
-{
+float Ears::getDetectionCoef() const {
     return detectionCoef_;
 }
 
-float Ears::getDetectionAngle() const
-{
+float Ears::getDetectionAngle() const {
     return detectionAngle_;
 }
 
 std::vector<detection_caract> Ears::getDetectionZone() {
-    return std::vector<detection_caract> { {detectionCoef_, detectionRadius_ , 2 * M_PI }};
+    return std::vector<detection_caract>{{detectionCoef_, detectionRadius_, 2 * M_PI}};
 }
 
 Ears::Ears(const Ears &e) {

@@ -9,15 +9,14 @@
 using namespace std;
 
 
-int main()
-{
+int main() {
 
-   
-   Aquarium  ecosysteme( screenWidthPX, screenHeightPX, 30 );
-   for ( int i = 1; i <= 20; ++i )
-      ecosysteme.getMilieu().addRandomMember();
-   ecosysteme.run();
 
-   return 0;
+    Aquarium ecosysteme(screenWidthPX, screenHeightPX, 30);
+    for (int i = 1; i <= 20; ++i)
+        ecosysteme.getMilieu().addRandomMember();
+    ecosysteme.run();
+
+    return 0;
 
 }

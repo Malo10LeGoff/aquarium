@@ -3,60 +3,55 @@
 #include "Milieu.h"
 #include "constants.h"
 
-Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
-{
+Aquarium::Aquarium(int width, int height, int _delay) : CImgDisplay(), delay(_delay) {
 
-   int         screenWidth = screenWidthPX; //screen_width();
-   int         screenHeight = screenHeightPX; //screen_height();
-
-
-   cout << "const Aquarium" << endl;
-
-   flotte = new Milieu( width, height );
-   assign( *flotte, "Simulation d'ecosysteme" );
-
-   move( static_cast<int>((screenWidth-width)/2), static_cast<int>((screenHeight-height)/2) );
-
-}
+    int screenWidth = screenWidthPX; //screen_width();
+    int screenHeight = screenHeightPX; //screen_height();
 
 
-Aquarium::~Aquarium( void )
-{
+    cout << "const Aquarium" << endl;
 
-   delete flotte;
+    flotte = new Milieu(width, height);
+    assign(*flotte, "Simulation d'ecosysteme");
 
-   cout << "dest Aquarium" << endl;
+    move(static_cast<int>((screenWidth - width) / 2), static_cast<int>((screenHeight - height) / 2));
 
 }
 
 
-void Aquarium::run( void )
-{
+Aquarium::~Aquarium(void) {
 
-   //cout << "running Aquarium" << endl;
+    delete flotte;
 
-   while ( ! is_closed() )
-   {
+    cout << "dest Aquarium" << endl;
 
-
-      if ( is_key() ) {
-         cout << "You pressed key " << static_cast<unsigned char>( key() );
-         cout << " (" << key() << ")" << endl;
-         if ( is_keyESC() ) close();
-      }
+}
 
 
-      flotte->step();
-      if (flotte->getNbCreatures()==0) 
-      {
-         cout<<"Every creatures died, simulation is over"<<endl;
-         close();
-      }
+void Aquarium::run(void) {
+
+    //cout << "running Aquarium" << endl;
+
+    while (!is_closed()) {
 
 
-      display( *flotte );
-      wait( delay );
+        if (is_key()) {
+            cout << "You pressed key " << static_cast<unsigned char>( key());
+            cout << " (" << key() << ")" << endl;
+            if (is_keyESC()) close();
+        }
 
-   } // while
+
+        flotte->step();
+        if (flotte->getNbCreatures() == 0) {
+            cout << "Every creatures died, simulation is over" << endl;
+            close();
+        }
+
+
+        display(*flotte);
+        wait(delay);
+
+    } // while
 
 }

@@ -4,16 +4,16 @@
 #include "../lib/random_selection.cpp"
 // GregariousBehaviour
 
-unsigned char GregariousBehaviour::couleur[] = {200,200,200};
-unsigned char FearfulBehaviour::couleur[] = {10,200,100};
-unsigned char KamikazeBehaviour::couleur[] = {0,0,200};
-unsigned char PlanningBehaviour::couleur[] = {0,200,0};
-unsigned char MultipleBehaviours::couleur[] = {100,200,0};
+unsigned char GregariousBehaviour::couleur[] = {200, 200, 200};
+unsigned char FearfulBehaviour::couleur[] = {10, 200, 100};
+unsigned char KamikazeBehaviour::couleur[] = {0, 0, 200};
+unsigned char PlanningBehaviour::couleur[] = {0, 200, 0};
+unsigned char MultipleBehaviours::couleur[] = {100, 200, 0};
 
 Vector GregariousBehaviour::moveDirection(const Vector creatureCoordinates,
-                                                       const std::vector<std::array<Vector,2>> visibleCreatures) const {
-    Vector moveD {0, 0};
-    for (auto const e: visibleCreatures){
+                                          const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+    Vector moveD{0, 0};
+    for (auto const e: visibleCreatures) {
         // e is [moveD , coordinates]
         moveD = moveD + e[0];
     }
@@ -34,9 +34,8 @@ std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
     return std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour(*this));
 }
 
-unsigned char * GregariousBehaviour::getColor()
-{
-    
+unsigned char *GregariousBehaviour::getColor() {
+
     return GregariousBehaviour::couleur;
 }
 
@@ -51,16 +50,15 @@ int FearfulBehaviour::maxNeighbours() const {
 }
 
 float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<Vector, 2>> visibleCreatures) const {
-if (visibleCreatures.size() > (unsigned)this->maxNeighbours_) {
-    return this->moveSpeedMultiplier_;}
-else {
-return 1;
-}
+    if (visibleCreatures.size() > (unsigned) this->maxNeighbours_) {
+        return this->moveSpeedMultiplier_;
+    } else {
+        return 1;
+    }
 }
 
-unsigned char * FearfulBehaviour::getColor()
-{
-    
+unsigned char *FearfulBehaviour::getColor() {
+
     return FearfulBehaviour::couleur;
 }
 
@@ -70,18 +68,18 @@ unsigned char * FearfulBehaviour::getColor()
  * Will return [0,0] if there's no change of direction planned
  */
 Vector FearfulBehaviour::moveDirection(const Vector creatureCoordinates,
-                                                     const std::vector<std::array<Vector, 2>> visibleCreatures) const {
-    Vector moveD {0,0};
-    if ((visibleCreatures.size() > (unsigned)this->maxNeighbours_) && (visibleCreatures.size() != 0)) {
+                                       const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+    Vector moveD{0, 0};
+    if ((visibleCreatures.size() > (unsigned) this->maxNeighbours_) && (visibleCreatures.size() != 0)) {
         // Calculate the running direction
-        for (auto const neighbour : visibleCreatures ){
+        for (auto const neighbour: visibleCreatures) {
             // *it is [moveDirection , coordinates]
             moveD = moveD + neighbour[1] - creatureCoordinates;
         };
         moveD = moveD.normalize();
         // scale by the speed
-        moveD.x *= - this->moveSpeedMultiplier(visibleCreatures);
-        moveD.y *= - this->moveSpeedMultiplier(visibleCreatures);
+        moveD.x *= -this->moveSpeedMultiplier(visibleCreatures);
+        moveD.y *= -this->moveSpeedMultiplier(visibleCreatures);
     }
     return moveD;
 }
@@ -90,7 +88,8 @@ std::unique_ptr<InterfaceBehaviour> FearfulBehaviour::clone() const {
     return std::unique_ptr<FearfulBehaviour>(new FearfulBehaviour(*this));
 }
 
-FearfulBehaviour::FearfulBehaviour(const FearfulBehaviour &f): moveSpeedMultiplier_(f.moveSpeedMultiplier_), maxNeighbours_(f.maxNeighbours_) {
+FearfulBehaviour::FearfulBehaviour(const FearfulBehaviour &f) : moveSpeedMultiplier_(f.moveSpeedMultiplier_),
+                                                                maxNeighbours_(f.maxNeighbours_) {
 
 }
 
@@ -104,9 +103,9 @@ FearfulBehaviour &FearfulBehaviour::operator=(const FearfulBehaviour &f) {
 // KamikazeBehaviour
 
 int min_element(const std::vector<float> arr) {
-    int index =0;
-    for (int i=0; (unsigned)i< arr.size(); ++i) {
-        if (arr[i] < arr[index] ) {
+    int index = 0;
+    for (int i = 0; (unsigned) i < arr.size(); ++i) {
+        if (arr[i] < arr[index]) {
             index = i;
         }
     }
@@ -119,39 +118,38 @@ int min_element(const std::vector<float> arr) {
  * @return [x,y] representing the direction to move in
  */
 Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
-                                                      const std::vector<std::array<Vector, 2>> visibleCreatures) const {
-    if (visibleCreatures.size() !=0) {
+                                        const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+    if (visibleCreatures.size() != 0) {
         // calculate the neighbours' (squared) distances
         std::vector<float> neighbourDistances;
-        for (auto const creature : visibleCreatures) {
+        for (auto const creature: visibleCreatures) {
             // *it is [moveDirection , coordinates]
             neighbourDistances.push_back(distanceVectors(creature[1], creatureCoordinates));
         };
         // Select the closest neighbour
         int closest_neighbour_idx = min_element(neighbourDistances);
         // Calculate the direction
-        Vector moveDirection  = (visibleCreatures[closest_neighbour_idx][1] - creatureCoordinates).normalize();
+        Vector moveDirection = (visibleCreatures[closest_neighbour_idx][1] - creatureCoordinates).normalize();
         // scale by the speed
         moveDirection.x *= m_moveSpeedMultiplier;
         moveDirection.y *= m_moveSpeedMultiplier;
         return moveDirection;
-        }
-    return Vector{ 0,0};
+    }
+    return Vector{0, 0};
 
 }
 
-unsigned char * KamikazeBehaviour::getColor()
-{
-    
+unsigned char *KamikazeBehaviour::getColor() {
+
     return KamikazeBehaviour::couleur;
 }
 
 
 std::unique_ptr<InterfaceBehaviour> KamikazeBehaviour::clone() const {
-    return std::unique_ptr<KamikazeBehaviour> (new KamikazeBehaviour(*this));
+    return std::unique_ptr<KamikazeBehaviour>(new KamikazeBehaviour(*this));
 }
 
-KamikazeBehaviour::KamikazeBehaviour(const KamikazeBehaviour &k): m_moveSpeedMultiplier(k.m_moveSpeedMultiplier) {
+KamikazeBehaviour::KamikazeBehaviour(const KamikazeBehaviour &k) : m_moveSpeedMultiplier(k.m_moveSpeedMultiplier) {
 
 }
 
@@ -167,18 +165,18 @@ MultipleBehaviours::MultipleBehaviours() {
 }
 
 MultipleBehaviours::MultipleBehaviours(const MultipleBehaviours &m) {
-    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>> { };
-    for (auto const& e: m.behaviours_) {
+    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>>{};
+    for (auto const &e: m.behaviours_) {
         behaviours_.push_back(e->clone());
     }
 }
 
-void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour> & behaviour) {
+void MultipleBehaviours::add(std::unique_ptr<InterfaceBehaviour> &behaviour) {
     behaviours_.push_back(std::move(behaviour));
 }
 
 Vector MultipleBehaviours::moveDirection(const Vector creatureCoordinates,
-                                                       const std::vector<std::array<Vector, 2>> visibleCreatures) const {
+                                         const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // Sample a behaviour in the list
     random_selector<> selector{};
     return selector(this->behaviours_)->moveDirection(creatureCoordinates, visibleCreatures);
@@ -188,9 +186,8 @@ void MultipleBehaviours::remove(int index) {
     behaviours_.erase(behaviours_.begin() + index);
 }
 
-unsigned char * MultipleBehaviours::getColor()
-{
-    
+unsigned char *MultipleBehaviours::getColor() {
+
     return MultipleBehaviours::couleur;
 }
 
@@ -200,8 +197,8 @@ std::unique_ptr<InterfaceBehaviour> MultipleBehaviours::clone() const {
 }
 
 MultipleBehaviours &MultipleBehaviours::operator=(const MultipleBehaviours &m) {
-    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>> { };
-    for (auto const& behaviour : m.behaviours_) {
+    behaviours_ = std::vector<std::unique_ptr<InterfaceBehaviour>>{};
+    for (auto const &behaviour: m.behaviours_) {
         behaviours_.push_back(behaviour->clone());
     }
     return *this;
@@ -216,14 +213,14 @@ std::unique_ptr<InterfaceBehaviour> PlanningBehaviour::clone() const {
     return std::unique_ptr<PlanningBehaviour>(new PlanningBehaviour(*this));
 }
 
-PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p): m_moveSpeedMultiplier(p.m_moveSpeedMultiplier) {
+PlanningBehaviour::PlanningBehaviour(const PlanningBehaviour &p) : m_moveSpeedMultiplier(p.m_moveSpeedMultiplier) {
 
 }
 
 Vector PlanningBehaviour::moveDirection(const Vector creatureCoordinates,
                                         const std::vector<std::array<Vector, 2>> visibleCreatures) const {
     // TODO :
-    return {0,0};
+    return {0, 0};
 }
 
 PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {
@@ -231,8 +228,7 @@ PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {
     return *this;
 }
 
-unsigned char * PlanningBehaviour::getColor()
-{
-    
+unsigned char *PlanningBehaviour::getColor() {
+
     return PlanningBehaviour::couleur;
 }

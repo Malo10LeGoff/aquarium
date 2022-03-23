@@ -4,24 +4,21 @@
 #include <ctime>
 #include <memory>
 
-const T Milieu::white[] = {(T)255, (T)255, (T)255};
+const T Milieu::white[] = {(T) 255, (T) 255, (T) 255};
 
 Milieu::Milieu(int _width, int _height) : UImg(_width, _height, 1, 3),
-                                          width(_width), height(_height), builder(CreatureBuilder(*this))
-{
+                                          width(_width), height(_height), builder(CreatureBuilder(*this)) {
 
-   cout << "const Milieu" << endl;
-   std::srand(time(NULL));
+    cout << "const Milieu" << endl;
+    std::srand(time(NULL));
 }
 
-Milieu::~Milieu(void)
-{
+Milieu::~Milieu(void) {
 
-   cout << "dest Milieu" << endl;
+    cout << "dest Milieu" << endl;
 }
 
-void Milieu::step(void)
-{
+void Milieu::step(void) {
     // Detect surroundings
     creatureDetectSurroundings();
     // move creatures
@@ -39,54 +36,48 @@ void Milieu::step(void)
 }
 
 
-int Milieu::getNbCreatures()
-{
-   return listeCreatures.size();
+int Milieu::getNbCreatures() {
+    return listeCreatures.size();
 }
 
-std::vector<array<Vector,2>> Milieu::surrounding(const Creature &a)
-{
+std::vector<array<Vector, 2>> Milieu::surrounding(const Creature &a) {
 
-   std::vector<array<Vector,2>> res {};
+    std::vector<array<Vector, 2>> res{};
 
-   for (auto const& creature: listeCreatures)
-      if ((a != *creature) && detect(a,*creature))
-      {
-         
-         Vector pos_tmp = creature->getPos();
-         Vector speed  = creature->getSpeed();
-         array<Vector,2> tmp_ar  {speed,pos_tmp};
-         res.push_back(tmp_ar);
-      }
-   return res;
+    for (auto const &creature: listeCreatures)
+        if ((a != *creature) && detect(a, *creature)) {
+
+            Vector pos_tmp = creature->getPos();
+            Vector speed = creature->getSpeed();
+            array<Vector, 2> tmp_ar{speed, pos_tmp};
+            res.push_back(tmp_ar);
+        }
+    return res;
 };
 
 
-bool Milieu::detect(const Creature &a, const Creature &b)
-{
+bool Milieu::detect(const Creature &a, const Creature &b) {
 
-      Vector pos_a = a.getPos();
-      Vector pos_b = b.getPos();
-      
-      double alpha_2 = (pos_b-pos_a).orientation();
-      if (alpha_2 > M_PI)
-         {
-            alpha_2 = std::abs(alpha_2 - 2*M_PI);
-         }
-      double alpha_1 = a.getSpeed().orientation();
-      double dist_a_b = distanceVectors(pos_a,pos_b);
-      std::vector<detection_caract> detectionZones = a.sensors->getDetectionZone(); // [ [detectionCoef, detectionRadius, DetectionAngle], ...]
-      for (auto const & detectionZone :detectionZones) {
-         if ((detectionZone[1]>dist_a_b) && (detectionZone[3]/2 > std::abs(alpha_2 - alpha_1)) && (detectionZone[0]>b.getCamoCoef()))
-            {
-               return true;
-            }
-      }
-         
-      
-   return false;
+    Vector pos_a = a.getPos();
+    Vector pos_b = b.getPos();
+
+    double alpha_2 = (pos_b - pos_a).orientation();
+    if (alpha_2 > M_PI) {
+        alpha_2 = std::abs(alpha_2 - 2 * M_PI);
+    }
+    double alpha_1 = a.getSpeed().orientation();
+    double dist_a_b = distanceVectors(pos_a, pos_b);
+    std::vector<detection_caract> detectionZones = a.sensors->getDetectionZone(); // [ [detectionCoef, detectionRadius, DetectionAngle], ...]
+    for (auto const &detectionZone: detectionZones) {
+        if ((detectionZone[1] > dist_a_b) && (detectionZone[3] / 2 > std::abs(alpha_2 - alpha_1)) &&
+            (detectionZone[0] > b.getCamoCoef())) {
+            return true;
+        }
+    }
+
+
+    return false;
 }
-
 
 
 void Milieu::handleCreatureCollision(void) {
@@ -104,25 +95,26 @@ void Milieu::handleCreatureCollision(void) {
     }
 
 }
-void Milieu::addMember(std::unique_ptr<Creature>& b) {
+
+void Milieu::addMember(std::unique_ptr<Creature> &b) {
     listeCreatures.push_back(std::move(b));
 }
 
 void Milieu::addRandomMember() {
-    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder> (builder);
+    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder>(builder);
     builder.setBuilder(b);
     std::unique_ptr<Creature> randomCreature = builder.make();
     addMember(randomCreature);
 }
 
 void Milieu::moveCreatures() {
-    for (auto & creature : listeCreatures) {
+    for (auto &creature: listeCreatures) {
         creature->onMove(*this);
     }
 }
 
 void Milieu::creatureDetectSurroundings() {
-    for (auto & creature : listeCreatures){
+    for (auto &creature: listeCreatures) {
         creature->detectSurroundings();
     }
 }
@@ -134,25 +126,25 @@ void Milieu::addCreatureToKill(int i) {
 
 void Milieu::draw() {
     cimg_forXY(*this, x, y) fillC(x, y, 0, 50, 100, 255);
-    for (auto& creature: listeCreatures) {
+    for (auto &creature: listeCreatures) {
         creature->draw(*this);
     }
 }
 
 void Milieu::killCreatures() {
-    for (auto id : creaturesToKill) {
+    for (auto id: creaturesToKill) {
         listeCreatures.erase(std::remove_if(
                 listeCreatures.begin(), listeCreatures.end(),
-                [id](decltype(listeCreatures)::value_type const& c) {
+                [id](decltype(listeCreatures)::value_type const &c) {
                     return c->getId() == id;
                 }), listeCreatures.end());
     }
-    creaturesToKill = std::vector<int> {};
+    creaturesToKill = std::vector<int>{};
 
 }
 
 void Milieu::ageCreature() {
-    for (auto & creature : listeCreatures) {
+    for (auto &creature: listeCreatures) {
         creature->onAge();
     }
 }

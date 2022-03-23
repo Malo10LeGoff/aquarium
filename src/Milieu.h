@@ -8,41 +8,52 @@
 #include <array>
 #include <memory>
 #include "CreatureBuilder.h"
+
 using namespace std;
 
 
-class Milieu : public UImg
-{
+class Milieu : public UImg {
 
 private :
-   static const T          white[];
+    static const T white[];
 
-   int                     width, height;
-   std::vector<std::unique_ptr<Creature>>   listeCreatures;
-   CreatureBuilder builder;
-   std::vector<int> creaturesToKill {}; // vector of ids of the creatures to kill
+    int width, height;
+    std::vector<std::unique_ptr<Creature>> listeCreatures;
+    CreatureBuilder builder;
+    std::vector<int> creaturesToKill{}; // vector of ids of the creatures to kill
 
 public :
-   Milieu( int _width, int _height );
-   ~Milieu();
+    Milieu(int _width, int _height);
 
-   int getWidth() const { return width; };
-   int getHeight() const { return height; };
+    ~Milieu();
 
-   void step();
-   void creatureDetectSurroundings();
-   void moveCreatures();
-   void draw();
-   void killCreatures();
+    int getWidth() const { return width; };
 
-   void handleCreatureCollision(void);
-   void addMember( std::unique_ptr<Creature>& b ) ;
-   void addRandomMember();
-   int getNbCreatures(void);
-   bool detect(const Creature &a, const Creature &b);
-   std::vector<array<Vector,2>> surrounding(const Creature &a);
+    int getHeight() const { return height; };
 
-   void addCreatureToKill(int i);
+    void step();
+
+    void creatureDetectSurroundings();
+
+    void moveCreatures();
+
+    void draw();
+
+    void killCreatures();
+
+    void handleCreatureCollision(void);
+
+    void addMember(std::unique_ptr<Creature> &b);
+
+    void addRandomMember();
+
+    int getNbCreatures(void);
+
+    bool detect(const Creature &a, const Creature &b);
+
+    std::vector<array<Vector, 2>> surrounding(const Creature &a);
+
+    void addCreatureToKill(int i);
 
     void ageCreature();
 };
