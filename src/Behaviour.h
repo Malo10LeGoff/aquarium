@@ -67,7 +67,7 @@ public:
 
     static unsigned char couleur[];
 
-    unsigned char *getColor();
+    unsigned char *getColor() override;
 
 private:
     float moveSpeedMultiplier_ = 1;
