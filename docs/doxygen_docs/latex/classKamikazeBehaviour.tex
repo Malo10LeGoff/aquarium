@@ -1,0 +1,139 @@
+\hypertarget{classKamikazeBehaviour}{}\doxysection{Kamikaze\+Behaviour Class Reference}
+\label{classKamikazeBehaviour}\index{KamikazeBehaviour@{KamikazeBehaviour}}
+
+
+{\ttfamily \#include $<$Behaviour.\+h$>$}
+
+
+
+Inheritance diagram for Kamikaze\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classKamikazeBehaviour__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Kamikaze\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classKamikazeBehaviour__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classKamikazeBehaviour_ab1a02d92cb9c321f51cecb93f94df5ef}{Kamikaze\+Behaviour}} ()=default
+\item 
+\mbox{\hyperlink{classKamikazeBehaviour_adec15c8ebe1db2ee334c489c385b79f0}{Kamikaze\+Behaviour}} (float t\+\_\+move\+Speed\+Multiplier)
+\item 
+\mbox{\hyperlink{classKamikazeBehaviour_a7d5dd7313a9a6196afc900902a1a131a}{Kamikaze\+Behaviour}} (const \mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \&k)
+\item 
+\mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \& \mbox{\hyperlink{classKamikazeBehaviour_ac0abe7b035a75f3ad9192bc1cfb5bb1b}{operator=}} (const \mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \&k)
+\item 
+\mbox{\hyperlink{classKamikazeBehaviour_af7d3c28e10776970753856271d91ddeb}{$\sim$\+Kamikaze\+Behaviour}} ()=default
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classKamikazeBehaviour_a3ff991c7b89bb3e5ecb8ecd5dd6bc27f}{move\+Direction}} (const \mbox{\hyperlink{structVector}{Vector}} creature\+Coordinates, const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classKamikazeBehaviour_ae176de2e711f1982e2bd1295b23abdba}{clone}} () const override
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{classKamikazeBehaviour_a90d46a9da432ab5d67ab7d2093f32ab6}{get\+Color}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned char \mbox{\hyperlink{classKamikazeBehaviour_a57203847f72b3fffc36981e0a20f541c}{couleur}} \mbox{[}$\,$\mbox{]} = \{0, 0, 200\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classKamikazeBehaviour_ab1a02d92cb9c321f51cecb93f94df5ef}\label{classKamikazeBehaviour_ab1a02d92cb9c321f51cecb93f94df5ef}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{KamikazeBehaviour()}{KamikazeBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Kamikaze\+Behaviour\+::\+Kamikaze\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classKamikazeBehaviour_adec15c8ebe1db2ee334c489c385b79f0}\label{classKamikazeBehaviour_adec15c8ebe1db2ee334c489c385b79f0}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{KamikazeBehaviour()}{KamikazeBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Kamikaze\+Behaviour\+::\+Kamikaze\+Behaviour (\begin{DoxyParamCaption}\item[{float}]{t\+\_\+move\+Speed\+Multiplier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classKamikazeBehaviour_a7d5dd7313a9a6196afc900902a1a131a}\label{classKamikazeBehaviour_a7d5dd7313a9a6196afc900902a1a131a}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\index{KamikazeBehaviour@{KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{KamikazeBehaviour()}{KamikazeBehaviour()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Kamikaze\+Behaviour\+::\+Kamikaze\+Behaviour (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \&}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classKamikazeBehaviour_af7d3c28e10776970753856271d91ddeb}\label{classKamikazeBehaviour_af7d3c28e10776970753856271d91ddeb}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!````~KamikazeBehaviour@{$\sim$KamikazeBehaviour}}
+\index{````~KamikazeBehaviour@{$\sim$KamikazeBehaviour}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{$\sim$KamikazeBehaviour()}{~KamikazeBehaviour()}}
+{\footnotesize\ttfamily Kamikaze\+Behaviour\+::$\sim$\+Kamikaze\+Behaviour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classKamikazeBehaviour_ae176de2e711f1982e2bd1295b23abdba}\label{classKamikazeBehaviour_ae176de2e711f1982e2bd1295b23abdba}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!clone@{clone}}
+\index{clone@{clone}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ Kamikaze\+Behaviour\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classKamikazeBehaviour_a90d46a9da432ab5d67ab7d2093f32ab6}\label{classKamikazeBehaviour_a90d46a9da432ab5d67ab7d2093f32ab6}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!getColor@{getColor}}
+\index{getColor@{getColor}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Kamikaze\+Behaviour\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classKamikazeBehaviour_a3ff991c7b89bb3e5ecb8ecd5dd6bc27f}\label{classKamikazeBehaviour_a3ff991c7b89bb3e5ecb8ecd5dd6bc27f}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!moveDirection@{moveDirection}}
+\index{moveDirection@{moveDirection}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveDirection()}{moveDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Kamikaze\+Behaviour\+::move\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{creature\+Coordinates,  }\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Run into the closest creature to the current creature 
+\begin{DoxyParams}{Parameters}
+{\em creature\+Coordinates} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{[}x,y\mbox{]} representing the direction to move in 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}{Interface\+Behaviour}}.
+
+\mbox{\Hypertarget{classKamikazeBehaviour_ac0abe7b035a75f3ad9192bc1cfb5bb1b}\label{classKamikazeBehaviour_ac0abe7b035a75f3ad9192bc1cfb5bb1b}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!operator=@{operator=}}
+\index{operator=@{operator=}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \& Kamikaze\+Behaviour\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classKamikazeBehaviour}{Kamikaze\+Behaviour}} \&}]{k }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classKamikazeBehaviour_a57203847f72b3fffc36981e0a20f541c}\label{classKamikazeBehaviour_a57203847f72b3fffc36981e0a20f541c}} 
+\index{KamikazeBehaviour@{KamikazeBehaviour}!couleur@{couleur}}
+\index{couleur@{couleur}!KamikazeBehaviour@{KamikazeBehaviour}}
+\doxysubsubsection{\texorpdfstring{couleur}{couleur}}
+{\footnotesize\ttfamily unsigned char Kamikaze\+Behaviour\+::couleur = \{0, 0, 200\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8h}{Behaviour.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8cpp}{Behaviour.\+cpp}}\end{DoxyCompactItemize}

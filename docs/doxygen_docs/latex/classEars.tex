@@ -1,0 +1,157 @@
+\hypertarget{classEars}{}\doxysection{Ears Class Reference}
+\label{classEars}\index{Ears@{Ears}}
+
+
+{\ttfamily \#include $<$Sensors.\+h$>$}
+
+
+
+Inheritance diagram for Ears\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classEars__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ears\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classEars__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEars_af95127fddc3579a28aaa01f4fde9b41e}{Ears}} (float detection\+Coef, float detection\+Radius)
+\item 
+\mbox{\hyperlink{classEars_a067c19e8e7b47c346ba0655548566007}{Ears}} (const \mbox{\hyperlink{classEars}{Ears}} \&e)
+\item 
+\mbox{\hyperlink{classEars_a7a27364a65d5906a971684756bba84c9}{$\sim$\+Ears}} ()=default
+\item 
+\mbox{\hyperlink{classEars}{Ears}} \& \mbox{\hyperlink{classEars_a9ea18090d40f6859cc7387644a0815ca}{operator=}} (const \mbox{\hyperlink{classEars}{Ears}} \&e)
+\item 
+std\+::string \mbox{\hyperlink{classEars_a2ea67e2950b0578d9a924e3d73756fff}{get\+Type}} () const override
+\item 
+float \mbox{\hyperlink{classEars_a7855b281de7a9682a673dfed55120699}{get\+Detection\+Radius}} () const override
+\item 
+float \mbox{\hyperlink{classEars_a8ef866efd862d59b8196da5fe0c32a03}{get\+Detection\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classEars_af8442f8a73713ad86647b97321e069b0}{get\+Detection\+Angle}} () const override
+\item 
+std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ \mbox{\hyperlink{classEars_a98ad6170ec2bf664dfa8e82d528dd86c}{get\+Detection\+Zone}} () override
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ \mbox{\hyperlink{classEars_a779924007b82927a2f1d826bf21b084e}{clone}} () override
+\item 
+void \mbox{\hyperlink{classEars_ab9a2d4633273bfb99629b8a4a34efb9f}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEars_af95127fddc3579a28aaa01f4fde9b41e}\label{classEars_af95127fddc3579a28aaa01f4fde9b41e}} 
+\index{Ears@{Ears}!Ears@{Ears}}
+\index{Ears@{Ears}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{Ears()}{Ears()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ears\+::\+Ears (\begin{DoxyParamCaption}\item[{float}]{detection\+Coef,  }\item[{float}]{detection\+Radius }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEars_a067c19e8e7b47c346ba0655548566007}\label{classEars_a067c19e8e7b47c346ba0655548566007}} 
+\index{Ears@{Ears}!Ears@{Ears}}
+\index{Ears@{Ears}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{Ears()}{Ears()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ears\+::\+Ears (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEars}{Ears}} \&}]{e }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEars_a7a27364a65d5906a971684756bba84c9}\label{classEars_a7a27364a65d5906a971684756bba84c9}} 
+\index{Ears@{Ears}!````~Ears@{$\sim$Ears}}
+\index{````~Ears@{$\sim$Ears}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ears()}{~Ears()}}
+{\footnotesize\ttfamily Ears\+::$\sim$\+Ears (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEars_a779924007b82927a2f1d826bf21b084e}\label{classEars_a779924007b82927a2f1d826bf21b084e}} 
+\index{Ears@{Ears}!clone@{clone}}
+\index{clone@{clone}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ Ears\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_a2597cd5a601f0b256c2954da70597b9c}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_ab9a2d4633273bfb99629b8a4a34efb9f}\label{classEars_ab9a2d4633273bfb99629b8a4a34efb9f}} 
+\index{Ears@{Ears}!draw@{draw}}
+\index{draw@{draw}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Ears\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_adf638c77615234f9fd91bcc0e3d2f4d3}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_af8442f8a73713ad86647b97321e069b0}\label{classEars_af8442f8a73713ad86647b97321e069b0}} 
+\index{Ears@{Ears}!getDetectionAngle@{getDetectionAngle}}
+\index{getDetectionAngle@{getDetectionAngle}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{getDetectionAngle()}{getDetectionAngle()}}
+{\footnotesize\ttfamily float Ears\+::get\+Detection\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a8dd6be7a7d1f682d79c32009482c1545}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_a8ef866efd862d59b8196da5fe0c32a03}\label{classEars_a8ef866efd862d59b8196da5fe0c32a03}} 
+\index{Ears@{Ears}!getDetectionCoef@{getDetectionCoef}}
+\index{getDetectionCoef@{getDetectionCoef}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{getDetectionCoef()}{getDetectionCoef()}}
+{\footnotesize\ttfamily float Ears\+::get\+Detection\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a6cd42e5f33d3e8bb8c997cc30760dc37}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_a7855b281de7a9682a673dfed55120699}\label{classEars_a7855b281de7a9682a673dfed55120699}} 
+\index{Ears@{Ears}!getDetectionRadius@{getDetectionRadius}}
+\index{getDetectionRadius@{getDetectionRadius}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{getDetectionRadius()}{getDetectionRadius()}}
+{\footnotesize\ttfamily float Ears\+::get\+Detection\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a42637ad2d7865504b8e5a1fb2a9e22ec}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_a98ad6170ec2bf664dfa8e82d528dd86c}\label{classEars_a98ad6170ec2bf664dfa8e82d528dd86c}} 
+\index{Ears@{Ears}!getDetectionZone@{getDetectionZone}}
+\index{getDetectionZone@{getDetectionZone}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{getDetectionZone()}{getDetectionZone()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ Ears\+::get\+Detection\+Zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_ab372ada46bb57cb62414aa9dfea0707a}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_a2ea67e2950b0578d9a924e3d73756fff}\label{classEars_a2ea67e2950b0578d9a924e3d73756fff}} 
+\index{Ears@{Ears}!getType@{getType}}
+\index{getType@{getType}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily std\+::string Ears\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_adaa3566f46c23f9dd7d8158c40e64c9a}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classEars_a9ea18090d40f6859cc7387644a0815ca}\label{classEars_a9ea18090d40f6859cc7387644a0815ca}} 
+\index{Ears@{Ears}!operator=@{operator=}}
+\index{operator=@{operator=}!Ears@{Ears}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEars}{Ears}} \& Ears\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEars}{Ears}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8h}{Sensors.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8cpp}{Sensors.\+cpp}}\end{DoxyCompactItemize}

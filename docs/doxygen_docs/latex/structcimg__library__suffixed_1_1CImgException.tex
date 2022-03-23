@@ -1,0 +1,164 @@
+\hypertarget{structcimg__library__suffixed_1_1CImgException}{}\doxysection{cimg\+\_\+library\+\_\+suffixed\+::C\+Img\+Exception Struct Reference}
+\label{structcimg__library__suffixed_1_1CImgException}\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+
+
+Instances of {\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}}} are thrown when errors are encountered in a \textbackslash{}\+C\+Img function call.  
+
+
+
+
+{\ttfamily \#include $<$C\+Img.\+h$>$}
+
+
+
+Inheritance diagram for cimg\+\_\+library\+\_\+suffixed\+::C\+Img\+Exception\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structcimg__library__suffixed_1_1CImgException__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for cimg\+\_\+library\+\_\+suffixed\+::C\+Img\+Exception\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{structcimg__library__suffixed_1_1CImgException__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_a1931cba265f653b52806c4361f3cecfc}{C\+Img\+Exception}} ()
+\item 
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_aeb349b6446eb9bd5ca8a6c0106e69c34}{C\+Img\+Exception}} (const char $\ast$const format,...)
+\item 
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_ac8463f57e62e505d097d73008f922206}{C\+Img\+Exception}} (const \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} \&e)
+\item 
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_af2c1c1826a82f38d74dacf72c9db6c82}{$\sim$\+C\+Img\+Exception}} ()  throw ()
+\item 
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} \& \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_aefe4482f16f1b615abe8b9407ec54a01}{operator=}} (const \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} \&e)
+\item 
+const char $\ast$ \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_a7ce3499518ace836d2b11ebafb078714}{what}} () const  throw ()
+\begin{DoxyCompactList}\small\item\em Return a C-\/string containing the error message associated to the thrown exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_a2d0626fd8caeca943cacb751fe1ea127}{\+\_\+message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Instances of {\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}}} are thrown when errors are encountered in a \textbackslash{}\+C\+Img function call. 
+
+\begin{DoxyParagraph}{Overview}
+
+\end{DoxyParagraph}
+\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} is the base class of all exceptions thrown by \textbackslash{}\+C\+Img (except {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgAbortException}{C\+Img\+Abort\+Exception}}}}). \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} is never thrown itself. Derived classes that specify the type of errord are thrown instead. These classes can be\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgAbortException}{C\+Img\+Abort\+Exception}}\+:}} Thrown when a computationally-\/intensive function is aborted by an external signal. This is the only {\ttfamily non-\/derived} exception class.
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgArgumentException}{C\+Img\+Argument\+Exception}}\+:}} Thrown when one argument of a called \textbackslash{}\+C\+Img function is invalid. This is probably one of the most thrown exception by \textbackslash{}\+C\+Img. For instance, the following example throws a {\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgArgumentException}{C\+Img\+Argument\+Exception}}\+:} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CImg<float> \mbox{\hyperlink{namespacecimg__library__suffixed_a4b2be1eebcd69c87bde0b5757cad1938}{img}}(100,100,1,3); \textcolor{comment}{// Define a 100x100 color image with float-\/valued pixels}}
+\DoxyCodeLine{\mbox{\hyperlink{namespacecimg__library__suffixed_a4b2be1eebcd69c87bde0b5757cad1938}{img}}.mirror(\textcolor{charliteral}{'e'});              \textcolor{comment}{// Try to mirror image along the (non-\/existing) 'e'-\/axis}}
+\end{DoxyCode}
+
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgDisplayException}{C\+Img\+Display\+Exception}}\+:}} Thrown when something went wrong during the display of images in \mbox{\hyperlink{classCImgDisplay}{C\+Img\+Display}} instances.
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgInstanceException}{C\+Img\+Instance\+Exception}}\+:}} Thrown when an instance associated to a called \textbackslash{}\+C\+Img method does not fit the function requirements. For instance, the following example throws a {\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgInstanceException}{C\+Img\+Instance\+Exception}}\+:} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} CImg<float> \mbox{\hyperlink{namespacecimg__library__suffixed_a4b2be1eebcd69c87bde0b5757cad1938}{img}};           \textcolor{comment}{// Define an empty image}}
+\DoxyCodeLine{\textcolor{keyword}{const} \textcolor{keywordtype}{float} value = \mbox{\hyperlink{namespacecimg__library__suffixed_a4b2be1eebcd69c87bde0b5757cad1938}{img}}.at(0);   \textcolor{comment}{// Try to read first pixel value (does not exist)}}
+\end{DoxyCode}
+
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgIOException}{C\+Img\+I\+O\+Exception}}\+:}} Thrown when an error occurred when trying to load or save image files. This happens when trying to read files that do not exist or with invalid formats. For instance, the following example throws a {\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgIOException}{C\+Img\+I\+O\+Exception}}\+:} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const} CImg<float> \mbox{\hyperlink{namespacecimg__library__suffixed_a4b2be1eebcd69c87bde0b5757cad1938}{img}}(\textcolor{stringliteral}{"missing\_file.jpg"});  \textcolor{comment}{// Try to load a file that does not exist}}
+\end{DoxyCode}
+
+\item {\bfseries{\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgWarningException}{C\+Img\+Warning\+Exception}}\+:}} Thrown only if configuration macro {\ttfamily cimg\+\_\+strict\+\_\+warnings} is set, and when a \textbackslash{}\+C\+Img function has to display a warning message (see \mbox{\hyperlink{namespacecimg__library__suffixed_1_1cimg_acfd3624d72ed7f79c82ec45646c685e7}{cimg\+::warn()}}).
+\end{DoxyItemize}
+
+It is not recommended to throw \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} instances by yourself, since they are expected to be thrown only by \textbackslash{}\+C\+Img. When an error occurs in a library function call, \textbackslash{}\+C\+Img may display error messages on the screen or on the standard output, depending on the current \textbackslash{}\+C\+Img exception mode. The \textbackslash{}\+C\+Img exception mode can be get and set by functions \mbox{\hyperlink{namespacecimg__library__suffixed_1_1cimg_a9414cac8b0ab20669320c37878fe54cc}{cimg\+::exception\+\_\+mode()}} and \mbox{\hyperlink{namespacecimg__library__suffixed_1_1cimg_aeafab144366eddd11360f32f468fa4af}{cimg\+::exception\+\_\+mode(unsigned int)}}.
+
+\begin{DoxyParagraph}{Exceptions handling}
+
+\end{DoxyParagraph}
+In all cases, when an error occurs in \textbackslash{}\+C\+Img, an instance of the corresponding exception class is thrown. This may lead the program to break (this is the default behavior), but you can bypass this behavior by handling the exceptions by yourself, using a usual {\ttfamily try \{ ... \} catch () \{ ... \}} bloc, as in the following example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define "CImg.h"}}
+\DoxyCodeLine{\textcolor{keyword}{using namespace }cimg\_library;}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{namespacecimg__library__suffixed_1_1cimg_a9414cac8b0ab20669320c37878fe54cc}{cimg::exception\_mode}}(0);                                    \textcolor{comment}{// Enable quiet exception mode}}
+\DoxyCodeLine{  \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{    ...                                                       \textcolor{comment}{// Here, do what you want to stress CImg}}
+\DoxyCodeLine{  \} \textcolor{keywordflow}{catch} (\mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException_a1931cba265f653b52806c4361f3cecfc}{CImgException}}\& e) \{                                \textcolor{comment}{// You succeeded: something went wrong!}}
+\DoxyCodeLine{    std::fprintf(stderr,\textcolor{stringliteral}{"CImg Library Error: \%s"},e.what());   \textcolor{comment}{// Display your custom error message}}
+\DoxyCodeLine{    ...                                                       \textcolor{comment}{// Do what you want now to save the ship!}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \}}
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_a1931cba265f653b52806c4361f3cecfc}\label{structcimg__library__suffixed_1_1CImgException_a1931cba265f653b52806c4361f3cecfc}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!CImgException@{CImgException}}
+\index{CImgException@{CImgException}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{CImgException()}{CImgException()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::\+C\+Img\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_aeb349b6446eb9bd5ca8a6c0106e69c34}\label{structcimg__library__suffixed_1_1CImgException_aeb349b6446eb9bd5ca8a6c0106e69c34}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!CImgException@{CImgException}}
+\index{CImgException@{CImgException}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{CImgException()}{CImgException()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::\+C\+Img\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$const}]{format,  }\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_ac8463f57e62e505d097d73008f922206}\label{structcimg__library__suffixed_1_1CImgException_ac8463f57e62e505d097d73008f922206}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!CImgException@{CImgException}}
+\index{CImgException@{CImgException}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{CImgException()}{CImgException()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::\+C\+Img\+Exception (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_af2c1c1826a82f38d74dacf72c9db6c82}\label{structcimg__library__suffixed_1_1CImgException_af2c1c1826a82f38d74dacf72c9db6c82}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!````~CImgException@{$\sim$CImgException}}
+\index{````~CImgException@{$\sim$CImgException}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{$\sim$CImgException()}{~CImgException()}}
+{\footnotesize\ttfamily cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::$\sim$\+C\+Img\+Exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw ( ) \hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_aefe4482f16f1b615abe8b9407ec54a01}\label{structcimg__library__suffixed_1_1CImgException_aefe4482f16f1b615abe8b9407ec54a01}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!operator=@{operator=}}
+\index{operator=@{operator=}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}}\& cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structcimg__library__suffixed_1_1CImgException}{C\+Img\+Exception}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_a7ce3499518ace836d2b11ebafb078714}\label{structcimg__library__suffixed_1_1CImgException_a7ce3499518ace836d2b11ebafb078714}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!what@{what}}
+\index{what@{what}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char$\ast$ cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const throw ( ) \hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return a C-\/string containing the error message associated to the thrown exception. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structcimg__library__suffixed_1_1CImgException_a2d0626fd8caeca943cacb751fe1ea127}\label{structcimg__library__suffixed_1_1CImgException_a2d0626fd8caeca943cacb751fe1ea127}} 
+\index{cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}!\_message@{\_message}}
+\index{\_message@{\_message}!cimg\_library\_suffixed::CImgException@{cimg\_library\_suffixed::CImgException}}
+\doxysubsubsection{\texorpdfstring{\_message}{\_message}}
+{\footnotesize\ttfamily char$\ast$ cimg\+\_\+library\+\_\+suffixed\+::\+C\+Img\+Exception\+::\+\_\+message}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/lib/\mbox{\hyperlink{CImg_8h}{C\+Img.\+h}}\end{DoxyCompactItemize}

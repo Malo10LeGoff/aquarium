@@ -1,0 +1,163 @@
+\hypertarget{classAccessories}{}\doxysection{Accessories Class Reference}
+\label{classAccessories}\index{Accessories@{Accessories}}
+
+
+{\ttfamily \#include $<$Accessories.\+h$>$}
+
+
+
+Inheritance diagram for Accessories\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classAccessories__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Accessories\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAccessories__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAccessories_a52751648cd67dcbb49d05be8c2bb2e15}{Accessories}} ()=default
+\item 
+\mbox{\hyperlink{classAccessories_a7d1bec4f7336e8b0d21752d3842e33a5}{Accessories}} (const \mbox{\hyperlink{classAccessories}{Accessories}} \&a)
+\item 
+\mbox{\hyperlink{classAccessories_ad432dc7ad0045a8207394884a9d61800}{$\sim$\+Accessories}} ()=default
+\item 
+\mbox{\hyperlink{classAccessories}{Accessories}} \& \mbox{\hyperlink{classAccessories_a4ec7201029cc17de9f0e58cf060f928d}{operator=}} (const \mbox{\hyperlink{classAccessories}{Accessories}} \&a)
+\item 
+float \mbox{\hyperlink{classAccessories_adcda6f0f52afc5ab0cae9f7486ac553a}{speed\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classAccessories_a13d10c66a46cc433f97fc73d22f68f71}{camo\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classAccessories_a8f6faf38e20f15ab4d941f8af651fae7}{death\+Coef}} () const override
+\item 
+void \mbox{\hyperlink{classAccessories_a9ac27bdc20281e905973c9015bcebd44}{add}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \&accessory)
+\item 
+void \mbox{\hyperlink{classAccessories_ad11128964b39156f67078a934482ad9e}{remove}} (int idx)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \mbox{\hyperlink{classAccessories_a4a53afaf62ed0afb96d80c573d1a30ec}{clone}} () override
+\item 
+void \mbox{\hyperlink{classAccessories_a10599f28d69c0d56e9ab774956a72377}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ $>$ \mbox{\hyperlink{classAccessories_a13867a94b72750f93e8387ec297d0529}{accessories\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAccessories_a52751648cd67dcbb49d05be8c2bb2e15}\label{classAccessories_a52751648cd67dcbb49d05be8c2bb2e15}} 
+\index{Accessories@{Accessories}!Accessories@{Accessories}}
+\index{Accessories@{Accessories}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{Accessories()}{Accessories()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Accessories\+::\+Accessories (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classAccessories_a7d1bec4f7336e8b0d21752d3842e33a5}\label{classAccessories_a7d1bec4f7336e8b0d21752d3842e33a5}} 
+\index{Accessories@{Accessories}!Accessories@{Accessories}}
+\index{Accessories@{Accessories}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{Accessories()}{Accessories()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Accessories\+::\+Accessories (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAccessories}{Accessories}} \&}]{a }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAccessories_ad432dc7ad0045a8207394884a9d61800}\label{classAccessories_ad432dc7ad0045a8207394884a9d61800}} 
+\index{Accessories@{Accessories}!````~Accessories@{$\sim$Accessories}}
+\index{````~Accessories@{$\sim$Accessories}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{$\sim$Accessories()}{~Accessories()}}
+{\footnotesize\ttfamily Accessories\+::$\sim$\+Accessories (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAccessories_a9ac27bdc20281e905973c9015bcebd44}\label{classAccessories_a9ac27bdc20281e905973c9015bcebd44}} 
+\index{Accessories@{Accessories}!add@{add}}
+\index{add@{add}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Accessories\+::add (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \&}]{accessory }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAccessories_a13d10c66a46cc433f97fc73d22f68f71}\label{classAccessories_a13d10c66a46cc433f97fc73d22f68f71}} 
+\index{Accessories@{Accessories}!camoCoef@{camoCoef}}
+\index{camoCoef@{camoCoef}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{camoCoef()}{camoCoef()}}
+{\footnotesize\ttfamily float Accessories\+::camo\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a4a2c44ebd06adbf2184b3ab98e8e95e7}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classAccessories_a4a53afaf62ed0afb96d80c573d1a30ec}\label{classAccessories_a4a53afaf62ed0afb96d80c573d1a30ec}} 
+\index{Accessories@{Accessories}!clone@{clone}}
+\index{clone@{clone}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ Accessories\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classAccessories_a8f6faf38e20f15ab4d941f8af651fae7}\label{classAccessories_a8f6faf38e20f15ab4d941f8af651fae7}} 
+\index{Accessories@{Accessories}!deathCoef@{deathCoef}}
+\index{deathCoef@{deathCoef}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{deathCoef()}{deathCoef()}}
+{\footnotesize\ttfamily float Accessories\+::death\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a54fa042cb4c26d17c87a2d2ca55bfc9e}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classAccessories_a10599f28d69c0d56e9ab774956a72377}\label{classAccessories_a10599f28d69c0d56e9ab774956a72377}} 
+\index{Accessories@{Accessories}!draw@{draw}}
+\index{draw@{draw}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Accessories\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceAccessory_adc6e406252185632f50620481bf18352}{Interface\+Accessory}}.
+
+\mbox{\Hypertarget{classAccessories_a4ec7201029cc17de9f0e58cf060f928d}\label{classAccessories_a4ec7201029cc17de9f0e58cf060f928d}} 
+\index{Accessories@{Accessories}!operator=@{operator=}}
+\index{operator=@{operator=}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAccessories}{Accessories}} \& Accessories\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAccessories}{Accessories}} \&}]{a }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAccessories_ad11128964b39156f67078a934482ad9e}\label{classAccessories_ad11128964b39156f67078a934482ad9e}} 
+\index{Accessories@{Accessories}!remove@{remove}}
+\index{remove@{remove}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Accessories\+::remove (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAccessories_adcda6f0f52afc5ab0cae9f7486ac553a}\label{classAccessories_adcda6f0f52afc5ab0cae9f7486ac553a}} 
+\index{Accessories@{Accessories}!speedCoef@{speedCoef}}
+\index{speedCoef@{speedCoef}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{speedCoef()}{speedCoef()}}
+{\footnotesize\ttfamily float Accessories\+::speed\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}{Interface\+Accessory}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAccessories_a13867a94b72750f93e8387ec297d0529}\label{classAccessories_a13867a94b72750f93e8387ec297d0529}} 
+\index{Accessories@{Accessories}!accessories\_@{accessories\_}}
+\index{accessories\_@{accessories\_}!Accessories@{Accessories}}
+\doxysubsubsection{\texorpdfstring{accessories\_}{accessories\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}}$>$ $>$ Accessories\+::accessories\+\_\+}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8h}{Accessories.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8cpp}{Accessories.\+cpp}}\end{DoxyCompactItemize}

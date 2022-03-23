@@ -1,0 +1,105 @@
+\hypertarget{classInterfaceAccessory}{}\doxysection{Interface\+Accessory Class Reference}
+\label{classInterfaceAccessory}\index{InterfaceAccessory@{InterfaceAccessory}}
+
+
+{\ttfamily \#include $<$Accessories.\+h$>$}
+
+
+
+Inheritance diagram for Interface\+Accessory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInterfaceAccessory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interface\+Accessory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classInterfaceAccessory__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual float \mbox{\hyperlink{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}{speed\+Coef}} () const
+\item 
+virtual float \mbox{\hyperlink{classInterfaceAccessory_a4a2c44ebd06adbf2184b3ab98e8e95e7}{camo\+Coef}} () const
+\item 
+virtual float \mbox{\hyperlink{classInterfaceAccessory_a54fa042cb4c26d17c87a2d2ca55bfc9e}{death\+Coef}} () const
+\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}} $>$ \mbox{\hyperlink{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}{clone}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classInterfaceAccessory_adc6e406252185632f50620481bf18352}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color)=0
+\item 
+virtual int \mbox{\hyperlink{classInterfaceAccessory_ac2557ac7acfad6d40d5ab4872473dd7d}{Accessory\+Type}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInterfaceAccessory_ac2557ac7acfad6d40d5ab4872473dd7d}\label{classInterfaceAccessory_ac2557ac7acfad6d40d5ab4872473dd7d}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!AccessoryType@{AccessoryType}}
+\index{AccessoryType@{AccessoryType}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{AccessoryType()}{AccessoryType()}}
+{\footnotesize\ttfamily virtual int Interface\+Accessory\+::\+Accessory\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classInterfaceAccessory_a4a2c44ebd06adbf2184b3ab98e8e95e7}\label{classInterfaceAccessory_a4a2c44ebd06adbf2184b3ab98e8e95e7}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!camoCoef@{camoCoef}}
+\index{camoCoef@{camoCoef}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{camoCoef()}{camoCoef()}}
+{\footnotesize\ttfamily virtual float Interface\+Accessory\+::camo\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classCamo_a53604bf31c7b1a68e73b48eb0169c0b2}{Camo}}, and \mbox{\hyperlink{classAccessories_a13d10c66a46cc433f97fc73d22f68f71}{Accessories}}.
+
+\mbox{\Hypertarget{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}\label{classInterfaceAccessory_a88c38b5a4b661c3dce4274ac38070ad5}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!clone@{clone}}
+\index{clone@{clone}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classInterfaceAccessory}{Interface\+Accessory}}$>$ Interface\+Accessory\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classFins_a6f917a2e5786bacf4afdb37000425eff}{Fins}}, \mbox{\hyperlink{classCamo_a3a757805d6f0b59e0889c2f56447df7d}{Camo}}, \mbox{\hyperlink{classShell_ae45d2fd08ca6196239dcec6a22307008}{Shell}}, and \mbox{\hyperlink{classAccessories_a4a53afaf62ed0afb96d80c573d1a30ec}{Accessories}}.
+
+\mbox{\Hypertarget{classInterfaceAccessory_a54fa042cb4c26d17c87a2d2ca55bfc9e}\label{classInterfaceAccessory_a54fa042cb4c26d17c87a2d2ca55bfc9e}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!deathCoef@{deathCoef}}
+\index{deathCoef@{deathCoef}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{deathCoef()}{deathCoef()}}
+{\footnotesize\ttfamily virtual float Interface\+Accessory\+::death\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classShell_a2ab15532b5166a25fe25bf5bad94e522}{Shell}}, and \mbox{\hyperlink{classAccessories_a8f6faf38e20f15ab4d941f8af651fae7}{Accessories}}.
+
+\mbox{\Hypertarget{classInterfaceAccessory_adc6e406252185632f50620481bf18352}\label{classInterfaceAccessory_adc6e406252185632f50620481bf18352}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!draw@{draw}}
+\index{draw@{draw}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void Interface\+Accessory\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classFins_a07ebde957becdd9e87c4ae531f6d4fdd}{Fins}}, \mbox{\hyperlink{classCamo_a88edc9fd26066c70653d79a6bf076deb}{Camo}}, \mbox{\hyperlink{classShell_a10e91a98c70c533a5e61267deb843887}{Shell}}, and \mbox{\hyperlink{classAccessories_a10599f28d69c0d56e9ab774956a72377}{Accessories}}.
+
+\mbox{\Hypertarget{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}\label{classInterfaceAccessory_a9a05af3cbdbf6c03dda67d0dd9186a84}} 
+\index{InterfaceAccessory@{InterfaceAccessory}!speedCoef@{speedCoef}}
+\index{speedCoef@{speedCoef}!InterfaceAccessory@{InterfaceAccessory}}
+\doxysubsubsection{\texorpdfstring{speedCoef()}{speedCoef()}}
+{\footnotesize\ttfamily virtual float Interface\+Accessory\+::speed\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classFins_a166ff58ea86784955cf3a95dff44a7e1}{Fins}}, \mbox{\hyperlink{classShell_a071a90914864634ef97a9bea3421216a}{Shell}}, and \mbox{\hyperlink{classAccessories_adcda6f0f52afc5ab0cae9f7486ac553a}{Accessories}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Accessories_8h}{Accessories.\+h}}\end{DoxyCompactItemize}

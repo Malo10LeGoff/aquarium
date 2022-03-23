@@ -1,0 +1,93 @@
+\hypertarget{classInterfaceBehaviour}{}\doxysection{Interface\+Behaviour Class Reference}
+\label{classInterfaceBehaviour}\index{InterfaceBehaviour@{InterfaceBehaviour}}
+
+
+{\ttfamily \#include $<$Behaviour.\+h$>$}
+
+
+
+Inheritance diagram for Interface\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInterfaceBehaviour__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Interface\+Behaviour\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classInterfaceBehaviour__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}{move\+Direction}} (const \mbox{\hyperlink{structVector}{Vector}} creature\+Coordinates, const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const =0
+\item 
+virtual float \mbox{\hyperlink{classInterfaceBehaviour_a48c14e62f6e4a951a0a7b9d392d0b0d7}{move\+Speed\+Multiplier}} (const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ visible\+Creatures) const
+\item 
+virtual unsigned char $\ast$ \mbox{\hyperlink{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}{get\+Color}} ()=0
+\item 
+virtual std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}{clone}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}\label{classInterfaceBehaviour_a287b4f6c1691c4c65ea78a517c380def}} 
+\index{InterfaceBehaviour@{InterfaceBehaviour}!clone@{clone}}
+\index{clone@{clone}!InterfaceBehaviour@{InterfaceBehaviour}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}}$>$ Interface\+Behaviour\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classMultipleBehaviours_aaac60dbc46cdc1dff6f293dfa1d794fd}{Multiple\+Behaviours}}, \mbox{\hyperlink{classPlanningBehaviour_a34a5d72b20652a404554feb49f0a3168}{Planning\+Behaviour}}, \mbox{\hyperlink{classKamikazeBehaviour_ae176de2e711f1982e2bd1295b23abdba}{Kamikaze\+Behaviour}}, \mbox{\hyperlink{classFearfulBehaviour_aaa183013d062bdef2a5983d6df248193}{Fearful\+Behaviour}}, and \mbox{\hyperlink{classGregariousBehaviour_a175e9d0209af396e27cc34a4eee449af}{Gregarious\+Behaviour}}.
+
+\mbox{\Hypertarget{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}\label{classInterfaceBehaviour_a4e8a8de71ab77f3af3976c882a6721b4}} 
+\index{InterfaceBehaviour@{InterfaceBehaviour}!getColor@{getColor}}
+\index{getColor@{getColor}!InterfaceBehaviour@{InterfaceBehaviour}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily virtual unsigned char$\ast$ Interface\+Behaviour\+::get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classFearfulBehaviour_a6c3c0b954a4ba9ee2f29c5ae28faf7d3}{Fearful\+Behaviour}}, \mbox{\hyperlink{classMultipleBehaviours_a43c85acbd24ffe522c78cb79d6d7e1f3}{Multiple\+Behaviours}}, \mbox{\hyperlink{classPlanningBehaviour_a562149a9ce9a3a7ee8ac900e9db2f424}{Planning\+Behaviour}}, \mbox{\hyperlink{classKamikazeBehaviour_a90d46a9da432ab5d67ab7d2093f32ab6}{Kamikaze\+Behaviour}}, and \mbox{\hyperlink{classGregariousBehaviour_adabb77d9da572b573902907454d3ceba}{Gregarious\+Behaviour}}.
+
+\mbox{\Hypertarget{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}\label{classInterfaceBehaviour_a6fb3af25a69ee1674a73161405491916}} 
+\index{InterfaceBehaviour@{InterfaceBehaviour}!moveDirection@{moveDirection}}
+\index{moveDirection@{moveDirection}!InterfaceBehaviour@{InterfaceBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveDirection()}{moveDirection()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{structVector}{Vector}} Interface\+Behaviour\+::move\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{creature\+Coordinates,  }\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em visible\+Creatures} & vector of \mbox{[}array$<$float,2$>$ move\+Direction, array$<$float,2$>$ coordinates\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+move\+Direction std\+::array$<$float,2$>$ The direction the creature wants to move. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMultipleBehaviours_a94c9c22e9ca5de6f59b798c5c24cc8d1}{Multiple\+Behaviours}}, \mbox{\hyperlink{classPlanningBehaviour_a3da0b63ef393795d92dc4790a0384edf}{Planning\+Behaviour}}, \mbox{\hyperlink{classKamikazeBehaviour_a3ff991c7b89bb3e5ecb8ecd5dd6bc27f}{Kamikaze\+Behaviour}}, \mbox{\hyperlink{classFearfulBehaviour_af680bd3cb93ddd0eedfaa9a4d795787f}{Fearful\+Behaviour}}, and \mbox{\hyperlink{classGregariousBehaviour_afaa2b21276e73d265982512cbf60b9c8}{Gregarious\+Behaviour}}.
+
+\mbox{\Hypertarget{classInterfaceBehaviour_a48c14e62f6e4a951a0a7b9d392d0b0d7}\label{classInterfaceBehaviour_a48c14e62f6e4a951a0a7b9d392d0b0d7}} 
+\index{InterfaceBehaviour@{InterfaceBehaviour}!moveSpeedMultiplier@{moveSpeedMultiplier}}
+\index{moveSpeedMultiplier@{moveSpeedMultiplier}!InterfaceBehaviour@{InterfaceBehaviour}}
+\doxysubsubsection{\texorpdfstring{moveSpeedMultiplier()}{moveSpeedMultiplier()}}
+{\footnotesize\ttfamily virtual float Interface\+Behaviour\+::move\+Speed\+Multiplier (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{visible\+Creatures }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classFearfulBehaviour_a7bbbdca1010965e18670ad7640146761}{Fearful\+Behaviour}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Behaviour_8h}{Behaviour.\+h}}\end{DoxyCompactItemize}

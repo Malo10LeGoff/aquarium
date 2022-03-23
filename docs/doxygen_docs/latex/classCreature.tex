@@ -1,0 +1,355 @@
+\hypertarget{classCreature}{}\doxysection{Creature Class Reference}
+\label{classCreature}\index{Creature@{Creature}}
+
+
+{\ttfamily \#include $<$Creature.\+h$>$}
+
+
+
+Collaboration diagram for Creature\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classCreature__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCreature_ad1cd3add56758f25f15cdd3dbf1c2967}{Creature}} (\mbox{\hyperlink{classMilieu}{Milieu}} $\ast$t\+\_\+milieu)
+\item 
+\mbox{\hyperlink{classCreature_a796d23750da88994b495a60156c9c6e7}{Creature}} (const \mbox{\hyperlink{classCreature}{Creature}} \&b)
+\item 
+\mbox{\hyperlink{classCreature_a72445926a8a2d6f830029fd8453c0fdd}{$\sim$\+Creature}} (void)
+\item 
+\mbox{\hyperlink{classCreature}{Creature}} \& \mbox{\hyperlink{classCreature_a76ec4de8a20c2877d35e0073b8d4ad94}{operator=}} (const \mbox{\hyperlink{classCreature}{Creature}} \&c)
+\item 
+void \mbox{\hyperlink{classCreature_a0d91bf58603a8bff330142460eb64ec5}{detect\+Surroundings}} ()
+\item 
+void \mbox{\hyperlink{classCreature_a97338c6e2573198ec1f5d3da93ce033f}{on\+Move}} (\mbox{\hyperlink{classMilieu}{Milieu}} \&mon\+Milieu)
+\item 
+void \mbox{\hyperlink{classCreature_aed4f400486379132b98429378885c1ac}{handle\+Wall\+Collision}} (int x\+Lim, int y\+Lim)
+\item 
+void \mbox{\hyperlink{classCreature_a00ba28180455b556bd36ddc4bf9a1c18}{on\+Creature\+Collision}} ()
+\item 
+void \mbox{\hyperlink{classCreature_ac632b6117c34109486d34861d9ca701c}{on\+Age}} ()
+\item 
+void \mbox{\hyperlink{classCreature_a1c37e65703af6e09429436804d5fbf62}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classCreature_a8f496c1e0e1428a0c43675e8c1ec69cb}{get\+Pos}} () const
+\item 
+void \mbox{\hyperlink{classCreature_ac846b5c5d4f35513dd2e28916b4bf9da}{set\+Pos}} (\mbox{\hyperlink{structVector}{Vector}} v)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classCreature_abc665da40df414902844e40070401c6a}{get\+Speed}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a34031e6c6c5d4d32e4a14ebf11baa5dc}{set\+Speed}} (\mbox{\hyperlink{structVector}{Vector}} vector)
+\item 
+double \mbox{\hyperlink{classCreature_a6f1f93182dc16fae0dc73036822d26e0}{get\+Base\+Speed}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a95bbd6289c1d945d3bc054e625bb8c95}{set\+Base\+Speed}} (double t\+\_\+base\+Speed)
+\item 
+int \mbox{\hyperlink{classCreature_a5489f3d88bc66f5ba8569a94704b0086}{get\+Dying\+Age}} () const
+\item 
+void \mbox{\hyperlink{classCreature_ad8a5af4227bdd84710e25baee4c2da7b}{set\+Dying\+Age}} (int i)
+\item 
+void \mbox{\hyperlink{classCreature_a1c748d46ed75385ddb7d645034cedaa6}{set\+Visible\+Creatures}} (std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$ t\+\_\+visible\+Creatures)
+\item 
+std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$ $>$ \mbox{\hyperlink{classCreature_a215fa7f269640211ec60e3c0e341d027}{get\+Visible\+Creatures}} () const
+\item 
+int \mbox{\hyperlink{classCreature_a47a9ff1b61328b2894f92bc2b7ed3f89}{get\+Id}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a6f8abfbd6271b7e60e79074f4936d353}{set\+Id}} (int \mbox{\hyperlink{classCreature_abc78e5807f1303b8558fc9608c9072cb}{id}})
+\item 
+double \mbox{\hyperlink{classCreature_a6a8398e3322e7dfa824f042543fe9113}{get\+Collision\+Death\+Prob}} () const
+\item 
+int \mbox{\hyperlink{classCreature_aac4e61adc7443d46ba9b9beeea1ffe0a}{get\+Age}} () const
+\item 
+double \mbox{\hyperlink{classCreature_a9a6c3843a202fe71fd17e4d9fce9122e}{get\+Orient}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a4ecba39684b7622e575a2dbacaaddb66}{set\+Orient}} (double ori)
+\item 
+\mbox{\hyperlink{structCircleHitbox}{Circle\+Hitbox}} \mbox{\hyperlink{classCreature_ad4d470d0db6304f1f0cab397a923c48e}{get\+Hitbox}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a854a639107090453743e3f0d0f684976}{update\+Hitbox\+Position}} ()
+\item 
+double \mbox{\hyperlink{classCreature_a6d125d34a313c94b76b84e4a95452b77}{get\+Size}} () const
+\item 
+void \mbox{\hyperlink{classCreature_a47189962a28c24412d7629b2adbe3ee1}{set\+Size}} (double s)
+\item 
+float \mbox{\hyperlink{classCreature_a266f72f9b1295e29b0aa9726b966ac49}{get\+Camo\+Coef}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classCreature_abc78e5807f1303b8558fc9608c9072cb}{id}} = -\/1
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classAccessories}{Accessories}} $>$ \mbox{\hyperlink{classCreature_a9c9148627ab3a216caacdc5c65764559}{accessories}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classSensors}{Sensors}} $>$ \mbox{\hyperlink{classCreature_a82b893ecca4a83e7cc45f5cb39b1bb7f}{sensors}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}} $>$ \mbox{\hyperlink{classCreature_abc9eafc3e785573813fec5f894587c18}{behaviour}}
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{classCreature_a4d201163460216fae84c85c5decd211c}{previous\+\_\+speed}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classCreature_ac95cee29bbb6e07f95f7dea8426f8184}{operator==}} (const \mbox{\hyperlink{classCreature}{Creature}} \&b1, const \mbox{\hyperlink{classCreature}{Creature}} \&b2)
+\item 
+bool \mbox{\hyperlink{classCreature_aa2312c06e7198e4f2b8836ca4e4dbc75}{operator!=}} (const \mbox{\hyperlink{classCreature}{Creature}} \&b1, const \mbox{\hyperlink{classCreature}{Creature}} \&b2)
+\item 
+ostream \& \mbox{\hyperlink{classCreature_a55c9c2b7358dc371e69cb118a8d1f282}{operator$<$$<$}} (ostream \&os, const \mbox{\hyperlink{classCreature}{Creature}} \&cr)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCreature_ad1cd3add56758f25f15cdd3dbf1c2967}\label{classCreature_ad1cd3add56758f25f15cdd3dbf1c2967}} 
+\index{Creature@{Creature}!Creature@{Creature}}
+\index{Creature@{Creature}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{Creature()}{Creature()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Creature\+::\+Creature (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMilieu}{Milieu}} $\ast$}]{t\+\_\+milieu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classCreature_a796d23750da88994b495a60156c9c6e7}\label{classCreature_a796d23750da88994b495a60156c9c6e7}} 
+\index{Creature@{Creature}!Creature@{Creature}}
+\index{Creature@{Creature}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{Creature()}{Creature()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Creature\+::\+Creature (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a72445926a8a2d6f830029fd8453c0fdd}\label{classCreature_a72445926a8a2d6f830029fd8453c0fdd}} 
+\index{Creature@{Creature}!````~Creature@{$\sim$Creature}}
+\index{````~Creature@{$\sim$Creature}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{$\sim$Creature()}{~Creature()}}
+{\footnotesize\ttfamily Creature\+::$\sim$\+Creature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCreature_a0d91bf58603a8bff330142460eb64ec5}\label{classCreature_a0d91bf58603a8bff330142460eb64ec5}} 
+\index{Creature@{Creature}!detectSurroundings@{detectSurroundings}}
+\index{detectSurroundings@{detectSurroundings}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{detectSurroundings()}{detectSurroundings()}}
+{\footnotesize\ttfamily void Creature\+::detect\+Surroundings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a1c37e65703af6e09429436804d5fbf62}\label{classCreature_a1c37e65703af6e09429436804d5fbf62}} 
+\index{Creature@{Creature}!draw@{draw}}
+\index{draw@{draw}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Creature\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_aac4e61adc7443d46ba9b9beeea1ffe0a}\label{classCreature_aac4e61adc7443d46ba9b9beeea1ffe0a}} 
+\index{Creature@{Creature}!getAge@{getAge}}
+\index{getAge@{getAge}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getAge()}{getAge()}}
+{\footnotesize\ttfamily int Creature\+::get\+Age (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a6f1f93182dc16fae0dc73036822d26e0}\label{classCreature_a6f1f93182dc16fae0dc73036822d26e0}} 
+\index{Creature@{Creature}!getBaseSpeed@{getBaseSpeed}}
+\index{getBaseSpeed@{getBaseSpeed}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getBaseSpeed()}{getBaseSpeed()}}
+{\footnotesize\ttfamily double Creature\+::get\+Base\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classCreature_a266f72f9b1295e29b0aa9726b966ac49}\label{classCreature_a266f72f9b1295e29b0aa9726b966ac49}} 
+\index{Creature@{Creature}!getCamoCoef@{getCamoCoef}}
+\index{getCamoCoef@{getCamoCoef}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getCamoCoef()}{getCamoCoef()}}
+{\footnotesize\ttfamily float Creature\+::get\+Camo\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a6a8398e3322e7dfa824f042543fe9113}\label{classCreature_a6a8398e3322e7dfa824f042543fe9113}} 
+\index{Creature@{Creature}!getCollisionDeathProb@{getCollisionDeathProb}}
+\index{getCollisionDeathProb@{getCollisionDeathProb}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getCollisionDeathProb()}{getCollisionDeathProb()}}
+{\footnotesize\ttfamily double Creature\+::get\+Collision\+Death\+Prob (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a5489f3d88bc66f5ba8569a94704b0086}\label{classCreature_a5489f3d88bc66f5ba8569a94704b0086}} 
+\index{Creature@{Creature}!getDyingAge@{getDyingAge}}
+\index{getDyingAge@{getDyingAge}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getDyingAge()}{getDyingAge()}}
+{\footnotesize\ttfamily int Creature\+::get\+Dying\+Age (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_ad4d470d0db6304f1f0cab397a923c48e}\label{classCreature_ad4d470d0db6304f1f0cab397a923c48e}} 
+\index{Creature@{Creature}!getHitbox@{getHitbox}}
+\index{getHitbox@{getHitbox}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getHitbox()}{getHitbox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCircleHitbox}{Circle\+Hitbox}} Creature\+::get\+Hitbox (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a47a9ff1b61328b2894f92bc2b7ed3f89}\label{classCreature_a47a9ff1b61328b2894f92bc2b7ed3f89}} 
+\index{Creature@{Creature}!getId@{getId}}
+\index{getId@{getId}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int Creature\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a9a6c3843a202fe71fd17e4d9fce9122e}\label{classCreature_a9a6c3843a202fe71fd17e4d9fce9122e}} 
+\index{Creature@{Creature}!getOrient@{getOrient}}
+\index{getOrient@{getOrient}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getOrient()}{getOrient()}}
+{\footnotesize\ttfamily double Creature\+::get\+Orient (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a8f496c1e0e1428a0c43675e8c1ec69cb}\label{classCreature_a8f496c1e0e1428a0c43675e8c1ec69cb}} 
+\index{Creature@{Creature}!getPos@{getPos}}
+\index{getPos@{getPos}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Creature\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a6d125d34a313c94b76b84e4a95452b77}\label{classCreature_a6d125d34a313c94b76b84e4a95452b77}} 
+\index{Creature@{Creature}!getSize@{getSize}}
+\index{getSize@{getSize}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily double Creature\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_abc665da40df414902844e40070401c6a}\label{classCreature_abc665da40df414902844e40070401c6a}} 
+\index{Creature@{Creature}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Creature\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_a215fa7f269640211ec60e3c0e341d027}\label{classCreature_a215fa7f269640211ec60e3c0e341d027}} 
+\index{Creature@{Creature}!getVisibleCreatures@{getVisibleCreatures}}
+\index{getVisibleCreatures@{getVisibleCreatures}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{getVisibleCreatures()}{getVisibleCreatures()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$ $>$ Creature\+::get\+Visible\+Creatures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCreature_aed4f400486379132b98429378885c1ac}\label{classCreature_aed4f400486379132b98429378885c1ac}} 
+\index{Creature@{Creature}!handleWallCollision@{handleWallCollision}}
+\index{handleWallCollision@{handleWallCollision}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{handleWallCollision()}{handleWallCollision()}}
+{\footnotesize\ttfamily void Creature\+::handle\+Wall\+Collision (\begin{DoxyParamCaption}\item[{int}]{x\+Lim,  }\item[{int}]{y\+Lim }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_ac632b6117c34109486d34861d9ca701c}\label{classCreature_ac632b6117c34109486d34861d9ca701c}} 
+\index{Creature@{Creature}!onAge@{onAge}}
+\index{onAge@{onAge}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{onAge()}{onAge()}}
+{\footnotesize\ttfamily void Creature\+::on\+Age (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a00ba28180455b556bd36ddc4bf9a1c18}\label{classCreature_a00ba28180455b556bd36ddc4bf9a1c18}} 
+\index{Creature@{Creature}!onCreatureCollision@{onCreatureCollision}}
+\index{onCreatureCollision@{onCreatureCollision}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{onCreatureCollision()}{onCreatureCollision()}}
+{\footnotesize\ttfamily void Creature\+::on\+Creature\+Collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a97338c6e2573198ec1f5d3da93ce033f}\label{classCreature_a97338c6e2573198ec1f5d3da93ce033f}} 
+\index{Creature@{Creature}!onMove@{onMove}}
+\index{onMove@{onMove}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{onMove()}{onMove()}}
+{\footnotesize\ttfamily void Creature\+::on\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMilieu}{Milieu}} \&}]{mon\+Milieu }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a76ec4de8a20c2877d35e0073b8d4ad94}\label{classCreature_a76ec4de8a20c2877d35e0073b8d4ad94}} 
+\index{Creature@{Creature}!operator=@{operator=}}
+\index{operator=@{operator=}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCreature}{Creature}} \& Creature\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{c }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a95bbd6289c1d945d3bc054e625bb8c95}\label{classCreature_a95bbd6289c1d945d3bc054e625bb8c95}} 
+\index{Creature@{Creature}!setBaseSpeed@{setBaseSpeed}}
+\index{setBaseSpeed@{setBaseSpeed}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setBaseSpeed()}{setBaseSpeed()}}
+{\footnotesize\ttfamily void Creature\+::set\+Base\+Speed (\begin{DoxyParamCaption}\item[{double}]{t\+\_\+base\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classCreature_ad8a5af4227bdd84710e25baee4c2da7b}\label{classCreature_ad8a5af4227bdd84710e25baee4c2da7b}} 
+\index{Creature@{Creature}!setDyingAge@{setDyingAge}}
+\index{setDyingAge@{setDyingAge}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setDyingAge()}{setDyingAge()}}
+{\footnotesize\ttfamily void Creature\+::set\+Dying\+Age (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a6f8abfbd6271b7e60e79074f4936d353}\label{classCreature_a6f8abfbd6271b7e60e79074f4936d353}} 
+\index{Creature@{Creature}!setId@{setId}}
+\index{setId@{setId}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Creature\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a4ecba39684b7622e575a2dbacaaddb66}\label{classCreature_a4ecba39684b7622e575a2dbacaaddb66}} 
+\index{Creature@{Creature}!setOrient@{setOrient}}
+\index{setOrient@{setOrient}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setOrient()}{setOrient()}}
+{\footnotesize\ttfamily void Creature\+::set\+Orient (\begin{DoxyParamCaption}\item[{double}]{ori }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_ac846b5c5d4f35513dd2e28916b4bf9da}\label{classCreature_ac846b5c5d4f35513dd2e28916b4bf9da}} 
+\index{Creature@{Creature}!setPos@{setPos}}
+\index{setPos@{setPos}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Creature\+::set\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVector}{Vector}}}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a47189962a28c24412d7629b2adbe3ee1}\label{classCreature_a47189962a28c24412d7629b2adbe3ee1}} 
+\index{Creature@{Creature}!setSize@{setSize}}
+\index{setSize@{setSize}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setSize()}{setSize()}}
+{\footnotesize\ttfamily void Creature\+::set\+Size (\begin{DoxyParamCaption}\item[{double}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a34031e6c6c5d4d32e4a14ebf11baa5dc}\label{classCreature_a34031e6c6c5d4d32e4a14ebf11baa5dc}} 
+\index{Creature@{Creature}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Creature\+::set\+Speed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structVector}{Vector}}}]{vector }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a1c748d46ed75385ddb7d645034cedaa6}\label{classCreature_a1c748d46ed75385ddb7d645034cedaa6}} 
+\index{Creature@{Creature}!setVisibleCreatures@{setVisibleCreatures}}
+\index{setVisibleCreatures@{setVisibleCreatures}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{setVisibleCreatures()}{setVisibleCreatures()}}
+{\footnotesize\ttfamily void Creature\+::set\+Visible\+Creatures (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::array$<$ \mbox{\hyperlink{structVector}{Vector}}, 2 $>$$>$}]{t\+\_\+visible\+Creatures }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCreature_a854a639107090453743e3f0d0f684976}\label{classCreature_a854a639107090453743e3f0d0f684976}} 
+\index{Creature@{Creature}!updateHitboxPosition@{updateHitboxPosition}}
+\index{updateHitboxPosition@{updateHitboxPosition}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{updateHitboxPosition()}{updateHitboxPosition()}}
+{\footnotesize\ttfamily void Creature\+::update\+Hitbox\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classCreature_aa2312c06e7198e4f2b8836ca4e4dbc75}\label{classCreature_aa2312c06e7198e4f2b8836ca4e4dbc75}} 
+\index{Creature@{Creature}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{operator"!=}{operator!=}}
+{\footnotesize\ttfamily bool operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b1,  }\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classCreature_a55c9c2b7358dc371e69cb118a8d1f282}\label{classCreature_a55c9c2b7358dc371e69cb118a8d1f282}} 
+\index{Creature@{Creature}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{cr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classCreature_ac95cee29bbb6e07f95f7dea8426f8184}\label{classCreature_ac95cee29bbb6e07f95f7dea8426f8184}} 
+\index{Creature@{Creature}!operator==@{operator==}}
+\index{operator==@{operator==}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b1,  }\item[{const \mbox{\hyperlink{classCreature}{Creature}} \&}]{b2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCreature_a9c9148627ab3a216caacdc5c65764559}\label{classCreature_a9c9148627ab3a216caacdc5c65764559}} 
+\index{Creature@{Creature}!accessories@{accessories}}
+\index{accessories@{accessories}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{accessories}{accessories}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classAccessories}{Accessories}}$>$ Creature\+::accessories}
+
+\mbox{\Hypertarget{classCreature_abc9eafc3e785573813fec5f894587c18}\label{classCreature_abc9eafc3e785573813fec5f894587c18}} 
+\index{Creature@{Creature}!behaviour@{behaviour}}
+\index{behaviour@{behaviour}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{behaviour}{behaviour}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classInterfaceBehaviour}{Interface\+Behaviour}}$>$ Creature\+::behaviour}
+
+\mbox{\Hypertarget{classCreature_abc78e5807f1303b8558fc9608c9072cb}\label{classCreature_abc78e5807f1303b8558fc9608c9072cb}} 
+\index{Creature@{Creature}!id@{id}}
+\index{id@{id}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Creature\+::id = -\/1}
+
+\mbox{\Hypertarget{classCreature_a4d201163460216fae84c85c5decd211c}\label{classCreature_a4d201163460216fae84c85c5decd211c}} 
+\index{Creature@{Creature}!previous\_speed@{previous\_speed}}
+\index{previous\_speed@{previous\_speed}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{previous\_speed}{previous\_speed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} Creature\+::previous\+\_\+speed}
+
+\mbox{\Hypertarget{classCreature_a82b893ecca4a83e7cc45f5cb39b1bb7f}\label{classCreature_a82b893ecca4a83e7cc45f5cb39b1bb7f}} 
+\index{Creature@{Creature}!sensors@{sensors}}
+\index{sensors@{sensors}!Creature@{Creature}}
+\doxysubsubsection{\texorpdfstring{sensors}{sensors}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classSensors}{Sensors}}$>$ Creature\+::sensors}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Creature_8h}{Creature.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Creature_8cpp}{Creature.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,175 @@
+\hypertarget{classSensors}{}\doxysection{Sensors Class Reference}
+\label{classSensors}\index{Sensors@{Sensors}}
+
+
+{\ttfamily \#include $<$Sensors.\+h$>$}
+
+
+
+Inheritance diagram for Sensors\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classSensors__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sensors\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSensors__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSensors_ab106ea310c5e40650624a58903be58c8}{Sensors}} ()=default
+\item 
+\mbox{\hyperlink{classSensors_a5a080382d1e8d885693b7adacd2b3169}{Sensors}} (const \mbox{\hyperlink{classSensors}{Sensors}} \&s)
+\item 
+\mbox{\hyperlink{classSensors_a93aca62cdf73dbe3dcdfca40d20e55c6}{$\sim$\+Sensors}} ()=default
+\item 
+\mbox{\hyperlink{classSensors}{Sensors}} \& \mbox{\hyperlink{classSensors_a80e08d2f1054ee19f9346e24f5bffdd3}{operator=}} (const \mbox{\hyperlink{classSensors}{Sensors}} \&s)
+\item 
+float \mbox{\hyperlink{classSensors_abb75b61d0d43134721a4df399fbf6f7a}{get\+Detection\+Radius}} () const override
+\item 
+float \mbox{\hyperlink{classSensors_a1f1a857b07a318e50fbb580d314563d7}{get\+Detection\+Coef}} () const override
+\item 
+float \mbox{\hyperlink{classSensors_abfe4833beefb854f6891ee64c3a41dd2}{get\+Detection\+Angle}} () const override
+\item 
+std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ \mbox{\hyperlink{classSensors_a279250a3cb91ffc41913945596c4da70}{get\+Detection\+Zone}} () override
+\item 
+void \mbox{\hyperlink{classSensors_a4390bd1c63095a809da551cd20c2f451}{add}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ \&sensor)
+\item 
+void \mbox{\hyperlink{classSensors_a14090c59979d1242fd9407b6d592c54a}{remove}} (int idx)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ \mbox{\hyperlink{classSensors_ac700bdf388ce5fbe714ea9613e92d770}{clone}} () override
+\item 
+void \mbox{\hyperlink{classSensors_a5acbf22164f9de77aeeb56668f3adeb5}{draw}} (\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&support, \mbox{\hyperlink{structVector}{Vector}} position, \mbox{\hyperlink{structVector}{Vector}} speed, double size, \mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}} color) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ $>$ \mbox{\hyperlink{classSensors_abb4e2cb74f30732388fcbff67abc492b}{sensors\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSensors_ab106ea310c5e40650624a58903be58c8}\label{classSensors_ab106ea310c5e40650624a58903be58c8}} 
+\index{Sensors@{Sensors}!Sensors@{Sensors}}
+\index{Sensors@{Sensors}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{Sensors()}{Sensors()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sensors\+::\+Sensors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{classSensors_a5a080382d1e8d885693b7adacd2b3169}\label{classSensors_a5a080382d1e8d885693b7adacd2b3169}} 
+\index{Sensors@{Sensors}!Sensors@{Sensors}}
+\index{Sensors@{Sensors}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{Sensors()}{Sensors()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sensors\+::\+Sensors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSensors}{Sensors}} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSensors_a93aca62cdf73dbe3dcdfca40d20e55c6}\label{classSensors_a93aca62cdf73dbe3dcdfca40d20e55c6}} 
+\index{Sensors@{Sensors}!````~Sensors@{$\sim$Sensors}}
+\index{````~Sensors@{$\sim$Sensors}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{$\sim$Sensors()}{~Sensors()}}
+{\footnotesize\ttfamily Sensors\+::$\sim$\+Sensors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSensors_a4390bd1c63095a809da551cd20c2f451}\label{classSensors_a4390bd1c63095a809da551cd20c2f451}} 
+\index{Sensors@{Sensors}!add@{add}}
+\index{add@{add}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Sensors\+::add (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ \&}]{sensor }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSensors_ac700bdf388ce5fbe714ea9613e92d770}\label{classSensors_ac700bdf388ce5fbe714ea9613e92d770}} 
+\index{Sensors@{Sensors}!clone@{clone}}
+\index{clone@{clone}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}} $>$ Sensors\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_a2597cd5a601f0b256c2954da70597b9c}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_a5acbf22164f9de77aeeb56668f3adeb5}\label{classSensors_a5acbf22164f9de77aeeb56668f3adeb5}} 
+\index{Sensors@{Sensors}!draw@{draw}}
+\index{draw@{draw}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Sensors\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{UImg_8h_afec9fdb65dba186dea067679e7d9063b}{U\+Img}} \&}]{support,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{position,  }\item[{\mbox{\hyperlink{structVector}{Vector}}}]{speed,  }\item[{double}]{size,  }\item[{\mbox{\hyperlink{UImg_8h_a0cff77f29b66e03bfc7e58ba80904457}{T}}}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_adf638c77615234f9fd91bcc0e3d2f4d3}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_abfe4833beefb854f6891ee64c3a41dd2}\label{classSensors_abfe4833beefb854f6891ee64c3a41dd2}} 
+\index{Sensors@{Sensors}!getDetectionAngle@{getDetectionAngle}}
+\index{getDetectionAngle@{getDetectionAngle}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{getDetectionAngle()}{getDetectionAngle()}}
+{\footnotesize\ttfamily float Sensors\+::get\+Detection\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a8dd6be7a7d1f682d79c32009482c1545}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_a1f1a857b07a318e50fbb580d314563d7}\label{classSensors_a1f1a857b07a318e50fbb580d314563d7}} 
+\index{Sensors@{Sensors}!getDetectionCoef@{getDetectionCoef}}
+\index{getDetectionCoef@{getDetectionCoef}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{getDetectionCoef()}{getDetectionCoef()}}
+{\footnotesize\ttfamily float Sensors\+::get\+Detection\+Coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a6cd42e5f33d3e8bb8c997cc30760dc37}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_abb75b61d0d43134721a4df399fbf6f7a}\label{classSensors_abb75b61d0d43134721a4df399fbf6f7a}} 
+\index{Sensors@{Sensors}!getDetectionRadius@{getDetectionRadius}}
+\index{getDetectionRadius@{getDetectionRadius}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{getDetectionRadius()}{getDetectionRadius()}}
+{\footnotesize\ttfamily float Sensors\+::get\+Detection\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classInterfaceSensors_a42637ad2d7865504b8e5a1fb2a9e22ec}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_a279250a3cb91ffc41913945596c4da70}\label{classSensors_a279250a3cb91ffc41913945596c4da70}} 
+\index{Sensors@{Sensors}!getDetectionZone@{getDetectionZone}}
+\index{getDetectionZone@{getDetectionZone}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{getDetectionZone()}{getDetectionZone()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{Sensors_8h_a7a8827c3c50166b979ee90a3a8616914}{detection\+\_\+caract}} $>$ Sensors\+::get\+Detection\+Zone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classInterfaceSensors_ab372ada46bb57cb62414aa9dfea0707a}{Interface\+Sensors}}.
+
+\mbox{\Hypertarget{classSensors_a80e08d2f1054ee19f9346e24f5bffdd3}\label{classSensors_a80e08d2f1054ee19f9346e24f5bffdd3}} 
+\index{Sensors@{Sensors}!operator=@{operator=}}
+\index{operator=@{operator=}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSensors}{Sensors}} \& Sensors\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSensors}{Sensors}} \&}]{s }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSensors_a14090c59979d1242fd9407b6d592c54a}\label{classSensors_a14090c59979d1242fd9407b6d592c54a}} 
+\index{Sensors@{Sensors}!remove@{remove}}
+\index{remove@{remove}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Sensors\+::remove (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSensors_abb4e2cb74f30732388fcbff67abc492b}\label{classSensors_abb4e2cb74f30732388fcbff67abc492b}} 
+\index{Sensors@{Sensors}!sensors\_@{sensors\_}}
+\index{sensors\_@{sensors\_}!Sensors@{Sensors}}
+\doxysubsubsection{\texorpdfstring{sensors\_}{sensors\_}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classInterfaceSensors}{Interface\+Sensors}}$>$ $>$ Sensors\+::sensors\+\_\+}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8h}{Sensors.\+h}}\item 
+/home/minhtri/\+Documents/aquarium/src/\mbox{\hyperlink{Sensors_8cpp}{Sensors.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,106 @@
+\hypertarget{Vector_8cpp}{}\doxysection{/home/minhtri/\+Documents/aquarium/lib/\+Vector.cpp File Reference}
+\label{Vector_8cpp}\index{/home/minhtri/Documents/aquarium/lib/Vector.cpp@{/home/minhtri/Documents/aquarium/lib/Vector.cpp}}
+{\ttfamily \#include \char`\"{}Vector.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Vector.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{Vector_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Vector_8cpp_a525335710b53cb064ca56b936120431e}{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{Vector_8cpp_a399cc6ad831c344d3d2ba2fbddee7356}{scalar}} (const \mbox{\hyperlink{structVector}{Vector}} \&a, const \mbox{\hyperlink{structVector}{Vector}} \&b)
+\item 
+double \mbox{\hyperlink{Vector_8cpp_ac2b6791aa4ae90a35a97034b5f10c1eb}{det}} (const \mbox{\hyperlink{structVector}{Vector}} \&a, const \mbox{\hyperlink{structVector}{Vector}} \&b)
+\item 
+double \mbox{\hyperlink{Vector_8cpp_a9d7dfb42597f01fc9afe44e9466fb967}{norm}} (const \mbox{\hyperlink{structVector}{Vector}} \&v)
+\item 
+double \mbox{\hyperlink{Vector_8cpp_a874d6c517aeb1da7ebc1d941e053ee67}{distance\+Vectors}} (const \mbox{\hyperlink{structVector}{Vector}} \&a, const \mbox{\hyperlink{structVector}{Vector}} \&b)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{Vector_8cpp_ad4095bdf80113be3e78070cf8a2ba331}{operator$\ast$}} (const \mbox{\hyperlink{structVector}{Vector}} v, double k)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{Vector_8cpp_a6d9c4896f084cdab764281ea0ce9ce69}{operator$\ast$}} (double k, const \mbox{\hyperlink{structVector}{Vector}} v)
+\item 
+\mbox{\hyperlink{structVector}{Vector}} \mbox{\hyperlink{Vector_8cpp_aeec9d085ea4f6cc93e9cd658f7db0f49}{operator/}} (const \mbox{\hyperlink{structVector}{Vector}} v, double k)
+\item 
+bool \mbox{\hyperlink{Vector_8cpp_a3c0498fec3046f477a2399a21ab921ff}{operator==}} (const \mbox{\hyperlink{structVector}{Vector}} \&a, const \mbox{\hyperlink{structVector}{Vector}} \&b)
+\item 
+std\+::ostream \& \mbox{\hyperlink{Vector_8cpp_ac254b27efeb8486ee2f67821e3a21a60}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{structVector}{Vector}} \&v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{Vector_8cpp_a525335710b53cb064ca56b936120431e}\label{Vector_8cpp_a525335710b53cb064ca56b936120431e}} 
+\index{Vector.cpp@{Vector.cpp}!\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}}
+\index{\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{\_USE\_MATH\_DEFINES}{\_USE\_MATH\_DEFINES}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Vector_8cpp_ac2b6791aa4ae90a35a97034b5f10c1eb}\label{Vector_8cpp_ac2b6791aa4ae90a35a97034b5f10c1eb}} 
+\index{Vector.cpp@{Vector.cpp}!det@{det}}
+\index{det@{det}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{det()}{det()}}
+{\footnotesize\ttfamily double det (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{a,  }\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_a874d6c517aeb1da7ebc1d941e053ee67}\label{Vector_8cpp_a874d6c517aeb1da7ebc1d941e053ee67}} 
+\index{Vector.cpp@{Vector.cpp}!distanceVectors@{distanceVectors}}
+\index{distanceVectors@{distanceVectors}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{distanceVectors()}{distanceVectors()}}
+{\footnotesize\ttfamily double distance\+Vectors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{a,  }\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_a9d7dfb42597f01fc9afe44e9466fb967}\label{Vector_8cpp_a9d7dfb42597f01fc9afe44e9466fb967}} 
+\index{Vector.cpp@{Vector.cpp}!norm@{norm}}
+\index{norm@{norm}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{norm()}{norm()}}
+{\footnotesize\ttfamily double norm (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_ad4095bdf80113be3e78070cf8a2ba331}\label{Vector_8cpp_ad4095bdf80113be3e78070cf8a2ba331}} 
+\index{Vector.cpp@{Vector.cpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{v,  }\item[{double}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_a6d9c4896f084cdab764281ea0ce9ce69}\label{Vector_8cpp_a6d9c4896f084cdab764281ea0ce9ce69}} 
+\index{Vector.cpp@{Vector.cpp}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} operator$\ast$ (\begin{DoxyParamCaption}\item[{double}]{k,  }\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_aeec9d085ea4f6cc93e9cd658f7db0f49}\label{Vector_8cpp_aeec9d085ea4f6cc93e9cd658f7db0f49}} 
+\index{Vector.cpp@{Vector.cpp}!operator/@{operator/}}
+\index{operator/@{operator/}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVector}{Vector}} operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}}}]{v,  }\item[{double}]{k }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_ac254b27efeb8486ee2f67821e3a21a60}\label{Vector_8cpp_ac254b27efeb8486ee2f67821e3a21a60}} 
+\index{Vector.cpp@{Vector.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_a3c0498fec3046f477a2399a21ab921ff}\label{Vector_8cpp_a3c0498fec3046f477a2399a21ab921ff}} 
+\index{Vector.cpp@{Vector.cpp}!operator==@{operator==}}
+\index{operator==@{operator==}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{a,  }\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{b }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Vector_8cpp_a399cc6ad831c344d3d2ba2fbddee7356}\label{Vector_8cpp_a399cc6ad831c344d3d2ba2fbddee7356}} 
+\index{Vector.cpp@{Vector.cpp}!scalar@{scalar}}
+\index{scalar@{scalar}!Vector.cpp@{Vector.cpp}}
+\doxysubsubsection{\texorpdfstring{scalar()}{scalar()}}
+{\footnotesize\ttfamily double scalar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{a,  }\item[{const \mbox{\hyperlink{structVector}{Vector}} \&}]{b }\end{DoxyParamCaption})}
+
