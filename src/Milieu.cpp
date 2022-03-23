@@ -38,7 +38,7 @@ void Milieu::step(void) {
     
     killCreatures();
     cloneCreatures();
-    //spawnCreatures();
+    spawnCreatures();
     
     //draw
     draw();
@@ -138,6 +138,15 @@ void Milieu::addCreatureToKill(int i) {
     creaturesToKill.push_back(i);
 }
 
+void Milieu::EnvironmentKill() {
+    for (auto &creature: listeCreatures) {
+        if (std::rand()%1000 < 10) {
+            cout << "Creature " << creature->getId() << " has been killed by Environment" << endl;
+            creaturesToKill.push_back(creature->getId());
+        }
+    }
+}
+
 void Milieu::draw() {
     cimg_forXY(*this, x, y) fillC(x, y, 0, 255, 255, 255);
     for (auto &creature: listeCreatures) {
@@ -146,6 +155,7 @@ void Milieu::draw() {
 }
 
 void Milieu::killCreatures() {
+    EnvironmentKill();
     for (auto id: creaturesToKill) {
         listeCreatures.erase(std::remove_if(
                 listeCreatures.begin(), listeCreatures.end(),

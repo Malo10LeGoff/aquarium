@@ -6,13 +6,21 @@ The goal of the project is to emphasize use of relevant **Design Patterns** in t
 
 ---
 
+# How to run the project :
+- sudo apt-get install cmake
+- mkdir build
+- cd build
+- cmake ..
+- make
+- ./src/main
+
 ## Software specifications 
 We are simulating an aquarium ecosystem with this software. 
 The ecosystem is composed of multiple pieces.
 
 ### Creatures
 - [x] Drawable 
-- [ ] Handles handleCreatureCollision
+- [x] Handles handleCreatureCollision
     - [x] Size
     - [ ] Elliptic hitbox
 - [x] Can move : 
@@ -21,32 +29,32 @@ The ecosystem is composed of multiple pieces.
 - [ ] Birth
     - [ ] Can spontaneously clone itself
     - [x] Can be instanciated by the environment
-- [ ] Death
+- [x] Death
     - [x] Can die of age
-    - [ ] Can die from collisions
-    - [ ] Can be killed by external factors
-- [ ] Accessories
+    - [x] Can die from collisions
+    - [x] Can be killed by external factors
+- [x] Accessories
     - [x] Can have none or many
-    - [ ] Shell
-        - [ ] Drawable
+    - [x] Shell
+        - [x] Drawable
         - [x] Changes probability of dying in a handleCreatureCollision
-    - [ ] Camo
-        - [ ] Drawable
+    - [x] Camo
+        - [x] Drawable
         - [x] Lower chance of being detected
     - [x] Fins
-        - [ ] Drawable 
+        - [x] Drawable 
         - [x] Swim faster
-- [ ] Sensors 
-    - [ ] Eyes
+- [x] Sensors 
+    - [x] Eyes
         - [x] Detection zone
         - [x] Detection coefficient
-        - [ ] Drawable
-    - [ ] Ears
+        - [x] Drawable
+    - [x] Ears
         - [x] Detection zone
         - [x] Detection coefficient
-        - [ ] Drawable
+        - [x] Drawable
 - [x] Handle detection
-- [ ] Handle behaviour
+- [x] Handle behaviour
     - [x] Gregarious
     - [x] Fearful
     - [x] Kamikaze
@@ -54,11 +62,11 @@ The ecosystem is composed of multiple pieces.
     - [x] Multiple personalities
 
 ### Aquarium
-- [ ] Handle simulation steps
-- [ ] Returns Aquarium state at every step
+- [x] Handle simulation steps
+- [x] Returns Aquarium state at every step
 - [x] Drawable
 - [x] Can create creatures
-- [ ] Can kill creatures
-- [ ] Handle collisions 
-- [ ] Handle detections
-- [ ] Models environment
+- [x] Can kill creatures
+- [x] Handle collisions 
+- [x] Handle detections
+- [x] Models environment

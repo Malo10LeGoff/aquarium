@@ -65,6 +65,8 @@ public :
     void ageCreature();
 
     void cloneCreatures();
+
+    void EnvironmentKill();
 };
 
 
