@@ -25,7 +25,7 @@ public:
         return 1;
     };
 
-    virtual unsigned char *getColor() = 0;
+    virtual int * getColor() = 0;
 
     virtual std::unique_ptr<InterfaceBehaviour> clone() const = 0;
 };
@@ -41,9 +41,9 @@ public:
 
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 
-    static unsigned char couleur[];
+    static int couleur[3];
 
-    unsigned char *getColor();
+    int * getColor();
 };
 
 class FearfulBehaviour : public InterfaceBehaviour {
@@ -65,9 +65,9 @@ public:
 
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 
-    static unsigned char couleur[];
+    static int couleur[3];
 
-    unsigned char *getColor() override;
+    int * getColor() override;
 
 private:
     float moveSpeedMultiplier_ = 1;
@@ -90,9 +90,9 @@ public:
 
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 
-    static unsigned char couleur[];
+    static int couleur[3];
 
-    unsigned char *getColor();
+    int * getColor();
 
 private:
     float m_moveSpeedMultiplier = 1;
@@ -113,9 +113,9 @@ public:
 
     std::unique_ptr<InterfaceBehaviour> clone() const override;
 
-    static unsigned char couleur[];
+    static int couleur[3];
 
-    unsigned char *getColor();
+    int *getColor();
 
 private:
     float m_moveSpeedMultiplier = 1;
@@ -140,9 +140,9 @@ public:
 
     int size() const;
 
-    static unsigned char couleur[];
+    static int couleur[3];
 
-    unsigned char *getColor();
+    int *getColor();
 
 private:
     std::vector<std::unique_ptr<InterfaceBehaviour>> behaviours_;
