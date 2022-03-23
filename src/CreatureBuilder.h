@@ -103,6 +103,42 @@ private :
     void normalizeDistrib();
 };
 
+class CloneBuilder : public BuilderInterface {
+public:
+    /**
+     * Creates a creature from another creature
+     * @param t_director director the builder refers to
+     */
+
+    explicit CloneBuilder(CreatureBuilder &t_director);
+
+    void initID(int t_id) override;
+
+    void initAccessories() override { };
+
+    void initSensors() override { };
+
+    void initBehaviour() override { };
+
+    void initPosition() override ;
+
+    void initVitesse() override;
+
+    void initLifetimeDuration() override;
+
+    void initCreatureSize() override { };
+
+    std::unique_ptr<Creature> getResult() override;
+
+    void reset() override ;
+
+    void setCopy(Creature& creature);
+
+private :
+    CreatureBuilder &director;
+    Creature m_creature;
+    Creature creatureToCopy;
+};
 
 class CreatureBuilder {
 public:
@@ -112,7 +148,8 @@ public:
             t_milieu) { builder = std::shared_ptr<BuilderInterface>(&t_builder); };
 
     std::unique_ptr<Creature> make();
-
+    std::unique_ptr<Creature> makeRandom();
+    std::unique_ptr<Creature> makeClone();
     void setBuilder(std::shared_ptr<BuilderInterface> &t_builder) { builder = t_builder; };
     Milieu &milieu;
 private:

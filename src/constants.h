@@ -14,7 +14,8 @@ const int screenWidthPX = 640;
 const int screenHeightPX = 480;
 const double maxDetectionCoef = 0.95;
 const double minDetectionCoef = 0;
-
+const double creatureSpawnRate = 15; // average number of simulation steps needed to get 1 new creature spawned
+const double creatureCloneRate = 200; // average number of simulation steps needed to get 1 new creature cloned
 // Accessories
 // All coeficients are multiplicative
 //     Shell
