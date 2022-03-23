@@ -26,7 +26,7 @@ public:
     };
 
     virtual int * getColor() = 0;
-
+    virtual char getType() = 0;
     virtual std::unique_ptr<InterfaceBehaviour> clone() const = 0;
 };
 
@@ -43,11 +43,16 @@ public:
 
     static int couleur[3];
 
+    char getType() {return 'G';};
+
     int * getColor();
 };
 
 class FearfulBehaviour : public InterfaceBehaviour {
 public:
+
+    char getType() {return 'F';};
+
     FearfulBehaviour();
 
     FearfulBehaviour(int maxNeighbours, float moveSpeedMultiplier) : moveSpeedMultiplier_(moveSpeedMultiplier),
@@ -76,6 +81,9 @@ private:
 
 class KamikazeBehaviour : public InterfaceBehaviour {
 public:
+
+    char getType() {return 'K';};
+
     KamikazeBehaviour() = default;
 
     explicit KamikazeBehaviour(float t_moveSpeedMultiplier) : m_moveSpeedMultiplier(t_moveSpeedMultiplier) {};
@@ -100,6 +108,9 @@ private:
 
 class PlanningBehaviour : public InterfaceBehaviour {
 public:
+
+    char getType() {return 'P';};
+
     PlanningBehaviour() = default;
 
     PlanningBehaviour(const PlanningBehaviour &p);
@@ -123,6 +134,9 @@ private:
 
 class MultipleBehaviours : public InterfaceBehaviour {
 public:
+
+    char getType() {return 'M';};
+
     MultipleBehaviours();
 
     MultipleBehaviours(const MultipleBehaviours &m); // copy constructor

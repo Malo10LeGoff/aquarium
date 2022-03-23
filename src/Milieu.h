@@ -23,6 +23,9 @@ private :
     std::vector<int> creaturesToKill{}; // vector of ids of the creatures to kill
 
 public :
+
+    int cur_step = 0;
+
     Milieu(int _width, int _height);
 
     ~Milieu();
@@ -43,6 +46,8 @@ public :
 
     void spawnCreatures();
 
+    void writeData(int c_step);
+
     void handleCreatureCollision(void);
 
     void addMember(std::unique_ptr<Creature> &b);
@@ -60,6 +65,8 @@ public :
     void ageCreature();
 
     void cloneCreatures();
+
+    void EnvironmentKill();
 };
 
 

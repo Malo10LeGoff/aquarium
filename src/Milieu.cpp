@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <memory>
+#include <iostream>
+#include <fstream>
 #include <random>
 #include "constants.h"
 const T Milieu::white[] = {(T) 255, (T) 255, (T) 255};
@@ -20,6 +22,8 @@ Milieu::~Milieu(void) {
 }
 
 void Milieu::step(void) {
+    cur_step+=1;
+
     // Detect surroundings
     creatureDetectSurroundings();
     // move creatures
@@ -31,15 +35,20 @@ void Milieu::step(void) {
     // add 1 to creature ages
     ageCreature();
     // Kill creatures that need to die
+    
     killCreatures();
     cloneCreatures();
     spawnCreatures();
+    
     //draw
     draw();
+    //writeData
+    writeData(cur_step);
+    
 }
 
 
-int Milieu::getNbCreatures() {
+int Milieu::Milieu::getNbCreatures() {
     return listeCreatures.size();
 }
 
@@ -129,6 +138,15 @@ void Milieu::addCreatureToKill(int i) {
     creaturesToKill.push_back(i);
 }
 
+void Milieu::EnvironmentKill() {
+    for (auto &creature: listeCreatures) {
+        if (std::rand()%1000 < 10) {
+            cout << "Creature " << creature->getId() << " has been killed by Environment" << endl;
+            creaturesToKill.push_back(creature->getId());
+        }
+    }
+}
+
 void Milieu::draw() {
     cimg_forXY(*this, x, y) fillC(x, y, 0, 255, 255, 255);
     for (auto &creature: listeCreatures) {
@@ -137,6 +155,7 @@ void Milieu::draw() {
 }
 
 void Milieu::killCreatures() {
+    EnvironmentKill();
     for (auto id: creaturesToKill) {
         listeCreatures.erase(std::remove_if(
                 listeCreatures.begin(), listeCreatures.end(),
@@ -145,7 +164,6 @@ void Milieu::killCreatures() {
                 }), listeCreatures.end());
     }
     creaturesToKill = std::vector<int>{};
-
 }
 
 void Milieu::ageCreature() {
@@ -173,3 +191,20 @@ void Milieu::cloneCreatures() {
 }
 
 
+void Milieu::writeData(int c_step) 
+{
+    ofstream myfile;
+    myfile.open ("data.txt", std::ios::app);
+    int pop[5] = {0,0,0,0,0};
+    for (auto const &creature: listeCreatures) {
+        char c = creature->getBehaviorType();
+        if (c=='G') {pop[0]+=1;}
+        if (c=='F') {pop[1]+=1;}
+        if (c=='K') {pop[2]+=1;}
+        if (c=='P') {pop[3]+=1;}
+        if (c=='M') {pop[4]+=1;}
+    }
+    
+    myfile << "Step " << c_step << ":" <<pop[0] << ","<<pop[1] << ","<<pop[2] << ","<<pop[3] << ","<<pop[4] << "," <<"/n" << endl;
+    myfile.close();
+}

@@ -73,6 +73,6 @@ double const shellProb = 0.5;
 double const camoProb = 0.5;
 double const finProb = 0.5;
 const std::array<double, 4> behaviourDistrib{
-        {0.5, 0.2, 0.2, 0.1}}; // [probGregarious, probFearful, probKamikaze, probMultiple]
+        {0.25, 0.25, 0.25, 0.25}}; // [probGregarious, probFearful, probKamikaze, probMultiple]
 
 #endif //AQUARIUM_CONSTANTS_H
