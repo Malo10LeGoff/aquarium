@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <memory>
-
+#include <random>
+#include "constants.h"
 const T Milieu::white[] = {(T) 255, (T) 255, (T) 255};
 
 Milieu::Milieu(int _width, int _height) : UImg(_width, _height, 1, 3),
@@ -31,6 +32,8 @@ void Milieu::step(void) {
     ageCreature();
     // Kill creatures that need to die
     killCreatures();
+    cloneCreatures();
+    spawnCreatures();
     //draw
     draw();
 }
@@ -102,10 +105,11 @@ void Milieu::addMember(std::unique_ptr<Creature> &b) {
 }
 
 void Milieu::addRandomMember() {
-    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder>(builder);
-    builder.setBuilder(b);
-    std::unique_ptr<Creature> randomCreature = builder.make();
+    /*std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder>(builder);
+    builder.setBuilder(b); */
+    std::unique_ptr<Creature> randomCreature = builder.makeRandom();
     addMember(randomCreature);
+
 }
 
 void Milieu::moveCreatures() {
@@ -147,6 +151,24 @@ void Milieu::killCreatures() {
 void Milieu::ageCreature() {
     for (auto &creature: listeCreatures) {
         creature->onAge();
+    }
+}
+
+void Milieu::spawnCreatures() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::bernoulli_distribution shouldSpawnCreature (1 / creatureSpawnRate);
+    if (shouldSpawnCreature(mt)) {
+        addRandomMember();
+    }
+ }
+
+void Milieu::cloneCreatures() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::bernoulli_distribution shouldSpawnCreature (1 / creatureCloneRate);
+    for (auto &creature : listeCreatures){
+
     }
 }
 
