@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "../lib/UImg.h"
-#include "Vector.h"
+#include "../lib/Vector.h"
 #include <memory>
 #include <functional>
 
@@ -24,7 +24,7 @@ public:
 
     virtual std::unique_ptr<InterfaceAccessory> clone() = 0;
 
-    virtual std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) = 0;
+    virtual void draw(UImg &support, Vector position, Vector speed, double size,T color) = 0;
 
     virtual int AccessoryType() const {
         return 0;
@@ -56,7 +56,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
+    void draw(UImg &support, Vector position, Vector speed, double size, T color) override;
 };
 
 class Shell : public InterfaceAccessory {
@@ -75,7 +75,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
+    void draw(UImg &support, Vector position, Vector speed, double size, T color) override;
 
 private:
     float speedReductionCoef_;
@@ -96,7 +96,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
+    void draw(UImg &support, Vector position, Vector speed, double size,T color) override;
 
 
 private:
@@ -118,7 +118,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
+    void draw(UImg &support, Vector position, Vector speed, double size,T color) override;
 
 private:
     float speedCoef_;

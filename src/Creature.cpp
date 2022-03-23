@@ -107,9 +107,14 @@ double Creature::getSize() const {
 };
 
 void Creature::drawAccessories(UImg &support) {
-    for (auto const &it: accessories->accessories_) {
-        it->draw(support, position,speed,getSize())(*behaviour->getColor());
-    }
+
+   accessories->draw(support, position,speed,getSize(),*behaviour->getColor());
+
+}
+
+void Creature::drawSensors(UImg &support) {
+
+   sensors->draw(support, position,speed,getSize(),*behaviour->getColor());
 
 }
 
@@ -125,12 +130,14 @@ void Creature::draw(UImg &support) {
     //support.draw_circle(xt, yt, getSize() / 6., white);
     int opacity = 1;
     drawAccessories(support);
+    drawSensors(support);
 
     //support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -getOrient() / M_PI * 180.,
            //              behaviour->getColor(), opacity);
     //support.draw_circle(position.x, position.y, getSize() / 2., behaviour-
     // Speed vector for visualization
     support.draw_line(position.x,position.y, (position+5*previous_speed).x, (position+5*previous_speed).y, black);
+    
 }
 
 bool operator==(const Creature &b1, const Creature &b2) {
