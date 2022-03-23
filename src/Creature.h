@@ -47,6 +47,7 @@ public:
 
 private :
     void move();
+    void drawAccessories(UImg & support);
 
 public :                                           // Forme canonique :
     explicit Creature(Milieu *t_milieu);                               // Constructeur par defaut

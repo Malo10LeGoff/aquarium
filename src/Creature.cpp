@@ -6,6 +6,7 @@
 #include <memory>
 #include "constants.h"
 #include <random>
+#include <sstream>
 
 const double Creature::AFF_SIZE = minSize;
 const double Creature::dt = time_delta;
@@ -105,37 +106,32 @@ double Creature::getSize() const {
     return hitbox.radius;
 };
 
+void Creature::drawAccessories(UImg &support) {
+    for (auto const &it: accessories->accessories_) {
+        it->draw(support, position,speed,getSize())(*behaviour->getColor());
+    }
+
+}
+
+
 void Creature::draw(UImg &support) {
     double xt = position.x + cos(speed.orientation()) * getSize() / 2.1;
     double yt = position.y - sin(speed.orientation()) * getSize() / 2.1;
-    unsigned char white[] = {255, 255, 255};
-    support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -speed.orientation() / M_PI * 180.,
-                         couleur);
-    support.draw_circle(xt, yt, getSize() / 2., couleur);
-    support.draw_circle(xt, yt, getSize() / 6., white);
-    unsigned char black[] = {0, 0, 0};
-    unsigned char red[] = {255, 0, 0};
-    unsigned char green[] = {0, 255, 0};
+    T white[] = { 255,255,255};
+    T black[] = { 0,0,0};
+    //support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -speed.orientation() / M_PI * 180.,
+         //                couleur);
+    //support.draw_circle(xt, yt, getSize() / 2., couleur);
+    //support.draw_circle(xt, yt, getSize() / 6., white);
     int opacity = 1;
-    for (auto const &it: accessories->accessories_) {
-        if (it->AccessoryType() == 1) {
-            support.draw_ellipse(position.x, position.y, getSize() * 2, getSize(), getOrient() / M_PI * 180., red, 0.6);
-        }
-        if (it->AccessoryType() == 2) {
-            support.draw_ellipse(position.x, position.y, getSize() * 1.4, getSize() / 3, getOrient() / M_PI * 180.,
-                                 green);
-        }
-        if (it->AccessoryType() == 3) {
-            support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5.,
-                                 (getOrient() + M_PI / 2) / M_PI * 180., behaviour->getColor());
-        }
-    }
+    drawAccessories(support);
 
-    support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -getOrient() / M_PI * 180.,
-                         behaviour->getColor(), opacity);
-    support.draw_circle(position.x, position.y, getSize() / 2., behaviour->getColor(), opacity);
+    //support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -getOrient() / M_PI * 180.,
+           //              behaviour->getColor(), opacity);
+    //support.draw_circle(position.x, position.y, getSize() / 2., behaviour-
+    // Speed vector for visualization
+    support.draw_line(position.x,position.y, (position+5*previous_speed).x, (position+5*previous_speed).y, black);
 }
-
 
 bool operator==(const Creature &b1, const Creature &b2) {
     return (b1.id == b2.id);
@@ -153,10 +149,10 @@ double Creature::getOrient() const {
     return speed.orientation();
 };
 
+
 int Creature::getAge() const {
     return age;
 };
-
 
 int Creature::getId() const {
     return id;

@@ -4,7 +4,9 @@
 #include <iostream>
 #include <vector>
 #include "../lib/UImg.h"
+#include "Vector.h"
 #include <memory>
+#include <functional>
 
 class InterfaceAccessory {
 public:
@@ -21,6 +23,8 @@ public:
     }
 
     virtual std::unique_ptr<InterfaceAccessory> clone() = 0;
+
+    virtual std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) = 0;
 
     virtual int AccessoryType() const {
         return 0;
@@ -51,6 +55,8 @@ public:
     void remove(int idx);
 
     std::unique_ptr<InterfaceAccessory> clone() override;
+
+    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
 };
 
 class Shell : public InterfaceAccessory {
@@ -69,7 +75,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    int AccessoryType() const;
+    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
 
 private:
     float speedReductionCoef_;
@@ -90,7 +96,8 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    int AccessoryType() const;
+    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
+
 
 private:
     float camoCoef_;
@@ -111,7 +118,7 @@ public:
 
     std::unique_ptr<InterfaceAccessory> clone() override;
 
-    int AccessoryType() const;
+    std::function<void(T)> draw(UImg &support, Vector position, Vector speed, double size) override;
 
 private:
     float speedCoef_;
