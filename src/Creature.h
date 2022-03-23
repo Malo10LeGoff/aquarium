@@ -78,6 +78,8 @@ public :                                           // Forme canonique :
 
     double getBaseSpeed() const { return baseSpeed; };
 
+    char getBehaviorType() const;
+
     void setBaseSpeed(double t_baseSpeed) { baseSpeed = t_baseSpeed; }
 
     int getDyingAge() const;

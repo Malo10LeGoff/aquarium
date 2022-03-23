@@ -106,11 +106,14 @@ double Creature::getSize() const {
     return hitbox.radius;
 };
 
+char Creature::getBehaviorType() const {
+    return behaviour->getType();
+};
+
 void Creature::drawAccessories(UImg &support) {
 
     int * c = behaviour->getColor();
     unsigned char color[] = {c[0],c[1],c[2]};
-    cout << c[0] << " " << c[1] << " " << c[2] << endl;
    accessories->draw(support, position,speed,getSize(),*color);
 
 }
