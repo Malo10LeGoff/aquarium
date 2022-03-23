@@ -10,6 +10,16 @@ std::unique_ptr<Creature> CreatureBuilder::make() {
     return builder->make_getResult(next_++);
 }
 
+std::unique_ptr<Creature> CreatureBuilder::makeRandom() {
+    std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder>(*this);
+    setBuilder(b);
+    return make();
+}
+
+std::unique_ptr<Creature> CreatureBuilder::makeClone() {
+    return std::unique_ptr<Creature>();
+}
+
 RandomBuilder::RandomBuilder(CreatureBuilder &t_director, double t_eyeProb, double t_earProb, double t_shellProb,
                              double t_camoProb,
                              double t_finProb, std::array<double, 4> t_behaviourDistrib) : director(t_director),
@@ -145,9 +155,9 @@ void RandomBuilder::initCreatureSize() {
 std::array<double, 4> RandomBuilder::getCumDistrib() {
     std::array<double, 4> cumDistrib{0, 0, 0, 0};
     double cumSum = 0;
-    for (double &i: m_behaviourDistrib) {
-        cumSum += i;
-        i = cumSum;
+    for (int i= 0; i!= m_behaviourDistrib.size(); ++i) {
+        cumSum += m_behaviourDistrib[i];
+        cumDistrib[i] = cumSum;
     }
     return cumDistrib;
 }
@@ -171,3 +181,39 @@ void RandomBuilder::reset() {
     m_creature = Creature(&director.milieu);
 }
 
+CloneBuilder::CloneBuilder(CreatureBuilder &t_director) : director(t_director),
+m_creature(&director.milieu), creatureToCopy(&director.milieu){
+
+}
+
+void CloneBuilder::reset() {
+    m_creature = Creature(&director.milieu);
+    creatureToCopy = m_creature;
+}
+
+void CloneBuilder::initID(int t_id) {
+    m_creature.id = t_id;
+}
+
+void CloneBuilder::initPosition() {
+    Vector direction = creatureToCopy.getPos().rotate(M_PI / 2.0).normalize();
+    m_creature.setPos(creatureToCopy.getPos() + 2.5 * creatureToCopy.getSize() * direction);
+    Vector new_position = m_creature.getPos();
+    new_position.clip(0,screenWidthPX, 0, screenHeightPX);
+}
+
+void CloneBuilder::initVitesse() {
+
+}
+
+void CloneBuilder::initLifetimeDuration() {
+
+}
+
+void CloneBuilder::setCopy(Creature &creature) {
+
+}
+
+std::unique_ptr<Creature> CloneBuilder::getResult() {
+    return std::unique_ptr<Creature>(new Creature(m_creature));
+}

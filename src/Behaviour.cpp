@@ -4,11 +4,11 @@
 #include "../lib/random_selection.cpp"
 // GregariousBehaviour
 
-unsigned char GregariousBehaviour::couleur[] = {200, 200, 200};
-unsigned char FearfulBehaviour::couleur[] = {10, 200, 100};
-unsigned char KamikazeBehaviour::couleur[] = {0, 0, 200};
-unsigned char PlanningBehaviour::couleur[] = {0, 200, 0};
-unsigned char MultipleBehaviours::couleur[] = {100, 200, 0};
+int GregariousBehaviour::couleur[] = {200, 200, 200};
+int FearfulBehaviour::couleur[] = {10, 200, 100};
+int KamikazeBehaviour::couleur[] = {0, 0, 200};
+int PlanningBehaviour::couleur[] = {0, 200, 0};
+int MultipleBehaviours::couleur[] = {100, 200, 0};
 
 Vector GregariousBehaviour::moveDirection(const Vector creatureCoordinates,
                                           const std::vector<std::array<Vector, 2>> visibleCreatures) const {
@@ -34,7 +34,7 @@ std::unique_ptr<InterfaceBehaviour> GregariousBehaviour::clone() const {
     return std::unique_ptr<GregariousBehaviour>(new GregariousBehaviour(*this));
 }
 
-unsigned char *GregariousBehaviour::getColor() {
+int *GregariousBehaviour::getColor() {
 
     return GregariousBehaviour::couleur;
 }
@@ -57,7 +57,7 @@ float FearfulBehaviour::moveSpeedMultiplier(const std::vector<std::array<Vector,
     }
 }
 
-unsigned char *FearfulBehaviour::getColor() {
+int *FearfulBehaviour::getColor() {
 
     return FearfulBehaviour::couleur;
 }
@@ -139,7 +139,7 @@ Vector KamikazeBehaviour::moveDirection(const Vector creatureCoordinates,
 
 }
 
-unsigned char *KamikazeBehaviour::getColor() {
+int *KamikazeBehaviour::getColor() {
 
     return KamikazeBehaviour::couleur;
 }
@@ -190,7 +190,7 @@ void MultipleBehaviours::remove(int index) {
     behaviours_.erase(behaviours_.begin() + index);
 }
 
-unsigned char *MultipleBehaviours::getColor() {
+int *MultipleBehaviours::getColor() {
 
     return MultipleBehaviours::couleur;
 }
@@ -232,7 +232,7 @@ PlanningBehaviour &PlanningBehaviour::operator=(const PlanningBehaviour &p) {
     return *this;
 }
 
-unsigned char *PlanningBehaviour::getColor() {
+int *PlanningBehaviour::getColor() {
 
     return PlanningBehaviour::couleur;
 }

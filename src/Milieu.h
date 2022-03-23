@@ -41,6 +41,8 @@ public :
 
     void killCreatures();
 
+    void spawnCreatures();
+
     void handleCreatureCollision(void);
 
     void addMember(std::unique_ptr<Creature> &b);
@@ -56,6 +58,8 @@ public :
     void addCreatureToKill(int i);
 
     void ageCreature();
+
+    void cloneCreatures();
 };
 
 

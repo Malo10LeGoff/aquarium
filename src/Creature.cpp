@@ -108,7 +108,10 @@ double Creature::getSize() const {
 
 void Creature::drawAccessories(UImg &support) {
 
-   accessories->draw(support, position,speed,getSize(),*behaviour->getColor());
+    int * c = behaviour->getColor();
+    unsigned char color[] = {c[0],c[1],c[2]};
+    cout << c[0] << " " << c[1] << " " << c[2] << endl;
+   accessories->draw(support, position,speed,getSize(),*color);
 
 }
 
