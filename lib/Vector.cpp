@@ -5,9 +5,10 @@
 #include "Vector.h"
 #include <cmath>
 #include <limits>
+#include <iostream>
 // functions
 double scalar(const Vector &a, const Vector &b){
-    return a.x * b.x + a.y + b.y;
+    return a.x * b.x + a.y * b.y;
 }
 double det(const Vector &a, const Vector &b){
     return a.x * b.y - a.y * b.x;
@@ -17,7 +18,7 @@ double det(const Vector &a, const Vector &b){
 // Unary operators
 double norm(const Vector &v){
     return std::sqrt(scalar(v,v));
-};
+}
 
 double distanceVectors(const Vector &a, const Vector &b){
     return norm(a - b);
@@ -41,7 +42,7 @@ double Vector::orientation() const {
     if (x == 0) {
         if (y> 0) {
             return M_PI /2;
-        } else if (y>0){
+        } else if (y<0){
             return - M_PI / 2;
         }
         return std::numeric_limits<double>::quiet_NaN();
@@ -94,7 +95,7 @@ Vector operator/(const Vector v, double k) {
 }
 
 void Vector::clip(double xMin, double xMax, double yMin, double yMax) {
-    const int margin = 5;
+    const int margin =0;
     x = std::min(xMax - margin, std::max(xMin + margin , x));
     y = std::min(yMax - margin , std::max(yMin + margin , y));
 }
@@ -102,6 +103,15 @@ void Vector::clip(double xMin, double xMax, double yMin, double yMax) {
 void Vector::alignToGrid() {
     x = std::round(x);
     y = std::round(y);
+}
+
+bool operator==(const Vector &a, const Vector &b) {
+    return (a.x == b.x) && (a.y == b.y);
+}
+
+std::ostream& operator<<(std::ostream& os, const Vector &v) {
+    os << "Vector["<<v.x << " , " << v.y <<"]\n";
+    return os;
 }
 
 

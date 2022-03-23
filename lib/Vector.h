@@ -1,6 +1,7 @@
 #ifndef AQUARIUM_VECTOR_H
 #define AQUARIUM_VECTOR_H
 #include <array>
+#include <iostream>
 
 struct Vector {
     double x = 0;
@@ -32,6 +33,9 @@ struct Vector {
     friend Vector operator*(const Vector v, double k);
     friend Vector operator*(double k, const Vector v);
     friend Vector operator/(const Vector v,double k);
+    friend bool operator==( const Vector & a, const Vector & b );
+    friend std::ostream& operator<<(std::ostream& os, const Vector& v);
+
 };
 // Binary operators
 double det(const Vector &a, const Vector &b);

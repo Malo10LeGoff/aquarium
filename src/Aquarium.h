@@ -2,7 +2,7 @@
 #define _AQUARIUM_H_
 
 #include <iostream>
-#include <../lib/CImg.h>
+#include "../lib/CImg.h"
 
 
 using namespace std;
@@ -10,20 +10,20 @@ using namespace cimg_library;
 
 class Milieu;
 
-class Aquarium : public CImgDisplay
-{
+class Aquarium : public CImgDisplay {
 
 private:
-   Milieu *flotte;
-   int delay;
+    Milieu *flotte;
+    int delay;
 
 public:
-   Aquarium(int width, int height, int _delay);
-   ~Aquarium(void);
+    Aquarium(int width, int height, int _delay);
 
-   Milieu &getMilieu(void) { return *flotte; }
+    ~Aquarium(void);
 
-   void run(void);
+    Milieu &getMilieu(void) { return *flotte; }
+
+    void run(void);
 };
 
 #endif

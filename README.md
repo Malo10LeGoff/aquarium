@@ -11,53 +11,53 @@ We are simulating an aquarium ecosystem with this software.
 The ecosystem is composed of multiple pieces.
 
 ### Creatures
-- [ ] Drawable 
-- [ ] Handles collision
-    - [ ] Size
+- [x] Drawable 
+- [ ] Handles handleCreatureCollision
+    - [x] Size
     - [ ] Elliptic hitbox
-- [ ] Can move : 
-    - [ ] Position
-    - [ ] Speed 
+- [x] Can move : 
+    - [x] Position
+    - [x] Speed 
 - [ ] Birth
     - [ ] Can spontaneously clone itself
-    - [ ] Can be instanciated by the environment
+    - [x] Can be instanciated by the environment
 - [ ] Death
-    - [ ] Can die of age
+    - [x] Can die of age
     - [ ] Can die from collisions
     - [ ] Can be killed by external factors
 - [ ] Accessories
-    - [ ] Can have none or many
+    - [x] Can have none or many
     - [ ] Shell
         - [ ] Drawable
-        - [ ] Changes probability of dying in a collision
+        - [x] Changes probability of dying in a handleCreatureCollision
     - [ ] Camo
         - [ ] Drawable
-        - [ ] Lower chance of being detected
-    - [ ] Fins
+        - [x] Lower chance of being detected
+    - [x] Fins
         - [ ] Drawable 
-        - [ ] Swim faster
+        - [x] Swim faster
 - [ ] Sensors 
     - [ ] Eyes
-        - [ ] Detection zone
-        - [ ] Detection coefficient
+        - [x] Detection zone
+        - [x] Detection coefficient
         - [ ] Drawable
     - [ ] Ears
-        - [ ] Detection zone
-        - [ ] Detection coefficient
+        - [x] Detection zone
+        - [x] Detection coefficient
         - [ ] Drawable
-- [ ] Handle detection
+- [x] Handle detection
 - [ ] Handle behaviour
-    - [ ] Gregarious
-    - [ ] Fearful
-    - [ ] Kamikaze
+    - [x] Gregarious
+    - [x] Fearful
+    - [x] Kamikaze
     - [ ] Planning
-    - [ ] Multiple personalities
+    - [x] Multiple personalities
 
 ### Aquarium
 - [ ] Handle simulation steps
 - [ ] Returns Aquarium state at every step
-- [ ] Drawable
-- [ ] Can create creatures
+- [x] Drawable
+- [x] Can create creatures
 - [ ] Can kill creatures
 - [ ] Handle collisions 
 - [ ] Handle detections

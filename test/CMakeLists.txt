@@ -17,6 +17,7 @@ target_link_libraries(behaviourTest behaviour)
 add_executable(detectionTest detectionTest.cpp)
 target_link_libraries(detectionTest gtest_main)
 target_link_libraries(detectionTest aquarium)
-
+target_link_libraries(detectionTest milieu)
+target_link_libraries(detectionTest X11)
 include(GoogleTest)
 gtest_discover_tests(behaviourTest)
