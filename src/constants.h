@@ -6,6 +6,7 @@
 #define AQUARIUM_CONSTANTS_H
 #define _USE_MATH_DEFINES
 #include <cmath>
+#include <array>
 // Global
 const int screenWidthPX = 640;
 const int screenHeightPX = 480;
@@ -54,10 +55,20 @@ const double maxDetectionCoefEars = maxDetectionCoef*0.3;
 const double minDetectionCoefEars = maxDetectionCoefEyes * 0.0001;
 
 // Creature
-const double baseSize =  10;
+const double minSize =  5;
+const double maxSize =  20;
 const double baseSpeed = 5;
 const double time_delta = 1;
-const int baseDyingAge = 500;
+const int minDyingAge = 500;
+const int maxDyingAge = 1000;
 const float baseCreatureCamoCoef = 0.05;
+
+// Random init parameters
+double const eyeProb = 0.5;
+double const earProb = 0.5;
+double const shellProb = 0.5;
+double const camoProb = 0.5;
+double const finProb = 0.5;
+const std::array<double, 4> behaviourDistrib {{0.5, 0.2, 0.2 ,0.1}}; // [probGregarious, probFearful, probKamikaze, probMultiple]
 
 #endif //AQUARIUM_CONSTANTS_H

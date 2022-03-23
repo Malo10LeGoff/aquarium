@@ -6,7 +6,7 @@
 #include <memory>
 #include "constants.h"
 #include <random>
-const double Creature::AFF_SIZE = baseSize;
+const double Creature::AFF_SIZE = minSize;
 const double Creature::dt = time_delta;
 
 int Creature::next = 0;
@@ -22,10 +22,6 @@ Creature::Creature(Milieu* milieu):m_milieu(*milieu)
    couleur[1] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
    couleur[2] = static_cast<int>(static_cast<double>(rand()) / RAND_MAX * 230.);
 
-   //hitbox-taille
-
-   taille_a = 3;
-   taille_b = 3;
 }
 Creature &Creature::operator=(const Creature &c) {
 
@@ -33,11 +29,9 @@ Creature &Creature::operator=(const Creature &c) {
     setSpeed(Vector(c.speed));
     hitbox = CircleHitbox(c.hitbox);
     age = c.age;
-    lifetime_duration = c.lifetime_duration;
+    m_dyingAge = c.m_dyingAge;
     baseDeathProbOnCollision = c.baseDeathProbOnCollision;
     setSize(c.getSize());
-    taille_a = c.taille_a;
-    taille_b = c.taille_b;
 
     couleur = new T[3];
     memcpy(couleur, c.couleur, 3 * sizeof(T));
@@ -54,8 +48,8 @@ Creature::Creature(const Creature &b):m_milieu(b.m_milieu)
    setSize(b.getSize());
     setSpeed( b.speed);
    age = 1;
-    baseDeathProbOnCollision = b.baseDeathProbOnCollision;
-   lifetime_duration = b.lifetime_duration;
+   baseDeathProbOnCollision = b.baseDeathProbOnCollision;
+   m_dyingAge = b.m_dyingAge;
    accessories = std::unique_ptr<Accessories>(new Accessories(*b.accessories));
    sensors = std::unique_ptr<Sensors>(new Sensors(*b.sensors));
    behaviour = (*b.behaviour).clone();
@@ -71,7 +65,7 @@ Creature::~Creature(void)
 
 double Creature::getCollisionDeathProb() const
 {
-    return baseDeathProbOnCollision;
+    return baseDeathProbOnCollision * accessories->deathCoef();
 }
 
 void Creature::onMove(Milieu &monMilieu)
@@ -132,11 +126,11 @@ void Creature::draw(UImg &support)
    for (auto const &it :accessories->accessories_) {
       if (it->AccessoryType()==1)
       {
-         support.draw_ellipse(position.x, position.y, getSize()*2, creature_size, getOrient() / M_PI * 180., red, 0.6);
+         support.draw_ellipse(position.x, position.y, getSize()*2, getSize(), getOrient() / M_PI * 180., red, 0.6);
       }
       if (it->AccessoryType()==2)
       {
-         support.draw_ellipse(position.x, position.y, getSize()*1.4, creature_size / 3, getOrient() / M_PI * 180., green);
+         support.draw_ellipse(position.x, position.y, getSize()*1.4, getSize() / 3, getOrient() / M_PI * 180., green);
       }
       if (it->AccessoryType()==3)
       {
@@ -174,10 +168,6 @@ int Creature::getAge() const
    return age;
 };
 
-int Creature::getLifetime() const
-{
-   return lifetime_duration;
-};
 
 int Creature::getId() const
 {
@@ -213,21 +203,21 @@ bool operator!=(const Creature &b1, const Creature &b2) {
 
 void Creature::onAge() {
     ++age;
-    if (age > lifetime_duration) {
+    if (age > m_dyingAge) {
         m_milieu.addCreatureToKill(id);
     }
 }
 
 void Creature::onCreatureCollision() {
-    double actualDeathProb = baseDeathProbOnCollision * accessories->deathCoef();
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::bernoulli_distribution shouldDie (actualDeathProb);
+    std::bernoulli_distribution shouldDie (getCollisionDeathProb());
     if (shouldDie(mt)) {
+        std::cout << *this << "died from collision.\n";
         m_milieu.addCreatureToKill(id);
     }
     else {
-       cout << position.x << " " << position.y  << endl;
+       std::cout << *this << " collided at coordinates " << position << "\n";
        speed *= -1;
     }
 }
@@ -258,8 +248,16 @@ void Creature::setSize(double s) {
 }
 
 ostream& operator<<(ostream& os, const Creature& cr){
-    os << "Creature with id <" << cr.getId() << ">\n";
+    os << "Creature with id <" << cr.getId() << ">";
     return os;
+}
+
+void Creature::setDyingAge(int i) {
+    m_dyingAge = i;
+}
+
+int Creature::getDyingAge() const {
+    return m_dyingAge;
 }
 
 

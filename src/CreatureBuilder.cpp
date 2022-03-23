@@ -7,15 +7,7 @@
 #include  <algorithm>
 
 std::unique_ptr<Creature> CreatureBuilder::make() {
-    builder->reset();
-    builder->initID(next_++);
-    builder->initAccessories();
-    builder->initSensors();
-    builder->initBehaviour();
-    builder->initPosition();
-    builder->initPosition();
-    builder->initVitesse();
-    return builder->getResult();
+    return builder->make_getResult(next_++);
 }
 
 RandomBuilder::RandomBuilder(CreatureBuilder &t_director, double t_eyeProb, double t_earProb, double t_shellProb, double t_camoProb,
@@ -135,6 +127,14 @@ void RandomBuilder::initVitesse() {
     m_creature.setBaseSpeed(randomBaseSpeed());
 }
 
+void RandomBuilder::initLifetimeDuration() {
+    m_creature.setDyingAge(randomDyingAge());
+}
+
+void RandomBuilder::initCreatureSize() {
+    m_creature.setSize(randomCreatureSize());
+}
+
 std::array<double,4> RandomBuilder::getCumDistrib() {
     std::array<double, 4> cumDistrib {0,0,0,0};
     double cumSum = 0;
@@ -152,6 +152,7 @@ void RandomBuilder::normalizeDistrib() {
     }
     for (double & i : m_behaviourDistrib) {
         i /= s;
+
     }
 }
 

@@ -110,7 +110,7 @@ bool operator==(const Vector &a, const Vector &b) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Vector &v) {
-    os << "Vector[ "<<v.x << " , " << v.y <<"]\n";
+    os << "Vector["<<v.x << " , " << v.y <<"]\n";
     return os;
 }
 

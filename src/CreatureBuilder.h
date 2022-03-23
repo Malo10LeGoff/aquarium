@@ -6,6 +6,7 @@
 #define AQUARIUM_CREATUREBUILDER_H
 #include <memory>
 #include "Creature.h"
+#include "constants.h"
 
 class CreatureBuilder;
 
@@ -17,9 +18,22 @@ public :
     virtual void initBehaviour() = 0;
     virtual void initPosition() = 0;
     virtual void initVitesse() = 0;
-    // virtual void initCreatureSize() = 0;
-    // virtual void initLifetimeDuration() = 0 ;
+    virtual void initCreatureSize() = 0;
+    virtual void initLifetimeDuration() = 0 ;
     virtual std::unique_ptr<Creature> getResult() = 0;
+    virtual std::unique_ptr<Creature> make_getResult(int id) {
+            reset();
+            initID(id);
+            initCreatureSize();
+            initLifetimeDuration();
+            initAccessories();
+            initSensors();
+            initBehaviour();
+            initPosition();
+            initPosition();
+            initVitesse();
+            return getResult();
+    };
     virtual void reset() = 0;
 };
 
@@ -44,6 +58,8 @@ public:
     void initBehaviour() override;
     void initPosition() override;
     void initVitesse() override;
+    void initLifetimeDuration() override;
+    void initCreatureSize() override;
     std::unique_ptr<Creature> getResult() override;
     void reset() override;
 private :
@@ -51,12 +67,12 @@ private :
     Creature m_creature;
 
     // random parameters
-    double m_eyeProb = 0.5;
-    double m_earProb = 0.5;
-    double m_shellProb = 0.5;
-    double m_camoProb = 0.5;
-    double m_finProb = 0.5;
-    std::array<double, 4> m_behaviourDistrib {{0.25, 0.25, 0.25 ,0.25}};
+    double m_eyeProb = eyeProb;
+    double m_earProb = earProb;
+    double m_shellProb = shellProb;
+    double m_camoProb = camoProb;
+    double m_finProb = finProb;
+    std::array<double, 4> m_behaviourDistrib = behaviourDistrib;
 
     array<double, 4> getCumDistrib();
     void normalizeDistrib();

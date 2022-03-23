@@ -151,6 +151,24 @@ double randomSpeedKamikaze( ) {
     return clip(speedKamikaze(mt), 0, 10);
 }
 
+int randomDyingAge() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double const mean = (maxDyingAge + minDyingAge) /2.0 ;
+    double const stddev = (maxDyingAge - mean )  ;
+    std::normal_distribution<> lifetimeDuration (mean, stddev);
+    return static_cast<int>(lifetimeDuration(mt));
+}
+
+double randomCreatureSize() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    double const mean = (maxSize + minSize) / 2.0;
+    double const stddev = maxSize - mean;
+    std::normal_distribution<> creatureSize (mean, stddev);
+    return clip(creatureSize(mt),1, 100);
+}
+
 std::uniform_int_distribution<> getRandomIntDistrib(int a, int b) {
     std::random_device rd;
     std::mt19937 mt(rd());
