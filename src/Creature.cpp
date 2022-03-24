@@ -28,6 +28,7 @@ Creature::Creature(Milieu *milieu) : m_milieu(*milieu) {
 Creature &Creature::operator=(const Creature &c) {
 
     id = c.id;
+    setPos(c.position);
     setSpeed(Vector(c.speed));
     hitbox = CircleHitbox(c.hitbox);
     age = c.age;
@@ -126,22 +127,12 @@ void Creature::drawSensors(UImg &support) {
 
 
 void Creature::draw(UImg &support) {
-    double xt = position.x + cos(speed.orientation()) * getSize() / 2.1;
-    double yt = position.y - sin(speed.orientation()) * getSize() / 2.1;
+
     T white[] = { 255,255,255};
     T black[] = { 0,0,0};
-    //support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -speed.orientation() / M_PI * 180.,
-         //                couleur);
-    //support.draw_circle(xt, yt, getSize() / 2., couleur);
-    //support.draw_circle(xt, yt, getSize() / 6., white);
     int opacity = 1;
     drawAccessories(support);
     drawSensors(support);
-
-    //support.draw_ellipse(position.x, position.y, getSize(), getSize() / 5., -getOrient() / M_PI * 180.,
-           //              behaviour->getColor(), opacity);
-    //support.draw_circle(position.x, position.y, getSize() / 2., behaviour-
-    // Speed vector for visualization
     support.draw_line(position.x,position.y, (position+5*previous_speed).x, (position+5*previous_speed).y, black);
     
 }

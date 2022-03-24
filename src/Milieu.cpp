@@ -34,10 +34,11 @@ void Milieu::step(void) {
     handleCreatureCollision();
     // add 1 to creature ages
     ageCreature();
-    // Kill creatures that need to die
-    
-    killCreatures();
     cloneCreatures();
+    // Kill creatures that need to die
+    killCreatures();
+    addCreatures();
+
     spawnCreatures();
     
     //draw
@@ -114,8 +115,6 @@ void Milieu::addMember(std::unique_ptr<Creature> &b) {
 }
 
 void Milieu::addRandomMember() {
-    /*std::shared_ptr<BuilderInterface> b = std::make_shared<RandomBuilder>(builder);
-    builder.setBuilder(b); */
     std::unique_ptr<Creature> randomCreature = builder.makeRandom();
     addMember(randomCreature);
 
@@ -139,9 +138,11 @@ void Milieu::addCreatureToKill(int i) {
 }
 
 void Milieu::EnvironmentKill() {
+    std::random_device rd;
+    std::mt19937 mt(rd());
+    std::bernoulli_distribution shouldDie(1/ creatureKillRate);
     for (auto &creature: listeCreatures) {
-        if (std::rand()%1000 < 10) {
-            cout << "Creature " << creature->getId() << " has been killed by Environment" << endl;
+        if (shouldDie(mt)) {
             creaturesToKill.push_back(creature->getId());
         }
     }
@@ -184,9 +185,11 @@ void Milieu::spawnCreatures() {
 void Milieu::cloneCreatures() {
     std::random_device rd;
     std::mt19937 mt(rd());
-    std::bernoulli_distribution shouldSpawnCreature (1 / creatureCloneRate);
+    std::bernoulli_distribution shouldGetCloned (1 / creatureCloneRate);
     for (auto &creature : listeCreatures){
-
+        if (shouldGetCloned(mt)) {
+            cloneCreature(*creature);
+        }
     }
 }
 
@@ -207,4 +210,16 @@ void Milieu::writeData(int c_step)
     
     myfile << "Step " << c_step << ":" <<pop[0] << ","<<pop[1] << ","<<pop[2] << ","<<pop[3] << ","<<pop[4] << "," <<"/n" << endl;
     myfile.close();
+}
+
+void Milieu::cloneCreature(Creature &creature) {
+    std::unique_ptr<Creature> cloneCreature = builder.makeClone(creature);
+    creaturesToAdd.push_back(std::move(cloneCreature));
+}
+
+void Milieu::addCreatures() {
+    for (auto &creatureToAdd : creaturesToAdd) {
+        addMember(creatureToAdd);
+    }
+    creaturesToAdd = std::vector<std::unique_ptr<Creature>> {};
 }

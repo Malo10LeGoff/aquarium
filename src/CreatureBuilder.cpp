@@ -16,8 +16,12 @@ std::unique_ptr<Creature> CreatureBuilder::makeRandom() {
     return make();
 }
 
-std::unique_ptr<Creature> CreatureBuilder::makeClone() {
-    return std::unique_ptr<Creature>();
+std::unique_ptr<Creature> CreatureBuilder::makeClone(Creature& c) {
+    CloneBuilder cloner = CloneBuilder(*this);
+    cloner.setCopy(c);
+    std::shared_ptr<BuilderInterface> b = std::make_shared<CloneBuilder>(cloner);
+    setBuilder(b);
+    return make();
 }
 
 RandomBuilder::RandomBuilder(CreatureBuilder &t_director, double t_eyeProb, double t_earProb, double t_shellProb,
@@ -188,7 +192,6 @@ m_creature(&director.milieu), creatureToCopy(&director.milieu){
 
 void CloneBuilder::reset() {
     m_creature = Creature(&director.milieu);
-    creatureToCopy = m_creature;
 }
 
 void CloneBuilder::initID(int t_id) {
@@ -196,22 +199,23 @@ void CloneBuilder::initID(int t_id) {
 }
 
 void CloneBuilder::initPosition() {
-    Vector direction = creatureToCopy.getPos().rotate(M_PI / 2.0).normalize();
-    m_creature.setPos(creatureToCopy.getPos() + 2.5 * creatureToCopy.getSize() * direction);
-    Vector new_position = m_creature.getPos();
+    Vector direction = creatureToCopy.getSpeed();
+    direction.rotate(M_PI / 2.0).normalize();
+    Vector new_position = creatureToCopy.getPos()+ 2.5 * creatureToCopy.getSize() * direction;
+    m_creature.setPos(new_position);
     new_position.clip(0,screenWidthPX, 0, screenHeightPX);
 }
 
 void CloneBuilder::initVitesse() {
-
+    m_creature.setSpeed(creatureToCopy.getSpeed());
 }
 
 void CloneBuilder::initLifetimeDuration() {
-
+    m_creature.setDyingAge(creatureToCopy.getDyingAge());
 }
 
 void CloneBuilder::setCopy(Creature &creature) {
-
+    creatureToCopy = creature;
 }
 
 std::unique_ptr<Creature> CloneBuilder::getResult() {

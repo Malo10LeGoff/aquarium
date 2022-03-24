@@ -85,7 +85,7 @@ float Eyes::getDetectionCoef() const {
 
 void Eyes::draw(UImg &support, Vector position, Vector speed, double size , T color) {
     T c[] = {0,255,0};
-    support.draw_triangle(position.x, position.y, position.x + detectionRadius_*cos(detectionAngle_ + speed.orientation()), position.y + detectionRadius_*sin(detectionAngle_ + speed.orientation()), position.x + detectionRadius_*cos(speed.orientation() - detectionAngle_),position.y+detectionRadius_*sin(speed.orientation() - detectionAngle_),c, 0.3);
+    support.draw_triangle(position.x, position.y, position.x + detectionRadius_*cos(detectionAngle_ /2.0 + speed.orientation()), position.y + detectionRadius_*sin(detectionAngle_/2.0 + speed.orientation()), position.x + detectionRadius_*cos(speed.orientation() - detectionAngle_ / 2.0),position.y+detectionRadius_*sin(speed.orientation() - detectionAngle_/2.0),c, 0.3);
 };
 
 

@@ -58,7 +58,7 @@ Vector randomPosition() {
     std::uniform_int_distribution<> y (0 , screenHeightPX);
     std::uniform_int_distribution<> x (0, screenWidthPX);
 
-    return Vector (y(mt), x(mt));
+    return Vector (x(mt), y(mt));
 }
 
 Vector randomSpeed() {

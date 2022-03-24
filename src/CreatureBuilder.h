@@ -40,7 +40,6 @@ public :
         initSensors();
         initBehaviour();
         initPosition();
-        initPosition();
         initVitesse();
         return getResult();
     };
@@ -149,7 +148,7 @@ public:
 
     std::unique_ptr<Creature> make();
     std::unique_ptr<Creature> makeRandom();
-    std::unique_ptr<Creature> makeClone();
+    std::unique_ptr<Creature> makeClone(Creature& c);
     void setBuilder(std::shared_ptr<BuilderInterface> &t_builder) { builder = t_builder; };
     Milieu &milieu;
 private:

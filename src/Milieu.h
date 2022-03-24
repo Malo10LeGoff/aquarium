@@ -21,6 +21,7 @@ private :
     std::vector<std::unique_ptr<Creature>> listeCreatures;
     CreatureBuilder builder;
     std::vector<int> creaturesToKill{}; // vector of ids of the creatures to kill
+    std::vector<std::unique_ptr<Creature>> creaturesToAdd { };
 
 public :
 
@@ -67,6 +68,10 @@ public :
     void cloneCreatures();
 
     void EnvironmentKill();
+
+    void cloneCreature(Creature &creature);
+
+    void addCreatures();
 };
 
 
